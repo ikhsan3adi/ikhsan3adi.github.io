@@ -31,7 +31,7 @@
 	}
 
 	:global(h3) {
-		@apply md:text-lg lg:text-xl font-bold;
+		@apply text-xl md:text-2xl font-bold;
 	}
 
 	:global(h4) {
