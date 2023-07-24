@@ -20,8 +20,6 @@ export default {
         'custom-2': '#b1a2e2',
         'custom-3': '#de86ea',
         'custom-4': '#8fb3ff',
-
-        'whatsapp': '#73ff73',
       }
     },
   },
