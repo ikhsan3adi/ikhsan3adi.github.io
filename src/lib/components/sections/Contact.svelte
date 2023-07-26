@@ -1,15 +1,43 @@
 <script lang="ts">
+	import { submitContactRequest } from '$lib/api/contact/handler';
+
+	import type { ColorVariant } from '$lib/components/buttons/button';
+
+	import { whatsappLink, emailLink } from '$lib/variables';
+
 	import Wrappper from '$lib/components/Wrappper.svelte';
 	import Button from '$lib/components/buttons/Button.svelte';
-	import type { ColorVariant } from '$lib/components/buttons/button';
-	import TextInput from '$lib/components/form/TextInput.svelte';
-	import { whatsappLink, emailLink } from '$lib/variables';
 
 	import Whatsapp from '$lib/components/graphics/social/Whatsapp.svelte';
 	import Email from '$lib/components/graphics/social/Email.svelte';
+	import { inputClass } from '$lib/components/form/TextInput';
 
 	const whatsappButton: ColorVariant = { key: 'whatsapp' };
 	const emailButton: ColorVariant = { key: 'email' };
+	const primaryButton: ColorVariant = { key: 'primary' };
+	const disabledButton: ColorVariant = { key: 'disabled' };
+
+	let submisstionStatus: 'Initial' | 'Loading' | 'Success' | 'Failed' = 'Initial';
+	let buttonDisabled = false;
+
+	let data = { name: '', email: '', message: '' };
+
+	const handleSubmit = async () => {
+		if (!data.name || !data.email.includes('@') || !data.message) return;
+
+		submisstionStatus = 'Loading';
+		buttonDisabled = true;
+
+		try {
+			const res = await submitContactRequest(data);
+
+			submisstionStatus = 'Success';
+		} catch (error) {
+			submisstionStatus = 'Failed';
+		}
+
+		buttonDisabled = false;
+	};
 </script>
 
 <section>
@@ -49,23 +77,58 @@
 				<div
 					class="w-full bg-custom-1 dark:bg-slate-700 border-4 border-text dark:border-white h-max px-8 py-4 md:px-12 md:py-6"
 				>
-					<form action="#">
+					<!-- CONTACT FORM -->
+					<form method="dialog">
 						<div class="flex flex-col mb-4">
 							<label for="name"><h4 class="dark:text-white">Name</h4></label>
-							<TextInput idName="name" required={true} />
+							<input
+								bind:value={data.name}
+								type="text"
+								id="name"
+								name="name"
+								class={inputClass}
+								required
+							/>
 
 							<label for="email"><h4 class="dark:text-white">Email</h4></label>
-							<TextInput type="email" idName="email" required={true} />
+							<input
+								bind:value={data.email}
+								type="email"
+								id="email"
+								name="email"
+								class={inputClass}
+								required
+							/>
 
 							<label for="message"><h4 class="dark:text-white">Message</h4></label>
-							<TextInput idName="message" isTextArea={true} required={true} />
+							<textarea
+								bind:value={data.message}
+								id="message"
+								name="message"
+								class={inputClass}
+								required
+							/>
 						</div>
 						<div class="w-[98.5%] ml-1">
-							<button type="submit" class="block w-full">
-								<Button noDarkVariant={false} fullWidth={true}>Send</Button>
+							<button type="submit" class="block w-full" on:click={handleSubmit}>
+								<Button
+									noDarkVariant={false}
+									fullWidth={true}
+									variant={buttonDisabled ? disabledButton : primaryButton}
+									disabled={buttonDisabled}
+								>
+									<h4 class="{submisstionStatus === 'Failed' ? 'text-red-500' : 'text-inherit'} ">
+										{submisstionStatus === 'Initial'
+											? 'Send'
+											: submisstionStatus === 'Failed'
+											? 'Failed, try again'
+											: submisstionStatus}
+									</h4>
+								</Button>
 							</button>
 						</div>
 					</form>
+					<!-- CONTACT FROM END -->
 				</div>
 			</div>
 		</div>
