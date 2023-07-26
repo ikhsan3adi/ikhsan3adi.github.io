@@ -1,36 +1,24 @@
 <script>
 	import Wrappper from '$lib/components/Wrappper.svelte';
-
-	const projects = [
-		{
-			name: 'Auction app',
-			description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi, sed!',
-			tag: ['flutter', 'svelte']
-		},
-		{
-			name: 'Polling app',
-			description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi, sed!',
-			tag: ['flutter', 'svelte']
-		},
-		{
-			name: 'Music app',
-			description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi, sed!',
-			tag: ['flutter', 'svelte']
-		},
-		{
-			name: 'Todo app',
-			description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi, sed!',
-			tag: ['flutter', 'svelte']
-		},
-		{
-			name: 'Todo app',
-			description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi, sed!',
-			tag: ['flutter', 'svelte']
-		}
-	];
+	import MarqueeText from '$lib/components/widgets/MarqueeText.svelte';
+	import { projects } from '$lib/variables';
 </script>
 
-<section>
+<section class="relative pt-20">
+	<div
+		class="absolute left-0 right-0 top-0 bg-custom-3 h-16 border-text border-y-4 flex items-center"
+	>
+		<MarqueeText direction="right" duration={5} repeat={5}>
+			<div class="flex items-center gap-8 mx-4">
+				<h4>● Portfolio</h4>
+				<h4>● Projects</h4>
+				<h4>● Apps</h4>
+				<h4>● Websites</h4>
+				<h4>● Tools</h4>
+				<h4>● Things</h4>
+			</div>
+		</MarqueeText>
+	</div>
 	<Wrappper>
 		<div class="w-full pb-36">
 			<h1
