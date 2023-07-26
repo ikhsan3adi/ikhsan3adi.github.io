@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Navbar from '$lib/components/sections/Navbar.svelte';
 	import About from '$lib/components/sections/About.svelte';
 	import Contact from '$lib/components/sections/Contact.svelte';
 	import Footer from '$lib/components/sections/Footer.svelte';
@@ -9,6 +10,7 @@
 </script>
 
 <main>
+	<Navbar />
 	<Hero />
 	<About />
 	<Portfolio />
