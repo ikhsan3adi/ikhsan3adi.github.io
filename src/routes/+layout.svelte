@@ -1,10 +1,10 @@
 <script lang="ts">
 	import '../app.css';
-	import type { LayoutData } from './$types';
+	// import type { LayoutData } from './$types';
 
 	import Navbar from '$lib/components/sections/Navbar.svelte';
 
-	export let data: LayoutData;
+	// export let data: LayoutData;
 </script>
 
 <Navbar />
@@ -40,5 +40,9 @@
 
 	:global(p) {
 		@apply font-poppins font-medium text-text;
+	}
+
+	:global(a) {
+		@apply font-poppins font-medium;
 	}
 </style>
