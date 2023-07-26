@@ -1,7 +1,8 @@
 <script lang="ts">
 	import type { ColorVariants, ColorVariant } from './button';
 
-	export let variant: ColorVariant = { key: 'primary' };
+	export let disabled = false;
+	export let variant: ColorVariant = { key: disabled ? 'disabled' : 'primary' };
 	export let noDarkVariant = true;
 	export let fullWidth = false;
 	export let centerText = true;
@@ -9,6 +10,7 @@
 	const backBackgroundColors: ColorVariants = {
 		primary: 'dark:bg-primary',
 		secondary: 'dark:bg-white',
+		disabled: 'dark:bg-neutral-400',
 		whatsapp: 'dark:bg-green-400',
 		email: 'dark:bg-red-400',
 		github: 'dark:bg-slate-200',
@@ -22,6 +24,7 @@
 	const borderColors: ColorVariants = {
 		primary: 'dark:border-primary',
 		secondary: 'dark:border-white',
+		disabled: 'dark:border-neutral-400',
 		whatsapp: 'dark:border-green-400',
 		email: 'dark:border-red-400',
 		github: 'dark:border-slate-200',
@@ -35,6 +38,7 @@
 	const backgroundColors: ColorVariants = {
 		primary: 'bg-primary',
 		secondary: 'bg-white',
+		disabled: 'bg-neutral-400',
 		whatsapp: 'bg-green-400',
 		email: 'bg-red-400',
 		github: 'bg-slate-200',
@@ -48,6 +52,7 @@
 	const textColors: ColorVariants = {
 		primary: 'dark:text-primary',
 		secondary: 'dark:text-white',
+		disabled: 'dark:text-neutral-400',
 		whatsapp: 'dark:text-green-400',
 		email: 'dark:text-red-400',
 		github: 'dark:text-slate-200',
@@ -69,8 +74,8 @@
 		class="{backgroundColors[variant.key]}
 		{noDarkVariant ? '' : 'dark:bg-text'}
     {noDarkVariant ? '' : borderColors[variant.key]}
-		{centerText ? ' justify-center' : ''} flex items-center
-		border-text border-2 duration-200 px-4 py-2 -translate-x-1 -translate-y-1 active:translate-x-0 active:translate-y-0 hover:-translate-x-1.5 hover:-translate-y-1.5 w-full"
+		{centerText ? ' justify-center' : ''} {disabled ? '' : 'active:translate-x-0 active:translate-y-0'}
+		flex items-center border-text border-2 duration-200 px-4 py-2 -translate-x-1 -translate-y-1 hover:-translate-x-1.5 hover:-translate-y-1.5 w-full"
 	>
 		<!-- icon -->
 		{#if $$slots.icon}
