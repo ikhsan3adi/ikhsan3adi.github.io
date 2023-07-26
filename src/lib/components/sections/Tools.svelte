@@ -149,15 +149,15 @@
 								<h4 class="my-auto mx-4">Others</h4>
 							</div>
 							<div
-								class="mx-auto md:mx-0 md:my-auto flex flex-col gap-2 max-md:pt-6 md:flex-row justify-evenly"
+								class="mx-auto md:mx-0 md:my-auto flex flex-col gap-2 max-md:pt-6 md:flex-row md:flex-wrap justify-evenly"
 							>
-								<div class="w-20">
+								<div class="w-20 lg:w-24">
 									<VisualStudioCode />
 								</div>
-								<div class="w-20">
+								<div class="w-20 lg:w-24">
 									<SublimeText />
 								</div>
-								<div class="w-20">
+								<div class="w-20 lg:w-24">
 									<Postman />
 								</div>
 							</div>
