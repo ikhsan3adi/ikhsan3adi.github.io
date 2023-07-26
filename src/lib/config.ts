@@ -1,7 +1,7 @@
-const config = {
-	links: {
-		linkedIn: 'https://www.linkedin.com/in/ikhsan-satriadi/'
-	}
-};
+import { writable, type Writable } from 'svelte/store';
 
-export default config;
+const hamburgerMenuExpanded: Writable<boolean> = writable(false);
+
+const darkEnabled: Writable<boolean> = writable(false);
+
+export { darkEnabled, hamburgerMenuExpanded };
