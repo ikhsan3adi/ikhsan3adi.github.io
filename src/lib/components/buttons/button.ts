@@ -1,6 +1,14 @@
 interface ColorVariants {
 	primary: string;
 	secondary: string;
+	whatsapp?: string;
+	email?: string;
+	github?: string;
+	instagram?: string;
+	facebook?: string;
+	linkedIn?: string;
+	medium?: string;
+	telegram?: string;
 }
 
 interface ColorVariant {
