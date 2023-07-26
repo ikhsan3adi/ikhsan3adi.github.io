@@ -3,14 +3,31 @@
 
 	import Wrappper from '$lib/components/Wrappper.svelte';
 	import Button from '$lib/components/buttons/Button.svelte';
-	import config from '$lib/config';
+	import { linkedInLink } from '$lib/variables';
+	import MarqueeText from '$lib/components/widgets/MarqueeText.svelte';
 
 	const primaryButton: ColorVariant = { key: 'primary' };
 </script>
 
-<section class="w-full bg-custom-1 dark:bg-slate-700 relative">
+<section class="w-full bg-custom-1 dark:bg-purple-900 relative pt-20">
+	<div
+		class="absolute left-0 right-0 top-0 bg-primary h-16 border-text border-y-4 flex items-center"
+	>
+		<MarqueeText direction="left">
+			<div class="flex items-center gap-8 mx-4">
+				<h4>● Welcome to my website!</h4>
+				<h4>● Mobile development</h4>
+				<h4>● Back-end development</h4>
+				<h4>● Front-end development</h4>
+				<h4>● Android</h4>
+				<h4>● IOS</h4>
+				<h4>● Gamedev</h4>
+				<h4>● Illustrator</h4>
+			</div>
+		</MarqueeText>
+	</div>
 	<Wrappper>
-		<div class="w-full pb-36">
+		<div class="w-full pb-20">
 			<h1
 				class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white duration-500"
 				id="about"
@@ -19,7 +36,7 @@
 			</h1>
 			<div class="w-full flex flex-col gap-4 md:flex-row md:justify-between h-max">
 				<div
-					class="bg-custom-2 px-4 py-4 md:px-6 lg:py-6 lg:px-8 w-full h-full border-4 border-text dark:border-white"
+					class="bg-custom-2 px-4 py-4 md:px-6 lg:py-6 lg:px-8 w-full h-full border-4 border-text"
 				>
 					<h3 class="mb-4">About me</h3>
 					<p>
@@ -29,19 +46,16 @@
 						great together!
 					</p>
 				</div>
-				<div
-					class="bg-secondary px-4 py-4 md:px-6 lg:py-6 lg:px-8 w-full border-4 border-text dark:border-white"
-				>
+				<div class="bg-secondary px-4 py-4 md:px-6 lg:py-6 lg:px-8 w-full border-4 border-text">
 					<p class="mb-4">
 						To learn more about my experience and skills, feel free to visit my LinkedIn profile:
 					</p>
 
-					<a href={config.links.linkedIn}>
+					<a href={linkedInLink}>
 						<Button variant={primaryButton}>Visit LinkedIn</Button>
 					</a>
 				</div>
 			</div>
 		</div>
 	</Wrappper>
-	<div class="absolute left-0 right-0 bottom-0 bg-custom-3 h-16 border-text border-y-4" />
 </section>
