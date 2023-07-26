@@ -1,6 +1,7 @@
 <script lang="ts">
 	import About from '$lib/components/sections/About.svelte';
 	import Contact from '$lib/components/sections/Contact.svelte';
+	import Footer from '$lib/components/sections/Footer.svelte';
 	import Hero from '$lib/components/sections/Hero.svelte';
 	import Portfolio from '$lib/components/sections/Portfolio.svelte';
 	import Social from '$lib/components/sections/Social.svelte';
@@ -14,4 +15,5 @@
 	<Tools />
 	<Social />
 	<Contact />
+	<Footer />
 </main>
