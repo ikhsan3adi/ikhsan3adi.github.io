@@ -22,7 +22,7 @@
 					<div class="mb-52 mt-16 md:m-0 py-2 md:py-8 lg:py-9 sm:max-md:text-center duration-500">
 						<h4 id="home" class="dark:text-white duration-500">Hello, my name is</h4>
 						<h1 class="mb-2 dark:text-white duration-500">
-							Ikhsan <h1 class="inline text-primary">Satriadi</h1>
+							Ikhsan <span class="text-inherit text-primary">Satriadi</span>
 						</h1>
 
 						<h4 class="mb-4 dark:text-white duration-500">
