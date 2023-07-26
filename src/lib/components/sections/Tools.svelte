@@ -22,6 +22,7 @@
 	import Svelte from '$lib/components/graphics/tools/Svelte.svelte';
 	import TailwindCss from '$lib/components/graphics/tools/TailwindCss.svelte';
 	import VisualStudioCode from '$lib/components/graphics/tools/VisualStudioCode.svelte';
+	import TypeScript from '$lib/components/graphics/tools/TypeScript.svelte';
 </script>
 
 <section
@@ -100,6 +101,9 @@
 							</div>
 							<div class="w-20 md:w-24 lg:w-36">
 								<Javascript />
+							</div>
+							<div class="w-20 md:w-24 lg:w-36">
+								<TypeScript />
 							</div>
 						</div>
 						<div class="border-t-4 w-full border-text h-12 absolute bottom-0 flex justify-start">
