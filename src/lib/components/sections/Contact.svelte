@@ -29,14 +29,14 @@
 		buttonDisabled = true;
 
 		try {
-			const res = await submitContactRequest(data);
+			await submitContactRequest(data);
 
 			submisstionStatus = 'Success';
+			buttonDisabled = true;
 		} catch (error) {
 			submisstionStatus = 'Failed';
+			buttonDisabled = false;
 		}
-
-		buttonDisabled = false;
 	};
 </script>
 
@@ -110,7 +110,11 @@
 							/>
 						</div>
 						<div class="w-[98.5%] ml-1">
-							<button type="submit" class="block w-full" on:click={handleSubmit}>
+							<button
+								type="submit"
+								class="block w-full"
+								on:click={buttonDisabled ? () => {} : handleSubmit}
+							>
 								<Button
 									noDarkVariant={false}
 									fullWidth={true}
