@@ -49,7 +49,7 @@
 <button
 	class="{dark && isBgTransparent
 		? 'border-white focus:ring-white'
-		: 'border-text focus:ring-text focus:ring-offset-text'} border-2 relative inline-flex flex-shrink-0 h-6 w-11 items-center px-0.5 rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-1 focus:ring-offset-1"
+		: 'border-slate-900 focus:ring-slate-900 focus:ring-offset-text'} border-2 relative inline-flex flex-shrink-0 h-6 w-11 items-center px-0.5 rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-1 focus:ring-offset-1"
 	on:click={toggle}
 >
 	<span
@@ -82,7 +82,7 @@
 			<div
 				class="h-4 w-4 rounded-full translate-y-0 {isBgTransparent
 					? 'dark:bg-white'
-					: 'dark:bg-text'} bg-text"
+					: 'dark:bg-slate-900'} bg-slate-900"
 			/>
 		</span>
 	</span>

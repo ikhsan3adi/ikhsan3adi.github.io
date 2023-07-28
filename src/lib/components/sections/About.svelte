@@ -11,7 +11,7 @@
 
 <section class="w-full bg-custom-1 dark:bg-purple-900 relative pt-20">
 	<div
-		class="absolute left-0 right-0 top-0 bg-primary h-16 border-text border-y-4 flex items-center"
+		class="absolute left-0 right-0 top-0 bg-primary h-12 md:h-14 lg:h-16 border-slate-900 border-y-4 flex items-center"
 	>
 		<MarqueeText direction="left">
 			<div class="flex items-center gap-8 mx-4">
@@ -36,7 +36,7 @@
 			</h1>
 			<div class="w-full flex flex-col gap-4 md:flex-row md:justify-between h-max">
 				<div
-					class="bg-custom-2 px-4 py-4 md:px-6 lg:py-6 lg:px-8 w-full h-full border-4 border-text"
+					class="bg-custom-2 px-4 py-4 md:px-6 lg:py-6 lg:px-8 w-full h-full border-4 border-slate-900"
 				>
 					<h3 class="mb-4">About me</h3>
 					<p>
@@ -46,7 +46,9 @@
 						great together!
 					</p>
 				</div>
-				<div class="bg-secondary px-4 py-4 md:px-6 lg:py-6 lg:px-8 w-full border-4 border-text">
+				<div
+					class="bg-secondary px-4 py-4 md:px-6 lg:py-6 lg:px-8 w-full border-4 border-slate-900"
+				>
 					<p class="mb-4">
 						To learn more about my experience and skills, feel free to visit my LinkedIn profile:
 					</p>

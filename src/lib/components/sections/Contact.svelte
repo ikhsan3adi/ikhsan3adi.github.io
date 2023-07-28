@@ -75,7 +75,7 @@
 					<h1 class="dark:text-white duration-500">Message me!</h1>
 				</div>
 				<div
-					class="w-full bg-custom-1 dark:bg-slate-700 border-4 border-text dark:border-white h-max px-8 py-4 md:px-12 md:py-6"
+					class="w-full bg-custom-1 dark:bg-slate-700 border-4 border-slate-900 dark:border-white h-max px-8 py-4 md:px-12 md:py-6"
 				>
 					<!-- CONTACT FORM -->
 					<form method="dialog">
@@ -109,7 +109,7 @@
 								required
 							/>
 						</div>
-						<div class="w-[98.5%] ml-1">
+						<div class="ml-1">
 							<button
 								type="submit"
 								class="block w-full"

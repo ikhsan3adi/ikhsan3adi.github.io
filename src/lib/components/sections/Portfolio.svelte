@@ -6,7 +6,7 @@
 
 <section class="relative pt-20">
 	<div
-		class="absolute left-0 right-0 top-0 bg-custom-3 h-16 border-text border-y-4 flex items-center"
+		class="absolute left-0 right-0 top-0 bg-custom-3 h-12 md:h-14 lg:h-16 border-slate-900 border-y-4 flex items-center"
 	>
 		<MarqueeText direction="right" duration={5} repeat={5}>
 			<div class="flex items-center gap-8 mx-4">

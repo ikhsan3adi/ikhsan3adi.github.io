@@ -51,7 +51,7 @@
 	</button>
 	<div class="relative {open ? '' : 'hidden'} text-slate-800 z-50">
 		<div
-			class="absolute right-0 w-max p-0 flex flex-col overflow-hidden bg-slate-100 dark:bg-slate-700 border-4 border-text dark:border-white"
+			class="absolute right-0 w-max p-0 flex flex-col overflow-hidden bg-slate-100 dark:bg-slate-700 border-4 border-slate-900 dark:border-white"
 		>
 			{#each navLinks as link}
 				<a
@@ -60,7 +60,7 @@
 				>
 			{/each}
 			<div
-				class="mx-auto py-1 border-t-4 border-text dark:border-white flex items-center gap-4 pr-4"
+				class="mx-auto py-1 border-t-4 border-slate-900 dark:border-white flex items-center gap-4 pr-4"
 			>
 				<p class="dark:text-white py-2 pl-5 duration-200">Darkmode</p>
 				<Theme isBgTransparent={true} />
