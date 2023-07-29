@@ -38,4 +38,26 @@
 	:global(a) {
 		@apply font-poppins font-medium;
 	}
+
+	@-webkit-keyframes -global-scale-up-center {
+		0% {
+			-webkit-transform: scale(0);
+			transform: scale(0);
+		}
+		100% {
+			-webkit-transform: scale(1);
+			transform: scale(1);
+		}
+	}
+
+	@keyframes -global-scale-up-center {
+		0% {
+			-webkit-transform: scale(0);
+			transform: scale(0);
+		}
+		100% {
+			-webkit-transform: scale(1);
+			transform: scale(1);
+		}
+	}
 </style>

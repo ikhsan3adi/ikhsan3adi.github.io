@@ -23,6 +23,8 @@
 	import TailwindCss from '$lib/components/graphics/tools/TailwindCss.svelte';
 	import VisualStudioCode from '$lib/components/graphics/tools/VisualStudioCode.svelte';
 	import TypeScript from '$lib/components/graphics/tools/TypeScript.svelte';
+
+	import Saos from 'saos';
 </script>
 
 <section
@@ -34,147 +36,172 @@
 	/>
 	<Wrappper>
 		<div class="w-full pb-36 z-10">
-			<h1
-				class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white duration-500"
-				id="tools"
-			>
-				Development tools
-			</h1>
-			<div
-				class="bg-slate-900 border-2 border-slate-900 w-full h-max flex flex-col md:flex-row justify-stretch"
-			>
-				<div class="flex w-full md:w-[40%] flex-col">
-					<div
-						class="w-full h-[250px] md:h-[350px] bg-accent border-2 border-slate-900 flex flex-col relative"
-					>
-						<div class="border-b-4 w-full border-slate-900 absolute top-0 h-12 flex justify-start">
-							<h4 class="my-auto mx-4">Mobile apps</h4>
-						</div>
-						<div class="flex md:flex-wrap my-auto mx-2 gap-y-2 pt-16 items-center justify-evenly">
-							<div class="w-36 h-36 md:w-40 md:h-40 xl:w-[11.15rem] xl:h-64">
-								<Flutter />
-							</div>
-							<div class="w-32 h-32 md:w-16 md:h-16">
-								<Kotlin />
-							</div>
-							<div class="w-36 h-36 md:w-32 md:h-32 lg:w-32 lg:h-36">
-								<AndroidStudio />
-							</div>
-						</div>
-					</div>
-					<div
-						class="w-full h-[200px] md:h-[300px] bg-custom-1 border-2 border-slate-900 flex relative"
-					>
-						<div class="flex flex-wrap m-2 my-auto px-2 pb-12 gap-2 items-center justify-evenly">
-							<div class="w-16 md:w-20 lg:w-24">
-								<Codeigniter />
-							</div>
-							<div class="w-16 md:w-20 lg:w-24">
-								<Nodejs />
-							</div>
-							<div class="w-16 md:w-20 lg:w-24">
-								<Php />
-							</div>
-							<div class="w-16 md:w-20 lg:w-24">
-								<Postgresql />
-							</div>
-							<div class="w-16 md:w-20 lg:w-24">
-								<Mysql />
-							</div>
-						</div>
-						<div
-							class="border-t-4 w-full border-slate-900 h-12 absolute bottom-0 flex justify-start"
-						>
-							<h4 class="my-auto mx-4">Back-end</h4>
-						</div>
-					</div>
-				</div>
-				<div class="flex w-full md:w-[60%] h-full flex-col">
-					<div
-						class="w-full h-[200px] md:h-[300px] bg-secondary border-2 border-slate-900 flex relative"
-					>
-						<div class="w-full flex my-auto pb-12 px-2 gap-2 justify-evenly">
-							<div class="w-20 md:w-24 lg:w-36">
-								<Svelte />
-							</div>
-							<div class="w-20 md:w-24 lg:w-36">
-								<TailwindCss />
-							</div>
-							<div class="w-20 md:w-24 lg:w-36">
-								<Bootstrap />
-							</div>
-							<div class="w-20 md:w-24 lg:w-36">
-								<Javascript />
-							</div>
-							<div class="w-20 md:w-24 lg:w-36">
-								<TypeScript />
-							</div>
-						</div>
-						<div
-							class="border-t-4 w-full border-slate-900 h-12 absolute bottom-0 flex justify-start"
-						>
-							<h4 class="my-auto mx-4">Front-end web</h4>
-						</div>
-					</div>
-					<div class="flex">
-						<div class="flex w-1/2 flex-col">
+			<Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
+				<h1
+					class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white duration-500"
+					id="tools"
+				>
+					Development tools
+				</h1>
+			</Saos>
+			<Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
+				<div
+					class="bg-slate-900 border-2 border-slate-900 w-full h-max flex flex-col md:flex-row justify-stretch"
+				>
+					<div class="flex w-full md:w-[40%] flex-col">
+						<Saos animation={'scale-up-center 2s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
 							<div
-								class="w-full h-[150px] bg-custom-4 border-2 border-slate-900 flex justify-center relative"
+								class="w-full h-[250px] md:h-[350px] bg-accent border-2 border-slate-900 flex flex-col relative"
 							>
-								<div class="w-full flex my-auto px-2 pb-12 gap-2 justify-evenly">
-									<div class="w-20">
-										<Git />
+								<div
+									class="border-b-4 w-full border-slate-900 absolute top-0 h-12 flex justify-start"
+								>
+									<h4 class="my-auto mx-4">Mobile apps</h4>
+								</div>
+								<div
+									class="flex md:flex-wrap my-auto mx-2 gap-y-2 pt-16 items-center justify-evenly"
+								>
+									<div class="w-36 h-36 md:w-40 md:h-40 xl:w-[11.15rem] xl:h-64">
+										<Flutter />
 									</div>
-									<div class="w-20">
-										<Github />
+									<div class="w-32 h-32 md:w-16 md:h-16">
+										<Kotlin />
+									</div>
+									<div class="w-36 h-36 md:w-32 md:h-32 lg:w-32 lg:h-36">
+										<AndroidStudio />
+									</div>
+								</div>
+							</div>
+						</Saos>
+						<Saos animation={'scale-up-center 2s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
+							<div
+								class="w-full h-[200px] md:h-[300px] bg-custom-1 border-2 border-slate-900 flex relative"
+							>
+								<div
+									class="flex flex-wrap m-2 my-auto px-2 pb-12 gap-2 items-center justify-evenly"
+								>
+									<div class="w-16 md:w-20 lg:w-24">
+										<Codeigniter />
+									</div>
+									<div class="w-16 md:w-20 lg:w-24">
+										<Nodejs />
+									</div>
+									<div class="w-16 md:w-20 lg:w-24">
+										<Php />
+									</div>
+									<div class="w-16 md:w-20 lg:w-24">
+										<Postgresql />
+									</div>
+									<div class="w-16 md:w-20 lg:w-24">
+										<Mysql />
 									</div>
 								</div>
 								<div
 									class="border-t-4 w-full border-slate-900 h-12 absolute bottom-0 flex justify-start"
 								>
-									<h4 class="my-auto mx-4">DevOps</h4>
+									<h4 class="my-auto mx-4">Back-end</h4>
 								</div>
 							</div>
-							<div class="w-full h-[200px] bg-custom-3 border-2 border-slate-900">
-								<div class="border-b-4 w-full border-slate-900 h-12 flex justify-start">
-									<h4 class="my-auto mx-4">Design</h4>
+						</Saos>
+					</div>
+					<div class="flex w-full md:w-[60%] h-full flex-col">
+						<Saos animation={'scale-up-center 2s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
+							<div
+								class="w-full h-[200px] md:h-[300px] bg-secondary border-2 border-slate-900 flex relative"
+							>
+								<div class="w-full flex my-auto pb-12 px-2 gap-2 justify-evenly">
+									<div class="w-20 md:w-24 lg:w-36">
+										<Svelte />
+									</div>
+									<div class="w-20 md:w-24 lg:w-36">
+										<TailwindCss />
+									</div>
+									<div class="w-20 md:w-24 lg:w-36">
+										<Bootstrap />
+									</div>
+									<div class="w-20 md:w-24 lg:w-36">
+										<Javascript />
+									</div>
+									<div class="w-20 md:w-24 lg:w-36">
+										<TypeScript />
+									</div>
 								</div>
 								<div
-									class="w-full flex my-auto md:my-0 px-2 pt-12 md:pt-6 gap-2 gap-y-4 justify-evenly"
+									class="border-t-4 w-full border-slate-900 h-12 absolute bottom-0 flex justify-start"
 								>
-									<div class="w-20 stroke-black">
-										<Figma />
-									</div>
-									<div class="w-20">
-										<AdobeIllustrator />
-									</div>
-									<div class="w-20">
-										<AdobePhotoshop />
-									</div>
+									<h4 class="my-auto mx-4">Front-end web</h4>
 								</div>
 							</div>
-						</div>
-						<div class="w-1/2 h-[350px] bg-custom-2 border-2 border-slate-900 flex flex-col">
-							<div class="border-b-4 w-full border-slate-900 h-12 flex justify-start">
-								<h4 class="my-auto mx-4">Others</h4>
+						</Saos>
+
+						<div class="flex">
+							<div class="flex w-1/2 flex-col">
+								<Saos animation={'scale-up-center 2s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
+									<div
+										class="w-full h-[150px] bg-custom-4 border-2 border-slate-900 flex justify-center relative"
+									>
+										<div class="w-full flex my-auto px-2 pb-12 gap-2 justify-evenly">
+											<div class="w-20">
+												<Git />
+											</div>
+											<div class="w-20">
+												<Github />
+											</div>
+										</div>
+										<div
+											class="border-t-4 w-full border-slate-900 h-12 absolute bottom-0 flex justify-start"
+										>
+											<h4 class="my-auto mx-4">DevOps</h4>
+										</div>
+									</div>
+								</Saos>
+								<Saos animation={'scale-up-center 2s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
+									<div class="w-full h-[200px] bg-custom-3 border-2 border-slate-900">
+										<div class="border-b-4 w-full border-slate-900 h-12 flex justify-start">
+											<h4 class="my-auto mx-4">Design</h4>
+										</div>
+										<div
+											class="w-full flex my-auto md:my-0 px-2 pt-12 md:pt-6 gap-2 gap-y-4 justify-evenly"
+										>
+											<div class="w-20 stroke-black">
+												<Figma />
+											</div>
+											<div class="w-20">
+												<AdobeIllustrator />
+											</div>
+											<div class="w-20">
+												<AdobePhotoshop />
+											</div>
+										</div>
+									</div>
+								</Saos>
 							</div>
-							<div
-								class="mx-auto md:mx-0 md:my-auto flex flex-col gap-2 max-md:pt-6 md:flex-row md:flex-wrap justify-evenly"
-							>
-								<div class="w-20 lg:w-24">
-									<VisualStudioCode />
-								</div>
-								<div class="w-20 lg:w-24">
-									<SublimeText />
-								</div>
-								<div class="w-20 lg:w-24">
-									<Postman />
-								</div>
+							<div class="w-1/2 h-[350px]">
+								<Saos animation={'scale-up-center 2s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
+									<div class="flex flex-col bg-custom-2 border-2 border-slate-900 h-[350px]">
+										<div class="border-b-4 w-full border-slate-900 h-12 flex justify-start">
+											<h4 class="my-auto mx-4">Others</h4>
+										</div>
+										<div
+											class="mx-auto md:mx-0 md:my-auto flex flex-col gap-2 max-md:pt-6 md:flex-row md:flex-wrap justify-evenly"
+										>
+											<div class="w-20 lg:w-24">
+												<VisualStudioCode />
+											</div>
+											<div class="w-20 lg:w-24">
+												<SublimeText />
+											</div>
+											<div class="w-20 lg:w-24">
+												<Postman />
+											</div>
+										</div>
+									</div>
+								</Saos>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</Saos>
 		</div>
 	</Wrappper>
 </section>

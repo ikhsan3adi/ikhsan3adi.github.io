@@ -10,6 +10,8 @@
 	import ProjectCardLoading from '$lib/components/cards/ProjectCardLoading.svelte';
 	import ProjectCardError from '$lib/components/cards/ProjectCardError.svelte';
 
+	import Saos from 'saos';
+
 	import { type CardColorKey, randomizeElements } from '$lib/components/cards/colors';
 
 	const cardColorVariants: CardColorKey[] = [
@@ -72,23 +74,28 @@
 	</div>
 	<Wrappper>
 		<div class="w-full pb-36">
-			<h1
-				class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white duration-500"
-				id="portfolio"
-			>
-				Projects
-			</h1>
-			<div class="w-full flex flex-wrap justify-center gap-4">
-				{#if $projects.length == 0}
-					<ProjectCardLoading />
-				{:else if $projects.length == 1 && ($projects[0].name === 'error' || $projects[0].name === 'limit')}
-					<ProjectCardError project={$projects[0]} />
-				{:else}
-					{#each $projects as project, i}
-						<ProjectCard {project} cardColor={cardColors[i]} />
-					{/each}
-				{/if}
-			</div>
+			<Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
+				<h1
+					class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white duration-500"
+					id="portfolio"
+				>
+					Projects
+				</h1>
+			</Saos>
+
+			<Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
+				<div class="w-full flex flex-wrap justify-center gap-4">
+					{#if $projects.length == 0}
+						<ProjectCardLoading />
+					{:else if $projects.length == 1 && ($projects[0].name === 'error' || $projects[0].name === 'limit')}
+						<ProjectCardError project={$projects[0]} />
+					{:else}
+						{#each $projects as project, i}
+							<ProjectCard {project} cardColor={cardColors[i]} />
+						{/each}
+					{/if}
+				</div>
+			</Saos>
 		</div>
 	</Wrappper>
 </section>
