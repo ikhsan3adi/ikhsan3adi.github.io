@@ -9,7 +9,7 @@
 	const footerSocials = newSocials;
 </script>
 
-<section>
+<footer>
 	<div class="w-full bg-slate-800 h-max border-t-4 border-slate-800 dark:border-white">
 		<Wrappper>
 			<div class="w-full py-4">
@@ -59,4 +59,4 @@
 			</div>
 		</Wrappper>
 	</div>
-</section>
+</footer>
