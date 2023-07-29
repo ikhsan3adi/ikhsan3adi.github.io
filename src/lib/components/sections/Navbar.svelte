@@ -17,6 +17,7 @@
 
 	onMount(() => {
 		changeColors();
+		autoHideMenu();
 		window.onscroll = async () => {
 			autoHideMenu();
 			autoHideNavbar();

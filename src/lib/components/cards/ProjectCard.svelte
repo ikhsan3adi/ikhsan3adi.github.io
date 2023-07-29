@@ -8,12 +8,24 @@
 	export let cardColor: CardColorKey = { key: 'default' };
 
 	const cardColors: CardColors = {
-		default: 'bg-custom-1',
-		blue: 'bg-sky-300',
-		yellow: 'bg-yellow-300',
-		red: 'bg-red-200',
-		purple: 'bg-purple-300',
-		green: 'bg-green-300'
+		default: {
+			light: 'bg-custom-1',
+			dark: { border: 'dark:border-blue-400', bg: 'dark:bg-blue-400' }
+		},
+		blue: { light: 'bg-sky-300', dark: { border: 'dark:border-sky-400', bg: 'dark:bg-sky-400' } },
+		yellow: {
+			light: 'bg-yellow-300',
+			dark: { border: 'dark:border-yellow-400', bg: 'dark:bg-yellow-400' }
+		},
+		red: { light: 'bg-red-200', dark: { border: 'dark:border-red-400', bg: 'dark:bg-red-400' } },
+		purple: {
+			light: 'bg-purple-300',
+			dark: { border: 'dark:border-purple-400', bg: 'dark:bg-purple-400' }
+		},
+		green: {
+			light: 'bg-green-300',
+			dark: { border: 'dark:border-green-400', bg: 'dark:bg-green-400' }
+		}
 	};
 
 	const tagColors: TagColors = {
@@ -33,14 +45,21 @@
 	});
 </script>
 
-<div in:scale out:scale class="w-full lg:w-[48.88%] bg-slate-900 dark:bg-white">
+<div
+	in:scale
+	out:scale
+	class="w-full lg:w-[48.88%] bg-slate-900 {cardColors[cardColor.key].dark.bg}"
+>
 	<div
-		class="{cardColors[cardColor.key]}
-		aspect-[3/4] sm:aspect-[4/3] lg:aspect-[3/4] xl:aspect-[4/3] border-4 border-slate-900 dark:border-white
+		class="{cardColors[cardColor.key].light}
+		aspect-[3/4] sm:aspect-[4/3] lg:aspect-[3/4] xl:aspect-[4/3] border-4 border-slate-900 {cardColors[
+			cardColor.key
+		].dark.border}
 		dark:bg-slate-700 -translate-x-1 -translate-y-1 active:translate-x-0 active:translate-y-0 hover:-translate-x-1.5 hover:-translate-y-1.5 duration-200 relative group cursor-pointer"
 	>
 		<div
-			class="h-3/5 md:max-lg:h-3/5 border-b-4 border-slate-900 dark:border-white
+			class="h-3/5 md:max-lg:h-3/5 border-b-4 border-slate-900 {cardColors[cardColor.key].dark
+				.border}
 			bg-slate-300 dark:bg-slate-600 flex relative"
 		>
 			{#if project.imageText}
@@ -63,7 +82,8 @@
 			<p class="dark:text-slate-300 line-clamp-3">{project.description}</p>
 		</div>
 		<div
-			class="border-t-4 border-slate-900 dark:border-white w-full h-12 absolute bottom-0 flex justify-start items-center gap-2 px-2 overflow-hidden"
+			class="border-t-4 border-slate-900 {cardColors[cardColor.key].dark
+				.border} w-full h-12 absolute bottom-0 flex justify-start items-center gap-2 px-2 overflow-hidden"
 		>
 			{#each tags as tag}
 				<p

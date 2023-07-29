@@ -13,20 +13,25 @@ interface TagColorKey {
 	name: string;
 }
 
-interface CardColors {
-	default: string;
-	blue: string;
-	yellow: string;
-	red: string;
-	purple: string;
-	green: string;
+interface CardColor {
+	light: string;
+	dark: { border: string; bg: string };
+}
+
+interface CardColorsVariant {
+	default: CardColor;
+	blue: CardColor;
+	yellow: CardColor;
+	red: CardColor;
+	purple: CardColor;
+	green: CardColor;
 }
 
 interface CardColorKey {
-	key: keyof CardColors;
+	key: keyof CardColorsVariant;
 }
 
-export type { TagColors, TagColorKey, CardColors, CardColorKey };
+export type { TagColors, TagColorKey, CardColorsVariant as CardColors, CardColorKey };
 
 export const randomizeElements = (array: CardColorKey[], count: number) => {
 	if (count > array.length) {

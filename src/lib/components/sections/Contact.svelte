@@ -83,11 +83,11 @@
 				</a>
 			</div>
 			<div class="lg:flex lg:justify-between my-16">
-				<Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-					<div class="hidden lg:block my-auto pr-8 xl:pr-12">
+				<div class="hidden lg:block my-auto pr-8 xl:pr-12">
+					<Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
 						<h1 class="dark:text-white duration-500">Message me!</h1>
-					</div>
-				</Saos>
+					</Saos>
+				</div>
 				<Saos
 					animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'}
 					once
