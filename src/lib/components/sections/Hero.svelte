@@ -60,3 +60,9 @@
 		</div>
 	</div>
 </section>
+
+<style>
+	.dark:root {
+		--cursor-color: #fff;
+	}
+</style>
