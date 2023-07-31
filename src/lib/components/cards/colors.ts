@@ -2,9 +2,11 @@ interface TagColors {
 	default: string;
 	flutter: string;
 	dart: string;
+	html: string;
 	php: string;
 	codeigniter: string;
 	javascript: string;
+	typescript: string;
 	svelte: string;
 }
 

@@ -4,7 +4,7 @@
 
 <div in:scale class="w-full bg-slate-900 dark:bg-primary">
 	<div
-		class="border-4 border-slate-900 dark:border-primary bg-custom-1 dark:bg-slate-700 aspect-[3/4] sm:aspect-[4/3] lg:aspect-[6/4] xl:aspect-[6/3] -translate-x-1 -translate-y-1 active:translate-x-0 active:translate-y-0 hover:-translate-x-1.5 hover:-translate-y-1.5 duration-200 relative group cursor-pointer"
+		class="border-4 border-slate-900 dark:border-primary bg-custom-1 dark:bg-slate-700 aspect-[3/4] sm:aspect-[4/3] lg:aspect-[6/4] xl:aspect-[8/3] -translate-x-1 -translate-y-1 active:translate-x-0 active:translate-y-0 hover:-translate-x-1.5 hover:-translate-y-1.5 duration-200 relative group cursor-pointer"
 	>
 		<div
 			class="h-3/5 md:max-lg:h-3/5 border-b-4 relative border-slate-900 dark:border-primary flex"
