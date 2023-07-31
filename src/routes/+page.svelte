@@ -7,13 +7,16 @@
 	import Portfolio from '$lib/components/sections/Portfolio.svelte';
 	import Social from '$lib/components/sections/Social.svelte';
 	import Tools from '$lib/components/sections/Tools.svelte';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
 </script>
 
 <main>
 	<Navbar />
 	<Hero />
 	<About />
-	<Portfolio />
+	<Portfolio fetch={data.fetch} />
 	<Tools />
 	<Social />
 	<Contact />

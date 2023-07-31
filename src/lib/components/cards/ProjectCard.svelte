@@ -2,6 +2,7 @@
 	import type { Project } from '$lib/api/projects';
 	import { scale } from 'svelte/transition';
 	import type { CardColorKey, CardColors, TagColorKey, TagColors } from './colors';
+	import { tagColors } from '$lib/variables';
 
 	export let project: Project;
 
@@ -26,18 +27,6 @@
 			light: 'bg-green-300',
 			dark: { border: 'dark:border-green-400', bg: 'dark:bg-green-400' }
 		}
-	};
-
-	const tagColors: TagColors = {
-		default: 'bg-slate-400',
-		flutter: 'bg-sky-400',
-		dart: 'bg-teal-500',
-		html: 'bg-rose-400',
-		php: 'bg-indigo-300',
-		codeigniter: 'bg-red-400',
-		javascript: 'bg-yellow-400',
-		typescript: 'bg-blue-400',
-		svelte: 'bg-orange-400'
 	};
 
 	const tags: TagColorKey[] = project.tags.map((tag) => {

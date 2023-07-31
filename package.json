@@ -35,6 +35,10 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@types/marked": "^5.0.1",
+		"highlight.js": "^11.8.0",
+		"marked": "^5.1.2",
+		"marked-highlight": "^2.0.1",
 		"svelte-typewriter": "^3.1.6"
 	}
 }

@@ -1,0 +1,88 @@
+<script lang="ts">
+	import type { ProjectDetail } from '$lib/api/projects';
+	import Wrappper from '$lib/components/Wrappper.svelte';
+	import Button from '$lib/components/buttons/Button.svelte';
+	import type { ColorVariant } from '$lib/components/buttons/button';
+	import { marked } from 'marked';
+	import { markedHighlight } from 'marked-highlight';
+	import hljs from 'highlight.js';
+	import { renderer } from './renderer';
+	import type { TagColorKey, TagColors } from '$lib/components/cards/colors';
+	import { tagColors } from '$lib/variables';
+
+	export let project: ProjectDetail;
+	export let markdown: string;
+
+	const secondaryButton: ColorVariant = { key: 'secondary' };
+
+	marked.use(
+		{ renderer },
+		markedHighlight({
+			langPrefix: 'hljs language-',
+			highlight(code, lang) {
+				const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+				return hljs.highlight(code, { language }, true).value;
+			}
+		})
+	);
+
+	const tags: TagColorKey[] = project.tags.map((tag) => {
+		return tagColors.hasOwnProperty(tag)
+			? { key: tag as keyof TagColors, name: tag }
+			: { key: 'default', name: tag };
+	});
+</script>
+
+<section class="mt-16">
+	<Wrappper>
+		<div class="mt-16 w-full">
+			<h1 class="dark:text-white mb-6 md:mb-8 lg:mb-12 xl:mb-16">{project.name}</h1>
+			<div
+				class="w-full justify-between flex flex-col lg:flex-row-reverse gap-4 md:gap-8 lg:gap-12"
+			>
+				<div class="w-full bg-auto bg-center bg-no-repeat">
+					<img class="h-full w-full" src={project.imageUrl} alt="Project" />
+				</div>
+				<div class="w-full">
+					<p class="dark:text-slate-300">{project.description}</p>
+
+					<div class="flex justify-start items-center gap-2 pt-4 overflow-hidden">
+						{#each tags as tag}
+							<p
+								class="{tagColors[tag.key]} 
+								max-sm:text-sm px-2 sm:px-4 py-1 h-max border-2 border-slate-900 dark:border-white"
+							>
+								#{tag.name}
+							</p>
+						{/each}
+					</div>
+
+					<div class="my-4 md:my-6 lg:my-8 flex gap-4 md:gap-6 lg:gap-8">
+						<a href={project.repositoryUrl} target="_blank">
+							<Button noDarkVariant={false}>Source code</Button>
+						</a>
+
+						{#if project.hasLivePreview && project.livePreviewUrl}
+							<a href={project.livePreviewUrl} target="_blank">
+								<Button noDarkVariant={false} variant={secondaryButton}>Live preview</Button>
+							</a>
+						{/if}
+					</div>
+				</div>
+			</div>
+			<hr class="my-16 border" />
+			<!-- README.md -->
+			<div class="my-8">
+				<p class="text-slate-600 dark:text-slate-300">
+					{@html marked(markdown)}
+				</p>
+			</div>
+		</div>
+	</Wrappper>
+</section>
+
+<style lang="postcss">
+	:global(a) {
+		@apply text-blue-500 dark:text-sky-500 hover:text-blue-300 dark:hover:text-sky-300 hover:underline;
+	}
+</style>

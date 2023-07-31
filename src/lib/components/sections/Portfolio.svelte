@@ -14,6 +14,8 @@
 
 	import { type CardColorKey, randomizeElements } from '$lib/components/cards/colors';
 
+	export let fetch: (input: URL | RequestInfo, init?: RequestInit | undefined) => Promise<Response>;
+
 	const cardColorVariants: CardColorKey[] = [
 		{ key: 'default' },
 		{ key: 'blue' },
@@ -38,12 +40,12 @@
 					setTimeout(async () => {
 						for (const project of definedProjects) {
 							try {
-								await fetchProject(project);
+								await fetchProject({ project, fetch });
 							} catch (_) {
 								break;
 							}
 						}
-					}, 1000);
+					}, 350);
 
 					isIntersecting = true;
 					observer.disconnect();

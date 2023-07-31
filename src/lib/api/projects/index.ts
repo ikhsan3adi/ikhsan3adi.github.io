@@ -1,4 +1,4 @@
-import { type Project, fetchProject } from './handler';
-import { projects } from './store';
+import { type Project, type ProjectDetail, fetchProject, fetchProjectDetail } from './handler';
+import { projects, projectDetail } from './store';
 
-export { Project, fetchProject, projects };
+export { Project, ProjectDetail, fetchProject, fetchProjectDetail, projects, projectDetail };
