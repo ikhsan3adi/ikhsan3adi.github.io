@@ -38,9 +38,9 @@
 		<div class="mt-16 w-full">
 			<h1 class="dark:text-white mb-6 md:mb-8 lg:mb-12 xl:mb-16">{project.name}</h1>
 			<div
-				class="w-full justify-between flex flex-col lg:flex-row-reverse gap-4 md:gap-8 lg:gap-12"
+				class="w-full justify-between flex flex-col lg:flex-row-reverse gap-4 md:gap-8 lg:gap-12 mb-24 lg:mb-32"
 			>
-				<div class="w-full bg-auto bg-center bg-no-repeat">
+				<div class="w-full border bg-auto bg-center bg-no-repeat">
 					<img class="h-full w-full" src={project.imageUrl} alt="Project" />
 				</div>
 				<div class="w-full">
@@ -70,9 +70,13 @@
 					</div>
 				</div>
 			</div>
-			<hr class="my-16 border" />
 			<!-- README.md -->
-			<div class="my-8">
+			<hr class="mt-16 border border-slate-700 dark:border-slate-300" />
+			<a href={project.readmeUrl} class="hover:underline">
+				<h4 class="dark:text-white my-2">README.md</h4>
+			</a>
+			<hr class="mb-16 md:mb-24 border border-slate-700 dark:border-slate-300" />
+			<div class="mb-24">
 				<p class="text-slate-600 dark:text-slate-300">
 					{@html marked(markdown)}
 				</p>
