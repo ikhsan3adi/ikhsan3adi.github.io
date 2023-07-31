@@ -1,7 +1,9 @@
-<script>
+<script lang="ts">
 	import Wrappper from '$lib/components/Wrappper.svelte';
 	import EmblemSquare from '$lib/components/graphics/EmblemSquare.svelte';
 	import { socials, navLinks } from '$lib/variables';
+
+	export let noNavLinks: boolean = false;
 
 	const newSocials = socials;
 	newSocials.splice(4, Number.MAX_VALUE);
@@ -14,20 +16,24 @@
 		<Wrappper>
 			<div class="w-full py-4">
 				<div
-					class="py-6 flex justify-between gap-4 md:gap-12 lg:gap-36 xl:gap-52 items-center text-white"
+					class="py-6 flex {noNavLinks
+						? 'justify-center'
+						: 'justify-between'} gap-4 md:gap-12 lg:gap-36 xl:gap-52 items-center text-white"
 				>
 					<div class="flex">
 						<div class="h-24 w-24 sm:w-28 sm:h-28 md:w-36 md:h-36 my-auto">
 							<EmblemSquare />
 						</div>
 					</div>
-					<div
-						class="w-full flex justify-center md:justify-around flex-wrap items-center text-white gap-x-8 gap-y-6"
-					>
-						{#each navLinks as link}
-							<a class="hover:underline active:text-primary" href="#{link.link}">{link.text}</a>
-						{/each}
-					</div>
+					{#if !noNavLinks}
+						<div
+							class="w-full flex justify-center md:justify-around flex-wrap items-center text-white gap-x-8 gap-y-6"
+						>
+							{#each navLinks as link}
+								<a class="hover:underline active:text-primary" href="#{link.link}">{link.text}</a>
+							{/each}
+						</div>
+					{/if}
 				</div>
 				<hr class="my-4 border-slate-500" />
 				<div class="flex justify-center gap-4 my-10 opacity-90 h-10">
