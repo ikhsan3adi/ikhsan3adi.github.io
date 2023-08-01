@@ -36,10 +36,13 @@
 
 	function changeColors() {
 		if (scrollY < 300) {
+			isBgTransparent = true;
 			backgroundClasses = 'bg-opacity-0 border-opacity-0';
 		} else if (scrollY < 333) {
+			isBgTransparent = true;
 			backgroundClasses = 'bg-opacity-20 border-opacity-0';
 		} else if (scrollY < 367) {
+			isBgTransparent = true;
 			backgroundClasses = 'bg-opacity-50 border-opacity-0';
 		} else if (scrollY < 400) {
 			isBgTransparent = true;
