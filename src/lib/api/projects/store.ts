@@ -1,5 +1,5 @@
 import { derived, writable, type Writable } from 'svelte/store';
-import type { Project, ProjectDetail } from './handler';
+import type { Project, ProjectDetail } from './types';
 
 export const projectsStore = writable<Project[]>([]);
 

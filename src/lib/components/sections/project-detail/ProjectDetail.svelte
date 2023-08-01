@@ -1,25 +1,24 @@
 <script lang="ts">
 	import type { ProjectDetail } from '$lib/api/projects';
-	import type { ColorVariant } from '$lib/components/buttons/button';
-	import type { TagColorKey, TagColors } from '$lib/components/cards/colors';
+	import type { ButtonColorVariant } from '$lib/components/colors';
+	import { type TagColorKey, type TagColors, tagColors } from '$lib/components/colors';
 
 	import { marked } from 'marked';
 	import hljs from 'highlight.js';
 
 	import { markedHighlight } from 'marked-highlight';
 	import { renderer } from './renderer';
-	import { tagColors } from '$lib/variables';
 
 	import Fa from 'svelte-fa';
 	import { faCodeFork, faStar, faDownload } from '@fortawesome/free-solid-svg-icons';
 
-	import Wrappper from '$lib/components/Wrappper.svelte';
+	import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 	import Button from '$lib/components/buttons/Button.svelte';
 
 	export let project: ProjectDetail;
 	export let markdown: string;
 
-	const secondaryButton: ColorVariant = { key: 'secondary' };
+	const secondaryButton: ButtonColorVariant = { key: 'secondary' };
 
 	marked.use(
 		{ renderer },
@@ -33,7 +32,7 @@
 	);
 
 	const tags: TagColorKey[] = project.tags.map((tag) => {
-		return tagColors.hasOwnProperty(tag)
+		return Object.prototype.hasOwnProperty.call(tagColors, tag)
 			? { key: tag as keyof TagColors, name: tag }
 			: { key: 'default', name: tag };
 	});

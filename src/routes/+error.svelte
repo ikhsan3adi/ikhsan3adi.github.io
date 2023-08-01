@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { githubLink } from '$lib/variables';
+	import { githubLink } from '$lib/api/socials';
 </script>
 
 <div class="w-full h-full flex absolute dark:bg-slate-800">

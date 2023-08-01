@@ -1,13 +1,13 @@
 <script lang="ts">
-	import type { ColorVariants, ColorVariant } from './button';
+	import type { ButtonColorVariants, ButtonColorVariant } from '$lib/components/colors';
 
 	export let disabled = false;
-	export let variant: ColorVariant = { key: disabled ? 'disabled' : 'primary' };
+	export let variant: ButtonColorVariant = { key: disabled ? 'disabled' : 'primary' };
 	export let noDarkVariant = true;
 	export let fullWidth = false;
 	export let centerText = true;
 
-	const backBackgroundColors: ColorVariants = {
+	const backBackgroundColors: ButtonColorVariants = {
 		primary: 'dark:bg-primary',
 		secondary: 'dark:bg-white',
 		disabled: 'dark:bg-neutral-400',
@@ -21,7 +21,7 @@
 		telegram: 'dark:bg-cyan-400'
 	};
 
-	const borderColors: ColorVariants = {
+	const borderColors: ButtonColorVariants = {
 		primary: 'dark:border-primary',
 		secondary: 'dark:border-white',
 		disabled: 'dark:border-neutral-400',
@@ -35,7 +35,7 @@
 		telegram: 'dark:border-cyan-400'
 	};
 
-	const backgroundColors: ColorVariants = {
+	const backgroundColors: ButtonColorVariants = {
 		primary: 'bg-primary',
 		secondary: 'bg-white',
 		disabled: 'bg-neutral-400',
@@ -49,7 +49,7 @@
 		telegram: 'bg-cyan-400'
 	};
 
-	const textColors: ColorVariants = {
+	const textColors: ButtonColorVariants = {
 		primary: 'dark:text-primary',
 		secondary: 'dark:text-white',
 		disabled: 'dark:text-neutral-400',

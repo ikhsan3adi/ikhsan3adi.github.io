@@ -1,16 +1,17 @@
-import { fetchProjectDetail, type Project } from '$lib/api/projects';
-import type { PageLoad } from './$types';
 import { error } from '@sveltejs/kit';
-import { projects } from '$lib/variables';
+import type { PageLoad } from './$types';
+import { type Project, ProjectService } from '$lib/api/projects';
+import { initialProjects } from '$lib/api/projects';
 
 export const load = (async ({ url, fetch }) => {
-	const id = url.pathname.split('/').slice(-1)[0];
+	const projectDetail: ProjectService = new ProjectService();
 
-	const proj: Project | undefined = projects.find((project) => project.id.toString() === id);
+	const id = url.pathname.split('/').slice(-1)[0];
+	const proj: Project | undefined = initialProjects.find((project) => project.id.toString() === id);
 
 	if (proj === undefined) throw error(404, 'Project not found');
 
-	await fetchProjectDetail({ project: proj, fetch });
+	await projectDetail.fetchProjectDetail({ project: proj, fetch });
 
 	const markdown = await getMarkdown();
 

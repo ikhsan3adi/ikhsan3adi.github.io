@@ -1,9 +1,10 @@
 <script lang="ts">
-	import Wrappper from '$lib/components/Wrappper.svelte';
-	import Button from '$lib/components/buttons/Button.svelte';
-	import type { ColorVariant } from '$lib/components/buttons/button';
+	import type { ButtonColorVariant } from '$lib/components/colors';
 
-	const disabledButton: ColorVariant = { key: 'disabled' };
+	import Wrappper from '$lib/components/widgets/Wrappper.svelte';
+	import Button from '$lib/components/buttons/Button.svelte';
+
+	const disabledButton: ButtonColorVariant = { key: 'disabled' };
 </script>
 
 <section class="mt-16">

@@ -1,14 +1,14 @@
 <script lang="ts">
-	import type { ColorVariant } from '$lib/components/buttons/button';
+	import { linkedInLink } from '$lib/api/socials';
+	import type { ButtonColorVariant } from '$lib/components/colors';
 
-	import Wrappper from '$lib/components/Wrappper.svelte';
+	import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 	import Button from '$lib/components/buttons/Button.svelte';
-	import { linkedInLink } from '$lib/variables';
 	import MarqueeText from '$lib/components/widgets/MarqueeText.svelte';
 
 	import Saos from 'saos';
 
-	const primaryButton: ColorVariant = { key: 'primary' };
+	const primaryButton: ButtonColorVariant = { key: 'primary' };
 </script>
 
 <section class="w-full bg-custom-1 dark:bg-purple-900 relative pt-20">

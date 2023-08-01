@@ -1,11 +1,12 @@
 <script lang="ts">
 	import type { ProjectDetail } from '$lib/api/projects';
-	import Wrappper from '$lib/components/Wrappper.svelte';
+	import type { ButtonColorVariant } from '$lib/components/colors';
+
+	import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 	import Button from '$lib/components/buttons/Button.svelte';
-	import type { ColorVariant } from '$lib/components/buttons/button';
 
 	export let project: ProjectDetail;
-	const disabledButton: ColorVariant = { key: 'disabled' };
+	const disabledButton: ButtonColorVariant = { key: 'disabled' };
 </script>
 
 <section class="mt-16">

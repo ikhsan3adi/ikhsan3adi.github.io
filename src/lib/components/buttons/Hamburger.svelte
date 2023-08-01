@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { navLinks } from '$lib/variables';
-	import Theme from '$lib/components/Theme.svelte';
+	import { navLinks } from '$lib/components/navigation';
+	import ThemeButton from '$lib/components/widgets/ThemeButton.svelte';
 	import { hamburgerMenuExpanded } from '$lib/config';
 	import { onMount } from 'svelte';
 
@@ -63,7 +63,7 @@
 				class="mx-auto py-1 border-t-4 border-slate-900 dark:border-white flex items-center gap-4 pr-4"
 			>
 				<p class="dark:text-white py-2 pl-5 duration-200">Darkmode</p>
-				<Theme isBgTransparent={true} />
+				<ThemeButton isBgTransparent={true} />
 			</div>
 		</div>
 	</div>

@@ -1,9 +1,11 @@
 <script lang="ts">
-	import Wrappper from '$lib/components/Wrappper.svelte';
-	import EmblemSquare from '$lib/components/graphics/EmblemSquare.svelte';
-	import { socials, navLinks } from '$lib/variables';
+	import { socials } from '$lib/api/socials';
+	import { navLinks } from '$lib/components/navigation';
 
-	export let noNavLinks: boolean = false;
+	import Wrappper from '$lib/components/widgets/Wrappper.svelte';
+	import EmblemSquare from '$lib/components/graphics/EmblemSquare.svelte';
+
+	export let noNavLinks = false;
 
 	const newSocials = socials;
 	newSocials.splice(4, Number.MAX_VALUE);

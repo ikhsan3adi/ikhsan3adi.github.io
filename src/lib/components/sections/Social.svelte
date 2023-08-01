@@ -1,7 +1,9 @@
 <script lang="ts">
-	import Wrappper from '$lib/components/Wrappper.svelte';
+	import { socials } from '$lib/api/socials';
+
+	import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 	import Button from '$lib/components/buttons/Button.svelte';
-	import { socials } from '$lib/variables';
+
 	import Saos from 'saos';
 </script>
 

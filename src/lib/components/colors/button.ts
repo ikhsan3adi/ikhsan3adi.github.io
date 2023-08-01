@@ -1,4 +1,4 @@
-interface ColorVariants {
+interface ButtonColorVariants {
 	primary: string;
 	secondary: string;
 	disabled: string;
@@ -12,8 +12,8 @@ interface ColorVariants {
 	telegram: string;
 }
 
-interface ColorVariant {
-	key: keyof ColorVariants;
+interface ButtonColorVariant {
+	key: keyof ButtonColorVariants;
 }
 
-export type { ColorVariant, ColorVariants };
+export type { ButtonColorVariant, ButtonColorVariants };

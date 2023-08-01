@@ -1,14 +1,15 @@
 <script lang="ts">
-	import type { ColorVariant } from '$lib/components/buttons/button';
+	import type { ButtonColorVariant } from '$lib/components/colors';
+
+	import bg from '$lib/components/graphics/hero-bg.svg';
+
+	import Emblem from '$lib/components/graphics/Emblem.svelte';
+	import Wrappper from '$lib/components/widgets/Wrappper.svelte';
+	import Button from '$lib/components/buttons/Button.svelte';
 
 	import Typewriter from 'svelte-typewriter/Typewriter.svelte';
 
-	import bg from '$lib/components/graphics/hero-bg.svg';
-	import Emblem from '$lib/components/graphics/Emblem.svelte';
-	import Wrappper from '$lib/components/Wrappper.svelte';
-	import Button from '$lib/components/buttons/Button.svelte';
-
-	const secondaryButton: ColorVariant = { key: 'secondary' };
+	const secondaryButton: ButtonColorVariant = { key: 'secondary' };
 </script>
 
 <section>

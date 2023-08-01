@@ -1,20 +1,17 @@
 <script lang="ts">
-	import { projects as definedProjects } from '$lib/variables';
-	import { fetchProject } from '$lib/api/projects';
-	import { projects } from '$lib/api/projects/index';
+	import { type ProjectService, initialProjects, projects } from '$lib/api/projects';
+	import { type CardColorKey, randomizeElements } from '$lib/components/colors';
 
-	import Wrappper from '$lib/components/Wrappper.svelte';
+	import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 	import MarqueeText from '$lib/components/widgets/MarqueeText.svelte';
-
 	import ProjectCard from '$lib/components/cards/ProjectCard.svelte';
 	import ProjectCardLoading from '$lib/components/cards/ProjectCardLoading.svelte';
 	import ProjectCardError from '$lib/components/cards/ProjectCardError.svelte';
 
 	import Saos from 'saos';
 
-	import { type CardColorKey, randomizeElements } from '$lib/components/cards/colors';
-
-	export let fetch: (input: URL | RequestInfo, init?: RequestInit | undefined) => Promise<Response>;
+	export let fetch: (input: URL | RequestInfo, init?: RequestInit) => Promise<Response>;
+	export let projectService: ProjectService;
 
 	const cardColorVariants: CardColorKey[] = [
 		{ key: 'default' },
@@ -38,9 +35,9 @@
 					console.log('Fetching projects');
 
 					setTimeout(async () => {
-						for (const project of definedProjects) {
+						for (const project of initialProjects) {
 							try {
-								await fetchProject({ project, fetch });
+								await projectService.fetchProject({ project, fetch });
 							} catch (_) {
 								break;
 							}

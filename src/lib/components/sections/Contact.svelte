@@ -1,22 +1,22 @@
 <script lang="ts">
-	import { submitContactRequest } from '$lib/api/contact/handler';
+	import { submitContactRequest } from '$lib/api/contact';
+	import { whatsappLink, emailLink } from '$lib/api/socials';
 
-	import type { ColorVariant } from '$lib/components/buttons/button';
+	import type { ButtonColorVariant } from '$lib/components/colors';
+	import { inputClass } from '$lib/components/form';
 
-	import { whatsappLink, emailLink } from '$lib/variables';
-
-	import Wrappper from '$lib/components/Wrappper.svelte';
+	import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 	import Button from '$lib/components/buttons/Button.svelte';
 
 	import Whatsapp from '$lib/components/graphics/social/Whatsapp.svelte';
 	import Email from '$lib/components/graphics/social/Email.svelte';
-	import { inputClass } from '$lib/components/form/TextInput';
+
 	import Saos from 'saos';
 
-	const whatsappButton: ColorVariant = { key: 'whatsapp' };
-	const emailButton: ColorVariant = { key: 'email' };
-	const primaryButton: ColorVariant = { key: 'primary' };
-	const disabledButton: ColorVariant = { key: 'disabled' };
+	const whatsappButton: ButtonColorVariant = { key: 'whatsapp' };
+	const emailButton: ButtonColorVariant = { key: 'email' };
+	const primaryButton: ButtonColorVariant = { key: 'primary' };
+	const disabledButton: ButtonColorVariant = { key: 'disabled' };
 
 	let submisstionStatus: 'Initial' | 'Loading' | 'Success' | 'Failed' = 'Initial';
 	let buttonDisabled = false;
@@ -132,7 +132,7 @@
 								<button
 									type="submit"
 									class="block w-full"
-									on:click={buttonDisabled ? () => {} : handleSubmit}
+									on:click={buttonDisabled ? () => 0 : handleSubmit}
 								>
 									<Button
 										noDarkVariant={false}

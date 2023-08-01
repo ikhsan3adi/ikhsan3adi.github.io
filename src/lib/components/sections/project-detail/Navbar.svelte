@@ -1,9 +1,10 @@
 <script lang="ts">
-	import Wrappper from '$lib/components/Wrappper.svelte';
-	import Theme from '$lib/components/Theme.svelte';
 	import { onMount } from 'svelte';
-	import Hamburger from '$lib/components/sections/projectDetail/Hamburger.svelte';
 	import { hamburgerMenuExpanded } from '$lib/config';
+
+	import Hamburger from '$lib/components/sections/project-detail/Hamburger.svelte';
+	import Wrappper from '$lib/components/widgets/Wrappper.svelte';
+	import ThemeButton from '$lib/components/widgets/ThemeButton.svelte';
 
 	let navbar: HTMLElement;
 
@@ -96,7 +97,7 @@
 
 			<!-- Dark mode toggle -->
 			<div class="hidden lg:block my-auto">
-				<Theme {isBgTransparent} />
+				<ThemeButton {isBgTransparent} />
 			</div>
 		</div>
 	</Wrappper>

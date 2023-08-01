@@ -1,9 +1,13 @@
 <script lang="ts">
-	import type { Project } from '$lib/api/projects';
-	import type { CardColorKey, CardColors, TagColorKey, TagColors } from './colors';
-
 	import { scale } from 'svelte/transition';
-	import { tagColors } from '$lib/variables';
+	import type { Project } from '$lib/api/projects';
+	import {
+		type CardColorKey,
+		type CardColors,
+		type TagColorKey,
+		type TagColors,
+		tagColors
+	} from '$lib/components/colors';
 
 	import Fa from 'svelte-fa';
 	import { faCodeFork, faStar, faDownload } from '@fortawesome/free-solid-svg-icons';
@@ -34,7 +38,7 @@
 	};
 
 	const tags: TagColorKey[] = project.tags.map((tag) => {
-		return tagColors.hasOwnProperty(tag)
+		return Object.prototype.hasOwnProperty.call(tagColors, tag)
 			? { key: tag as keyof TagColors, name: tag }
 			: { key: 'default', name: tag };
 	});
@@ -77,7 +81,7 @@
 					<h4 class="text-white m-auto opacity-0 group-hover:opacity-100">View detail</h4>
 				</div>
 
-				<!-- Github stars & forks -->
+				<!-- Stats -->
 				<div
 					class="{cardColors[cardColor.key].dark.bg}
 						bg-slate-900 absolute text-white dark:text-text flex justify-evenly bottom-0 left-0 max-sm:right-0 gap-4 duration-200 py-2 px-4"
