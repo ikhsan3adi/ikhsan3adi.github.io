@@ -51,8 +51,9 @@
 				</div>
 				<p class="text-slate-200 text-center text-sm">
 					&copy; 2023, made with ❤️ by
-					<a href="#social" class="text-primary hover:underline active:text-custom-3"
-						>Ikhsan Satriadi</a
+					<a
+						href={noNavLinks ? '/' : '#social'}
+						class="text-primary hover:underline active:text-custom-3">Ikhsan Satriadi</a
 					>, using
 					<a href="https://svelte.dev" class="text-orange-500 hover:underline active:text-white">
 						SvelteKit
