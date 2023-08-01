@@ -1,33 +1,7 @@
 import { projectsStore, projectDetailStore } from './store';
 import { browser } from '$app/environment';
 import { error } from '@sveltejs/kit';
-
-interface Project {
-	id: number;
-	name: string;
-	url: string;
-	description?: string;
-	imageUrl: string;
-	imageText?: string;
-	readmeUrl: string;
-	tags: string[];
-}
-
-interface ProjectDetail {
-	id: number;
-	name: string;
-	url: string;
-	description?: string;
-	imageUrl: string;
-	imageText?: string;
-	tags: string[];
-	repositoryUrl: string;
-	readmeUrl: string;
-	hasLivePreview: boolean;
-	livePreviewUrl?: string;
-}
-
-export type { Project, ProjectDetail };
+import type { Project, ProjectDetail } from './types';
 
 export const fetchProject = async ({
 	project,
@@ -56,7 +30,10 @@ export const fetchProject = async ({
 				description: json.description,
 				imageUrl: project.imageUrl,
 				readmeUrl: project.readmeUrl,
-				tags: [...project.tags, json.language.toLowerCase()]
+				tags: [...project.tags, json.language.toLowerCase()],
+				starsCount: json.stargazers_count,
+				forksCount: json.forks,
+				downloadsCount: await getDownloadsCount(project.url)
 			};
 
 			return projectsStore.update((projects) => {
@@ -160,7 +137,10 @@ export const fetchProjectDetail = async ({
 				repositoryUrl: json['svn_url'],
 				hasLivePreview: json.homepage ? true : false,
 				livePreviewUrl: json.homepage,
-				readmeUrl: project.readmeUrl
+				readmeUrl: project.readmeUrl,
+				starsCount: json.stargazers_count,
+				forksCount: json.forks,
+				downloadsCount: await getDownloadsCount(project.url)
 			};
 
 			return projectDetailStore.update(() => newProject);
@@ -223,3 +203,26 @@ export const fetchProjectDetail = async ({
 		return error(500, 'Failed to fetch data');
 	}
 };
+
+async function getDownloadsCount(url: string) {
+	const response = await fetch(`${url}/releases`, {
+		method: 'GET'
+	});
+
+	try {
+		const json = await response.text();
+		const releases = JSON.parse(json);
+
+		let count = 0;
+
+		for (let i = 0; i < releases.length; ++i) {
+			for (let j = 0; j < releases[i].assets.length; ++j) {
+				count += releases[i].assets[j].download_count;
+			}
+		}
+
+		return count;
+	} catch (error) {
+		return 0;
+	}
+}

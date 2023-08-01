@@ -1,13 +1,19 @@
+interface TagColor {
+	bg: string;
+	border: string;
+	text: string;
+}
+
 interface TagColors {
-	default: string;
-	flutter: string;
-	dart: string;
-	html: string;
-	php: string;
-	codeigniter: string;
-	javascript: string;
-	typescript: string;
-	svelte: string;
+	default: TagColor;
+	flutter: TagColor;
+	dart: TagColor;
+	html: TagColor;
+	php: TagColor;
+	codeigniter: TagColor;
+	javascript: TagColor;
+	typescript: TagColor;
+	svelte: TagColor;
 }
 
 interface TagColorKey {

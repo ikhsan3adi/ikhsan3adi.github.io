@@ -1,14 +1,20 @@
 <script lang="ts">
 	import type { ProjectDetail } from '$lib/api/projects';
+	import type { ColorVariant } from '$lib/components/buttons/button';
+	import type { TagColorKey, TagColors } from '$lib/components/cards/colors';
+
+	import { marked } from 'marked';
+	import hljs from 'highlight.js';
+
+	import { markedHighlight } from 'marked-highlight';
+	import { renderer } from './renderer';
+	import { tagColors } from '$lib/variables';
+
+	import Fa from 'svelte-fa';
+	import { faCodeFork, faStar, faDownload } from '@fortawesome/free-solid-svg-icons';
+
 	import Wrappper from '$lib/components/Wrappper.svelte';
 	import Button from '$lib/components/buttons/Button.svelte';
-	import type { ColorVariant } from '$lib/components/buttons/button';
-	import { marked } from 'marked';
-	import { markedHighlight } from 'marked-highlight';
-	import hljs from 'highlight.js';
-	import { renderer } from './renderer';
-	import type { TagColorKey, TagColors } from '$lib/components/cards/colors';
-	import { tagColors } from '$lib/variables';
 
 	export let project: ProjectDetail;
 	export let markdown: string;
@@ -37,27 +43,56 @@
 	<Wrappper>
 		<div class="mt-16 w-full">
 			<h1 class="dark:text-white mb-6 md:mb-8 lg:mb-12 xl:mb-16">{project.name}</h1>
+			<!-- Hero section -->
 			<div
 				class="w-full justify-between flex flex-col lg:flex-row-reverse gap-4 md:gap-8 lg:gap-12 mb-24 lg:mb-32"
 			>
+				<!-- Image preview -->
 				<div class="w-full border bg-auto bg-center bg-no-repeat">
-					<img class="h-full w-full" src={project.imageUrl} alt="Project" />
+					<img class="h-full w-full" src={project.imageUrl} alt="Preview" />
 				</div>
-				<div class="w-full">
-					<p class="dark:text-slate-300">{project.description}</p>
 
-					<div class="flex justify-start items-center gap-2 pt-4 overflow-hidden">
+				<!-- Project description -->
+				<div class="w-full">
+					<p class="dark:text-slate-300 text-center sm:text-left">{project.description}</p>
+
+					<!-- Stars, forks, downloads -->
+					<div class="pt-4 flex gap-4 w-full justify-center sm:justify-normal dark:text-white">
+						<div class="flex gap-2 items-center">
+							<Fa icon={faStar} />
+							{project.starsCount}
+							{(project.starsCount ?? 0) <= 1 ? 'Star' : 'Stars'}
+						</div>
+						<div class="flex gap-2 items-center">
+							<Fa icon={faCodeFork} />
+							{project.forksCount}
+							{(project.forksCount ?? 0) <= 1 ? 'Fork' : 'Forks'}
+						</div>
+						<div class="flex gap-2 items-center">
+							<Fa icon={faDownload} />
+							{project.downloadsCount}
+							{(project.downloadsCount ?? 0) <= 1 ? 'Download' : 'Downloads'}
+						</div>
+					</div>
+
+					<!-- Tags -->
+					<div
+						class="flex w-full justify-center sm:justify-start items-center gap-2 py-4 overflow-hidden"
+					>
 						{#each tags as tag}
 							<p
-								class="{tagColors[tag.key]} 
-								max-sm:text-sm px-2 sm:px-4 py-1 h-max border-2 border-slate-900 dark:border-white"
+								class="{tagColors[tag.key].bg} {tagColors[tag.key].border} {tagColors[tag.key].text}
+								dark:bg-slate-800 max-sm:text-sm px-2 sm:px-4 py-1 h-max border-2 border-slate-900"
 							>
 								#{tag.name}
 							</p>
 						{/each}
 					</div>
 
-					<div class="my-4 md:my-6 lg:my-8 flex gap-4 md:gap-6 lg:gap-8">
+					<!-- Buttons -->
+					<div
+						class="my-4 md:my-6 lg:my-8 flex w-full justify-center sm:justify-start gap-4 md:gap-6 lg:gap-8"
+					>
 						<a href={project.repositoryUrl} target="_blank">
 							<Button noDarkVariant={false}>Source code</Button>
 						</a>
@@ -78,7 +113,7 @@
 			<hr class="mb-16 md:mb-24 border border-slate-700 dark:border-slate-300" />
 			<div class="mb-24">
 				<p class="text-slate-600 dark:text-slate-300">
-					{@html marked(markdown)}
+					{@html marked(markdown, { headerIds: false, mangle: false })}
 				</p>
 			</div>
 		</div>
@@ -86,7 +121,7 @@
 </section>
 
 <style lang="postcss">
-	:global(a) {
+	a {
 		@apply text-blue-500 dark:text-sky-500 hover:text-blue-300 dark:hover:text-sky-300 hover:underline;
 	}
 </style>

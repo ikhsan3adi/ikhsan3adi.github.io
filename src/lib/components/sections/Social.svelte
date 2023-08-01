@@ -17,9 +17,9 @@
 						Connect with me
 					</h1>
 				</Saos>
-				<div class="flex flex-wrap justify-between gap-4">
+				<div class="flex flex-wrap justify-center gap-4 lg:gap-5 xl:gap-6">
 					{#each socials as social}
-						<a href={social.link} class="w-full md:w-[48.5%]">
+						<a href={social.link} target="_blank" class="w-full md:w-[48.5%]">
 							<Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
 								<Button
 									variant={social.colorVariant}

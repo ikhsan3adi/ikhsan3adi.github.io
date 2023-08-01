@@ -35,10 +35,12 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fortawesome/free-solid-svg-icons": "^6.4.0",
 		"@types/marked": "^5.0.1",
 		"highlight.js": "^11.8.0",
 		"marked": "^5.1.2",
 		"marked-highlight": "^2.0.1",
+		"svelte-fa": "^3.0.4",
 		"svelte-typewriter": "^3.1.6"
 	}
 }
