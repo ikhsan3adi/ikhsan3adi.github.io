@@ -20,12 +20,12 @@
 		<link href="../_app/immutable/assets/2.fe1e3b76.css" rel="stylesheet">
 		<link href="../_app/immutable/assets/4.775a123e.css" rel="stylesheet">
 		<link href="../_app/immutable/assets/index.95b16411.css" rel="stylesheet">
-		<link rel="modulepreload" href="../_app/immutable/entry/start.7aa83559.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.0c9bddab.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/scheduler.39c914d8.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/singletons.12b117bc.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/singletons.93a49de6.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/index.42418fce.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/control.f5b05b5f.js">
-		<link rel="modulepreload" href="../_app/immutable/entry/app.39469b20.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.80e0d0cc.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/preload-helper.cf010ec4.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/index.dfe10aef.js">
 		<link rel="modulepreload" href="../_app/immutable/nodes/0.6929edf0.js">
@@ -153,7 +153,7 @@ cd ../../
 			<script type="application/json" data-sveltekit-fetched data-url="https://raw.githubusercontent.com/ikhsan3adi/flutter-auction-app/master/README.md">{"status":200,"statusText":"OK","headers":{},"body":"\u003Cp align=\"center\">\n  \u003Cimg src=\"https://github.com/ikhsan3adi/Flutter-Auction-App/raw/master/images/banner.png\" title=\"Online Auction App\">\n\u003C/p>\n\n# Online Auction App\n\n[![GitHub forks](https://img.shields.io/github/forks/ikhsan3adi/Flutter-Auction-App?style=for-the-badge)](https://github.com/ikhsan3adi/flutter-auction-app/fork)\n![GitHub Repo stars](https://img.shields.io/github/stars/ikhsan3adi/Flutter-Auction-App?style=for-the-badge)\n[![GitHub all releases](https://img.shields.io/github/downloads/ikhsan3adi/Flutter-Auction-App/total?style=for-the-badge)](https://github.com/ikhsan3adi/flutter-auction-app/releases)\n\nFlutter Online Auction App is a mobile application built with Flutter. It allows users to participate in online auctions, browse products, place bids, and manage their account.\n\n## Key Features\n- Login & Register\n- Explore\n- Auction Detail\n- Place Bid\n- My Bid\n- My Auction\n- My Item\n- Switch Dark & Light Theme\n- User Profile\n\nSee also: [Online Auction App Backend](https://github.com/ikhsan3adi/ci4_online_auction_api)\n\n## Screenshots\n\n|               | \u003Cp align=\"center\">Light Theme\u003C/p> | \u003Cp align=\"center\"> Dark Theme\u003C/p> |\n|---------------|-----------------------------------|-----------------------------------|\n| Explore page  | \u003Cimg src=\"https://github.com/ikhsan3adi/Flutter-Auction-App/raw/master/images/screenshots/explore-gif.gif\">    | \u003Cimg src=\"https://github.com/ikhsan3adi/Flutter-Auction-App/raw/master/images/screenshots/explore-dark.png\">  |\n| Auction Detail| \u003Cimg src=\"https://github.com/ikhsan3adi/Flutter-Auction-App/raw/master/images/screenshots/auction-detail-light.png\"> | \u003Cimg src=\"https://github.com/ikhsan3adi/Flutter-Auction-App/raw/master/images/screenshots/auction-detail-dark.png\"> |\n| Login page    | \u003Cimg src=\"https://github.com/ikhsan3adi/Flutter-Auction-App/raw/master/images/screenshots/login-light.png\">    | \u003Cimg src=\"https://github.com/ikhsan3adi/Flutter-Auction-App/raw/master/images/screenshots/login-dark.png\">    |\n| Register page | \u003Cimg src=\"https://github.com/ikhsan3adi/Flutter-Auction-App/raw/master/images/screenshots/register-light.png\"> | \u003Cimg src=\"https://github.com/ikhsan3adi/Flutter-Auction-App/raw/master/images/screenshots/register-dark.png\"> |\n| My Bid        | \u003Cimg src=\"https://github.com/ikhsan3adi/Flutter-Auction-App/raw/master/images/screenshots/my-bid-light.png\">   | \u003Cimg src=\"https://github.com/ikhsan3adi/Flutter-Auction-App/raw/master/images/screenshots/my-bid-dark.png\">   |\n| My Item       | \u003Cimg src=\"https://github.com/ikhsan3adi/Flutter-Auction-App/raw/master/images/screenshots/my-item-light.png\">  | \u003Cimg src=\"https://github.com/ikhsan3adi/Flutter-Auction-App/raw/master/images/screenshots/my-item-dark.png\">  |\n| My Auction    |\u003Cimg src=\"https://github.com/ikhsan3adi/Flutter-Auction-App/raw/master/images/screenshots/my-auction-light.png\">|\u003Cimg src=\"https://github.com/ikhsan3adi/Flutter-Auction-App/raw/master/images/screenshots/my-auction-dark.png\">|\n\n\u003Ca href=\"https://github.com/ikhsan3adi/Flutter-Auction-App/tree/master/images\">More images\u003C/a>\n\n## Getting Started\n\n### Prerequisites\n\n- Flutter SDK >=3.7: [Install Flutter](https://flutter.dev/docs/get-started/install)\n- Code Editor: [Choose an editor](https://flutter.dev/docs/get-started/editor)\n- Internet connection\n\n### How to run the App\n\n1. Run `flutter pub get` on main project\n\n```shell\nflutter pub get\n```\n\n2. Run `dart pub get` on each packages, or copy & run this command for simplicity:\n\n```shell\ncd packages/auction_repository\ndart pub get\ncd ../authentication_repository\ndart pub get\ncd ../user_repository\ndart pub get\ncd ../../\n```\n\n3. Run `build_runner` to generate `*.g.dart` file, or\nrun this command below for simplicity:\n\n```shell\ncd packages/auction_repository\ndart run build_runner build --delete-conflicting-outputs\ncd ../authentication_repository\ndart run build_runner build --delete-conflicting-outputs\ncd ../user_repository\ndart run build_runner build --delete-conflicting-outputs\ncd ../../\n```\n\n4. Hit `F5` on your keyboard to debug.\n\n## Contributing\n\nContributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.\n\n## Donation\n\n[![Donate paypal](https://img.shields.io/badge/Donate-PayPal-green.svg?style=for-the-badge)](https://paypal.me/xannxett?country.x=ID&locale.x=en_US)\n[![Donate saweria](https://img.shields.io/badge/Donate-Saweria-red?style=for-the-badge&link=https%3A%2F%2Fsaweria.co%2Fxiboxann)](https://saweria.co/xiboxann)\n\n## License\n\n[![GitHub license](https://img.shields.io/github/license/ikhsan3adi/Flutter-Auction-App?style=for-the-badge)](https://github.com/ikhsan3adi/Flutter-Auction-App/raw/master/LICENSE)\n\n## Contributors\n\n- [@ikhsan3adi](https://www.github.com/ikhsan3adi)\n\n- [@asyncguy](https://www.github.com/asyncguy)\n\n\nDon't forget to follow :ok_hand:\n"}</script>
 			<script>
 				{
-					__sveltekit_1pxakvx = {
+					__sveltekit_1ago470 = {
 						base: new URL("..", location).pathname.slice(0, -1),
 						env: {}
 					};
@@ -163,8 +163,8 @@ cd ../../
 					const data = [null,null,null];
 
 					Promise.all([
-						import("../_app/immutable/entry/start.7aa83559.js"),
-						import("../_app/immutable/entry/app.39469b20.js")
+						import("../_app/immutable/entry/start.0c9bddab.js"),
+						import("../_app/immutable/entry/app.80e0d0cc.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 2, 4],
