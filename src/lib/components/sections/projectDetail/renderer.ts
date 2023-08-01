@@ -64,7 +64,7 @@ renderer.link = (href, title, text) => {
 };
 
 renderer.codespan = (code) => {
-	return `<pre class="inline-block bg-slate-200 dark:bg-slate-700 px-2 py-0.5 mb-4"><code class="text-slate-900 dark:text-slate-50">${code}</code></pre>`;
+	return `<pre class="inline-block bg-slate-200 dark:bg-slate-700 px-2 py-0.5 mb-4"><code class="text-text dark:text-slate-50">${code}</code></pre>`;
 };
 
 renderer.html = (html, block) => {
