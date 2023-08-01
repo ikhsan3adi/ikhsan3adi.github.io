@@ -1,38 +1,86 @@
-# create-svelte
+# Portfolio - [Ikhsan Satriadi](https://github.com/ikhsan3adi)
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+> https://ikhsan3adi.github.io
 
-## Creating a project
+[![GitHub Pages](https://github.com/ikhsan3adi/ikhsan3adi.github.io/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/ikhsan3adi/ikhsan3adi.github.io/actions/workflows/gh-pages.yml)
+[![pages-build-deployment](https://github.com/ikhsan3adi/ikhsan3adi.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/ikhsan3adi/ikhsan3adi.github.io/actions/workflows/pages/pages-build-deployment)
 
-If you're seeing this, you've probably already done this step. Congrats!
+![Cover Image](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/preview.png)
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+Welcome to my portfolio! Here, you will find a showcase of my skills, projects, and experiences as a software developer.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+### This website consists of:
 
-## Developing
+#### :large_blue_circle: Navbar
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+#### :large_blue_circle: Hero section.
 
-```bash
-npm run dev
+#### :large_blue_circle: About Me section.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+#### :large_blue_circle: Projects section.
 
-## Building
+#### :large_blue_circle: Project Detail page.
 
-To create a production version of your app:
+#### :large_blue_circle: Development Tools section.
 
-```bash
-npm run build
-```
+#### :large_blue_circle: Social section.
 
-You can preview the production build with `npm run preview`.
+#### :large_blue_circle: Contact section.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+#### :large_blue_circle: Footer.
+
+## Features
+
+#### :large_blue_diamond: Responsive Design :iphone: :desktop_computer:
+
+#### :large_blue_diamond: Loading UI Component :arrows_counterclockwise:
+
+#### :large_blue_diamond: Error Handling :bangbang:
+
+## Technologies Used
+
+- [SvelteKit](https://kit.svelte.dev/): The website is built using SvelteKit, a powerful framework for creating web applications with server-side rendering (SSR) and client-side navigation.
+
+- [Tailwind CSS](https://tailwindcss.com): The website's styling is done using Tailwind CSS, a utility-first CSS framework that enables fast and flexible styling with a modular approach.
+
+- [FontAwesome](https://fontawesome.com/): FontAwesome is the icon library used to integrate icons into the website. Its extensive collection of icons adds visual elements to the design.
+
+- Other Technologies: HTML, CSS, JavaScript & TypeScript are also utilized to enhance the website's functionality and appearance.
+
+## Screenshots
+
+### Projects & Project Detail
+
+| Light                                                                                                                | Dark                                                                                                               |
+| -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| ![Projects light](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/projects-light.png)             | ![Projects dark](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/projects-dark.png)             |
+| ![Project Detail light](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/project-detail-light.png) | ![Project Detail dark](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/project-detail-dark.png) |
+
+### Development Tools
+
+![Dev tools](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/tools-light.png)
+
+### Social & Contact
+
+| Light                                                                                                  | Dark                                                                                                 |
+| ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
+| ![Contact light](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/contact-light.png) | ![Contact dark](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/contact-dark.png) |
+
+### Footer
+
+![Footer](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/footer.png)
+
+## Contributing
+
+Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
+
+## Donation
+
+[![Donate paypal](https://img.shields.io/badge/Donate-PayPal-green.svg?style=for-the-badge)](https://paypal.me/xannxett?country.x=ID&locale.x=en_US)
+[![Donate saweria](https://img.shields.io/badge/Donate-Saweria-red?style=for-the-badge&link=https%3A%2F%2Fsaweria.co%2Fxiboxann)](https://saweria.co/xiboxann)
+
+## Author
+
+[@ikhsan3adi](https://github.com/ikhsan3adi)
+
+Thank you for visiting my portfolio website, and I hope you enjoy exploring my projects and experiences!
