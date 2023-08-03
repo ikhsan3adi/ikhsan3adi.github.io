@@ -66,7 +66,7 @@
 								profile:
 							</p>
 
-							<a href={linkedInLink}>
+							<a href={linkedInLink} target="_blank">
 								<Button variant={primaryButton}>Visit LinkedIn</Button>
 							</a>
 						</div>

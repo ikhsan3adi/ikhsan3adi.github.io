@@ -40,7 +40,7 @@
 				<hr class="my-4 border-slate-500" />
 				<div class="flex justify-center gap-4 my-10 opacity-90 h-10">
 					{#each footerSocials as social}
-						<a href={social.link} class="group">
+						<a href={social.link} target="_blank" class="group">
 							<div class="w-10 h-10 flex overflow-hidden">
 								<div
 									class="w-10 h-10 text-transparent stroke-slate-400 group-hover:stroke-slate-100 group-active:stroke-primary"
@@ -55,13 +55,22 @@
 					&copy; 2023, made with ❤️ by
 					<a
 						href={noNavLinks ? '/' : '#social'}
+						target="_blank"
 						class="text-primary hover:underline active:text-custom-3">Ikhsan Satriadi</a
 					>, using
-					<a href="https://svelte.dev" class="text-orange-500 hover:underline active:text-white">
+					<a
+						href="https://svelte.dev"
+						target="_blank"
+						class="text-orange-500 hover:underline active:text-white"
+					>
 						SvelteKit
 					</a>
 					and
-					<a href="https://tailwindcss.com" class="text-cyan-500 hover:underline active:text-white">
+					<a
+						href="https://tailwindcss.com"
+						target="_blank"
+						class="text-cyan-500 hover:underline active:text-white"
+					>
 						Tailwind CSS
 					</a>
 				</p>
