@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { scale } from 'svelte/transition';
+	import Fa from 'svelte-fa';
+	import { faRefresh } from '@fortawesome/free-solid-svg-icons';
 </script>
 
 <div in:scale class="w-full bg-slate-900 dark:bg-primary">
@@ -11,7 +13,10 @@
 			class="h-3/5 md:max-lg:h-3/5 border-b-4 relative border-slate-900 dark:border-primary flex"
 		>
 			<div class="bg-primary animate-pulse flex absolute top-0 bottom-0 left-0 right-0">
-				<h1 class="text-center m-auto">Loading...</h1>
+				<div class=" mx-auto inline-flex flex-wrap m-auto justify-center gap-2 items-center w-max">
+					<h1 class="dark:text-white text-right animate-spin"><Fa icon={faRefresh} /></h1>
+					<h2 class="dark:text-white text-center">Loading...</h2>
+				</div>
 			</div>
 		</div>
 		<!-- Messages -->

@@ -7,6 +7,8 @@
 	import MarqueeText from '$lib/components/widgets/MarqueeText.svelte';
 
 	import Saos from 'saos';
+	import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
+	import Fa from 'svelte-fa';
 
 	const primaryButton: ButtonColorVariant = { key: 'primary' };
 </script>
@@ -67,7 +69,9 @@
 							</p>
 
 							<a href={linkedInLink} target="_blank">
-								<Button variant={primaryButton}>Visit LinkedIn</Button>
+								<Button variant={primaryButton}>
+									<Fa icon={faExternalLink} slot="icon" />Visit LinkedIn
+								</Button>
 							</a>
 						</div>
 					</Saos>

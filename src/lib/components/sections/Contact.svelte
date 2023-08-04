@@ -12,6 +12,8 @@
 	import Email from '$lib/components/graphics/social/Email.svelte';
 
 	import Saos from 'saos';
+	import Fa from 'svelte-fa';
+	import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 	const whatsappButton: ButtonColorVariant = { key: 'whatsapp' };
 	const emailButton: ButtonColorVariant = { key: 'email' };
@@ -142,6 +144,7 @@
 										variant={buttonDisabled ? disabledButton : primaryButton}
 										disabled={buttonDisabled}
 									>
+										<Fa icon={faPaperPlane} slot="icon" />
 										<h4 class="{submisstionStatus === 'Failed' ? 'text-red-500' : 'text-inherit'} ">
 											{submisstionStatus === 'Initial'
 												? 'Send'

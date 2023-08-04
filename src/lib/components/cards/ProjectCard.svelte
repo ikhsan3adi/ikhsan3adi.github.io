@@ -10,7 +10,7 @@
 	} from '$lib/components/colors';
 
 	import Fa from 'svelte-fa';
-	import { faCodeFork, faStar, faDownload } from '@fortawesome/free-solid-svg-icons';
+	import { faCodeFork, faStar, faDownload, faWarning } from '@fortawesome/free-solid-svg-icons';
 
 	export let project: Project;
 
@@ -64,9 +64,12 @@
 				h-3/5 md:max-lg:h-3/5 border-b-4 border-slate-900
 			bg-slate-300 dark:bg-slate-600 flex relative"
 			>
-				<h2 class="dark:text-white text-center m-auto">
-					{project.imageText ?? 'Image not available'}
-				</h2>
+				<div class="inline-flex flex-wrap m-auto justify-center gap-2 items-center w-max">
+					<h1 class="dark:text-white text-center"><Fa icon={faWarning} /></h1>
+					<h2 class="dark:text-white text-center">
+						{project.imageText ?? 'Image not available'}
+					</h2>
+				</div>
 
 				<!-- Background image -->
 				<div

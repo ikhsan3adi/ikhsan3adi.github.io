@@ -10,7 +10,14 @@
 	import { renderer } from './renderer';
 
 	import Fa from 'svelte-fa';
-	import { faCodeFork, faStar, faDownload, faWarning } from '@fortawesome/free-solid-svg-icons';
+	import {
+		faCodeFork,
+		faStar,
+		faDownload,
+		faWarning,
+		faCode,
+		faExternalLink
+	} from '@fortawesome/free-solid-svg-icons';
 
 	import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 	import Button from '$lib/components/buttons/Button.svelte';
@@ -93,12 +100,16 @@
 						class="my-4 md:my-6 lg:my-8 flex w-full justify-center sm:justify-start gap-4 md:gap-6 lg:gap-8"
 					>
 						<a href={project.repositoryUrl} target="_blank">
-							<Button noDarkVariant={false}>Source code</Button>
+							<Button noDarkVariant={false}>
+								<Fa icon={faCode} slot="icon" />Source code
+							</Button>
 						</a>
 
 						{#if project.hasLivePreview && project.livePreviewUrl}
 							<a href={project.livePreviewUrl} target="_blank">
-								<Button noDarkVariant={false} variant={secondaryButton}>Live preview</Button>
+								<Button noDarkVariant={false} variant={secondaryButton}>
+									<Fa icon={faExternalLink} slot="icon" />Live preview
+								</Button>
 							</a>
 						{/if}
 					</div>

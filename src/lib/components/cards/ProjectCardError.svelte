@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { Project } from '$lib/api/projects';
 	import { scale } from 'svelte/transition';
+	import Fa from 'svelte-fa';
+	import { faWarning } from '@fortawesome/free-solid-svg-icons';
 
 	export let project: Project;
 </script>
@@ -13,8 +15,12 @@
 		<div
 			class="h-3/5 md:max-lg:h-3/5 border-b-4 bg-red-600 dark:bg-red-400 border-slate-900 dark:border-red-400 flex"
 		>
-			<h1 class="text-center m-auto text-white dark:text-text">Error!</h1>
+			<div class=" mx-auto inline-flex flex-wrap m-auto justify-center gap-2 items-center w-max">
+				<h1 class="dark:text-white text-right"><Fa icon={faWarning} /></h1>
+				<h2 class="dark:text-white text-center">Error!</h2>
+			</div>
 		</div>
+
 		<!-- Messages -->
 		<div class="py-2 px-4">
 			<h3 class="mb-2 dark:text-white text-center">

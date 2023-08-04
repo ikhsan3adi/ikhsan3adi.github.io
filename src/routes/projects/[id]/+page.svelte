@@ -23,13 +23,11 @@
 </svelte:head>
 
 <main>
-	{#if $projectDetail}
-		{#if $projectDetail.name === 'error' || $projectDetail.name === 'limit'}
-			<ProjectDetailError project={$projectDetail} />
-		{:else}
-			<ProjectDetail project={$projectDetail} {markdownPromise} />
-		{/if}
-	{:else}
+	{#if !$projectDetail}
 		<ProjectDetailLoading />
+	{:else if $projectDetail.name !== 'error' && $projectDetail.name !== 'limit'}
+		<ProjectDetail project={$projectDetail} {markdownPromise} />
+	{:else}
+		<ProjectDetailError project={$projectDetail} />
 	{/if}
 </main>
