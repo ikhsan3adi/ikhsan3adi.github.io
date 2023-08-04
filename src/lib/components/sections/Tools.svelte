@@ -44,11 +44,14 @@
 					Development tools
 				</h1>
 			</Saos>
+
+			<!-- Development tools -->
 			<Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
 				<div
 					class="bg-slate-900 border-2 border-slate-900 w-full h-max flex flex-col md:flex-row justify-stretch"
 				>
 					<div class="flex w-full md:w-[40%] flex-col">
+						<!-- Mobile apps -->
 						<Saos animation={'scale-up-center 2s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
 							<div
 								class="w-full h-[250px] md:h-[350px] bg-accent border-2 border-slate-900 flex flex-col relative"
@@ -73,6 +76,7 @@
 								</div>
 							</div>
 						</Saos>
+						<!-- Back-end -->
 						<Saos animation={'scale-up-center 2s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
 							<div
 								class="w-full h-[200px] md:h-[300px] bg-custom-1 border-2 border-slate-900 flex relative"
@@ -105,6 +109,7 @@
 						</Saos>
 					</div>
 					<div class="flex w-full md:w-[60%] h-full flex-col">
+						<!-- Front-end -->
 						<Saos animation={'scale-up-center 2s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
 							<div
 								class="w-full h-[200px] md:h-[300px] bg-secondary border-2 border-slate-900 flex relative"
@@ -136,6 +141,7 @@
 
 						<div class="flex">
 							<div class="flex w-1/2 flex-col">
+								<!-- DevOps -->
 								<Saos animation={'scale-up-center 2s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
 									<div
 										class="w-full h-[150px] bg-custom-4 border-2 border-slate-900 flex justify-center relative"
@@ -155,6 +161,7 @@
 										</div>
 									</div>
 								</Saos>
+								<!-- Design -->
 								<Saos animation={'scale-up-center 2s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
 									<div class="w-full h-[200px] bg-custom-3 border-2 border-slate-900">
 										<div class="border-b-4 w-full border-slate-900 h-12 flex justify-start">
@@ -177,6 +184,7 @@
 								</Saos>
 							</div>
 							<div class="w-1/2 h-[350px]">
+								<!-- Others -->
 								<Saos animation={'scale-up-center 2s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
 									<div class="flex flex-col bg-custom-2 border-2 border-slate-900 h-[350px]">
 										<div class="border-b-4 w-full border-slate-900 h-12 flex justify-start">

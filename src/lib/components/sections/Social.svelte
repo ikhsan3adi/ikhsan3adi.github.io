@@ -19,6 +19,8 @@
 						Connect with me
 					</h1>
 				</Saos>
+
+				<!-- Social buttons -->
 				<div class="flex flex-wrap justify-center gap-4 lg:gap-5 xl:gap-6">
 					{#each socials as social}
 						<a href={social.link} target="_blank" class="w-full md:w-[48.5%]">

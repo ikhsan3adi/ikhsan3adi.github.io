@@ -23,6 +23,7 @@
 	class="{isBgTransparent ? 'dark:text-white' : 'dark:text-text'}
   text-text my-auto flex flex-col lg:hidden"
 >
+	<!-- Hamburger button -->
 	<button class="m-auto block" on:click={() => toggle(!open)}>
 		{#if open}
 			<svg
@@ -48,10 +49,13 @@
 			</svg>
 		{/if}
 	</button>
+
+	<!-- Menu -->
 	<div class="relative {open ? '' : 'hidden'} text-slate-800 z-50">
 		<div
 			class="absolute right-0 w-max p-0 flex flex-col overflow-hidden bg-slate-100 dark:bg-slate-700 border-4 border-slate-900 dark:border-white"
 		>
+			<!-- Dark mode toggle -->
 			<div class="mx-auto py-1 flex items-center gap-4 pr-4">
 				<p class="dark:text-white py-2 pl-5 duration-200">Darkmode</p>
 				<ThemeButton isBgTransparent={true} />
@@ -59,6 +63,7 @@
 		</div>
 	</div>
 
+	<!-- Click outside to close -->
 	<button on:click={() => (open = false)} class="z-40">
 		<div class="fixed left-0 right-0 top-0 bottom-0 cursor-default {open ? '' : 'hidden'}" />
 	</button>

@@ -26,6 +26,7 @@
 
 	let isIntersecting = false;
 
+	// Fetch project when this section is appeared
 	function checkIntersecting(node: Element) {
 		const observer: IntersectionObserver = new IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
@@ -82,6 +83,7 @@
 				</h1>
 			</Saos>
 
+			<!-- Projects -->
 			<Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
 				<div class="w-full flex flex-wrap justify-center gap-4">
 					{#if $projects.length == 0}

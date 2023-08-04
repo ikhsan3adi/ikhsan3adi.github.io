@@ -22,11 +22,14 @@
 						? 'justify-center'
 						: 'justify-between'} gap-4 md:gap-12 lg:gap-36 xl:gap-52 items-center text-white"
 				>
+					<!-- Emblem -->
 					<div class="flex">
 						<div class="h-24 w-24 sm:w-28 sm:h-28 md:w-36 md:h-36 my-auto">
 							<EmblemSquare />
 						</div>
 					</div>
+
+					<!-- Navlinks -->
 					{#if !noNavLinks}
 						<div
 							class="w-full flex justify-center md:justify-around flex-wrap items-center text-white gap-x-8 gap-y-6"
@@ -37,7 +40,10 @@
 						</div>
 					{/if}
 				</div>
+
 				<hr class="my-4 border-slate-500" />
+
+				<!-- Socials -->
 				<div class="flex justify-center gap-4 my-10 opacity-90 h-10">
 					{#each footerSocials as social}
 						<a href={social.link} target="_blank" class="group">
@@ -51,6 +57,8 @@
 						</a>
 					{/each}
 				</div>
+
+				<!-- Copyright & Credit -->
 				<p class="text-slate-200 text-center text-sm">
 					&copy; 2023, made with ❤️ by
 					<a
