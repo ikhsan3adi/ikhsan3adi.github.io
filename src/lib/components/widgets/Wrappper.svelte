@@ -1,3 +1,3 @@
-<div class="container mx-auto px-16 sm:px-20 md:px-24 lg:px-36 w-full flex">
+<div class="container mx-auto px-10 sm:px-16 md:px-20 lg:px-28 xl:px-32 w-full flex">
 	<slot />
 </div>
