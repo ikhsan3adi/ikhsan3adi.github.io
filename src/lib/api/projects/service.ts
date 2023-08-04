@@ -205,6 +205,24 @@ class ProjectService {
 		}
 	}
 
+	async getProjectReadme({
+		project,
+		fetch
+	}: {
+		project: Project;
+		fetch: (input: URL | RequestInfo, init?: RequestInit) => Promise<Response>;
+	}) {
+		try {
+			const response = await fetch(project.readmeUrl ?? '', {
+				method: 'GET'
+			});
+			const text = await response.text();
+			return text;
+		} catch (error) {
+			return null;
+		}
+	}
+
 	async getDownloadsCount(url: string) {
 		const response = await fetch(`${url}/releases`, {
 			method: 'GET'

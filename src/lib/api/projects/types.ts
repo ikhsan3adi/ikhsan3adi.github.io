@@ -5,7 +5,7 @@ interface Project {
 	description?: string;
 	imageUrl: string;
 	imageText?: string;
-	readmeUrl: string;
+	readmeUrl?: string;
 	tags: string[];
 	starsCount?: number;
 	forksCount?: number;

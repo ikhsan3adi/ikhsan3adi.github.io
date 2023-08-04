@@ -10,13 +10,13 @@
 	import { renderer } from './renderer';
 
 	import Fa from 'svelte-fa';
-	import { faCodeFork, faStar, faDownload } from '@fortawesome/free-solid-svg-icons';
+	import { faCodeFork, faStar, faDownload, faWarning } from '@fortawesome/free-solid-svg-icons';
 
 	import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 	import Button from '$lib/components/buttons/Button.svelte';
 
 	export let project: ProjectDetail;
-	export let markdown: string;
+	export let markdownPromise: Promise<string | null>;
 
 	const secondaryButton: ButtonColorVariant = { key: 'secondary' };
 
@@ -104,16 +104,32 @@
 					</div>
 				</div>
 			</div>
+
 			<!-- README.md -->
 			<hr class="mt-16 border border-slate-700 dark:border-slate-300" />
 			<a href={project.readmeUrl} class="hover:underline">
-				<h4 class="dark:text-white my-2">README.md</h4>
+				<h4 class="dark:text-white my-2">
+					{#await markdownPromise}
+						Loading...
+					{:then}
+						README.md
+					{:catch}
+						Error!
+					{/await}
+				</h4>
 			</a>
 			<hr class="mb-16 md:mb-24 border border-slate-700 dark:border-slate-300" />
+
+			<!-- README.md content -->
 			<div class="mb-24">
-				<p class="text-slate-600 dark:text-slate-300">
-					{@html marked(markdown, { headerIds: false, mangle: false })}
-				</p>
+				{#await markdownPromise then markdown}
+					<p class="text-slate-600 dark:text-slate-300">
+						{@html marked(markdown ?? '', { headerIds: false, mangle: false })}
+					</p>
+				{:catch error}
+					<h1 class="dark:text-white"><Fa icon={faWarning} />Failed to load README</h1>
+					<p class="text-red-500 dark:text-red-400">{error}</p>
+				{/await}
 			</div>
 		</div>
 	</Wrappper>
