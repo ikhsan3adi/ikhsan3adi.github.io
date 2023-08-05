@@ -134,7 +134,7 @@
 			<!-- README.md content -->
 			<div class="mb-24">
 				{#await markdownPromise then markdown}
-					<p class="text-slate-600 dark:text-slate-300">
+					<p class="text-slate-600 dark:text-slate-300 markdown-content">
 						{@html marked(markdown ?? '', { headerIds: false, mangle: false })}
 					</p>
 				{:catch error}
@@ -146,8 +146,10 @@
 	</Wrappper>
 </section>
 
+<div class="markdown-content hidden"><a href="/">_</a></div>
+
 <style lang="postcss">
-	a {
+	.markdown-content > a {
 		@apply text-blue-500 dark:text-sky-500 hover:text-blue-300 dark:hover:text-sky-300 hover:underline;
 	}
 </style>

@@ -7,7 +7,7 @@ renderer.heading = (text, level) => {
 };
 
 renderer.paragraph = (text) => {
-	return `<p class="text-slate-600 dark:text-slate-300 mb-2">${text}</p>`;
+	return `<span class="text-slate-600 dark:text-slate-300 mb-2">${text}</span>`;
 };
 
 renderer.strong = (text) => {
@@ -16,7 +16,7 @@ renderer.strong = (text) => {
 
 renderer.list = (body, ordered) => {
 	const type = ordered ? 'ol' : 'ul';
-	return '<div class="my-4"><' + type + 'start=""' + '>\n' + body + '</' + type + '></div>\n';
+	return '<div class="my-4"><' + type + 'start="0">\n' + body + '</' + type + '></div>\n';
 };
 
 renderer.listitem = (text) => {
@@ -24,7 +24,7 @@ renderer.listitem = (text) => {
 };
 
 renderer.image = (href, title, text) => {
-	return `<img class="my-4 inline" src=${href} alt=${title ?? text} />`;
+	return `<img class="my-4" src=${href} alt=${title ?? text} />`;
 };
 
 renderer.table = (header, body) => {
