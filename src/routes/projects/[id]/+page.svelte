@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 	import { projectDetail } from '$lib/api/projects';
 
@@ -8,14 +9,18 @@
 
 	export let data: PageData;
 
-	data.projectService.fetchProjectDetail({ project: data.project, fetch: data.fetch });
+	let markdownPromise: Promise<string | null>;
 
-	const markdownPromise = data.project.readmeUrl
-		? data.projectService.getProjectReadme({
-				project: data.project,
-				fetch: data.fetch
-		  })
-		: new Promise<string>((resolve) => resolve('<h2>No README file</h2>'));
+	onMount(() => {
+		data.projectService.fetchProjectDetail({ project: data.project, fetch: data.fetch });
+
+		markdownPromise = data.project.readmeUrl
+			? data.projectService.getProjectReadme({
+					project: data.project,
+					fetch: data.fetch
+			  })
+			: new Promise<string>((resolve) => resolve('<h2>No README file</h2>'));
+	});
 </script>
 
 <svelte:head>
