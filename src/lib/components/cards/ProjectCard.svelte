@@ -87,28 +87,28 @@
 				<!-- Stats -->
 				<div
 					class="{cardColors[cardColor.key].dark.bg}
-						bg-slate-900 absolute text-white dark:text-text flex justify-evenly bottom-0 left-0 max-sm:right-0 gap-4 duration-200 py-2 px-4"
+						bg-slate-900 absolute text-white dark:text-text flex justify-evenly bottom-0 left-0 max-sm:right-0 gap-4 duration-200 py-2 px-4 font-poppins"
 				>
 					<div class="flex gap-2 items-center">
 						<Fa icon={faStar} />
 						{project.starsCount}
-						<span class="hidden sm:inline-block"
-							>{(project.starsCount ?? 0) <= 1 ? 'Star' : 'Stars'}</span
-						>
+						<span class="hidden sm:inline-block">
+							{(project.starsCount ?? 0) <= 1 ? 'Star' : 'Stars'}
+						</span>
 					</div>
 					<div class="flex gap-2 items-center">
 						<Fa icon={faCodeFork} />
 						{project.forksCount}
-						<span class="hidden sm:inline-block"
-							>{(project.forksCount ?? 0) <= 1 ? 'Fork' : 'Forks'}</span
-						>
+						<span class="hidden sm:inline-block">
+							{(project.forksCount ?? 0) <= 1 ? 'Fork' : 'Forks'}
+						</span>
 					</div>
 					<div class="flex gap-2 items-center">
 						<Fa icon={faDownload} />
 						{project.downloadsCount}
-						<span class="hidden sm:inline-block"
-							>{(project.downloadsCount ?? 0) <= 1 ? 'Download' : 'Downloads'}</span
-						>
+						<span class="hidden sm:inline-block">
+							{(project.downloadsCount ?? 0) <= 1 ? 'Download' : 'Downloads'}
+						</span>
 					</div>
 				</div>
 			</div>

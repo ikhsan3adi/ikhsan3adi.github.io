@@ -51,11 +51,11 @@
 			<h1 class="dark:text-white mb-6 md:mb-8 lg:mb-12 xl:mb-16">{project.name}</h1>
 			<!-- Hero section -->
 			<div
-				class="w-full justify-between flex flex-col lg:flex-row-reverse gap-4 md:gap-8 lg:gap-12 mb-24 lg:mb-32"
+				class="w-full grid grid-cols-1 grid-flow-row grid-rows-2 lg:flex lg:flex-row-reverse lg:justify-between gap-4 md:gap-8 lg:gap-12 mb-24 lg:mb-32"
 			>
 				<!-- Image preview -->
-				<div class="w-full border bg-auto bg-center bg-no-repeat">
-					<img class="h-full w-full" src={project.imageUrl} alt="Preview" />
+				<div class="w-full border flex items-center">
+					<img class="w-full" src={project.imageUrl} alt="Preview" />
 				</div>
 
 				<!-- Project description -->
@@ -63,7 +63,9 @@
 					<p class="dark:text-slate-300 text-center sm:text-left">{project.description}</p>
 
 					<!-- Stars, forks, downloads -->
-					<div class="pt-4 flex gap-4 w-full justify-center sm:justify-normal dark:text-white">
+					<div
+						class="pt-4 flex gap-4 w-full justify-center sm:justify-normal dark:text-white font-poppins"
+					>
 						<div class="flex gap-2 items-center">
 							<Fa icon={faStar} />
 							{project.starsCount}
