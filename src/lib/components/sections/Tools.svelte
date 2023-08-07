@@ -9,6 +9,7 @@
 	import Bootstrap from '$lib/components/graphics/tools/Bootstrap.svelte';
 	import Codeigniter from '$lib/components/graphics/tools/Codeigniter.svelte';
 	import Figma from '$lib/components/graphics/tools/Figma.svelte';
+	import Dart from '$lib/components/graphics/tools/Dart.svelte';
 	import Flutter from '$lib/components/graphics/tools/Flutter.svelte';
 	import Git from '$lib/components/graphics/tools/Git.svelte';
 	import Javascript from '$lib/components/graphics/tools/Javascript.svelte';
@@ -64,6 +65,9 @@
 								<div
 									class="flex md:flex-wrap my-auto mx-2 gap-y-2 pt-16 items-center justify-evenly"
 								>
+									<div class="w-36 h-36 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32">
+										<Dart />
+									</div>
 									<div class="w-36 h-36 md:w-40 md:h-40 xl:w-[11.15rem] xl:h-64">
 										<Flutter />
 									</div>
