@@ -24,6 +24,8 @@
 	import TailwindCss from '$lib/components/graphics/tools/TailwindCss.svelte';
 	import VisualStudioCode from '$lib/components/graphics/tools/VisualStudioCode.svelte';
 	import TypeScript from '$lib/components/graphics/tools/TypeScript.svelte';
+	import Ubuntu from '$lib/components/graphics/tools/Ubuntu.svelte';
+	import Laravel from '$lib/components/graphics/tools/Laravel.svelte';
 
 	import Saos from 'saos';
 </script>
@@ -90,6 +92,9 @@
 								>
 									<div class="w-16 md:w-20 lg:w-24">
 										<Codeigniter />
+									</div>
+									<div class="w-16 md:w-20 lg:w-24">
+										<Laravel />
 									</div>
 									<div class="w-16 md:w-20 lg:w-24">
 										<Nodejs />
@@ -205,6 +210,9 @@
 											</div>
 											<div class="w-20 lg:w-24">
 												<Postman />
+											</div>
+											<div class="w-20 lg:w-24">
+												<Ubuntu />
 											</div>
 										</div>
 									</div>
