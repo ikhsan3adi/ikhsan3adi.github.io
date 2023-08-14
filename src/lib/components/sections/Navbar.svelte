@@ -71,7 +71,7 @@
 	class="fixed top-0 left-0 right-0 bg-primary border-b-4 border-slate-900 z-40 duration-300 {backgroundClasses}"
 >
 	<Wrappper>
-		<div class="my-auto h-16 flex justify-between w-full">
+		<div class="my-auto h-14 md:h-16 flex justify-between w-full">
 			<!-- Logo -->
 			<div class="my-auto">
 				<div class="mt-2 dark:mt-0 relative">
