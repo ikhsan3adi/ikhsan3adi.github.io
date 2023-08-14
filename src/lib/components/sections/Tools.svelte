@@ -65,18 +65,18 @@
 									<h4 class="my-auto mx-4">Mobile apps</h4>
 								</div>
 								<div
-									class="flex md:flex-wrap my-auto mx-2 gap-y-2 pt-16 items-center justify-evenly"
+									class="flex md:flex-wrap my-auto mx-2 gap-2 gap-y-4 pt-8 items-center justify-evenly"
 								>
-									<div class="w-36 h-36 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32">
+									<div class="w-20 sm:w-24 xl:w-28">
 										<Dart />
 									</div>
-									<div class="w-36 h-36 md:w-40 md:h-40 xl:w-[11.15rem] xl:h-64">
+									<div class="w-20 sm:w-24 xl:w-28">
 										<Flutter />
 									</div>
-									<div class="w-32 h-32 md:w-16 md:h-16">
+									<div class="w-20 sm:w-24 xl:w-28">
 										<Kotlin />
 									</div>
-									<div class="w-36 h-36 md:w-32 md:h-32 lg:w-32 lg:h-36">
+									<div class="w-20 sm:w-24 xl:w-28">
 										<AndroidStudio />
 									</div>
 								</div>
@@ -88,24 +88,24 @@
 								class="w-full h-[200px] md:h-[300px] bg-custom-1 border-2 border-slate-900 flex relative"
 							>
 								<div
-									class="flex flex-wrap m-2 my-auto px-2 pb-12 gap-2 items-center justify-evenly"
+									class="flex flex-wrap m-2 mx-auto my-auto px-2 pb-12 gap-2 items-center justify-evenly"
 								>
-									<div class="w-16 md:w-20 lg:w-24">
+									<div class="w-16 md:w-20 xl:w-24">
 										<Codeigniter />
 									</div>
-									<div class="w-16 md:w-20 lg:w-24">
+									<div class="w-16 md:w-20 xl:w-24">
 										<Laravel />
 									</div>
-									<div class="w-16 md:w-20 lg:w-24">
+									<div class="w-16 md:w-20 xl:w-24">
 										<Nodejs />
 									</div>
-									<div class="w-16 md:w-20 lg:w-24">
+									<div class="w-16 md:w-20 xl:w-24">
 										<Php />
 									</div>
-									<div class="w-16 md:w-20 lg:w-24">
+									<div class="w-16 md:w-20 xl:w-24">
 										<Postgresql />
 									</div>
-									<div class="w-16 md:w-20 lg:w-24">
+									<div class="w-16 md:w-20 xl:w-24">
 										<Mysql />
 									</div>
 								</div>
@@ -123,20 +123,20 @@
 							<div
 								class="w-full h-[200px] md:h-[300px] bg-secondary border-2 border-slate-900 flex relative"
 							>
-								<div class="w-full flex my-auto pb-12 px-2 gap-2 justify-evenly">
-									<div class="w-20 md:w-24 lg:w-36">
+								<div class="w-full flex flex-wrap my-auto pb-12 px-2 gap-2 justify-evenly">
+									<div class="w-16 md:w-24 xl:w-28">
 										<Svelte />
 									</div>
-									<div class="w-20 md:w-24 lg:w-36">
+									<div class="w-[4.2rem] sm:w-20 md:w-24 xl:w-28">
 										<TailwindCss />
 									</div>
-									<div class="w-20 md:w-24 lg:w-36">
+									<div class="w-[4.2rem] sm:w-20 md:w-24 xl:w-28">
 										<Bootstrap />
 									</div>
-									<div class="w-20 md:w-24 lg:w-36">
+									<div class="w-[4.2rem] sm:w-20 md:w-24 xl:w-28">
 										<Javascript />
 									</div>
-									<div class="w-20 md:w-24 lg:w-36">
+									<div class="w-[4.2rem] sm:w-20 md:w-24 xl:w-28">
 										<TypeScript />
 									</div>
 								</div>
@@ -200,7 +200,7 @@
 											<h4 class="my-auto mx-4">Others</h4>
 										</div>
 										<div
-											class="mx-auto md:mx-0 md:my-auto flex flex-col gap-2 max-md:pt-6 md:flex-row md:flex-wrap justify-evenly"
+											class="mx-auto md:mx-0 my-auto flex gap-2 md:flex-row flex-wrap justify-evenly"
 										>
 											<div class="w-20 lg:w-24">
 												<VisualStudioCode />
