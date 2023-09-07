@@ -14,6 +14,17 @@ const initialProjects: Project[] = [
 	},
 	{
 		id: 1,
+		name: 'Sistem Perpustakaan QR Code',
+		url: `${githubApiLink}/sistem-perpustakaan-qr-code`,
+		description: '',
+		imageUrl:
+			'https://github.com/ikhsan3adi/sistem-perpustakaan-qr-code/raw/main/screenshots/home.png',
+		readmeUrl:
+			'https://raw.githubusercontent.com/ikhsan3adi/sistem-perpustakaan-qr-code/main/README.md',
+		tags: ['codeigniter', 'php']
+	},
+	{
+		id: 2,
 		name: 'Celenganku App Clone',
 		url: `${githubApiLink}/flutter-celenganku-clone`,
 		description: '',
@@ -24,7 +35,7 @@ const initialProjects: Project[] = [
 		tags: ['flutter']
 	},
 	{
-		id: 2,
+		id: 3,
 		name: 'Sistem Absensi QR Code',
 		url: `${githubApiLink}/absensi-sekolah-qr-code`,
 		description: '',
@@ -35,7 +46,7 @@ const initialProjects: Project[] = [
 		tags: ['codeigniter', 'php']
 	},
 	{
-		id: 3,
+		id: 4,
 		name: 'Portfolio website',
 		url: `${githubApiLink}/ikhsan3adi.github.io`,
 		description: '',
