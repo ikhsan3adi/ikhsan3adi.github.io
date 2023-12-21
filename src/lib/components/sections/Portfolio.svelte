@@ -32,22 +32,20 @@
 			entries.forEach((entry) => {
 				if (!entry.isIntersecting) return;
 
-				setTimeout(() => {
+				setTimeout(async () => {
 					console.log('Fetching projects');
 
-					setTimeout(async () => {
-						for (const project of initialProjects) {
-							try {
-								await projectService.fetchProject({ project, fetch });
-							} catch (_) {
-								break;
-							}
+					for (const project of initialProjects) {
+						try {
+							await projectService.fetchProject({ project, fetch });
+						} catch (_) {
+							break;
 						}
-					}, 350);
+					}
 
 					isIntersecting = true;
 					observer.disconnect();
-				}, 750);
+				}, 500);
 			});
 		});
 
