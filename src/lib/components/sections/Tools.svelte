@@ -33,10 +33,6 @@
 <section
 	class="bg-custom-4 dark:bg-teal-800 border-y-4 border-slate-900 dark:border-white bg-no-repeat bg-cover bg-center overflow-hidden relative mb-4"
 >
-	<div
-		class="absolute top-0 bottom-0 left-0 right-0 bg-cover bg-center bg-no-repeat scale-[1.05]"
-		style="background-image: url({waveBg});"
-	/>
 	<Wrappper>
 		<div class="w-full pb-36 z-10">
 			<Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
