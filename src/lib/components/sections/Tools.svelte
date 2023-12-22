@@ -1,6 +1,5 @@
 <script>
 	import Wrappper from '$lib/components/widgets/Wrappper.svelte';
-	import waveBg from '$lib/components/graphics/wave-bg.svg';
 
 	import Github from '$lib/components/graphics/social/Github.svelte';
 	import AdobeIllustrator from '$lib/components/graphics/tools/AdobeIllustrator.svelte';
