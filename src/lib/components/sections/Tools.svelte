@@ -7,12 +7,13 @@
 	import AndroidStudio from '$lib/components/graphics/tools/AndroidStudio.svelte';
 	import Bootstrap from '$lib/components/graphics/tools/Bootstrap.svelte';
 	import Codeigniter from '$lib/components/graphics/tools/Codeigniter.svelte';
-	import Figma from '$lib/components/graphics/tools/Figma.svelte';
 	import Dart from '$lib/components/graphics/tools/Dart.svelte';
+	import Figma from '$lib/components/graphics/tools/Figma.svelte';
 	import Flutter from '$lib/components/graphics/tools/Flutter.svelte';
 	import Git from '$lib/components/graphics/tools/Git.svelte';
 	import Javascript from '$lib/components/graphics/tools/Javascript.svelte';
 	import Kotlin from '$lib/components/graphics/tools/Kotlin.svelte';
+	import Laravel from '$lib/components/graphics/tools/Laravel.svelte';
 	import Mysql from '$lib/components/graphics/tools/Mysql.svelte';
 	import Nodejs from '$lib/components/graphics/tools/Nodejs.svelte';
 	import Php from '$lib/components/graphics/tools/Php.svelte';
@@ -21,10 +22,9 @@
 	import SublimeText from '$lib/components/graphics/tools/SublimeText.svelte';
 	import Svelte from '$lib/components/graphics/tools/Svelte.svelte';
 	import TailwindCss from '$lib/components/graphics/tools/TailwindCss.svelte';
-	import VisualStudioCode from '$lib/components/graphics/tools/VisualStudioCode.svelte';
 	import TypeScript from '$lib/components/graphics/tools/TypeScript.svelte';
 	import Ubuntu from '$lib/components/graphics/tools/Ubuntu.svelte';
-	import Laravel from '$lib/components/graphics/tools/Laravel.svelte';
+	import VisualStudioCode from '$lib/components/graphics/tools/VisualStudioCode.svelte';
 
 	import Saos from 'saos';
 </script>

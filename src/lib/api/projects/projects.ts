@@ -4,7 +4,7 @@ const githubApiLink = 'https://api.github.com/repos/ikhsan3adi';
 
 const initialProjects: Project[] = [
 	{
-		id: 0,
+		id: 'flutter-auction-app',
 		name: 'Online Auction App',
 		url: `${githubApiLink}/flutter-auction-app`,
 		description: '',
@@ -13,7 +13,7 @@ const initialProjects: Project[] = [
 		tags: ['flutter']
 	},
 	{
-		id: 1,
+		id: 'sistem-perpustakaan-qr-code',
 		name: 'Sistem Perpustakaan QR Code',
 		url: `${githubApiLink}/sistem-perpustakaan-qr-code`,
 		description: '',
@@ -24,7 +24,7 @@ const initialProjects: Project[] = [
 		tags: ['codeigniter', 'php']
 	},
 	{
-		id: 2,
+		id: 'flutter-celenganku-clone',
 		name: 'Celenganku App Clone',
 		url: `${githubApiLink}/flutter-celenganku-clone`,
 		description: '',
@@ -35,7 +35,7 @@ const initialProjects: Project[] = [
 		tags: ['flutter']
 	},
 	{
-		id: 3,
+		id: 'absensi-sekolah-qr-code',
 		name: 'Sistem Absensi QR Code',
 		url: `${githubApiLink}/absensi-sekolah-qr-code`,
 		description: '',
@@ -46,7 +46,7 @@ const initialProjects: Project[] = [
 		tags: ['codeigniter', 'php']
 	},
 	{
-		id: 4,
+		id: 'portfolio-website',
 		name: 'Portfolio website',
 		url: `${githubApiLink}/ikhsan3adi.github.io`,
 		description: '',
