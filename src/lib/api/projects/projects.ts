@@ -4,6 +4,15 @@ const githubApiLink = 'https://api.github.com/repos/ikhsan3adi';
 
 const initialProjects: Project[] = [
 	{
+		id: 'backtix',
+		name: 'BackTix - Event & ticketing app',
+		url: `${githubApiLink}/backtix`,
+		description: '',
+		imageUrl: 'https://github.com/ikhsan3adi/backtix/raw/main/assets/banner.png',
+		readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/backtix/master/README.md',
+		tags: ['flutter', 'nestjs', 'svelte']
+	},
+	{
 		id: 'flutter-auction-app',
 		name: 'Online Auction App',
 		url: `${githubApiLink}/flutter-auction-app`,
