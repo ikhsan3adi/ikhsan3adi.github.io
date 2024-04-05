@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { type ProjectService, initialProjects, projects } from '$lib/api/projects';
-	import { type CardColorKey, randomizeElements } from '$lib/components/colors';
+	import { initialProjects, projects, type ProjectService } from '$lib/api/projects';
+	import { randomizeElements, type CardColorKey } from '$lib/components/colors';
 
-	import Wrappper from '$lib/components/widgets/Wrappper.svelte';
-	import MarqueeText from '$lib/components/widgets/MarqueeText.svelte';
 	import ProjectCard from '$lib/components/cards/ProjectCard.svelte';
-	import ProjectCardLoading from '$lib/components/cards/ProjectCardLoading.svelte';
 	import ProjectCardError from '$lib/components/cards/ProjectCardError.svelte';
+	import ProjectCardLoading from '$lib/components/cards/ProjectCardLoading.svelte';
+	import MarqueeText from '$lib/components/widgets/MarqueeText.svelte';
+	import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
 	import Saos from 'saos';
 
@@ -57,7 +57,7 @@
 
 <section class="relative pt-20" use:checkIntersecting>
 	<div
-		class="absolute left-0 right-0 top-0 bg-custom-3 h-12 md:h-14 lg:h-16 border-slate-900 border-y-4 flex items-center"
+		class="absolute left-0 right-0 top-0 bg-custom-3 h-12 md:h-14 lg:h-16 border-slate-900 dark:border-slate-700 border-y-4 flex items-center"
 	>
 		<MarqueeText direction="right" duration={5} repeat={5}>
 			<div class="flex items-center gap-8 mx-4">

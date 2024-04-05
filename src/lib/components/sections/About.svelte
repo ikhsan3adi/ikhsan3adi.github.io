@@ -2,12 +2,12 @@
 	import { linkedInLink } from '$lib/api/socials';
 	import type { ButtonColorVariant } from '$lib/components/colors';
 
-	import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 	import Button from '$lib/components/buttons/Button.svelte';
 	import MarqueeText from '$lib/components/widgets/MarqueeText.svelte';
+	import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
-	import Saos from 'saos';
 	import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
+	import Saos from 'saos';
 	import Fa from 'svelte-fa';
 
 	const primaryButton: ButtonColorVariant = { key: 'primary' };
@@ -15,7 +15,7 @@
 
 <section class="w-full bg-custom-1 dark:bg-purple-900 relative pt-20">
 	<div
-		class="absolute left-0 right-0 top-0 bg-primary h-12 md:h-14 lg:h-16 border-slate-900 border-y-4 flex items-center"
+		class="absolute left-0 right-0 top-0 bg-primary h-12 md:h-14 lg:h-16 border-slate-900 dark:border-slate-700 border-y-4 flex items-center"
 	>
 		<MarqueeText direction="left">
 			<div class="flex items-center gap-8 mx-4">
