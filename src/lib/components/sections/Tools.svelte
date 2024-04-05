@@ -8,13 +8,11 @@
 	import Bootstrap from '$lib/components/graphics/tools/Bootstrap.svelte';
 	import Codeigniter from '$lib/components/graphics/tools/Codeigniter.svelte';
 	import Dart from '$lib/components/graphics/tools/Dart.svelte';
-	import Figma from '$lib/components/graphics/tools/Figma.svelte';
 	import Flutter from '$lib/components/graphics/tools/Flutter.svelte';
 	import Git from '$lib/components/graphics/tools/Git.svelte';
 	import Javascript from '$lib/components/graphics/tools/Javascript.svelte';
-	import Kotlin from '$lib/components/graphics/tools/Kotlin.svelte';
-	import Laravel from '$lib/components/graphics/tools/Laravel.svelte';
 	import Mysql from '$lib/components/graphics/tools/Mysql.svelte';
+	import NestJs from '$lib/components/graphics/tools/NestJS.svelte';
 	import Nodejs from '$lib/components/graphics/tools/Nodejs.svelte';
 	import Php from '$lib/components/graphics/tools/Php.svelte';
 	import Postgresql from '$lib/components/graphics/tools/Postgresql.svelte';
@@ -69,9 +67,6 @@
 										<Flutter />
 									</div>
 									<div class="w-20 sm:w-24 xl:w-28">
-										<Kotlin />
-									</div>
-									<div class="w-20 sm:w-24 xl:w-28">
 										<AndroidStudio />
 									</div>
 								</div>
@@ -89,7 +84,7 @@
 										<Codeigniter />
 									</div>
 									<div class="w-16 md:w-20 xl:w-24">
-										<Laravel />
+										<NestJs />
 									</div>
 									<div class="w-16 md:w-20 xl:w-24">
 										<Nodejs />
@@ -174,9 +169,6 @@
 										<div
 											class="w-full flex my-auto md:my-0 px-2 pt-12 md:pt-6 gap-2 gap-y-4 justify-evenly"
 										>
-											<div class="w-20 stroke-black">
-												<Figma />
-											</div>
 											<div class="w-20">
 												<AdobeIllustrator />
 											</div>
