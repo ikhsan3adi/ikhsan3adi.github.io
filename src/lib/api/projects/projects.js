@@ -1,8 +1,7 @@
-import type { Project } from './types';
-
 const githubApiLink = 'https://api.github.com/repos/ikhsan3adi';
 
-const initialProjects: Project[] = [
+/** @type {import('./types').Project[]} */
+const initialProjects = [
 	{
 		id: 'backtix',
 		name: 'BackTix - Event & ticketing app',

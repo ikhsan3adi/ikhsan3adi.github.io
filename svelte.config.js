@@ -1,5 +1,6 @@
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/kit/vite';
+import { initialProjects } from "./src/lib/api/projects/projects.js";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -12,7 +13,7 @@ const config = {
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 		adapter: adapter(),
 		prerender: {
-			entries: ['*', '/projects/0', '/projects/1', '/projects/2', '/projects/3']
+			entries: ['*', ...initialProjects.map((e) => `/projects/${e.id}`)]
 		}
 	}
 };
