@@ -13,7 +13,7 @@
 	const primaryButton: ButtonColorVariant = { key: 'primary' };
 </script>
 
-<section class="w-full bg-custom-1 dark:bg-purple-900 relative pt-20">
+<section class="w-full relative pt-20">
 	<div
 		class="absolute left-0 right-0 top-0 bg-primary h-12 md:h-14 lg:h-16 border-slate-900 dark:border-slate-700 border-y-4 flex items-center"
 	>
@@ -32,49 +32,30 @@
 	</div>
 	<Wrappper>
 		<div class="w-full pb-20">
-			<Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-				<h1
-					class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white duration-500"
-					id="about"
-				>
-					About
-				</h1>
-			</Saos>
+			<Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once />
 			<div class="w-full flex flex-col gap-4 md:flex-row md:justify-between h-max">
 				<div class="w-full">
 					<Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-						<div class="bg-custom-2 px-4 py-4 md:px-6 lg:py-6 lg:px-8 border-4 border-slate-900">
-							<h3 class="mb-4">About me</h3>
-							<p>
-								I'm Ikhsan, a passionate software engineer with a love for problem-solving and
-								creating impactful solutions. I thrive on continuous learning and enjoy
-								collaborating with teams to tackle challenges and deliver high-quality software
-								solutions. Let's build something great together!
-							</p>
-						</div>
+						<h1 class="my-4 md:my-6 lg:my-8 dark:text-white duration-500" id="about">About Me</h1>
+						<p class="dark:text-slate-300">
+							I'm Ikhsan, a passionate software engineer with a love for problem-solving and
+							creating impactful solutions. I thrive on continuous learning and enjoy collaborating
+							with teams to tackle challenges and deliver high-quality software solutions. Let's
+							build something great together!
+						</p>
+						<p class="my-6 dark:text-slate-300">
+							To learn more about my experience and skills, feel free to visit my LinkedIn profile:
+						</p>
+						<a href={linkedInLink} target="_blank">
+							<Button variant={primaryButton} noDarkVariant={false}>
+								<Fa icon={faExternalLink} slot="icon" />Visit LinkedIn
+							</Button>
+						</a>
 					</Saos>
 				</div>
 				<div class="w-full">
-					<Saos
-						css_observer={'display: flex; height: 100%;'}
-						animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'}
-						once
-					>
-						<div
-							class="bg-secondary px-4 py-4 md:px-6 lg:py-6 h-full lg:px-8 border-4 border-slate-900"
-						>
-							<p class="mb-4">
-								To learn more about my experience and skills, feel free to visit my LinkedIn
-								profile:
-							</p>
-
-							<a href={linkedInLink} target="_blank">
-								<Button variant={primaryButton}>
-									<Fa icon={faExternalLink} slot="icon" />Visit LinkedIn
-								</Button>
-							</a>
-						</div>
-					</Saos>
+					<!-- TODO add my photo -->
+					<Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once />
 				</div>
 			</div>
 		</div>
