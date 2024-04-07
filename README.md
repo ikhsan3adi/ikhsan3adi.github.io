@@ -11,31 +11,31 @@ Welcome to my portfolio! Here, you will find a showcase of my skills, projects, 
 
 ### This website consists of:
 
-#### :large_blue_circle: Navbar
+- Navbar
 
-#### :large_blue_circle: Hero section.
+- Hero section.
 
-#### :large_blue_circle: About Me section.
+- About Me section.
 
-#### :large_blue_circle: Projects section.
+- Projects section.
 
-#### :large_blue_circle: Project Detail page.
+- Project Detail page.
 
-#### :large_blue_circle: Development Tools section.
+- Development Tools section.
 
-#### :large_blue_circle: Social section.
+- Social section.
 
-#### :large_blue_circle: Contact section.
+- Contact section.
 
-#### :large_blue_circle: Footer.
+- Footer.
 
 ## Features
 
-#### :large_blue_diamond: Responsive Design :iphone: :desktop_computer:
+- Responsive Design :iphone: :desktop_computer:
 
-#### :large_blue_diamond: Loading UI Component :arrows_counterclockwise:
+- Loading UI Component :arrows_counterclockwise:
 
-#### :large_blue_diamond: Error Handling :bangbang:
+- Error Handling :bangbang:
 
 ## Technologies Used
 
@@ -56,19 +56,11 @@ Welcome to my portfolio! Here, you will find a showcase of my skills, projects, 
 | ![Projects light](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/projects-light.png)             | ![Projects dark](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/projects-dark.png)             |
 | ![Project Detail light](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/project-detail-light.png) | ![Project Detail dark](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/project-detail-dark.png) |
 
-### Development Tools
-
-![Dev tools](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/tools-light.png)
-
 ### Social & Contact
 
 | Light                                                                                                  | Dark                                                                                                 |
 | ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
 | ![Contact light](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/contact-light.png) | ![Contact dark](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/contact-dark.png) |
-
-### Footer
-
-![Footer](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/footer.png)
 
 ## Contributing
 
