@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-	@font-face {
-		font-family: 'Mechsuit';
-		src: local('Mechsuit'), url('/fonts/Mechsuit.otf');
-		font-display: swap;
-	}
+  @font-face {
+    font-family: 'Mechsuit';
+    src: local('Mechsuit'), url('/fonts/Mechsuit.otf');
+    font-display: swap;
+  }
 }
