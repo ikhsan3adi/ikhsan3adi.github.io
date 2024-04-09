@@ -1,12 +1,12 @@
 import type { ButtonColorVariant } from '$lib/components/colors';
 
+import Facebook from '$lib/components/graphics/social/Facebook.svelte';
 import Github from '$lib/components/graphics/social/Github.svelte';
 import Instagram from '$lib/components/graphics/social/Instagram.svelte';
-import Facebook from '$lib/components/graphics/social/Facebook.svelte';
 import LinkedIn from '$lib/components/graphics/social/Linkedin.svelte';
-import Telegram from '$lib/components/graphics/social/Telegram.svelte';
 import Medium from '$lib/components/graphics/social/Medium.svelte';
 import Showwcase from '$lib/components/graphics/social/Showwcase.svelte';
+import Telegram from '$lib/components/graphics/social/Telegram.svelte';
 
 export const githubLink = 'https://github.com/ikhsan3adi/';
 export const linkedInLink = 'https://www.linkedin.com/in/ikhsan-satriadi/';
@@ -45,7 +45,7 @@ export const socials = [
   {
     social: 'Telegram',
     name: 'Ikhsan',
-    link: 'https://t.me/xann_xenn_xinn',
+    link: 'https://t.me/ikhsan3adi',
     colorVariant: { key: 'telegram' } as ButtonColorVariant,
     icon: Telegram
   },
