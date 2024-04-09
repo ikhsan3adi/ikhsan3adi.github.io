@@ -1,16 +1,16 @@
 <script lang="ts">
-  import { scale } from 'svelte/transition';
   import type { Project } from '$lib/api/projects';
   import {
+    tagColors,
     type CardColorKey,
     type CardColors,
     type TagColorKey,
-    type TagColors,
-    tagColors
+    type TagColors
   } from '$lib/components/colors';
+  import { scale } from 'svelte/transition';
 
+  import { faCodeFork, faDownload, faStar, faWarning } from '@fortawesome/free-solid-svg-icons';
   import Fa from 'svelte-fa';
-  import { faCodeFork, faStar, faDownload, faWarning } from '@fortawesome/free-solid-svg-icons';
 
   export let project: Project;
 
@@ -127,6 +127,8 @@
         {#each tags as tag}
           <p
             class="{tagColors[tag.key].bg} 
+            {tagColors[tag.key].border}
+            {tagColors[tag.key].text}
 					max-sm:text-sm px-2 sm:px-4 py-1 h-max border-2 border-slate-900"
           >
             #{tag.name}

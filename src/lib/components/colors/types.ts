@@ -13,6 +13,7 @@ interface TagColors {
   codeigniter: TagColor;
   javascript: TagColor;
   typescript: TagColor;
+  nestjs: TagColor;
   svelte: TagColor;
 }
 
@@ -39,4 +40,5 @@ interface CardColorKey {
   key: keyof CardColorsVariant;
 }
 
-export type { TagColors, TagColorKey, CardColorsVariant as CardColors, CardColorKey };
+export type { CardColorKey, CardColorsVariant as CardColors, TagColorKey, TagColors };
+
