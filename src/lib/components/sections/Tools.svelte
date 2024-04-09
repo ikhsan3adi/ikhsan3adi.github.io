@@ -25,6 +25,7 @@
   import VisualStudioCode from '$lib/components/graphics/tools/VisualStudioCode.svelte';
 
   import Saos from 'saos';
+  import GithubActions from '../graphics/tools/GithubActions.svelte';
 </script>
 
 <section
@@ -152,6 +153,9 @@
                       <div class="w-20">
                         <Github />
                       </div>
+                      <div class="w-20">
+                        <GithubActions />
+                      </div>
                     </div>
                     <div
                       class="border-t-4 w-full border-slate-900 h-12 absolute bottom-0 flex justify-start"
@@ -162,18 +166,18 @@
                 </Saos>
                 <!-- Design -->
                 <Saos animation={'scale-up-center 2s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-                  <div class="w-full h-[200px] bg-custom-3 border-2 border-slate-900">
+                  <div class="w-full h-[200px] flex flex-col bg-custom-3 border-2 border-slate-900">
                     <div class="border-b-4 w-full border-slate-900 h-12 flex justify-start">
                       <h4 class="my-auto mx-4">Design</h4>
                     </div>
-                    <div
-                      class="w-full flex my-auto md:my-0 px-2 pt-12 md:pt-6 gap-2 gap-y-4 justify-evenly"
-                    >
-                      <div class="w-20">
-                        <AdobeIllustrator />
-                      </div>
-                      <div class="w-20">
-                        <AdobePhotoshop />
+                    <div class="w-full my-auto mx-auto">
+                      <div class="flex flex-wrap flex-auto gap-2 justify-evenly">
+                        <div class="w-16 sm:w-20">
+                          <AdobeIllustrator />
+                        </div>
+                        <div class="w-16 sm:w-20">
+                          <AdobePhotoshop />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -186,20 +190,22 @@
                     <div class="border-b-4 w-full border-slate-900 h-12 flex justify-start">
                       <h4 class="my-auto mx-4">Others</h4>
                     </div>
-                    <div
-                      class="mx-auto md:mx-0 my-auto flex gap-2 md:flex-row flex-wrap justify-evenly"
-                    >
-                      <div class="w-20 lg:w-24">
-                        <VisualStudioCode />
-                      </div>
-                      <div class="w-20 lg:w-24">
-                        <SublimeText />
-                      </div>
-                      <div class="w-20 lg:w-24">
-                        <Postman />
-                      </div>
-                      <div class="w-20 lg:w-24">
-                        <Ubuntu />
+                    <div class="mx-auto my-auto">
+                      <div
+                        class="flex flex-auto gap-2 flex-col sm:flex-row flex-wrap justify-evenly"
+                      >
+                        <div class="w-16 sm:w-20 lg:w-24">
+                          <VisualStudioCode />
+                        </div>
+                        <div class="w-16 sm:w-20 lg:w-24">
+                          <SublimeText />
+                        </div>
+                        <div class="w-16 sm:w-20 lg:w-24">
+                          <Postman />
+                        </div>
+                        <div class="w-16 sm:w-20 lg:w-24">
+                          <Ubuntu />
+                        </div>
                       </div>
                     </div>
                   </div>
