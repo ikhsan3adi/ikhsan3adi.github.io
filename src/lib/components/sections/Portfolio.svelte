@@ -66,7 +66,6 @@
         <h4>● Apps</h4>
         <h4>● Websites</h4>
         <h4>● Tools</h4>
-        <h4>● Things</h4>
       </div>
     </MarqueeText>
   </div>

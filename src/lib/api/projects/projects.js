@@ -18,7 +18,7 @@ const initialProjects = [
     description: '',
     imageUrl: 'https://github.com/ikhsan3adi/Flutter-Auction-App/raw/master/images/banner.png',
     readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/flutter-auction-app/master/README.md',
-    tags: ['flutter']
+    tags: ['flutter', 'codeigniter']
   },
   {
     id: 'sistem-perpustakaan-qr-code',
@@ -29,7 +29,7 @@ const initialProjects = [
       'https://github.com/ikhsan3adi/sistem-perpustakaan-qr-code/raw/main/screenshots/home.png',
     readmeUrl:
       'https://raw.githubusercontent.com/ikhsan3adi/sistem-perpustakaan-qr-code/main/README.md',
-    tags: ['codeigniter', 'php']
+    tags: ['codeigniter', 'mysql']
   },
   {
     id: 'flutter-celenganku-clone',
@@ -51,7 +51,7 @@ const initialProjects = [
       'https://github.com/ikhsan3adi/absensi-sekolah-qr-code/raw/master/screenshots/hero.png',
     readmeUrl:
       'https://raw.githubusercontent.com/ikhsan3adi/absensi-sekolah-qr-code/master/README.md',
-    tags: ['codeigniter', 'php']
+    tags: ['codeigniter', 'mysql']
   },
   {
     id: 'portfolio-website',

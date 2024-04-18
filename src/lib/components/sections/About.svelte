@@ -24,9 +24,7 @@
         <h4>● Back-end development</h4>
         <h4>● Front-end development</h4>
         <h4>● Android</h4>
-        <h4>● IOS</h4>
-        <h4>● Gamedev</h4>
-        <h4>● Illustrator</h4>
+        <h4>● Flutter</h4>
       </div>
     </MarqueeText>
   </div>

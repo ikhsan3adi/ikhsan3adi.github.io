@@ -2,8 +2,8 @@
   import { socials } from '$lib/api/socials';
   import { navLinks } from '$lib/components/navigation';
 
-  import Wrappper from '$lib/components/widgets/Wrappper.svelte';
   import EmblemSquare from '$lib/components/graphics/EmblemSquare.svelte';
+  import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
   export let noNavLinks = false;
 
@@ -60,7 +60,7 @@
 
         <!-- Copyright & Credit -->
         <p class="text-slate-200 text-center text-sm">
-          &copy; 2023, made with ❤️ by
+          &copy; {new Date().getFullYear()}, made with ❤️ by
           <a
             href={noNavLinks ? '/' : '#social'}
             target="_blank"
