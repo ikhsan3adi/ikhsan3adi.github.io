@@ -35,7 +35,7 @@ Welcome to my portfolio! Here, you will find a showcase of my skills, projects, 
 
 - Loading UI Component :arrows_counterclockwise:
 
-- Error Handling :bangbang:
+- Error Handling
 
 ## Technologies Used
 
