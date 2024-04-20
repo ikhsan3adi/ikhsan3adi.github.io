@@ -50,7 +50,7 @@
   out:scale
   class="w-full lg:w-[48.88%] bg-slate-900 {cardColors[cardColor.key].dark.bg}"
 >
-  <a href="/projects/{project.id}" target="_blank">
+  <a href="/$projects$/{project.id}">
     <!-- Card -->
     <div
       class="{cardColors[cardColor.key].light}
