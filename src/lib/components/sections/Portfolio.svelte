@@ -22,7 +22,7 @@
     { key: 'green' }
   ];
 
-  const cardColors: CardColorKey[] = randomizeElements(cardColorVariants, 4);
+  const cardColors: CardColorKey[] = randomizeElements(cardColorVariants, initialProjects.length);
 
   let isIntersecting = false;
 

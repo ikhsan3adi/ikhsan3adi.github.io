@@ -21,12 +21,18 @@
       light: 'bg-custom-1',
       dark: { border: 'dark:border-blue-400', bg: 'dark:bg-blue-400' }
     },
-    blue: { light: 'bg-sky-300', dark: { border: 'dark:border-sky-400', bg: 'dark:bg-sky-400' } },
+    blue: {
+      light: 'bg-sky-300',
+      dark: { border: 'dark:border-sky-400', bg: 'dark:bg-sky-400' }
+    },
     yellow: {
       light: 'bg-yellow-300',
       dark: { border: 'dark:border-yellow-400', bg: 'dark:bg-yellow-400' }
     },
-    red: { light: 'bg-red-200', dark: { border: 'dark:border-red-400', bg: 'dark:bg-red-400' } },
+    red: {
+      light: 'bg-red-200',
+      dark: { border: 'dark:border-red-400', bg: 'dark:bg-red-400' }
+    },
     purple: {
       light: 'bg-purple-300',
       dark: { border: 'dark:border-purple-400', bg: 'dark:bg-purple-400' }
