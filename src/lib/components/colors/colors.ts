@@ -15,13 +15,13 @@ export const tagColors: TagColors = {
 };
 
 export const randomizeElements = <T>(array: Array<T>, newLength: number) => {
-  const newArray = [...Array(newLength)];
+  const newArray = [];
 
   for (let i = newLength - 1; i >= 0; i--) {
     const j = clamp(Math.floor(Math.random() * (i + 1)), 0, array.length - 1);
     const index = clamp(i, 0, array.length - 1);
     [array[index], array[j]] = [array[j], array[index]];
-    newArray[i] = array[index]
+    newArray[i] = array[index];
   }
 
   return newArray;
