@@ -2,6 +2,7 @@
 
 > https://ikhsan3adi.github.io
 
+[![Continuous Integration](https://github.com/ikhsan3adi/ikhsan3adi.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/ikhsan3adi/ikhsan3adi.github.io/actions/workflows/ci.yml)
 [![GitHub Pages](https://github.com/ikhsan3adi/ikhsan3adi.github.io/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/ikhsan3adi/ikhsan3adi.github.io/actions/workflows/gh-pages.yml)
 [![pages-build-deployment](https://github.com/ikhsan3adi/ikhsan3adi.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/ikhsan3adi/ikhsan3adi.github.io/actions/workflows/pages/pages-build-deployment)
 
