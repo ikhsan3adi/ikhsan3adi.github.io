@@ -31,7 +31,6 @@ module.exports = {
     },
     {
       files: [
-        './src/lib/components/sections/Portfolio.svelte',
         './src/lib/components/sections/project-detail/ProjectDetail.svelte'
       ],
       parser: 'svelte-eslint-parser',
