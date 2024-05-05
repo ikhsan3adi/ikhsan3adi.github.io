@@ -1,17 +1,11 @@
-name: Github Pages
+name: Continuous Integration
 
 on:
-  push:
-    branches:
-      - main
+  pull_request:
 
 jobs:
-  deploy:
+  check:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - uses: actions/checkout@v4
 
@@ -31,12 +25,11 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Svelte check
+        run: npm run check
+
+      - name: Prettier & ESLint check
+        run: npm run lint
+
       - name: Build
         run: npm run build
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
-        if: github.ref == 'refs/heads/main'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
