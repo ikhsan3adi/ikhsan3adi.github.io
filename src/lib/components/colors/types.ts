@@ -41,4 +41,3 @@ interface CardColorKey {
 }
 
 export type { CardColorKey, CardColorsVariant as CardColors, TagColorKey, TagColors };
-

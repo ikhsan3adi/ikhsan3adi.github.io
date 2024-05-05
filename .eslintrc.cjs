@@ -24,6 +24,22 @@ module.exports = {
       parser: 'svelte-eslint-parser',
       parserOptions: {
         parser: '@typescript-eslint/parser'
+      },
+      rules: {
+        'no-undef': 'off'
+      }
+    },
+    {
+      files: [
+        './src/lib/components/sections/Portfolio.svelte',
+        './src/lib/components/sections/project-detail/ProjectDetail.svelte'
+      ],
+      parser: 'svelte-eslint-parser',
+      parserOptions: {
+        parser: '@typescript-eslint/parser'
+      },
+      rules: {
+        'svelte/no-at-html-tags': 'off'
       }
     }
   ]
