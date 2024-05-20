@@ -4,10 +4,10 @@ const githubApiLink = 'https://api.github.com/repos/ikhsan3adi';
 const initialProjects = [
   {
     id: 'backtix',
-    name: 'BackTix - Event & ticketing app',
+    name: 'BackTix - Event & Ticketing app',
     url: `${githubApiLink}/backtix`,
     description: '',
-    imageUrl: 'https://github.com/ikhsan3adi/backtix/raw/main/assets/banner.png',
+    imageUrl: 'https://github.com/ikhsan3adi/backtix/raw/main/assets/social_preview.png',
     readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/backtix/master/README.md',
     tags: ['flutter', 'nestjs', 'svelte']
   },
@@ -19,6 +19,17 @@ const initialProjects = [
     imageUrl: 'https://github.com/ikhsan3adi/Flutter-Auction-App/raw/master/images/banner.png',
     readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/flutter-auction-app/master/README.md',
     tags: ['flutter', 'codeigniter']
+  },
+  {
+    id: 'absensi-sekolah-qr-code',
+    name: 'Sistem Absensi QR Code',
+    url: `${githubApiLink}/absensi-sekolah-qr-code`,
+    description: '',
+    imageUrl:
+      'https://github.com/ikhsan3adi/absensi-sekolah-qr-code/raw/master/screenshots/hero.png',
+    readmeUrl:
+      'https://raw.githubusercontent.com/ikhsan3adi/absensi-sekolah-qr-code/master/README.md',
+    tags: ['codeigniter', 'mysql']
   },
   {
     id: 'sistem-perpustakaan-qr-code',
@@ -41,17 +52,6 @@ const initialProjects = [
     readmeUrl:
       'https://raw.githubusercontent.com/ikhsan3adi/flutter-celenganku-clone/master/README.md',
     tags: ['flutter']
-  },
-  {
-    id: 'absensi-sekolah-qr-code',
-    name: 'Sistem Absensi QR Code',
-    url: `${githubApiLink}/absensi-sekolah-qr-code`,
-    description: '',
-    imageUrl:
-      'https://github.com/ikhsan3adi/absensi-sekolah-qr-code/raw/master/screenshots/hero.png',
-    readmeUrl:
-      'https://raw.githubusercontent.com/ikhsan3adi/absensi-sekolah-qr-code/master/README.md',
-    tags: ['codeigniter', 'mysql']
   },
   {
     id: 'portfolio-website',
