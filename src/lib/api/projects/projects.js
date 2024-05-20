@@ -4,7 +4,7 @@ const githubApiLink = 'https://api.github.com/repos/ikhsan3adi';
 const initialProjects = [
   {
     id: 'backtix',
-    name: 'BackTix - Event & Ticketing app',
+    name: 'BackTix - Event & Ticketing App',
     url: `${githubApiLink}/backtix`,
     description: '',
     imageUrl: 'https://github.com/ikhsan3adi/backtix/raw/main/assets/social_preview.png',
@@ -55,7 +55,7 @@ const initialProjects = [
   },
   {
     id: 'portfolio-website',
-    name: 'Portfolio website',
+    name: 'Portfolio Website',
     url: `${githubApiLink}/ikhsan3adi.github.io`,
     description: '',
     imageUrl: 'https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/preview.png',
