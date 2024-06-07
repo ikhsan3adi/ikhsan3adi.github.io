@@ -5,7 +5,7 @@ import Github from '$lib/components/graphics/social/Github.svelte';
 import Instagram from '$lib/components/graphics/social/Instagram.svelte';
 import LinkedIn from '$lib/components/graphics/social/Linkedin.svelte';
 import Medium from '$lib/components/graphics/social/Medium.svelte';
-import Showwcase from '$lib/components/graphics/social/Showwcase.svelte';
+// import Showwcase from '$lib/components/graphics/social/Showwcase.svelte';
 import Telegram from '$lib/components/graphics/social/Telegram.svelte';
 
 export const githubLink = 'https://github.com/ikhsan3adi/';
@@ -49,17 +49,17 @@ export const socials = [
     colorVariant: { key: 'telegram' } as ButtonColorVariant,
     icon: Telegram
   },
-  {
-    social: 'Showwcase',
-    name: '@ikhsan3adi',
-    link: 'https://www.showwcase.com/ikhsan3adi',
-    colorVariant: { key: 'telegram' } as ButtonColorVariant,
-    icon: Showwcase
-  },
+  // {
+  //   social: 'Showwcase',
+  //   name: '@ikhsan3adi',
+  //   link: 'https://www.showwcase.com/ikhsan3adi',
+  //   colorVariant: { key: 'telegram' } as ButtonColorVariant,
+  //   icon: Showwcase
+  // },
   {
     social: 'Medium',
     name: 'Ikhsan Satriadi',
-    link: 'https://medium.com/@ikhsansatriadi175',
+    link: 'https://medium.com/@ikhsan3adi',
     colorVariant: { key: 'medium' } as ButtonColorVariant,
     icon: Medium
   }
