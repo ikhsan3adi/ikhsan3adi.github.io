@@ -11,6 +11,7 @@
   import Flutter from '$lib/components/graphics/tools/Flutter.svelte';
   import Git from '$lib/components/graphics/tools/Git.svelte';
   import Javascript from '$lib/components/graphics/tools/Javascript.svelte';
+  import Laravel from '$lib/components/graphics/tools/Laravel.svelte';
   import Mysql from '$lib/components/graphics/tools/Mysql.svelte';
   import NestJs from '$lib/components/graphics/tools/NestJS.svelte';
   import Nodejs from '$lib/components/graphics/tools/Nodejs.svelte';
@@ -82,16 +83,19 @@
                   class="flex flex-wrap m-2 mx-auto my-auto px-2 pb-12 gap-2 items-center justify-evenly"
                 >
                   <div class="w-16 md:w-20 xl:w-24">
+                    <Php />
+                  </div>
+                  <div class="w-16 md:w-20 xl:w-24">
                     <Codeigniter />
+                  </div>
+                  <div class="w-16 md:w-20 xl:w-24">
+                    <Laravel />
                   </div>
                   <div class="w-16 md:w-20 xl:w-24">
                     <NestJs />
                   </div>
                   <div class="w-16 md:w-20 xl:w-24">
                     <Nodejs />
-                  </div>
-                  <div class="w-16 md:w-20 xl:w-24">
-                    <Php />
                   </div>
                   <div class="w-16 md:w-20 xl:w-24">
                     <Postgresql />
