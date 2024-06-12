@@ -6,7 +6,7 @@
 [![GitHub Pages](https://github.com/ikhsan3adi/ikhsan3adi.github.io/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/ikhsan3adi/ikhsan3adi.github.io/actions/workflows/gh-pages.yml)
 [![pages-build-deployment](https://github.com/ikhsan3adi/ikhsan3adi.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/ikhsan3adi/ikhsan3adi.github.io/actions/workflows/pages/pages-build-deployment)
 
-![Cover Image](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/preview.png)
+![Hero dark](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/hero-dark.png)
 
 Welcome to my portfolio! Here, you will find a showcase of my skills, projects, and experiences as a software developer.
 
