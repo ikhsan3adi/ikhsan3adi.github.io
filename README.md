@@ -50,12 +50,21 @@ Welcome to my portfolio! Here, you will find a showcase of my skills, projects, 
 
 ## Screenshots
 
-### Projects & Project Detail
+### Hero
 
-| Light                                                                                                                | Dark                                                                                                               |
-| -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| ![Projects light](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/projects-light.png)             | ![Projects dark](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/projects-dark.png)             |
-| ![Project Detail light](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/project-detail-light.png) | ![Project Detail dark](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/project-detail-dark.png) |
+![Hero light](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/hero-light.png)
+
+### About Me
+
+| Light                                                                                              | Dark                                                                                             |
+| -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| ![About light](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/about-light.png) | ![About dark](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/about-dark.png) |
+
+### Projects
+
+| Light                                                                                                    | Dark                                                                                                   |
+| -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| ![Projects light](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/projects-light.png) | ![Projects dark](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/projects-dark.png) |
 
 ### Social & Contact
 
