@@ -54,7 +54,7 @@ Welcome to my portfolio! Here, you will find a showcase of my skills, projects, 
 
 ![Hero light](https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/hero-light.png)
 
-### About Me
+### About Me (Unfinished)
 
 | Light                                                                                              | Dark                                                                                             |
 | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
