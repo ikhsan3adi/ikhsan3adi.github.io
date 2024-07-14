@@ -58,7 +58,7 @@ const initialProjects = [
     name: 'Portfolio Website',
     url: `${githubApiLink}/ikhsan3adi.github.io`,
     description: '',
-    imageUrl: 'https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/preview.png',
+    imageUrl: 'https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/hero-dark.png',
     readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/ikhsan3adi.github.io/master/README.md',
     tags: ['html', 'typescript']
   }
