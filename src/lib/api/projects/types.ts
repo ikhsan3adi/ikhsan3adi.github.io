@@ -3,6 +3,7 @@ interface Project {
   name: string;
   url: string;
   description?: string;
+  baseUrl: string;
   imageUrl: string;
   imageText?: string;
   readmeUrl?: string;
