@@ -1,6 +1,6 @@
-import { projectsStore, projectDetailStore } from './store';
 import { browser } from '$app/environment';
 import { error } from '@sveltejs/kit';
+import { projectDetailStore, projectsStore } from './store';
 import type { Project, ProjectDetail } from './types';
 
 class ProjectService {
@@ -25,12 +25,8 @@ class ProjectService {
 
       if (response.status === 200) {
         newProject = {
-          id: project.id,
-          name: project.name,
-          url: project.url,
+          ...project,
           description: json.description,
-          imageUrl: project.imageUrl,
-          readmeUrl: project.readmeUrl,
           tags: [...project.tags, json.language.toLowerCase()],
           starsCount: json.stargazers_count,
           forksCount: json.forks,
@@ -62,12 +58,8 @@ class ProjectService {
         } else if (response.status === 403) {
           fallbackData = [
             {
-              id: project.id,
+              ...project,
               name: 'limit',
-              url: project.url,
-              description: json.message,
-              imageUrl: project.imageUrl,
-              readmeUrl: project.readmeUrl,
               tags: []
             }
           ];
@@ -91,13 +83,10 @@ class ProjectService {
       } else {
         fallbackData = [
           {
-            id: project.id,
+            ...project,
             name: 'error',
-            url: project.url,
             description: 'No internet connection',
-            imageUrl: project.imageUrl,
-            readmeUrl: project.readmeUrl,
-            tags: []
+            tags: [],
           }
         ];
       }
@@ -129,16 +118,12 @@ class ProjectService {
 
       if (response.status === 200) {
         newProject = {
-          id: project.id,
-          name: project.name,
-          url: project.url,
+          ...project,
           description: json.description,
-          imageUrl: project.imageUrl,
           tags: [...project.tags, json.language.toLowerCase()],
           repositoryUrl: json['svn_url'],
           hasLivePreview: json.homepage ? true : false,
           livePreviewUrl: json.homepage,
-          readmeUrl: project.readmeUrl,
           starsCount: json.stargazers_count,
           forksCount: json.forks,
           downloadsCount: await this.getDownloadsCount(project.url)
@@ -157,14 +142,11 @@ class ProjectService {
           };
         } else if (response.status === 403) {
           fallbackData = {
-            id: project.id,
+            ...project,
             name: 'limit',
-            url: project.url,
             description: json.message,
-            imageUrl: project.imageUrl,
             tags: [],
             hasLivePreview: false,
-            readmeUrl: project.readmeUrl,
             repositoryUrl: ''
           };
         } else {
@@ -187,14 +169,11 @@ class ProjectService {
         };
       } else {
         fallbackData = {
-          id: project.id,
+          ...project,
           name: 'error',
-          url: project.url,
           description: 'No internet connection',
-          imageUrl: project.imageUrl,
           tags: [],
           hasLivePreview: false,
-          readmeUrl: project.readmeUrl,
           repositoryUrl: ''
         };
       }
