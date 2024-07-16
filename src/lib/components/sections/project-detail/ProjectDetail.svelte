@@ -3,40 +3,52 @@
   import type { ButtonColorVariant } from '$lib/components/colors';
   import { type TagColorKey, type TagColors, tagColors } from '$lib/components/colors';
 
-  import { marked } from 'marked';
+  import { Octokit } from '@octokit/rest';
   import hljs from 'highlight.js';
-
+  import { marked } from 'marked';
+  import markedAlert from 'marked-alert';
+  import { baseUrl as markedBaseUrl } from 'marked-base-url';
+  import { markedEmoji } from 'marked-emoji';
   import { markedHighlight } from 'marked-highlight';
   import { renderer } from './renderer';
 
-  import Fa from 'svelte-fa';
   import {
-    faCodeFork,
-    faStar,
-    faDownload,
-    faWarning,
     faCode,
-    faExternalLink
+    faCodeFork,
+    faDownload,
+    faExternalLink,
+    faStar,
+    faWarning
   } from '@fortawesome/free-solid-svg-icons';
+  import Fa from 'svelte-fa';
 
-  import Wrappper from '$lib/components/widgets/Wrappper.svelte';
   import Button from '$lib/components/buttons/Button.svelte';
+  import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
   export let project: ProjectDetail;
   export let markdownPromise: Promise<string | null>;
 
   const secondaryButton: ButtonColorVariant = { key: 'secondary' };
 
-  marked.use(
-    { renderer },
-    markedHighlight({
-      langPrefix: 'hljs language-',
-      highlight(code, lang) {
-        const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-        return hljs.highlight(code, { language }, true).value;
-      }
-    })
-  );
+  const markdownizePromise = async () => {
+    // Get all the emojis available to use on GitHub.
+    const res = await new Octokit().rest.emojis.get().catch(() => null);
+    const emojis = res?.data;
+
+    return marked.use(
+      { renderer: renderer(project.baseUrl) },
+      markedBaseUrl(project.baseUrl),
+      markedHighlight({
+        langPrefix: 'hljs language-',
+        highlight(code, lang) {
+          const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+          return hljs.highlight(code, { language }, true).value;
+        }
+      }),
+      markedAlert(),
+      markedEmoji({ emojis: emojis ?? {} })
+    );
+  };
 
   const tags: TagColorKey[] = project.tags.map((tag) => {
     return Object.prototype.hasOwnProperty.call(tagColors, tag)
@@ -136,9 +148,13 @@
       <!-- README.md content -->
       <div class="mb-24">
         {#await markdownPromise then markdown}
-          <p class="text-slate-600 dark:text-slate-300 markdown-content">
-            {@html marked(markdown ?? '', { headerIds: false, mangle: false })}
-          </p>
+          <div class="text-slate-600 dark:text-slate-300 markdown-content">
+            {#await markdownizePromise() then markdownize}
+              {#await markdownize(markdown ?? '', { gfm: true }) then html}
+                {@html html}
+              {/await}
+            {/await}
+          </div>
         {:catch error}
           <h1 class="dark:text-white"><Fa icon={faWarning} />Failed to load README</h1>
           <p class="text-red-500 dark:text-red-400">{error}</p>
@@ -150,8 +166,78 @@
 
 <div class="markdown-content hidden"><a href="/">_</a></div>
 
-<style lang="postcss">
-  .markdown-content > a {
-    @apply text-blue-500 dark:text-sky-500 hover:text-blue-300 dark:hover:text-sky-300 hover:underline;
-  }
-</style>
+<svelte:head>
+  <style lang="postcss">
+    .markdown-alert {
+      @apply border-l-4 py-4 my-4 -ml-2 pl-4 bg-slate-100 dark:bg-slate-700;
+    }
+
+    .markdown-alert-title {
+      @apply text-slate-600 dark:text-slate-300 dark:outline-slate-300 flex gap-2 items-center;
+    }
+
+    .markdown-alert-title > svg {
+      @apply fill-slate-600 dark:fill-slate-300;
+    }
+
+    .markdown-alert-note {
+      @apply border-blue-500 bg-blue-50;
+    }
+
+    .markdown-alert-note > .markdown-alert-title {
+      @apply text-blue-500;
+    }
+
+    .markdown-alert-note > .markdown-alert-title > svg {
+      @apply fill-blue-500;
+    }
+
+    .markdown-alert-tip {
+      @apply border-green-500 bg-green-50;
+    }
+
+    .markdown-alert-tip > .markdown-alert-title {
+      @apply text-green-500;
+    }
+
+    .markdown-alert-tip > .markdown-alert-title > svg {
+      @apply fill-green-500;
+    }
+
+    .markdown-alert-important {
+      @apply border-purple-500 bg-purple-50;
+    }
+
+    .markdown-alert-important > .markdown-alert-title {
+      @apply text-purple-500;
+    }
+
+    .markdown-alert-important > .markdown-alert-title > svg {
+      @apply fill-purple-500;
+    }
+
+    .markdown-alert-warning {
+      @apply border-yellow-500 bg-yellow-50;
+    }
+
+    .markdown-alert-warning > .markdown-alert-title {
+      @apply text-yellow-500;
+    }
+
+    .markdown-alert-warning > .markdown-alert-title > svg {
+      @apply fill-yellow-500;
+    }
+
+    .markdown-alert-caution {
+      @apply border-red-500 bg-red-50;
+    }
+
+    .markdown-alert-caution > .markdown-alert-title {
+      @apply text-red-500;
+    }
+
+    .markdown-alert-caution > .markdown-alert-title > svg {
+      @apply fill-red-500;
+    }
+  </style>
+</svelte:head>

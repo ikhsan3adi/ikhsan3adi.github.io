@@ -5,6 +5,10 @@
 <slot />
 
 <style global lang="postcss">
+  :global(*) {
+    @apply font-poppins;
+  }
+
   :global(h1),
   :global(h2) {
     @apply font-jetbrains font-extrabold text-text;
@@ -37,6 +41,10 @@
 
   :global(a) {
     @apply font-poppins font-medium;
+  }
+
+  :global(code > *) {
+    @apply font-jetbrains;
   }
 
   @-webkit-keyframes -global-scale-up-center {
