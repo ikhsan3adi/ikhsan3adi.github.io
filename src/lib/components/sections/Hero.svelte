@@ -3,11 +3,11 @@
 
   import bg from '$lib/components/graphics/hero-bg.svg';
 
+  import Button from '$lib/components/buttons/Button.svelte';
   import Emblem from '$lib/components/graphics/Emblem.svelte';
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
-  import Button from '$lib/components/buttons/Button.svelte';
 
-  import Typewriter from 'svelte-typewriter/Typewriter.svelte';
+  import Typewriter from 'svelte-typewriter';
 
   const secondaryButton: ButtonColorVariant = { key: 'secondary' };
 </script>
