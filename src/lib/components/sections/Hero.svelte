@@ -25,7 +25,7 @@
             <!-- Hero text -->
             <h4 id="home" class="dark:text-white duration-500">Hello, my name is</h4>
             <h1 class="mb-2 dark:text-white duration-500">
-              Ikhsan <span class="text-inherit text-primary">Satriadi</span>
+              Ikhsan <span class="font-jetbrains text-inherit text-primary">Satriadi</span>
             </h1>
 
             <!-- Typing effect -->
