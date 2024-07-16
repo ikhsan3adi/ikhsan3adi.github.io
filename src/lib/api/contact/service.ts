@@ -1,3 +1,5 @@
+import { enableMessageForm } from '$lib/config';
+
 export const submitContactRequest = async ({
   name,
   email,
@@ -7,7 +9,11 @@ export const submitContactRequest = async ({
   email: string;
   message: string;
 }) => {
-  const URL = `https://mymx.000webhostapp.com/services/contact`;
+  if (!enableMessageForm) return null;
+
+
+  //! Not used
+  const URL = '';
 
   const formData = new FormData();
 

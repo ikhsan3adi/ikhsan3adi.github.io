@@ -4,4 +4,7 @@ const hamburgerMenuExpanded: Writable<boolean> = writable(false);
 
 const darkEnabled: Writable<boolean> = writable(false);
 
-export { darkEnabled, hamburgerMenuExpanded };
+const enableMessageForm = false;
+
+export { darkEnabled, enableMessageForm, hamburgerMenuExpanded };
+
