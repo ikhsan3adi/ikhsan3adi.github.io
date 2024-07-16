@@ -4,11 +4,11 @@ export const renderer = (baseUrl: string) => {
   const renderer: Renderer = new marked.Renderer();
 
   renderer.heading = (text, level) => {
-    return `<h${level} class="my-4 dark:text-white">${text}</h${level}>`;
+    return `<h${level} class="my-4 font-jetbrains dark:text-white">${text}</h${level}>`;
   };
 
   renderer.paragraph = (text) => {
-    return `<span class="text-slate-600 dark:text-slate-300 mb-2">${text}</span>`;
+    return `<span class="text-slate-600 dark:text-slate-300 mb-2">${text}</span><br>`;
   };
 
   renderer.strong = (text) => {
@@ -21,7 +21,7 @@ export const renderer = (baseUrl: string) => {
   };
 
   renderer.listitem = (text) => {
-    return `<li class="mb-2">${text}</li>\n`;
+    return `<li class="mb-2">${text}</li>`;
   };
 
   renderer.image = (href, title, text) => {
@@ -53,6 +53,11 @@ export const renderer = (baseUrl: string) => {
     if (href === null) {
       return text;
     }
+
+    if (!href.startsWith('http') || href.startsWith('./')) {
+      href = new URL(href, baseUrl).toString();
+    }
+
     let out = '<a href="' + href + '"';
     if (title) {
       out += ' title="' + title + '"';
@@ -70,12 +75,29 @@ export const renderer = (baseUrl: string) => {
 
   renderer.html = (html, block) => {
     if (html.includes('<img')) {
-      const regex = /src="([^"]+)"/;
-      const imgSrc = html.match(regex)?.[1];
+      const regex = /src="([^"]+?)"/g;
+      const hrefs = html.match(regex) ?? [];
 
-      if (imgSrc && (!imgSrc.startsWith('http') || imgSrc.startsWith('./'))) {
-        const newSrc = new URL(imgSrc, baseUrl).toString();
-        html = html.replace(regex, `src="${newSrc}"`);
+      for (const href of hrefs) {
+        const hrefVal = href.match(/src="([^"]+?)"/)?.[1];
+
+        if (hrefVal && (!hrefVal.startsWith('http') || hrefVal.startsWith('./'))) {
+          const newHref = new URL(hrefVal, baseUrl).toString();
+          html = html.replace(href, `src="${newHref}"`);
+        }
+      }
+    }
+    if (html.includes('href=')) {
+      const regex = /href="([^"]+?)"/g;
+      const hrefs = html.match(regex) ?? [];
+
+      for (const href of hrefs) {
+        const hrefVal = href.match(/href="([^"]+?)"/)?.[1];
+
+        if (hrefVal && (!hrefVal.startsWith('http') || hrefVal.startsWith('./'))) {
+          const newHref = new URL(hrefVal, baseUrl).toString();
+          html = html.replace(href, `href="${newHref}"`);
+        }
       }
     }
     return `<div class="${block ? 'block' : 'inline'} my-5">${html}</div>`;
@@ -88,6 +110,8 @@ export const renderer = (baseUrl: string) => {
       '</blockquote>\n'
     );
   };
+
+  renderer.hr = () => '<hr class="my-4 border-slate-500" />';
 
   return renderer;
 };

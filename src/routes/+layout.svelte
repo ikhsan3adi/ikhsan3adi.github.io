@@ -5,7 +5,7 @@
 <slot />
 
 <style global lang="postcss">
-  :global(*) {
+  :global(body) {
     @apply font-poppins;
   }
 
