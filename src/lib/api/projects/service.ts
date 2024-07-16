@@ -86,7 +86,7 @@ class ProjectService {
             ...project,
             name: 'error',
             description: 'No internet connection',
-            tags: [],
+            tags: []
           }
         ];
       }

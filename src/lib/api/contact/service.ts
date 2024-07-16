@@ -11,7 +11,6 @@ export const submitContactRequest = async ({
 }) => {
   if (!enableMessageForm) return null;
 
-
   //! Not used
   const URL = '';
 

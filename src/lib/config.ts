@@ -7,4 +7,3 @@ const darkEnabled: Writable<boolean> = writable(false);
 const enableMessageForm = false;
 
 export { darkEnabled, enableMessageForm, hamburgerMenuExpanded };
-
