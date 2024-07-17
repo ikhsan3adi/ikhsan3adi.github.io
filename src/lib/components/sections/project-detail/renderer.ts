@@ -70,7 +70,7 @@ export const renderer = (baseUrl: string) => {
   };
 
   renderer.codespan = (code) => {
-    return `<pre class="inline-block bg-slate-200 dark:bg-slate-700 px-2 py-0.5 mb-4"><code class="text-text dark:text-slate-50">${code}</code></pre>`;
+    return `<code class="bg-slate-200 dark:bg-slate-600 px-1.5 py-0.5 break-all rounded-md inline-block text-text dark:text-slate-50">${code}</code>`;
   };
 
   renderer.html = (html, block) => {
