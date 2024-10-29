@@ -37,6 +37,16 @@ export const tagColors: TagColors = {
     border: 'dark:border-red-400',
     text: 'dark:text-red-400'
   },
+  laravel: {
+    bg: 'bg-red-400 dark:bg-slate-800',
+    border: 'dark:border-red-400',
+    text: 'dark:text-red-400'
+  },
+  blade: {
+    bg: 'bg-red-400 dark:bg-slate-800',
+    border: 'dark:border-red-400',
+    text: 'dark:text-red-400'
+  },
   javascript: {
     bg: 'bg-yellow-400 dark:bg-slate-800',
     border: 'dark:border-yellow-400',

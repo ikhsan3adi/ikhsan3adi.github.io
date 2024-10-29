@@ -35,6 +35,18 @@ const initialProjects = [
     tags: ['codeigniter', 'mysql']
   },
   {
+    id: 'absensi-karyawan-gps-barcode',
+    name: 'Absensi Karyawan GPS Barcode',
+    url: `${githubApiLink}/absensi-karyawan-gps-barcode`,
+    description: '',
+    baseUrl: 'https://github.com/ikhsan3adi/absensi-karyawan-gps-barcode/raw/master/',
+    imageUrl:
+      'https://github.com/ikhsan3adi/absensi-karyawan-gps-barcode/raw/master/screenshots/hero.png',
+    readmeUrl:
+      'https://raw.githubusercontent.com/ikhsan3adi/absensi-karyawan-gps-barcode/master/README.md',
+    tags: ['laravel', 'livewire', 'jetstream']
+  },
+  {
     id: 'sistem-perpustakaan-qr-code',
     name: 'Sistem Perpustakaan QR Code',
     url: `${githubApiLink}/sistem-perpustakaan-qr-code`,
@@ -71,3 +83,4 @@ const initialProjects = [
 ];
 
 export { initialProjects };
+

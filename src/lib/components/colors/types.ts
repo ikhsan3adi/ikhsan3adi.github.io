@@ -11,6 +11,8 @@ interface TagColors {
   html: TagColor;
   php: TagColor;
   codeigniter: TagColor;
+  laravel: TagColor;
+  blade: TagColor;
   javascript: TagColor;
   typescript: TagColor;
   nestjs: TagColor;
