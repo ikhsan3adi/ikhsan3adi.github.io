@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ButtonColorVariants, ButtonColorVariant } from '$lib/components/colors';
+  import type { ButtonColorVariant, ButtonColorVariants } from '$lib/components/colors';
 
   export let disabled = false;
   export let variant: ButtonColorVariant = { key: disabled ? 'disabled' : 'primary' };
@@ -14,6 +14,7 @@
     whatsapp: 'dark:bg-green-400',
     email: 'dark:bg-red-400',
     github: 'dark:bg-slate-200',
+    hackerrank: 'dark:bg-teal-400',
     instagram: 'dark:bg-fuchsia-400',
     facebook: 'dark:bg-sky-400',
     linkedIn: 'dark:bg-blue-400',
@@ -28,6 +29,7 @@
     whatsapp: 'dark:border-green-400',
     email: 'dark:border-red-400',
     github: 'dark:border-slate-200',
+    hackerrank: 'dark:border-teal-400',
     instagram: 'dark:border-fuchsia-400',
     facebook: 'dark:border-sky-400',
     linkedIn: 'dark:border-blue-400',
@@ -42,6 +44,7 @@
     whatsapp: 'bg-green-400',
     email: 'bg-red-400',
     github: 'bg-slate-200',
+    hackerrank: 'bg-teal-400',
     instagram: 'bg-fuchsia-400',
     facebook: 'bg-sky-400',
     linkedIn: 'bg-blue-400',
@@ -56,6 +59,7 @@
     whatsapp: 'dark:text-green-400',
     email: 'dark:text-red-400',
     github: 'dark:text-slate-200',
+    hackerrank: 'dark:text-teal-400',
     instagram: 'dark:text-fuchsia-400',
     facebook: 'dark:text-sky-400',
     linkedIn: 'dark:text-blue-400',

@@ -5,6 +5,7 @@ interface ButtonColorVariants {
   whatsapp: string;
   email: string;
   github: string;
+  hackerrank: string;
   instagram: string;
   facebook: string;
   linkedIn: string;
