@@ -1,6 +1,6 @@
 <script lang="ts">
   import { submitContactRequest } from '$lib/api/contact';
-  import { emailLink, whatsappLink } from '$lib/api/socials';
+  import { emailLink } from '$lib/api/socials';
 
   import type { ButtonColorVariant } from '$lib/components/colors';
   import { inputClass } from '$lib/components/form';
@@ -9,14 +9,13 @@
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
   import Email from '$lib/components/graphics/social/Email.svelte';
-  import Whatsapp from '$lib/components/graphics/social/Whatsapp.svelte';
 
   import { enableMessageForm } from '$lib/config';
   import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
   import Saos from 'saos';
   import Fa from 'svelte-fa';
 
-  const whatsappButton: ButtonColorVariant = { key: 'whatsapp' };
+  // const whatsappButton: ButtonColorVariant = { key: 'whatsapp' };
   const emailButton: ButtonColorVariant = { key: 'email' };
   const primaryButton: ButtonColorVariant = { key: 'primary' };
   const disabledButton: ButtonColorVariant = { key: 'disabled' };
@@ -57,8 +56,8 @@
       </Saos>
 
       <div class="flex flex-wrap sm:flex-nowrap justify-between gap-4 lg:gap-5 xl:gap-6">
-        <!-- Whatsapp Button -->
-        <a href={whatsappLink} target="_blank" class="w-full">
+        <!-- Whatsapp Button (Disabled) -->
+        <!-- <a href={whatsappLink} target="_blank" class="w-full">
           <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
             <Button
               noDarkVariant={false}
@@ -72,7 +71,7 @@
               <span>Whatsapp me</span>
             </Button>
           </Saos>
-        </a>
+        </a> -->
         <!-- Email Button -->
         <a href={emailLink} target="_blank" class="w-full">
           <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
