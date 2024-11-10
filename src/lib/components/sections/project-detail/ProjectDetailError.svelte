@@ -2,9 +2,8 @@
   import type { ProjectDetail } from '$lib/api/projects';
   import type { ButtonColorVariant } from '$lib/components/colors';
 
-  import Wrappper from '$lib/components/widgets/Wrappper.svelte';
   import Button from '$lib/components/buttons/Button.svelte';
-  import Fa from 'svelte-fa';
+  import Wrappper from '$lib/components/widgets/Wrappper.svelte';
   import {
     faArrowLeft,
     faCodeFork,
@@ -12,6 +11,7 @@
     faStar,
     faWarning
   } from '@fortawesome/free-solid-svg-icons';
+  import Fa from 'svelte-fa';
 
   export let project: ProjectDetail;
   const disabledButton: ButtonColorVariant = { key: 'disabled' };
@@ -62,7 +62,7 @@
 
           <!-- Tags -->
           <div
-            class="flex w-full justify-center sm:justify-start items-center gap-2 py-4 overflow-hidden"
+            class="flex flex-wrap w-full justify-center sm:justify-start items-center gap-2 py-4 overflow-hidden"
           >
             <p
               class="dark:bg-slate-800 border-slate-900 dark:text-slate-300 dark:border-slate-300 max-sm:text-sm px-2 sm:px-4 py-1 h-max border-2"

@@ -97,7 +97,7 @@
 
           <!-- Tags -->
           <div
-            class="flex w-full justify-center sm:justify-start items-center gap-2 py-4 overflow-hidden"
+            class="flex flex-wrap w-full justify-center sm:justify-start items-center gap-2 py-4 overflow-hidden"
           >
             {#each tags as tag}
               <p
