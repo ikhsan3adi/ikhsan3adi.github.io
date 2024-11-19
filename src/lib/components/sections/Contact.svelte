@@ -9,6 +9,7 @@
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
   import Email from '$lib/components/graphics/social/Email.svelte';
+  import Whatsapp from '$lib/components/graphics/social/Whatsapp.svelte';
 
   import { enableMessageForm } from '$lib/config';
   import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
@@ -56,22 +57,23 @@
       </Saos>
 
       <div class="flex flex-wrap sm:flex-nowrap justify-between gap-4 lg:gap-5 xl:gap-6">
-        <!-- Whatsapp Button (Disabled) -->
-        <!-- <a href={whatsappLink} target="_blank" class="w-full">
+        <!-- Whatsapp Button  -->
+        <div class="w-full">
           <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
             <Button
+              disabled={true}
               noDarkVariant={false}
               fullWidth={true}
-              variant={whatsappButton}
+              variant={disabledButton}
               centerText={true}
             >
               <div class="w-8 h-8" slot="icon">
                 <Whatsapp />
               </div>
-              <span>Whatsapp me</span>
+              <span>Whatsapp me (disabled)</span>
             </Button>
           </Saos>
-        </a> -->
+        </div>
         <!-- Email Button -->
         <a href={emailLink} target="_blank" class="w-full">
           <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
