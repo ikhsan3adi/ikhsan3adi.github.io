@@ -13,6 +13,16 @@ const initialProjects = [
     tags: ['flutter', 'nestjs', 'svelte']
   },
   {
+    id: 'c-snake-game',
+    name: 'Snake Game Using C',
+    url: `${githubApiLink}/c-snake-game`,
+    description: '',
+    baseUrl: 'https://github.com/ikhsan3adi/c-snake-game/raw/master/',
+    imageUrl: 'https://github.com/ikhsan3adi/c-snake-game/raw/master/images/preview.gif',
+    readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/c-snake-game/master/README.md',
+    tags: []
+  },
+  {
     id: 'flutter-auction-app',
     name: 'Online Auction App',
     url: `${githubApiLink}/flutter-auction-app`,
