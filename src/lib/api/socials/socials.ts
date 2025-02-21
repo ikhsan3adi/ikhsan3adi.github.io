@@ -11,7 +11,7 @@ import Hackerrank from '$lib/components/graphics/social/Hackerrank.svelte';
 import Telegram from '$lib/components/graphics/social/Telegram.svelte';
 
 export const githubLink = 'https://github.com/ikhsan3adi/';
-export const linkedInLink = 'https://www.linkedin.com/in/ikhsan-satriadi/';
+export const linkedInLink = 'https://www.linkedin.com/in/ikhsan3adi/';
 export const whatsappLink = 'https://wa.me/62895338593923';
 export const emailLink = 'mailto:ikhsansatriadi175@gmail.com';
 
