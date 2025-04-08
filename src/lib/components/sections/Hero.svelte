@@ -40,9 +40,9 @@
 
             <!-- Call to action buttons -->
             <div class="flex gap-3 sm:max-md:justify-center">
-              <a href="#portfolio">
+              <!-- <a href="#portfolio">
                 <Button noDarkVariant={false}>See projects</Button>
-              </a>
+              </a> -->
               <a href="#contact">
                 <Button variant={secondaryButton} noDarkVariant={false}>Contact me</Button>
               </a>
