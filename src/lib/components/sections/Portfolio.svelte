@@ -35,13 +35,9 @@
         setTimeout(async () => {
           console.log('Fetching projects');
 
-          for (const project of initialProjects) {
-            try {
-              await projectService.fetchProject({ project, fetch });
-            } catch (_) {
-              break;
-            }
-          }
+          Promise.all(
+            initialProjects.map((project) => projectService.fetchProject({ project, fetch }))
+          );
 
           isIntersecting = true;
           observer.disconnect();
