@@ -32,9 +32,9 @@
             <h4 class="mb-4 dark:text-white duration-500">
               <Typewriter mode={'loop'} interval={25}>
                 A
-                <span class="text-emerald-600 dark:text-primary">mobile developer</span>
-                <span class="text-green-600 dark:text-green-400">back-end developer</span>
-                <span class="text-orange-600 dark:text-orange-400">front-end developer</span>
+                <span class="text-emerald-600 dark:text-primary">Student</span>
+                <span class="text-green-600 dark:text-green-400">Programmer</span>
+                <span class="text-orange-600 dark:text-orange-400">Computer User</span>
               </Typewriter>
             </h4>
 

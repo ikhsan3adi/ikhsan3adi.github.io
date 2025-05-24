@@ -1,7 +1,7 @@
 <script lang="ts">
   // import type { PageData } from './$types';
 
-  import About from '$lib/components/sections/About.svelte';
+  // import About from '$lib/components/sections/About.svelte';
   import Contact from '$lib/components/sections/Contact.svelte';
   import Footer from '$lib/components/sections/Footer.svelte';
   import Hero from '$lib/components/sections/Hero.svelte';
@@ -16,7 +16,7 @@
 <main>
   <Navbar />
   <Hero />
-  <About />
+  <!-- <About /> -->
   <!-- <Portfolio fetch={data.fetch} projectService={data.projectService} /> -->
   <!-- <Tools /> -->
   <Social />

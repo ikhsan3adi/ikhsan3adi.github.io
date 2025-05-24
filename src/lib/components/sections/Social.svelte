@@ -1,14 +1,14 @@
 <script lang="ts">
   import { socials } from '$lib/api/socials';
 
-  import Wrappper from '$lib/components/widgets/Wrappper.svelte';
   import Button from '$lib/components/buttons/Button.svelte';
+  import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
   import Saos from 'saos';
 </script>
 
 <section>
-  <div class="w-full mb-4">
+  <div class="w-full pb-16 border-t-4 border-b-4 border-slate-800 dark:border-white">
     <Wrappper>
       <div class="w-full">
         <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
