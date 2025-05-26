@@ -1,8 +1,8 @@
 <svg
   xmlns="http://www.w3.org/2000/svg"
-  width="33"
-  height="39"
-  viewBox="0 0 33 36"
+  width="46"
+  height="49"
+  viewBox="-3 -2 33 39"
   class="fill-current"
 >
   <path
