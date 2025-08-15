@@ -1,14 +1,12 @@
 import type { ButtonColorVariant } from '$lib/components/colors';
 
 // ICONS
-import Facebook from '$lib/components/graphics/social/Facebook.svelte';
 import Github from '$lib/components/graphics/social/Github.svelte';
 import Instagram from '$lib/components/graphics/social/Instagram.svelte';
 import LinkedIn from '$lib/components/graphics/social/Linkedin.svelte';
 // import Medium from '$lib/components/graphics/social/Medium.svelte';
 // import Showwcase from '$lib/components/graphics/social/Showwcase.svelte';
 import Codeberg from '$lib/components/graphics/social/Codeberg.svelte';
-import Codewars from '$lib/components/graphics/social/Codewars.svelte';
 import Hackerrank from '$lib/components/graphics/social/Hackerrank.svelte';
 import Telegram from '$lib/components/graphics/social/Telegram.svelte';
 
@@ -34,13 +32,13 @@ export const socials = [
     colorVariant: { key: 'linkedIn' } as ButtonColorVariant,
     icon: LinkedIn
   },
-  {
-    social: 'Facebook',
-    name: 'Ikhsan Satriadi',
-    link: 'https://facebook.com/onetrd',
-    colorVariant: { key: 'facebook' } as ButtonColorVariant,
-    icon: Facebook
-  },
+  // {
+  //   social: 'Facebook',
+  //   name: 'Ikhsan Satriadi',
+  //   link: 'https://facebook.com/onetrd',
+  //   colorVariant: { key: 'facebook' } as ButtonColorVariant,
+  //   icon: Facebook
+  // },
   {
     social: 'Instagram',
     name: '@ikhsan3adi',
@@ -62,13 +60,13 @@ export const socials = [
     colorVariant: { key: 'hackerrank' } as ButtonColorVariant,
     icon: Hackerrank
   },
-  {
-    social: 'Codewars',
-    name: 'Ikhsan Satriadi',
-    link: 'https://www.codewars.com/users/ikhsan3adi',
-    colorVariant: { key: 'email' } as ButtonColorVariant,
-    icon: Codewars
-  },
+  // {
+  //   social: 'Codewars',
+  //   name: 'Ikhsan Satriadi',
+  //   link: 'https://www.codewars.com/users/ikhsan3adi',
+  //   colorVariant: { key: 'email' } as ButtonColorVariant,
+  //   icon: Codewars
+  // },
   {
     social: 'Codeberg',
     name: '@ikhsan3adi',
