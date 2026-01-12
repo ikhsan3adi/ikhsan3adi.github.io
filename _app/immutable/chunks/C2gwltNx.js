@@ -1,0 +1,1 @@
+import{h as r,a as l}from"./CJ1PUUUf.js";function d(i,t,e,s,o){var f;r&&l();var n=(f=t.$$slots)==null?void 0:f[e],a=!1;n===!0&&(n=t[e==="default"?"children":e],a=!0),n===void 0||n(i,a?()=>s:s)}function c(i){const t={};i.children&&(t.default=!0);for(const e in i.$$slots)t[e]=!0;return t}export{c as a,d as s};
