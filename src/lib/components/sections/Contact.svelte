@@ -133,7 +133,7 @@
                         name="message"
                         class={inputClass}
                         required
-                      />
+                      ></textarea>
                     </div>
                     <div class="ml-1">
                       <button
@@ -156,8 +156,8 @@
                             {submisstionStatus === 'Initial'
                               ? 'Send'
                               : submisstionStatus === 'Failed'
-                              ? 'Failed, try again'
-                              : submisstionStatus}
+                                ? 'Failed, try again'
+                                : submisstionStatus}
                           </h4>
                         </Button>
                       </button>
