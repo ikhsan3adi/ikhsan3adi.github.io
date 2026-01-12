@@ -74,7 +74,7 @@
   </div>
 
   <!-- Click outside to close -->
-  <button on:click={() => (open = false)} class="z-40">
-    <div class="fixed left-0 right-0 top-0 bottom-0 cursor-default {open ? '' : 'hidden'}" />
+  <button on:click={() => (open = false)} class="z-40" title="Click outside to close">
+    <div class="fixed left-0 right-0 top-0 bottom-0 cursor-default {open ? '' : 'hidden'}"></div>
   </button>
 </div>

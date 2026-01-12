@@ -81,7 +81,7 @@
         <div
           class="top-0 bottom-0 left-0 right-0 flex bg-no-repeat bg-cover bg-center absolute"
           style="background-image: url('{project.imageUrl}');"
-        />
+        ></div>
 
         <!-- Hover show view detail -->
         <div

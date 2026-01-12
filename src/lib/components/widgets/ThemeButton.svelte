@@ -1,7 +1,7 @@
 <script lang="ts">
+  import Moon from '$lib/components/graphics/Moon.svelte';
   import { darkEnabled } from '$lib/config';
   import { onMount } from 'svelte';
-  import Moon from '$lib/components/graphics/Moon.svelte';
 
   export let isBgTransparent = true;
 
@@ -83,7 +83,7 @@
         class="h-4 w-4 rounded-full translate-y-0 {isBgTransparent
           ? 'dark:bg-white'
           : 'dark:bg-slate-900'} bg-slate-900"
-      />
+      ></div>
     </span>
   </span>
 </button>
