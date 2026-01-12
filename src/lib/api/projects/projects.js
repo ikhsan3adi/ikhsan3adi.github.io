@@ -3,34 +3,15 @@ const githubApiLink = 'https://api.github.com/repos/ikhsan3adi';
 /** @type {import('./types').Project[]} */
 const initialProjects = [
   {
-    id: 'backtix',
-    name: 'BackTix - Event & Ticketing App',
-    url: `${githubApiLink}/backtix`,
-    description: '',
-    baseUrl: 'https://github.com/ikhsan3adi/backtix/raw/main/',
-    imageUrl: 'https://github.com/ikhsan3adi/backtix/raw/main/assets/social_preview.png',
-    readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/backtix/main/README.md',
-    tags: ['flutter', 'nestjs', 'svelte']
-  },
-  {
-    id: 'c-snake-game',
-    name: 'Snake Game Using C',
-    url: `${githubApiLink}/c-snake-game`,
-    description: '',
-    baseUrl: 'https://github.com/ikhsan3adi/c-snake-game/raw/master/',
-    imageUrl: 'https://github.com/ikhsan3adi/c-snake-game/raw/master/images/preview.gif',
-    readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/c-snake-game/master/README.md',
-    tags: []
-  },
-  {
-    id: 'flutter-auction-app',
-    name: 'Online Auction App',
-    url: `${githubApiLink}/flutter-auction-app`,
-    description: '',
-    baseUrl: 'https://github.com/ikhsan3adi/flutter-auction-app/raw/master/',
-    imageUrl: 'https://github.com/ikhsan3adi/flutter-auction-app/raw/master/images/banner.png',
-    readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/flutter-auction-app/master/README.md',
-    tags: ['flutter', 'codeigniter']
+    id: 'polban-datacore',
+    name: 'Polban DataCore',
+    url: `https://api.github.com/repos/muhamadSyahid/polban-datacore`,
+    description:
+      'Polban DataCore adalah komponen agregator dan backend utama dari ekosistem Polban Dataverse.',
+    baseUrl: 'https://github.com/muhamadSyahid/polban-datacore/raw/main/',
+    imageUrl: 'https://github.com/user-attachments/assets/76e036d9-edd0-4ef9-8a22-c3600f7c5024',
+    readmeUrl: 'https://raw.githubusercontent.com/muhamadSyahid/polban-datacore/main/README.md',
+    tags: ['nestjs', 'drizzle', 'postgresql']
   },
   {
     id: 'absensi-sekolah-qr-code',
@@ -57,38 +38,24 @@ const initialProjects = [
     tags: ['laravel', 'livewire', 'jetstream']
   },
   {
-    id: 'sistem-perpustakaan-qr-code',
-    name: 'Sistem Perpustakaan QR Code',
-    url: `${githubApiLink}/sistem-perpustakaan-qr-code`,
+    id: 'backtix',
+    name: 'BackTix - Event & Ticketing App',
+    url: `${githubApiLink}/backtix`,
     description: '',
-    baseUrl: 'https://github.com/ikhsan3adi/sistem-perpustakaan-qr-code/raw/main/',
-    imageUrl:
-      'https://github.com/ikhsan3adi/sistem-perpustakaan-qr-code/raw/main/screenshots/home.png',
-    readmeUrl:
-      'https://raw.githubusercontent.com/ikhsan3adi/sistem-perpustakaan-qr-code/main/README.md',
-    tags: ['codeigniter', 'mysql']
+    baseUrl: 'https://github.com/ikhsan3adi/backtix/raw/main/',
+    imageUrl: 'https://github.com/ikhsan3adi/backtix/raw/main/assets/social_preview.png',
+    readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/backtix/main/README.md',
+    tags: ['flutter', 'nestjs', 'svelte']
   },
   {
-    id: 'flutter-celenganku-clone',
-    name: 'Celenganku App Clone',
-    url: `${githubApiLink}/flutter-celenganku-clone`,
+    id: 'c-snake-game',
+    name: 'Snake Game Using C',
+    url: `${githubApiLink}/c-snake-game`,
     description: '',
-    baseUrl: 'https://github.com/ikhsan3adi/flutter-celenganku-clone/raw/master/',
-    imageUrl:
-      'https://github.com/ikhsan3adi/flutter-celenganku-clone/raw/master/screenshots/screenshot-1.png',
-    readmeUrl:
-      'https://raw.githubusercontent.com/ikhsan3adi/flutter-celenganku-clone/master/README.md',
-    tags: ['flutter']
-  },
-  {
-    id: 'portfolio-website',
-    name: 'Portfolio Website',
-    url: `${githubApiLink}/ikhsan3adi.github.io`,
-    description: '',
-    baseUrl: 'https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/',
-    imageUrl: 'https://github.com/ikhsan3adi/ikhsan3adi.github.io/raw/main/images/hero-dark.png',
-    readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/ikhsan3adi.github.io/main/README.md',
-    tags: ['html', 'typescript']
+    baseUrl: 'https://github.com/ikhsan3adi/c-snake-game/raw/master/',
+    imageUrl: 'https://github.com/ikhsan3adi/c-snake-game/raw/master/images/preview.gif',
+    readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/c-snake-game/master/README.md',
+    tags: []
   }
 ];
 

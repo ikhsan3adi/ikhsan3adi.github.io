@@ -15,24 +15,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: latest
+          bun-version: latest
 
-      - name: Cache dependencies
+      - name: Cache Bun dependencies
+        id: cache-bun-dependencies
         uses: actions/cache@v4
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-${{ matrix.bun }}-bun-${{ hashFiles('**/bun.lockb') }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-${{ matrix.bun }}-bun-
 
       - name: Install Dependencies
-        run: npm ci
+        run: bun ci
 
       - name: Build
-        run: npm run build
+        run: bun run build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
