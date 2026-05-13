@@ -62,7 +62,7 @@
       class="{cardColors[cardColor.key].light}
 			{cardColors[cardColor.key].dark.border}
 			aspect-[3/4] sm:aspect-[4/3] lg:aspect-[3/4] xl:aspect-[4/3] border-4 border-slate-900
-		dark:bg-slate-700 -translate-x-1 -translate-y-1 active:translate-x-0 active:translate-y-0 hover:-translate-x-1.5 hover:-translate-y-1.5 duration-200 relative group cursor-pointer"
+		dark:bg-slate-700 -translate-x-1.5 -translate-y-1.5 active:translate-x-0 active:translate-y-0 hover:-translate-x-2 hover:-translate-y-2 duration-200 relative group cursor-pointer"
     >
       <!-- Background image wrapper -->
       <div
@@ -93,7 +93,7 @@
         <!-- Stats -->
         <div
           class="{cardColors[cardColor.key].dark.bg}
-						bg-slate-900 absolute text-white dark:text-text flex justify-evenly bottom-0 left-0 max-sm:right-0 gap-4 duration-200 py-2 px-4 font-poppins"
+						bg-slate-900 absolute text-white dark:text-text flex justify-evenly bottom-0 left-0 max-sm:right-0 gap-4 duration-200 py-2 px-4 font-space-grotesk"
         >
           <div class="flex gap-2 items-center">
             <Fa icon={faStar} />
