@@ -12,5 +12,8 @@ export default defineConfig({
         plugins: ['preset-default']
       }
     })
-  ]
+  ],
+  ssr: {
+    noExternal: ['@iconify/svelte']
+  }
 });
