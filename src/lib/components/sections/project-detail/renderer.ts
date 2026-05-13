@@ -4,7 +4,7 @@ export const renderer = (baseUrl: string) => {
   const renderer: Renderer = new marked.Renderer();
 
   renderer.heading = (text, level) => {
-    return `<h${level} class="my-4 font-jetbrains dark:text-white">${text}</h${level}>`;
+    return `<h${level} class="my-4 font-cascadia-mono dark:text-white">${text}</h${level}>`;
   };
 
   renderer.paragraph = (text) => {

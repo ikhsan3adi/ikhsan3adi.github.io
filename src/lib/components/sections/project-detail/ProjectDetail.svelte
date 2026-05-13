@@ -76,7 +76,7 @@
 
           <!-- Stars, forks, downloads -->
           <div
-            class="pt-4 flex gap-4 w-full justify-center sm:justify-normal dark:text-white font-poppins"
+            class="pt-4 flex gap-4 w-full justify-center sm:justify-normal dark:text-white font-space-grotesk"
           >
             <div class="flex gap-2 items-center">
               <Fa icon={faStar} />

@@ -5,8 +5,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        jetbrains: ['JetBrains Mono', 'mono'],
-        poppins: ['Poppins', 'sans-serif'],
+        'cascadia-mono': ['Cascadia Mono', 'mono'],
+        'space-grotesk': ['Space Grotesk', 'sans-serif'],
         mechsuit: ['Mechsuit', 'sans-serif']
       },
       colors: {

@@ -1,4 +1,11 @@
 <script lang="ts">
+  import '@fontsource/cascadia-mono/400.css';
+  import '@fontsource/cascadia-mono/500.css';
+  import '@fontsource/cascadia-mono/600.css';
+  import '@fontsource/cascadia-mono/700.css';
+
+  import '@fontsource/space-grotesk/400.css';
+  import '@fontsource/space-grotesk/700.css';
   import '../app.css';
 </script>
 
@@ -6,12 +13,12 @@
 
 <style global lang="postcss">
   :global(body) {
-    @apply font-poppins;
+    @apply font-space-grotesk;
   }
 
   :global(h1),
   :global(h2) {
-    @apply font-jetbrains font-extrabold text-text;
+    @apply font-cascadia-mono font-extrabold text-text;
   }
 
   :global(h1) {
@@ -24,7 +31,7 @@
 
   :global(h3),
   :global(h4) {
-    @apply font-poppins text-text;
+    @apply font-space-grotesk text-text;
   }
 
   :global(h3) {
@@ -36,15 +43,15 @@
   }
 
   :global(p) {
-    @apply font-poppins font-medium text-text;
+    @apply font-space-grotesk font-medium text-text;
   }
 
   :global(a) {
-    @apply font-poppins font-medium;
+    @apply font-space-grotesk font-medium;
   }
 
   :global(code > *) {
-    @apply font-jetbrains;
+    @apply font-cascadia-mono;
   }
 
   @-webkit-keyframes -global-scale-up-center {
