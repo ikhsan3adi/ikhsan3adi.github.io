@@ -1,0 +1,83 @@
+<script lang="ts">
+  import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
+  import Icon from '@iconify/svelte';
+  import Saos from 'saos';
+  import Fa from 'svelte-fa';
+
+  import Button from '$lib/components/buttons/Button.svelte';
+  import Wrappper from '$lib/components/widgets/Wrappper.svelte';
+
+  import { achievements } from '$lib/api/achievements';
+  import { cardColors, randomizeElements } from '$lib/components/colors';
+
+  const randomizedColors = randomizeElements(cardColors, achievements.length);
+</script>
+
+<section
+  class="w-full relative bg-purple-100 dark:bg-fuchsia-800 border-t-4 border-slate-900 dark:border-white"
+>
+  <Wrappper>
+    <div class="w-full py-16 z-10">
+      <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
+        <h1
+          class="text-center mx-auto mb-10 md:mb-12 lg:mb-16 dark:text-white duration-500"
+          id="achievements"
+        >
+          Achievements
+        </h1>
+      </Saos>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5 xl:gap-6">
+        {#each achievements as achievement, i}
+          <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
+            <div
+              class="border-4 border-slate-900 dark:border-slate-700 p-6
+              {randomizedColors[i]}
+               h-full flex flex-col hover:shadow-lg transition-all duration-200"
+            >
+              <!-- Icon -->
+              <div class="mb-4">
+                <div
+                  class="w-12 h-12 bg-slate-200 border-2 border-slate-900 dark:border-slate-700 flex items-center justify-center"
+                >
+                  <Icon icon={achievement.icon} class="w-8 h-8 text-black" />
+                </div>
+              </div>
+
+              <!-- Title -->
+              <h3 class="font-bold mb-2 text-lg">
+                {achievement.title}
+              </h3>
+
+              <!-- Issuer & Date -->
+              <p class="text-sm text-slate-800 mb-3">
+                <span class="font-semibold">{achievement.issuer}</span>
+                <span class="text-xs flex items-center gap-1 mt-1">
+                  <Icon icon="lucide:calendar" class="w-3 h-3" />
+                  {achievement.date}
+                </span>
+              </p>
+
+              <!-- Description -->
+              <p class="text-sm flex-grow">
+                {achievement.description}
+              </p>
+
+              <!-- Link Button -->
+              {#if achievement.link}
+                <div class="mt-4">
+                  <a href={achievement.link} target="_blank">
+                    <Button noDarkVariant={true} fullWidth={false} variant="codeforces" small>
+                      <Fa icon={faExternalLink} slot="icon" />
+                      View
+                    </Button>
+                  </a>
+                </div>
+              {/if}
+            </div>
+          </Saos>
+        {/each}
+      </div>
+    </div>
+  </Wrappper>
+</section>

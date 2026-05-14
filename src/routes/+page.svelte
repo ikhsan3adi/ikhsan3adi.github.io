@@ -2,6 +2,7 @@
   import type { PageData } from './$types';
 
   import About from '$lib/components/sections/About.svelte';
+  import Achievements from '$lib/components/sections/Achievements.svelte';
   import Contact from '$lib/components/sections/Contact.svelte';
   import Footer from '$lib/components/sections/Footer.svelte';
   import Hero from '$lib/components/sections/Hero.svelte';
@@ -18,6 +19,7 @@
   <Hero />
   <About />
   <Portfolio fetch={data.fetch} projectService={data.projectService} />
+  <Achievements />
   <Tools />
   <Social />
   <Contact />
