@@ -11,6 +11,7 @@
   import { cardColors, randomizeElements } from '$lib/components/colors';
 
   const randomizedColors = randomizeElements(cardColors, achievements.length);
+  achievements.reverse();
 </script>
 
 <section
@@ -27,9 +28,16 @@
         </h1>
       </Saos>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5 xl:gap-6">
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5 xl:gap-6 items-stretch"
+      >
         {#each achievements as achievement, i}
-          <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
+          <Saos
+            animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'}
+            once
+            css_observer="height: 100%"
+            css_animation="height: 100%"
+          >
             <div
               class="border-4 border-slate-900 dark:border-slate-700 p-6
               {randomizedColors[i]}
@@ -44,8 +52,17 @@
                 </div>
               </div>
 
-              <!-- Title -->
+              <!-- Title: type icon to the left -->
               <h3 class="font-bold mb-2 text-lg">
+                <span class="inline-block mr-1">
+                  {#if achievement.type === 'competition'}
+                    <Icon icon="lucide:trophy" class="w-4 h-4" />
+                  {:else if achievement.type === 'course'}
+                    <Icon icon="lucide:book-open-text" class="w-4 h-4" />
+                  {:else}
+                    <Icon icon="lucide:award" class="w-4 h-4" />
+                  {/if}
+                </span>
                 {achievement.title}
               </h3>
 
