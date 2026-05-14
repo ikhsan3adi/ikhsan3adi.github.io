@@ -2,7 +2,6 @@
   import type { Project } from '$lib/api/projects';
   import {
     tagColors,
-    type CardColorKey,
     type CardColors,
     type TagColorKey,
     type TagColors
@@ -14,7 +13,7 @@
 
   export let project: Project;
 
-  export let cardColor: CardColorKey = { key: 'default' };
+  export let cardColor: keyof CardColors = 'default';
 
   const cardColors: CardColors = {
     default: {
@@ -51,23 +50,23 @@
 </script>
 
 <!-- Shadow card -->
-<div
-  in:scale
-  out:scale
-  class="w-full lg:w-[48.5%] bg-slate-900 {cardColors[cardColor.key].dark.bg}"
->
+<div in:scale out:scale class="w-full bg-slate-900 {cardColors[cardColor].dark.bg}">
   <a href="/$projects$/{project.id}">
     <!-- Card -->
     <div
-      class="{cardColors[cardColor.key].light}
-			{cardColors[cardColor.key].dark.border}
-			aspect-[3/4] sm:aspect-[4/3] lg:aspect-[1/1] xl:aspect-[4/3] border-4 border-slate-900
-		dark:bg-slate-700 -translate-x-1.5 -translate-y-1.5 active:translate-x-0 active:translate-y-0 hover:-translate-x-2 hover:-translate-y-2 duration-200 relative group cursor-pointer"
+      class="relative group cursor-pointer duration-200 flex flex-col
+      {cardColors[cardColor].light}
+			{cardColors[cardColor].dark.border}
+      border-4 border-slate-900
+      aspect-[3/4] sm:aspect-[4/3] lg:aspect-[1/1] xl:aspect-[4/3]
+      h-full w-full
+		dark:bg-slate-700 -translate-x-1.5 -translate-y-1.5 active:translate-x-0 active:translate-y-0 hover:-translate-x-2 hover:-translate-y-2"
     >
       <!-- Background image wrapper -->
       <div
-        class="{cardColors[cardColor.key].dark.border} 
-				h-3/5 md:max-lg:h-3/5 border-b-4 border-slate-900
+        class="{cardColors[cardColor].dark.border} 
+        h-3/5 md:max-lg:h-3/5
+				border-b-4 border-slate-900
 			bg-slate-300 dark:bg-slate-600 flex relative"
       >
         <div class="inline-flex flex-wrap m-auto justify-center gap-2 items-center w-max">
@@ -92,7 +91,7 @@
 
         <!-- Stats -->
         <div
-          class="{cardColors[cardColor.key].dark.bg}
+          class="{cardColors[cardColor].dark.bg}
 						bg-slate-900 absolute text-white dark:text-text flex justify-evenly bottom-0 left-0 max-sm:right-0 gap-4 duration-200 py-2 px-4 font-space-grotesk"
         >
           <div class="flex gap-2 items-center">
@@ -120,15 +119,15 @@
       </div>
 
       <!-- Project description -->
-      <div class="pt-2 pb-14 px-4">
+      <div class="pt-2 pb-8 px-4 flex-1">
         <h3 class="mb-2 dark:text-white">{project.name}</h3>
-        <p class="dark:text-slate-300 line-clamp-3">{project.description}</p>
+        <p class="dark:text-slate-300 line-clamp-6">{project.description}</p>
       </div>
 
       <!-- Project tags -->
       <div
-        class="{cardColors[cardColor.key].dark.border} 
-					border-t-4 border-slate-900 w-full h-12 absolute bottom-0 flex justify-start items-center gap-2 px-2 overflow-hidden"
+        class="{cardColors[cardColor].dark.border} 
+					border-t-4 border-slate-900 w-full flex flex-wrap justify-start items-center gap-2 p-2"
       >
         {#each tags as tag}
           <p

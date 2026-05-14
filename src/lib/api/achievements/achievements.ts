@@ -71,7 +71,7 @@ export const achievements: Achievement[] = [
   },
   {
     title: 'Semifinalist of Coding & Algorithms Tournament 2026',
-    issuer: 'Ecommurz & CSRelatedCompetitions',
+    issuer: 'CAT2026',
     date: 'May 2026 (Ongoing)',
     description:
       'Advanced to the semifinal round in an individual programming competition, demonstrating problem-solving ability and strong data structure and algorithmic skills.',

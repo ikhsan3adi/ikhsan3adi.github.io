@@ -26,7 +26,7 @@ class ProjectService {
       if (response.status === 200) {
         newProject = {
           ...project,
-          description: json.description,
+          description: project.description || json.description,
           tags: [...project.tags, json.language.toLowerCase()],
           starsCount: json.stargazers_count,
           forksCount: json.forks,

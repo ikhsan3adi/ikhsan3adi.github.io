@@ -3,9 +3,9 @@ import type { TagColors } from './types';
 
 export const tagColors: TagColors = {
   default: {
-    bg: 'bg-slate-400 dark:bg-slate-800',
-    border: 'dark:border-slate-400',
-    text: 'dark:text-slate-400'
+    bg: 'bg-slate-200 dark:bg-slate-800',
+    border: 'dark:border-slate-100',
+    text: 'dark:text-slate-100'
   },
   nestjs: {
     bg: 'bg-red-400 dark:bg-slate-800',

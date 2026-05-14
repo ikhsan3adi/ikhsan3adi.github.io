@@ -2,7 +2,7 @@
   import Saos from 'saos';
 
   import { initialProjects, projects, type ProjectService } from '$lib/api/projects';
-  import { randomizeElements, type CardColorKey } from '$lib/components/colors';
+  import { randomizeElements, type CardColors } from '$lib/components/colors';
 
   import ProjectCard from '$lib/components/cards/ProjectCard.svelte';
   import ProjectCardError from '$lib/components/cards/ProjectCardError.svelte';
@@ -15,13 +15,13 @@
   export let fetch: (input: URL | RequestInfo, init?: RequestInit) => Promise<Response>;
   export let projectService: ProjectService;
 
-  const cardColorVariants: CardColorKey[] = [
-    { key: 'default' },
-    { key: 'blue' },
-    { key: 'yellow' },
-    { key: 'red' },
-    { key: 'purple' },
-    { key: 'green' }
+  const cardColorVariants: (keyof CardColors)[] = [
+    'default',
+    'blue',
+    'yellow',
+    'red',
+    'purple',
+    'green'
   ];
 
   const cardColors = randomizeElements(cardColorVariants, initialProjects.length);
@@ -78,17 +78,21 @@
 
       <!-- Projects -->
       <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-        <div class="w-full flex flex-wrap justify-center gap-4 lg:gap-5 xl:gap-6">
-          {#if $projects.length == 0}
+        {#if $projects.length == 0}
+          <div class="w-full flex flex-wrap justify-center">
             <ProjectCardLoading />
-          {:else if $projects.length == 1 && ($projects[0].name === 'error' || $projects[0].name === 'limit')}
+          </div>
+        {:else if $projects.length == 1 && ($projects[0].name === 'error' || $projects[0].name === 'limit')}
+          <div class="w-full flex flex-wrap justify-center">
             <ProjectCardError project={$projects[0]} />
-          {:else}
+          </div>
+        {:else}
+          <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5 xl:gap-6 items-stretch">
             {#each $projects as project, i}
               <ProjectCard {project} cardColor={cardColors[i]} />
             {/each}
-          {/if}
-        </div>
+          </div>
+        {/if}
       </Saos>
     </div>
   </Wrappper>

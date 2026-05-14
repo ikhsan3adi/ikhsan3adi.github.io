@@ -38,8 +38,4 @@ interface CardColorsVariant {
   green: CardColor;
 }
 
-interface CardColorKey {
-  key: keyof CardColorsVariant;
-}
-
-export type { CardColorKey, CardColorsVariant as CardColors, TagColorKey, TagColors };
+export type { CardColorsVariant as CardColors, TagColorKey, TagColors };
