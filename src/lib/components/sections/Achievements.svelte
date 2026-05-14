@@ -93,13 +93,7 @@
                     <a href={achievement.link} target="_blank">
                       <Button noDarkVariant={true} fullWidth={false} variant="codeforces" small>
                         <Fa icon={faExternalLink} slot="icon" />
-                        {#if achievement.type === 'course'}
-                          View Certificate
-                        {:else if achievement.type === 'competition'}
-                          View Details
-                        {:else}
-                          View
-                        {/if}
+                        View Credentials
                       </Button>
                     </a>
                   </div>
