@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { submitContactRequest } from '$lib/api/contact';
-  import { emailLink, whatsappLink } from '$lib/api/socials';
+  import { contacts, submitContactRequest } from '$lib/api/contact';
 
   import bg from '$lib/components/graphics/hero-bg.svg';
 
@@ -9,17 +8,13 @@
 
   import Button from '$lib/components/buttons/Button.svelte';
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
-
-  import Email from '$lib/components/graphics/social/Email.svelte';
-  import Whatsapp from '$lib/components/graphics/social/Whatsapp.svelte';
+  import Icon from '@iconify/svelte';
 
   import { enableMessageForm } from '$lib/config';
   import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
   import Saos from 'saos';
   import Fa from 'svelte-fa';
 
-  const whatsappButton: ButtonColorVariant = { key: 'whatsapp' };
-  const emailButton: ButtonColorVariant = { key: 'email' };
   const primaryButton: ButtonColorVariant = { key: 'primary' };
   const disabledButton: ButtonColorVariant = { key: 'disabled' };
 
@@ -62,29 +57,24 @@
           </h1>
         </Saos>
 
-        <div class="flex flex-wrap sm:flex-nowrap justify-between gap-4 lg:gap-5 xl:gap-6">
-          <!-- Whatsapp Button  -->
-          <a href={whatsappLink} target="_blank" class="w-full">
-            <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-              <Button noDarkVariant={false} fullWidth={true} variant={whatsappButton}>
-                <div class="w-8 h-8" slot="icon">
-                  <Whatsapp />
-                </div>
-                <span>WhatsApp Me!</span>
-              </Button>
-            </Saos>
-          </a>
-          <!-- Email Button -->
-          <a href={emailLink} target="_blank" class="w-full">
-            <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-              <Button noDarkVariant={false} fullWidth={true} variant={emailButton}>
-                <div class="w-8 h-8" slot="icon">
-                  <Email />
-                </div>
-                <span>Email Me!</span>
-              </Button>
-            </Saos>
-          </a>
+        <div class="flex flex-wrap justify-center gap-4 lg:gap-5 xl:gap-6">
+          {#each contacts as contact}
+            <a
+              href={contact.link}
+              target="_blank"
+              class="w-full md:w-[48.5%] lg:w-[31.5%]"
+              aria-label={contact.name}
+            >
+              <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
+                <Button noDarkVariant={false} fullWidth={true} variant={contact.colorVariant}>
+                  <div class="w-8 h-8" slot="icon">
+                    <Icon icon={contact.icon} class="w-full h-full" />
+                  </div>
+                  <span>{contact.contact}</span>
+                </Button>
+              </Saos>
+            </a>
+          {/each}
         </div>
 
         <div class="my-16">
@@ -103,7 +93,6 @@
                 <div
                   class="w-full bg-custom-1 dark:bg-slate-700 border-4 border-slate-900 dark:border-white h-max px-8 py-4 md:px-12 md:py-6"
                 >
-                  <!-- CONTACT FORM -->
                   <form method="dialog">
                     <div class="flex flex-col mb-4">
                       <label for="name"><h4 class="dark:text-white">Name</h4></label>
@@ -163,7 +152,6 @@
                       </button>
                     </div>
                   </form>
-                  <!-- CONTACT FROM END -->
                 </div>
               </Saos>
             </div>

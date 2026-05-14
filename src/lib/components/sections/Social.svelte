@@ -3,6 +3,7 @@
 
   import Button from '$lib/components/buttons/Button.svelte';
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
+  import Icon from '@iconify/svelte';
 
   import Saos from 'saos';
 </script>
@@ -23,7 +24,12 @@
         <!-- Social buttons -->
         <div class="flex flex-wrap justify-center gap-4 lg:gap-5 xl:gap-6">
           {#each socials as social}
-            <a href={social.link} target="_blank" class="w-full md:w-[48.5%]">
+            <a
+              href={social.link}
+              target="_blank"
+              class="w-full md:w-[48.5%] lg:w-[31.5%]"
+              aria-label={social.name}
+            >
               <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
                 <Button
                   variant={social.colorVariant}
@@ -32,7 +38,7 @@
                   centerText={false}
                 >
                   <div class="w-10 h-10" slot="icon">
-                    <svelte:component this={social.icon} />
+                    <Icon icon={social.icon} class="w-full h-full" />
                   </div>
                   <div class="flex justify-start items-center">
                     {social.social}
