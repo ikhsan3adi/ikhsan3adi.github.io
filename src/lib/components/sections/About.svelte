@@ -3,7 +3,7 @@
   import Saos from 'saos';
   import Fa from 'svelte-fa';
 
-  import { topMarqueeTexts } from '$lib/api/about';
+  import { aboutText, photoCards, topMarqueeTexts } from '$lib/api/about';
   import { linkedInLink } from '$lib/api/socials';
 
   import Button from '$lib/components/buttons/Button.svelte';
@@ -13,44 +13,10 @@
 
   let hoveredCard: number | null = null;
 
-  // TODO: Replace the placeholder images with real photos and update the descriptions accordingly
-  const cards = [
-    {
-      title: 'Random Photo',
-      description: 'A random photo that I took when I was in [REDACTED]',
-      imgSrc: 'https://placehold.co/160x120/fff/280609?text=Random+Photo&font=lora',
-      bgClass: 'bg-emerald-200 dark:bg-emerald-400',
-      transformClass: 'rotate-2 -bottom-12 right-4',
-      cardSizeClass: 'w-80',
-      imgClass: 'aspect-[4/3]',
-      baseZ: 1
-    },
-    {
-      title: 'Me at coding',
-      description: 'Opening my laptop to vibe code bugs',
-      imgSrc: 'https://placehold.co/160x90/fff/280609?text=Coding+Vibes&font=lora',
-      bgClass: 'bg-fuchsia-200 dark:bg-fuchsia-400',
-      transformClass: 'rotate-1 top-2 lg:-top-12 -right-2',
-      cardSizeClass: 'w-96',
-      imgClass: 'aspect-[16/9]',
-      baseZ: 2
-    },
-    {
-      title: 'Me',
-      description: 'This is me. The photo was taken at my bedroom',
-      imgSrc: 'https://placehold.co/300x400/fff/280609?text=Personal+Photo&font=lora',
-      bgClass: 'bg-indigo-200 dark:bg-indigo-400',
-      transformClass: 'rotate-[-1.5deg] top-0 lg:-top-3 left-0',
-      cardSizeClass: 'w-72',
-      imgClass: 'aspect-[3/4]',
-      baseZ: 3
-    }
-  ];
-
   function getZIndex(cardIndex: number): number {
-    if (hoveredCard === null) return cards[cardIndex].baseZ;
+    if (hoveredCard === null) return photoCards[cardIndex].baseZ;
     if (hoveredCard === cardIndex) return 100;
-    return cards[cardIndex].baseZ;
+    return photoCards[cardIndex].baseZ;
   }
 </script>
 
@@ -77,11 +43,8 @@
         >
           <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
             <h1 class="mb-4 md:mb-6 lg:mb-8 duration-500" id="about">About Me</h1>
-            <p class="">
-              I'm Ikhsan, a passionate software engineer with a love for problem-solving and
-              creating impactful solutions. I thrive on continuous learning and enjoy collaborating
-              with teams to tackle challenges and deliver high-quality software solutions. Let's
-              build something great together!
+            <p class="active:text-indigo-900">
+              {aboutText}
             </p>
             <p class="my-6">
               To learn more about my experience and skills, feel free to visit my LinkedIn profile:
@@ -105,7 +68,7 @@
             role="region"
             on:mouseleave={() => (hoveredCard = null)}
           >
-            {#each cards as card, i}
+            {#each photoCards as card, i}
               <PhotoCard
                 title={card.title}
                 description={card.description}

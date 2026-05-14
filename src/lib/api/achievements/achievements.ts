@@ -60,13 +60,22 @@ export const achievements: Achievement[] = [
     link: 'https://www.dicoding.com/certificates/N9ZOY3560PG5'
   },
   {
+    title: 'Participant of Senior Competitive Programming Contest at COMPFEST 17',
+    issuer: 'COMPFEST 17',
+    date: 'Aug 2025',
+    description:
+      'Compete against top university students in Indonesia in a prestigious competitive programming contest, showcasing problem-solving skills and algorithmic thinking.',
+    icon: 'simple-icons:cplusplus',
+    type: 'competition',
+    link: 'https://verify.compfest.id/verify/cf-2025-e084a946-1b2e-47a4-ab63-5258651a9774'
+  },
+  {
     title: 'Semifinalist of Coding & Algorithms Tournament 2026',
     issuer: 'Ecommurz & CSRelatedCompetitions',
-    date: 'May 2026',
+    date: 'May 2026 (Ongoing)',
     description:
       'Advanced to the semifinal round in an individual programming competition, demonstrating problem-solving ability and strong data structure and algorithmic skills.',
     icon: 'simple-icons:cplusplus',
-    type: 'competition',
-    link: 'https://contest.catournament.org/public'
+    type: 'competition'
   }
 ];

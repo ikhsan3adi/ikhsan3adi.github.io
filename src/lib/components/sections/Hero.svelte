@@ -40,7 +40,7 @@
             </h4>
 
             <!-- Call to action buttons -->
-            <div class="flex gap-3 sm:max-md:justify-center">
+            <div class="flex flex-wrap gap-3 sm:max-md:justify-center">
               <a href="#portfolio">
                 <Button noDarkVariant={false}>
                   <Fa icon={faFolderOpen} slot="icon" />See projects

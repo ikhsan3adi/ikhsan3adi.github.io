@@ -38,7 +38,7 @@
 
 <section>
   <div
-    class="bg-cover bg-no-repeat bg-center flex relative duration-500"
+    class="bg-repeat bg-center flex relative duration-500 bg-[length:auto_200%]"
     style="background-image: url({bg});"
   >
     <Wrappper>
