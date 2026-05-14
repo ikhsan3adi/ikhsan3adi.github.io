@@ -1,7 +1,8 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+
   import { navLinks } from '$lib/components/navigation';
   import { EMBLEM_NAME, hamburgerMenuExpanded } from '$lib/config';
-  import { onMount } from 'svelte';
 
   import Hamburger from '$lib/components/buttons/Hamburger.svelte';
   import ThemeButton from '$lib/components/widgets/ThemeButton.svelte';

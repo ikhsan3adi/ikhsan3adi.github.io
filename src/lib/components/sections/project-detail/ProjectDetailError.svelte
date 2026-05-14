@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { ProjectDetail } from '$lib/api/projects';
-  import type { ButtonColorVariant } from '$lib/components/colors';
 
   import Button from '$lib/components/buttons/Button.svelte';
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
@@ -14,7 +13,6 @@
   import Fa from 'svelte-fa';
 
   export let project: ProjectDetail;
-  const disabledButton: ButtonColorVariant = { key: 'disabled' };
 </script>
 
 <section class="mt-16">
@@ -76,7 +74,7 @@
             class="my-4 md:my-6 lg:my-8 flex w-full justify-center sm:justify-start gap-4 md:gap-6 lg:gap-8"
           >
             <a href="/" class="flex">
-              <Button noDarkVariant={false} variant={disabledButton}>
+              <Button noDarkVariant={false} variant="disabled">
                 <Fa icon={faArrowLeft} slot="icon" />Back
               </Button>
             </a>

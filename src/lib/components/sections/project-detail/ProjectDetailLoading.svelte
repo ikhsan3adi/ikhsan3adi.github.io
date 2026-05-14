@@ -1,12 +1,8 @@
 <script lang="ts">
-  import type { ButtonColorVariant } from '$lib/components/colors';
-
-  import Wrappper from '$lib/components/widgets/Wrappper.svelte';
   import Button from '$lib/components/buttons/Button.svelte';
-  import Fa from 'svelte-fa';
+  import Wrappper from '$lib/components/widgets/Wrappper.svelte';
   import { faRefresh } from '@fortawesome/free-solid-svg-icons';
-
-  const disabledButton: ButtonColorVariant = { key: 'disabled' };
+  import Fa from 'svelte-fa';
 </script>
 
 <section class="mt-16">
@@ -24,7 +20,7 @@
         <div class="w-full">
           <p class="dark:text-slate-300">Fetching data...</p>
           <div class="my-4 md:my-6 lg:my-8 flex gap-4 md:gap-6 lg:gap-8">
-            <Button noDarkVariant={false} variant={disabledButton}>Loading</Button>
+            <Button noDarkVariant={false} variant="disabled">Loading</Button>
           </div>
         </div>
       </div>

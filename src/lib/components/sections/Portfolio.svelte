@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Saos from 'saos';
+
   import { initialProjects, projects, type ProjectService } from '$lib/api/projects';
   import { randomizeElements, type CardColorKey } from '$lib/components/colors';
 
@@ -9,7 +11,6 @@
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
   import { bottomMarqueeTexts } from '$lib/api/about';
-  import Saos from 'saos';
 
   export let fetch: (input: URL | RequestInfo, init?: RequestInit) => Promise<Response>;
   export let projectService: ProjectService;

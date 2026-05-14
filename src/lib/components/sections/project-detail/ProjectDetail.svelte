@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { ProjectDetail } from '$lib/api/projects';
-  import type { ButtonColorVariant } from '$lib/components/colors';
   import { type TagColorKey, type TagColors, tagColors } from '$lib/components/colors';
 
   import { Octokit } from '@octokit/rest';
@@ -27,8 +26,6 @@
 
   export let project: ProjectDetail;
   export let markdownPromise: Promise<string | null>;
-
-  const secondaryButton: ButtonColorVariant = { key: 'secondary' };
 
   const markdownizePromise = async () => {
     // Get all the emojis available to use on GitHub.
@@ -121,7 +118,7 @@
 
             {#if project.hasLivePreview && project.livePreviewUrl}
               <a href={project.livePreviewUrl} target="_blank">
-                <Button noDarkVariant={false} variant={secondaryButton}>
+                <Button noDarkVariant={false} variant="secondary">
                   <Fa icon={faExternalLink} slot="icon" />Live preview
                 </Button>
               </a>

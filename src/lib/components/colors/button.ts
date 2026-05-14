@@ -16,8 +16,4 @@ interface ButtonColorVariants {
   gitlab: string;
 }
 
-interface ButtonColorVariant {
-  key: keyof ButtonColorVariants;
-}
-
-export type { ButtonColorVariant, ButtonColorVariants };
+export type { ButtonColorVariants };

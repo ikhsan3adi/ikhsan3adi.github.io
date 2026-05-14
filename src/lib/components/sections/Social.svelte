@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { socials } from '$lib/api/socials';
+  import Icon from '@iconify/svelte';
+  import Saos from 'saos';
 
   import Button from '$lib/components/buttons/Button.svelte';
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
-  import Icon from '@iconify/svelte';
 
-  import Saos from 'saos';
+  import { socials } from '$lib/api/socials';
 </script>
 
 <section>

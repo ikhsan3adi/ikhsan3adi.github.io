@@ -1,22 +1,17 @@
 <script lang="ts">
-  import { contacts, submitContactRequest } from '$lib/api/contact';
-
-  import bg from '$lib/components/graphics/hero-bg.svg';
-
-  import type { ButtonColorVariant } from '$lib/components/colors';
-  import { inputClass } from '$lib/components/form';
-
-  import Button from '$lib/components/buttons/Button.svelte';
-  import Wrappper from '$lib/components/widgets/Wrappper.svelte';
-  import Icon from '@iconify/svelte';
-
-  import { enableMessageForm } from '$lib/config';
   import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+  import Icon from '@iconify/svelte';
   import Saos from 'saos';
   import Fa from 'svelte-fa';
 
-  const primaryButton: ButtonColorVariant = { key: 'primary' };
-  const disabledButton: ButtonColorVariant = { key: 'disabled' };
+  import Button from '$lib/components/buttons/Button.svelte';
+  import Wrappper from '$lib/components/widgets/Wrappper.svelte';
+
+  import bg from '$lib/components/graphics/hero-bg.svg';
+
+  import { contacts, submitContactRequest } from '$lib/api/contact';
+  import { inputClass } from '$lib/components/form';
+  import { enableMessageForm } from '$lib/config';
 
   let submisstionStatus: 'Initial' | 'Loading' | 'Success' | 'Failed' = 'Initial';
   let buttonDisabled = false;
@@ -133,7 +128,7 @@
                         <Button
                           noDarkVariant={false}
                           fullWidth={true}
-                          variant={buttonDisabled ? disabledButton : primaryButton}
+                          variant={buttonDisabled ? 'disabled' : 'primary'}
                           disabled={buttonDisabled}
                         >
                           <Fa icon={faPaperPlane} slot="icon" />

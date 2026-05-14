@@ -1,5 +1,7 @@
 <script lang="ts">
-  import type { ButtonColorVariant } from '$lib/components/colors';
+  import { faFolderOpen, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+  import Fa from 'svelte-fa';
+  import Typewriter from 'svelte-typewriter';
 
   import bg from '$lib/components/graphics/hero-bg.svg';
 
@@ -8,9 +10,6 @@
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
   import { FIRST_NAME, LAST_NAME } from '$lib/config';
-  import Typewriter from 'svelte-typewriter';
-
-  const secondaryButton: ButtonColorVariant = { key: 'secondary' };
 </script>
 
 <section>
@@ -43,10 +42,14 @@
             <!-- Call to action buttons -->
             <div class="flex gap-3 sm:max-md:justify-center">
               <a href="#portfolio">
-                <Button noDarkVariant={false}>See projects</Button>
+                <Button noDarkVariant={false}>
+                  <Fa icon={faFolderOpen} slot="icon" />See projects
+                </Button>
               </a>
               <a href="#contact">
-                <Button variant={secondaryButton} noDarkVariant={false}>Contact me</Button>
+                <Button variant="secondary" noDarkVariant={false}>
+                  <Fa icon={faPaperPlane} slot="icon" />Contact me
+                </Button>
               </a>
             </div>
           </div>

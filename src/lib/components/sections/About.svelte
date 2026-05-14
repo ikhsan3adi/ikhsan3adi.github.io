@@ -1,18 +1,15 @@
 <script lang="ts">
+  import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
+  import Saos from 'saos';
+  import Fa from 'svelte-fa';
+
+  import { topMarqueeTexts } from '$lib/api/about';
   import { linkedInLink } from '$lib/api/socials';
-  import type { ButtonColorVariant } from '$lib/components/colors';
 
   import Button from '$lib/components/buttons/Button.svelte';
   import PhotoCard from '$lib/components/cards/PhotoCard.svelte';
   import MarqueeText from '$lib/components/widgets/MarqueeText.svelte';
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
-
-  import { topMarqueeTexts } from '$lib/api/about';
-  import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
-  import Saos from 'saos';
-  import Fa from 'svelte-fa';
-
-  const primaryButton: ButtonColorVariant = { key: 'primary' };
 
   let hoveredCard: number | null = null;
 
@@ -90,7 +87,7 @@
               To learn more about my experience and skills, feel free to visit my LinkedIn profile:
             </p>
             <a href={linkedInLink} target="_blank">
-              <Button variant={primaryButton} noDarkVariant={true}>
+              <Button variant="primary" noDarkVariant={true}>
                 <Fa icon={faExternalLink} slot="icon" />Visit LinkedIn
               </Button>
             </a>
