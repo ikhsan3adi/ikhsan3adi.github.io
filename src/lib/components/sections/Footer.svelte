@@ -50,7 +50,7 @@
           {#each footerSocials as social}
             <a href={social.link} target="_blank" class="group">
               <div
-                class="w-8 h-8 text-transparent text-slate-400 group-hover:text-slate-100 group-active:text-primary"
+                class="w-8 h-8 text-slate-400 group-hover:text-slate-100 group-active:text-primary"
               >
                 <Icon icon={social.icon} class="w-full h-full text-current" />
               </div>

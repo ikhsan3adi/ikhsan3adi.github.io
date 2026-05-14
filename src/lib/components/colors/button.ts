@@ -11,6 +11,9 @@ interface ButtonColorVariants {
   linkedIn: string;
   medium: string;
   telegram: string;
+  x: string;
+  codeforces: string;
+  gitlab: string;
 }
 
 interface ButtonColorVariant {

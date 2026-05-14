@@ -28,6 +28,13 @@ export const contacts: Contact[] = [
     icon: 'simple-icons:telegram'
   },
   {
+    contact: 'Discord!',
+    name: FULL_NAME,
+    link: 'https://discord.com/users/581291080067055617',
+    colorVariant: { key: 'linkedIn' },
+    icon: 'simple-icons:discord'
+  },
+  {
     contact: 'Email Me!',
     name: FULL_NAME,
     link: emailLink,

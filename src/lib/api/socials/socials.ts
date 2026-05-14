@@ -43,6 +43,13 @@ export const socials: Social[] = [
     icon: 'simple-icons:instagram'
   },
   {
+    social: 'X',
+    name: `@${USERNAME}`,
+    link: 'https://x.com/ikhsan3adi',
+    colorVariant: { key: 'x' },
+    icon: 'simple-icons:x'
+  },
+  {
     social: 'Hackerrank',
     name: FULL_NAME,
     link: 'https://www.hackerrank.com/profile/ikhsan3adi',
@@ -53,8 +60,22 @@ export const socials: Social[] = [
     social: 'Codewars',
     name: FULL_NAME,
     link: 'https://www.codewars.com/users/ikhsan3adi',
-    colorVariant: { key: 'github' },
+    colorVariant: { key: 'email' },
     icon: 'simple-icons:codewars'
+  },
+  {
+    social: 'Codeforces',
+    name: FULL_NAME,
+    link: 'https://codeforces.com/profile/ikhsan3adi',
+    colorVariant: { key: 'codeforces' },
+    icon: 'simple-icons:codeforces'
+  },
+  {
+    social: 'Gitlab',
+    name: `@${USERNAME}`,
+    link: 'https://gitlab.com/ikhsan3adi',
+    colorVariant: { key: 'gitlab' },
+    icon: 'simple-icons:gitlab'
   },
   {
     social: 'Codeberg',
@@ -62,19 +83,19 @@ export const socials: Social[] = [
     link: 'https://codeberg.org/ikhsan3adi',
     colorVariant: { key: 'linkedIn' },
     icon: 'simple-icons:codeberg'
-  },
-  {
-    social: 'Showwcase',
-    name: `@${USERNAME}`,
-    link: 'https://www.showwcase.com/ikhsan3adi',
-    colorVariant: { key: 'telegram' },
-    icon: 'simple-icons:showwcase'
-  },
-  {
-    social: 'Medium',
-    name: FULL_NAME,
-    link: 'https://medium.com/@ikhsan3adi',
-    colorVariant: { key: 'medium' },
-    icon: 'simple-icons:medium'
   }
+  // {
+  //   social: 'Showwcase',
+  //   name: `@${USERNAME}`,
+  //   link: 'https://www.showwcase.com/ikhsan3adi',
+  //   colorVariant: { key: 'telegram' },
+  //   icon: 'simple-icons:showwcase'
+  // },
+  // {
+  //   social: 'Medium',
+  //   name: FULL_NAME,
+  //   link: 'https://medium.com/@ikhsan3adi',
+  //   colorVariant: { key: 'medium' },
+  //   icon: 'simple-icons:medium'
+  // }
 ];

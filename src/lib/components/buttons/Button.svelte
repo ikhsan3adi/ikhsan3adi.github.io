@@ -19,7 +19,10 @@
     facebook: 'dark:bg-sky-400',
     linkedIn: 'dark:bg-blue-400',
     medium: 'dark:bg-neutral-400',
-    telegram: 'dark:bg-cyan-400'
+    telegram: 'dark:bg-cyan-400',
+    x: 'dark:bg-indigo-100',
+    codeforces: 'dark:bg-amber-400',
+    gitlab: 'dark:bg-orange-400'
   };
 
   const borderColors: ButtonColorVariants = {
@@ -34,7 +37,10 @@
     facebook: 'dark:border-sky-400',
     linkedIn: 'dark:border-blue-400',
     medium: 'dark:border-neutral-400',
-    telegram: 'dark:border-cyan-400'
+    telegram: 'dark:border-cyan-400',
+    x: 'dark:border-indigo-100',
+    codeforces: 'dark:border-amber-400',
+    gitlab: 'dark:border-orange-400'
   };
 
   const backgroundColors: ButtonColorVariants = {
@@ -49,7 +55,10 @@
     facebook: 'bg-sky-400',
     linkedIn: 'bg-blue-400',
     medium: 'bg-neutral-400',
-    telegram: 'bg-cyan-400'
+    telegram: 'bg-cyan-400',
+    x: 'bg-indigo-100',
+    codeforces: 'bg-amber-400',
+    gitlab: 'bg-orange-400'
   };
 
   const textColors: ButtonColorVariants = {
@@ -64,7 +73,10 @@
     facebook: 'dark:text-sky-400',
     linkedIn: 'dark:text-blue-400',
     medium: 'dark:text-neutral-400',
-    telegram: 'dark:text-cyan-400'
+    telegram: 'dark:text-cyan-400',
+    x: 'dark:text-indigo-100',
+    codeforces: 'dark:text-amber-400',
+    gitlab: 'dark:text-orange-400'
   };
 </script>
 
