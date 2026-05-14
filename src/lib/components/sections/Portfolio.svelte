@@ -8,6 +8,7 @@
   import MarqueeText from '$lib/components/widgets/MarqueeText.svelte';
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
+  import { bottomMarqueeTexts } from '$lib/api/about';
   import Saos from 'saos';
 
   export let fetch: (input: URL | RequestInfo, init?: RequestInit) => Promise<Response>;
@@ -55,13 +56,11 @@
   <div
     class="absolute left-0 right-0 top-0 bg-custom-3 h-12 md:h-14 lg:h-16 border-slate-900 dark:border-slate-700 border-y-4 flex items-center"
   >
-    <MarqueeText direction="right" duration={5} repeat={5}>
+    <MarqueeText direction="right" duration={7} repeat={5}>
       <div class="flex items-center gap-8 mx-4">
-        <h4>● Portfolio</h4>
-        <h4>● Projects</h4>
-        <h4>● Apps</h4>
-        <h4>● Websites</h4>
-        <h4>● Tools</h4>
+        {#each bottomMarqueeTexts as text}
+          <h4>{text}</h4>
+        {/each}
       </div>
     </MarqueeText>
   </div>
