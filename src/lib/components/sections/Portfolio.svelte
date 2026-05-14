@@ -77,7 +77,7 @@
 
       <!-- Projects -->
       <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-        <div class="w-full flex flex-wrap justify-center gap-4">
+        <div class="w-full flex flex-wrap justify-center gap-4 lg:gap-5 xl:gap-6">
           {#if $projects.length == 0}
             <ProjectCardLoading />
           {:else if $projects.length == 1 && ($projects[0].name === 'error' || $projects[0].name === 'limit')}

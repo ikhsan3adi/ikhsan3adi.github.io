@@ -19,7 +19,9 @@
         </h1>
       </Saos>
 
-      <div class="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+      <div
+        class="columns-1 md:columns-2 lg:columns-3 gap-4 lg:gap-5 xl:gap-6 space-y-4 lg:space-y-5"
+      >
         {#each toolCategories as category}
           <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
             <div

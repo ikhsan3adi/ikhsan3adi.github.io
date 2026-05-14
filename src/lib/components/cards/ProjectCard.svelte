@@ -54,14 +54,14 @@
 <div
   in:scale
   out:scale
-  class="w-full lg:w-[48.88%] bg-slate-900 {cardColors[cardColor.key].dark.bg}"
+  class="w-full lg:w-[48.5%] bg-slate-900 {cardColors[cardColor.key].dark.bg}"
 >
   <a href="/$projects$/{project.id}">
     <!-- Card -->
     <div
       class="{cardColors[cardColor.key].light}
 			{cardColors[cardColor.key].dark.border}
-			aspect-[3/4] sm:aspect-[4/3] lg:aspect-[3/4] xl:aspect-[4/3] border-4 border-slate-900
+			aspect-[3/4] sm:aspect-[4/3] lg:aspect-[1/1] xl:aspect-[4/3] border-4 border-slate-900
 		dark:bg-slate-700 -translate-x-1.5 -translate-y-1.5 active:translate-x-0 active:translate-y-0 hover:-translate-x-2 hover:-translate-y-2 duration-200 relative group cursor-pointer"
     >
       <!-- Background image wrapper -->
