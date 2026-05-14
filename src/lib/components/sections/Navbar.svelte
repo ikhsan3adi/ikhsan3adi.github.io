@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import { hamburgerMenuExpanded } from '$lib/config';
   import { navLinks } from '$lib/components/navigation';
+  import { EMBLEM_NAME, hamburgerMenuExpanded } from '$lib/config';
+  import { onMount } from 'svelte';
 
-  import Wrappper from '$lib/components/widgets/Wrappper.svelte';
-  import ThemeButton from '$lib/components/widgets/ThemeButton.svelte';
   import Hamburger from '$lib/components/buttons/Hamburger.svelte';
+  import ThemeButton from '$lib/components/widgets/ThemeButton.svelte';
+  import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
   let navbar: HTMLElement;
 
@@ -81,13 +81,13 @@
                 ? 'dark:text-white'
                 : 'dark:text-text'} font-mechsuit text-sm md:text-lg z-0 transition-colors duration-500"
             >
-              IKHSaN3ADI
+              {EMBLEM_NAME}
             </h3>
 
             <h3
               class="font-mechsuit dark:hidden text-sm md:text-lg absolute -top-1 right-1 transition-colors duration-500"
             >
-              IKHSaN3ADI
+              {EMBLEM_NAME}
             </h3>
           </a>
         </div>

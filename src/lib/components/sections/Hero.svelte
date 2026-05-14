@@ -7,6 +7,7 @@
   import Emblem from '$lib/components/graphics/Emblem.svelte';
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
+  import { FIRST_NAME, LAST_NAME } from '$lib/config';
   import Typewriter from 'svelte-typewriter';
 
   const secondaryButton: ButtonColorVariant = { key: 'secondary' };
@@ -25,7 +26,8 @@
             <!-- Hero text -->
             <h4 id="home" class="dark:text-white duration-500">Hello, my name is</h4>
             <h1 class="mb-2 dark:text-white duration-500">
-              Ikhsan <span class="font-cascadia-mono text-inherit text-primary">Satriadi</span>
+              {FIRST_NAME}
+              <span class="font-cascadia-mono text-inherit text-primary">{LAST_NAME}</span>
             </h1>
 
             <!-- Typing effect -->

@@ -4,6 +4,8 @@
 
   import EmblemSquare from '$lib/components/graphics/EmblemSquare.svelte';
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
+  import { FULL_NAME } from '$lib/config';
+  import Icon from '@iconify/svelte';
 
   export let noNavLinks = false;
 
@@ -44,15 +46,13 @@
         <hr class="my-4 border-slate-500" />
 
         <!-- Socials -->
-        <div class="flex justify-center gap-4 my-10 opacity-90 h-10">
+        <div class="flex justify-center gap-6 my-10 opacity-90 h-10">
           {#each footerSocials as social}
             <a href={social.link} target="_blank" class="group">
-              <div class="w-10 h-10 flex overflow-hidden">
-                <div
-                  class="w-10 h-10 text-transparent stroke-slate-400 group-hover:stroke-slate-100 group-active:stroke-primary"
-                >
-                  <svelte:component this={social.icon} />
-                </div>
+              <div
+                class="w-8 h-8 text-transparent text-slate-400 group-hover:text-slate-100 group-active:text-primary"
+              >
+                <Icon icon={social.icon} class="w-full h-full text-current" />
               </div>
             </a>
           {/each}
@@ -64,7 +64,7 @@
           <a
             href={noNavLinks ? '/' : '#social'}
             target="_blank"
-            class="text-primary hover:underline active:text-custom-3">Ikhsan Satriadi</a
+            class="text-primary hover:underline active:text-custom-3">{FULL_NAME}</a
           >, using
           <a
             href="https://svelte.dev"

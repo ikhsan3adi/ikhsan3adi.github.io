@@ -6,4 +6,19 @@ const darkEnabled: Writable<boolean> = writable(false);
 
 const enableMessageForm = false;
 
-export { darkEnabled, enableMessageForm, hamburgerMenuExpanded };
+const USERNAME = 'ikhsan3adi';
+const FULL_NAME = 'Ikhsan Satriadi';
+const FIRST_NAME = 'Ikhsan';
+const LAST_NAME = 'Satriadi';
+const EMBLEM_NAME = 'IKHSaN3ADI';
+
+export {
+  darkEnabled,
+  EMBLEM_NAME,
+  enableMessageForm,
+  FIRST_NAME,
+  FULL_NAME,
+  hamburgerMenuExpanded,
+  LAST_NAME,
+  USERNAME
+};
