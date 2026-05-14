@@ -12,6 +12,8 @@ const FIRST_NAME = 'Ikhsan';
 const LAST_NAME = 'Satriadi';
 const EMBLEM_NAME = 'IKHSaN3ADI';
 
+const sourceLink = 'https://github.com/ikhsan3adi/ikhsan3adi.github.io';
+
 export {
   darkEnabled,
   EMBLEM_NAME,
@@ -20,5 +22,6 @@ export {
   FULL_NAME,
   hamburgerMenuExpanded,
   LAST_NAME,
+  sourceLink,
   USERNAME
 };

@@ -1,18 +1,19 @@
 <script lang="ts">
-  import { socials } from '$lib/api/socials';
-  import { navLinks } from '$lib/components/navigation';
+  import Icon from '@iconify/svelte';
 
   import EmblemSquare from '$lib/components/graphics/EmblemSquare.svelte';
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
-  import { FULL_NAME } from '$lib/config';
-  import Icon from '@iconify/svelte';
+
+  import { socials } from '$lib/api/socials';
+  import { navLinks } from '$lib/components/navigation';
+  import { FULL_NAME, sourceLink } from '$lib/config';
 
   export let noNavLinks = false;
 
-  const newSocials = socials;
-  newSocials.splice(4, Number.MAX_VALUE);
-
-  const footerSocials = newSocials;
+  // Filter socials for footer: GitHub, LinkedIn, and Codeberg (exclude Facebook & casual ones)
+  const footerSocials = socials.filter((s) =>
+    ['Github', 'LinkedIn', 'Codeberg'].includes(s.social)
+  );
 </script>
 
 <footer>
@@ -59,13 +60,15 @@
         </div>
 
         <!-- Copyright & Credit -->
-        <p class="text-slate-200 text-center text-sm">
+        <p class="text-slate-200 text-center text-sm mb-3">
           &copy; {new Date().getFullYear()}, made with ❤️ by
           <a
             href={noNavLinks ? '/' : '#social'}
-            target="_blank"
             class="text-primary hover:underline active:text-custom-3">{FULL_NAME}</a
-          >, using
+          >
+        </p>
+        <p class="text-slate-300 text-center text-xs mb-3">
+          Built with
           <a
             href="https://svelte.dev"
             target="_blank"
@@ -73,13 +76,22 @@
           >
             SvelteKit
           </a>
-          and
+          &
           <a
             href="https://tailwindcss.com"
             target="_blank"
             class="text-cyan-500 hover:underline active:text-white"
           >
             Tailwind CSS
+          </a>
+        </p>
+        <p class="text-slate-400 text-center text-xs">
+          <a
+            href={sourceLink}
+            target="_blank"
+            class="text-slate-300 hover:text-slate-100 hover:underline"
+          >
+            View source on GitHub
           </a>
         </p>
       </div>
