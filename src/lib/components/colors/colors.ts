@@ -64,6 +64,25 @@ export const tagColors: TagColors = {
   }
 };
 
+export const cardColors = [
+  'bg-red-200 dark:bg-red-400',
+  'bg-green-300 dark:bg-green-400',
+  'bg-blue-300 dark:bg-blue-400',
+  'bg-sky-300 dark:bg-sky-400',
+  'bg-indigo-300 dark:bg-indigo-400',
+  'bg-yellow-300 dark:bg-yellow-400',
+  'bg-purple-300 dark:bg-purple-400',
+  'bg-pink-300 dark:bg-pink-400',
+  'bg-fuchsia-300 dark:bg-fuchsia-400',
+  'bg-teal-300 dark:bg-teal-400',
+  'bg-emerald-300 dark:bg-emerald-400',
+  'bg-orange-300 dark:bg-orange-400',
+  'bg-amber-200 dark:bg-amber-400',
+  'bg-gray-300 dark:bg-gray-400',
+  'bg-lime-300 dark:bg-lime-400',
+  'bg-slate-300 dark:bg-slate-400'
+];
+
 export const randomizeElements = <T>(array: Array<T>, newLength: number) => {
   const newArray = [];
 
