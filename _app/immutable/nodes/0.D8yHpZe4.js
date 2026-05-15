@@ -1,1 +1,0 @@
-import{w as a,x as n,v as l,e as s}from"../chunks/DHM3yed0.js";const u=!0,p=Object.freeze(Object.defineProperty({__proto__:null,prerender:u},Symbol.toStringTag,{value:"Module"}));function d(t,o){var e=a(),r=n(e);l(r,o,"default",{}),s(t,e)}export{d as component,p as universal};
