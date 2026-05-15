@@ -20,7 +20,7 @@
   }
 </script>
 
-<section class="w-full relative pt-16 bg-fuchsia-200 dark:bg-purple-900">
+<section class="w-full relative pt-12 md:pt-14 lg:pt-16 bg-fuchsia-200 dark:bg-purple-900">
   <div
     class="absolute left-0 right-0 top-0 bg-primary h-12 md:h-14 lg:h-16 border-slate-900 dark:border-slate-700 border-y-4 flex items-center"
   >
@@ -33,7 +33,7 @@
     </MarqueeText>
   </div>
   <Wrappper>
-    <div class="w-full py-16">
+    <div class="w-full pt-10 sm:pt-12 md:pt-14 lg:pt-16 pb-16">
       <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once />
       <div
         class="w-full flex flex-col gap-4 lg:gap-5 xl:gap-6 lg:flex-row md:justify-between h-max"

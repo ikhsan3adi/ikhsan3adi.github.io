@@ -27,7 +27,7 @@ class ProjectService {
         newProject = {
           ...project,
           description: project.description || json.description,
-          tags: [...project.tags, json.language.toLowerCase()],
+          tags: [...new Set([...project.tags, json.language.toLowerCase()])],
           starsCount: json.stargazers_count,
           forksCount: json.forks,
           downloadsCount: await this.getDownloadsCount(project.url)

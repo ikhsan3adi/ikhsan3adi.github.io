@@ -32,6 +32,8 @@ export const photoCards = [
   }
 ];
 
-export const aboutText = `I'm Ikhsan, a passionate software engineer with a love for problem-solving and creating impactful solutions.
-              I thrive on continuous learning and enjoy collaborating with teams to tackle challenges and deliver high-quality software solutions.
-              Let's build something great together!`;
+export const aboutText = `Informatics Engineering student focused on back-end development, full-stack systems, and practical software architecture, with a daily workflow built around a fully customized Linux setup.
+Built projects across web, mobile, and application systems, including event management platforms, ticketing apps, attendance systems, and data aggregation services.
+Active in the open-source community as a maintainer and contributor, with experience handling pull requests, code reviews, documentation, and release coordination for repositories with strong community traction.
+Comfortable working with REST APIs, databases, deployment workflows, data structures, algorithmic thinking, analytical reasoning, and software design patterns.
+Outside project work, competitive programming contests remain a regular way to sharpen problem-solving under time constraints.`;

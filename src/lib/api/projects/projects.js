@@ -19,7 +19,7 @@ const initialProjects = [
     name: 'Polban DataCore',
     url: `https://api.github.com/repos/muhamadSyahid/polban-datacore`,
     description:
-      'Polban DataCore adalah komponen agregator dan backend utama dari ekosistem Polban Dataverse.',
+      'Polban DataCore is the main aggregator and backend of the Polban Dataverse ecosystem. It bridges raw data sources with data visualization. Its main responsibilities include extracting raw data such as students, lecturers, and academic data from DataHub, loading the data into an internal database for processing, transforming and aggregating the raw data into meaningful statistics and materialized views, and serving the processed data through a fast, cached REST API.',
     baseUrl: 'https://github.com/muhamadSyahid/polban-datacore/raw/main/',
     imageUrl:
       'https://opengraph.githubassets.com/a31024273919970c63ff8fc7fd39ca4cf5a08f60e3be6b985705bd2694abaa36/ikhsan3adi/polban-datacore',
@@ -36,7 +36,7 @@ const initialProjects = [
     imageUrl:
       'https://github.com/ikhsan3adi/godot-outline-quest/raw/main/.image/README/preview-menu.png',
     readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/godot-outline-quest/main/README.md',
-    tags: ['godot', 'c#']
+    tags: ['godot', 'csharp', 'dotnet']
   },
   {
     id: 'jump-and-survive',
@@ -57,7 +57,7 @@ const initialProjects = [
     baseUrl: 'https://github.com/ikhsan3adi/c-snake-game/raw/master/',
     imageUrl: 'https://github.com/ikhsan3adi/c-snake-game/raw/master/images/preview.gif',
     readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/c-snake-game/master/README.md',
-    tags: ['curses', 'gnu-make']
+    tags: ['c', 'curses', 'gnu-make']
   },
   {
     id: 'absensi-karyawan-gps-barcode',
