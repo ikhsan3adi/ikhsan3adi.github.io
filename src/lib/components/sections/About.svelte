@@ -58,12 +58,12 @@
         </div>
         <div class="w-full">
           <div
-            class="h-full w-full
+            class="h-full w-full max-h-[600px]
             overflow-visible relative
             flex items-center justify-center
             border-4 border-slate-900 dark:border-slate-700
             bg-amber-200 dark:bg-amber-400
-            aspect-[1/1] md:aspect-[4/3] lg:aspect-[3/4] xl:aspect-[2/1]"
+            aspect-[1/1] md:aspect-[4/3] lg:aspect-auto"
             aria-labelledby="Illustrated About Me"
             role="region"
             on:mouseleave={() => (hoveredCard = null)}

@@ -15,7 +15,7 @@ export const photoCards = [
     description: 'Opening my laptop to vibe code bugs',
     imgSrc: 'https://placehold.co/160x90/fff/280609?text=Coding+Vibes&font=lora',
     bgClass: 'bg-fuchsia-200 dark:bg-fuchsia-400',
-    transformClass: 'rotate-1 -top-2 sm:top-2 lg:-top-12 -right-8 sm:-right-2',
+    transformClass: 'rotate-1 -top-2 sm:top-2 lg:-top-12 -right-8 sm:-right-4',
     cardSizeClass: 'w-96',
     imgClass: 'aspect-[16/9]',
     baseZ: 2
