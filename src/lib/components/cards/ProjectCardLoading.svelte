@@ -14,8 +14,16 @@
     >
       <div class="bg-primary animate-pulse flex absolute top-0 bottom-0 left-0 right-0">
         <div class=" mx-auto inline-flex flex-wrap m-auto justify-center gap-2 items-center w-max">
-          <h1 class="dark:text-white text-right animate-spin"><Fa icon={faRefresh} /></h1>
-          <h2 class="dark:text-white text-center">Loading...</h2>
+          <div
+            class="dark:text-white text-right animate-spin text-4xl md:text-5xl lg:text-6xl font-extrabold text-text"
+          >
+            <Fa icon={faRefresh} />
+          </div>
+          <div
+            class="dark:text-white text-center font-cascadia-mono font-extrabold text-text text-2xl md:text-3xl lg:text-4xl"
+          >
+            Loading...
+          </div>
         </div>
       </div>
     </div>

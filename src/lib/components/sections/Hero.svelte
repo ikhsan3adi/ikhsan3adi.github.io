@@ -23,21 +23,25 @@
         <div class="w-full md:flex md:gap-4 md:justify-between my-auto">
           <div class="mb-52 mt-16 md:m-0 py-2 md:py-8 lg:py-9 sm:max-md:text-center duration-500">
             <!-- Hero text -->
-            <h4 id="home" class="dark:text-white duration-500">Hello, my name is</h4>
+            <p id="home" class="dark:text-white duration-500 md:text-lg lg:text-xl font-medium">
+              Hello, my name is
+            </p>
             <h1 class="mb-2 dark:text-white duration-500">
               {FIRST_NAME}
-              <span class="font-cascadia-mono text-inherit text-primary">{LAST_NAME}</span>
+              <span class="font-cascadia-mono text-inherit text-primary">
+                {LAST_NAME}
+              </span>
             </h1>
 
             <!-- Typing effect -->
-            <h4 class="mb-4 dark:text-white duration-500">
+            <div class="mb-4 dark:text-white duration-500 md:text-lg lg:text-xl font-medium">
               <Typewriter mode={'loop'} interval={25}>
                 A
                 <span class="text-emerald-600 dark:text-primary">Student</span>
                 <span class="text-green-600 dark:text-green-400">Programmer</span>
                 <span class="text-orange-600 dark:text-orange-400">Computer User</span>
               </Typewriter>
-            </h4>
+            </div>
 
             <!-- Call to action buttons -->
             <div class="flex flex-wrap gap-3 sm:max-md:justify-center">
@@ -64,7 +68,7 @@
 
             <!-- Back outline / shadow -->
             <div
-              class="w-52 h-52 mx-auto md:w-64 md:h-64 lg:w-72 lg:h-72 text-secondary dark:text-transparent dark:stroke-[4] dark:stroke-custom-3 duration-500"
+              class="w-52 h-52 mx-auto md:w-64 md:h-64 lg:w-72 lg:h-72 text-custom-3 dark:text-transparent stroke-[4] stroke-slate-900 dark:stroke-custom-3 duration-500"
             >
               <Emblem />
             </div>

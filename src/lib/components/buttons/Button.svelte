@@ -10,7 +10,8 @@
 
   const backBackgroundColors: ButtonColorVariants = {
     primary: 'dark:bg-primary',
-    secondary: 'dark:bg-white',
+    secondary: 'dark:bg-secondary',
+    white: 'dark:bg-white',
     disabled: 'dark:bg-neutral-400',
     whatsapp: 'dark:bg-green-400',
     email: 'dark:bg-red-400',
@@ -23,12 +24,14 @@
     telegram: 'dark:bg-cyan-400',
     x: 'dark:bg-indigo-100',
     codeforces: 'dark:bg-amber-400',
-    gitlab: 'dark:bg-orange-400'
+    gitlab: 'dark:bg-orange-400',
+    'custom-3': 'dark:bg-custom-3'
   };
 
   const borderColors: ButtonColorVariants = {
     primary: 'dark:border-primary',
-    secondary: 'dark:border-white',
+    secondary: 'dark:border-secondary',
+    white: 'dark:border-white',
     disabled: 'dark:border-neutral-400',
     whatsapp: 'dark:border-green-400',
     email: 'dark:border-red-400',
@@ -41,12 +44,14 @@
     telegram: 'dark:border-cyan-400',
     x: 'dark:border-indigo-100',
     codeforces: 'dark:border-amber-400',
-    gitlab: 'dark:border-orange-400'
+    gitlab: 'dark:border-orange-400',
+    'custom-3': 'dark:border-custom-3'
   };
 
   const backgroundColors: ButtonColorVariants = {
     primary: 'bg-primary',
-    secondary: 'bg-white',
+    secondary: 'bg-secondary',
+    white: 'bg-white',
     disabled: 'bg-neutral-400',
     whatsapp: 'bg-green-400',
     email: 'bg-red-400',
@@ -59,12 +64,14 @@
     telegram: 'bg-cyan-400',
     x: 'bg-indigo-100',
     codeforces: 'bg-amber-400',
-    gitlab: 'bg-orange-400'
+    gitlab: 'bg-orange-400',
+    'custom-3': 'bg-custom-3'
   };
 
   const textColors: ButtonColorVariants = {
     primary: 'dark:text-primary',
-    secondary: 'dark:text-white',
+    secondary: 'dark:text-secondary',
+    white: 'dark:text-white',
     disabled: 'dark:text-neutral-400',
     whatsapp: 'dark:text-green-400',
     email: 'dark:text-red-400',
@@ -77,7 +84,8 @@
     telegram: 'dark:text-cyan-400',
     x: 'dark:text-indigo-100',
     codeforces: 'dark:text-amber-400',
-    gitlab: 'dark:text-orange-400'
+    gitlab: 'dark:text-orange-400',
+    'custom-3': 'dark:text-custom-3'
   };
 </script>
 

@@ -19,15 +19,12 @@
   :global(h1),
   :global(h2) {
     @apply font-cascadia-mono font-extrabold text-text;
-  }
-
-  :global(h1) {
     @apply text-4xl md:text-5xl lg:text-6xl;
   }
 
-  :global(h2) {
+  /* :global(h2) {
     @apply text-2xl md:text-3xl lg:text-4xl;
-  }
+  } */
 
   :global(h3),
   :global(h4) {

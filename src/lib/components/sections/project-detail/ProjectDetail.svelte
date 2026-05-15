@@ -118,7 +118,7 @@
 
             {#if project.hasLivePreview && project.livePreviewUrl}
               <a href={project.livePreviewUrl} target="_blank">
-                <Button noDarkVariant={false} variant="secondary">
+                <Button noDarkVariant={false} variant="white">
                   <Fa icon={faExternalLink} slot="icon" />Live preview
                 </Button>
               </a>
@@ -130,7 +130,7 @@
       <!-- README.md -->
       <hr class="mt-16 border border-slate-700 dark:border-slate-300" />
       <a href={project.readmeUrl} class="hover:underline">
-        <h4 class="dark:text-white my-2">
+        <span class="dark:text-white block my-2 md:text-lg lg:text-xl font-medium">
           {#await markdownPromise}
             Loading...
           {:then}
@@ -138,7 +138,7 @@
           {:catch}
             Error!
           {/await}
-        </h4>
+        </span>
       </a>
       <hr class="mb-16 md:mb-24 border border-slate-700 dark:border-slate-300" />
 
@@ -153,7 +153,11 @@
             {/await}
           </div>
         {:catch error}
-          <h1 class="dark:text-white"><Fa icon={faWarning} />Failed to load README</h1>
+          <div
+            class="dark:text-white font-cascadia-mono font-extrabold text-text text-4xl md:text-5xl lg:text-6xl"
+          >
+            <Fa icon={faWarning} />Failed to load README
+          </div>
           <p class="text-red-500 dark:text-red-400">{error}</p>
         {/await}
       </div>

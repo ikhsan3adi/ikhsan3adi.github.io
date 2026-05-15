@@ -44,12 +44,12 @@
     <Wrappper>
       <div class="w-full">
         <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-          <h1
+          <h2
             class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white duration-500"
             id="contact"
           >
             Contact
-          </h1>
+          </h2>
         </Saos>
 
         <div class="flex flex-wrap justify-center gap-4 lg:gap-5 xl:gap-6">
@@ -77,7 +77,11 @@
             <div class="lg:flex lg:justify-between">
               <div class="hidden lg:block my-auto pr-8 xl:pr-12">
                 <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-                  <h1 class="dark:text-white duration-500">Message me!</h1>
+                  <h3
+                    class="dark:text-white duration-500 font-cascadia-mono text-3xl md:text-4xl lg:text-5xl"
+                  >
+                    Message me!
+                  </h3>
                 </Saos>
               </div>
               <Saos
@@ -90,7 +94,9 @@
                 >
                   <form method="dialog">
                     <div class="flex flex-col mb-4">
-                      <label for="name"><h4 class="dark:text-white">Name</h4></label>
+                      <label for="name" class="dark:text-white md:text-lg lg:text-xl font-medium">
+                        Name
+                      </label>
                       <input
                         bind:value={data.name}
                         type="text"
@@ -100,7 +106,9 @@
                         required
                       />
 
-                      <label for="email"><h4 class="dark:text-white">Email</h4></label>
+                      <label for="email" class="dark:text-white md:text-lg lg:text-xl font-medium">
+                        Email
+                      </label>
                       <input
                         bind:value={data.email}
                         type="email"
@@ -110,7 +118,12 @@
                         required
                       />
 
-                      <label for="message"><h4 class="dark:text-white">Message</h4></label>
+                      <label
+                        for="message"
+                        class="dark:text-white md:text-lg lg:text-xl font-medium"
+                      >
+                        Message
+                      </label>
                       <textarea
                         bind:value={data.message}
                         id="message"
@@ -132,17 +145,17 @@
                           disabled={buttonDisabled}
                         >
                           <Fa icon={faPaperPlane} slot="icon" />
-                          <h4
+                          <span
                             class="{submisstionStatus === 'Failed'
                               ? 'text-red-500'
-                              : 'text-inherit'} "
+                              : 'text-inherit'} md:text-lg lg:text-xl font-medium"
                           >
                             {submisstionStatus === 'Initial'
                               ? 'Send'
                               : submisstionStatus === 'Failed'
                                 ? 'Failed, try again'
                                 : submisstionStatus}
-                          </h4>
+                          </span>
                         </Button>
                       </button>
                     </div>

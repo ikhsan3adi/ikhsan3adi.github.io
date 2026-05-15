@@ -25,7 +25,7 @@
   text-text my-auto flex flex-col lg:hidden"
 >
   <!-- Hamburger button -->
-  <button class="m-auto block" on:click={() => toggle(!open)}>
+  <button class="m-auto block" on:click={() => toggle(!open)} title="Toggle menu">
     {#if open}
       <svg
         class="fill-current"

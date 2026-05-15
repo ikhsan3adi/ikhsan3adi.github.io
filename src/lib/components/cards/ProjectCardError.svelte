@@ -16,8 +16,16 @@
       class="h-3/5 md:max-lg:h-3/5 border-b-4 bg-red-600 dark:bg-red-400 border-slate-900 dark:border-red-400 flex"
     >
       <div class=" mx-auto inline-flex flex-wrap m-auto justify-center gap-2 items-center w-max">
-        <h1 class="dark:text-white text-right"><Fa icon={faWarning} /></h1>
-        <h2 class="dark:text-white text-center">Error!</h2>
+        <div
+          class="dark:text-white text-right text-4xl md:text-5xl lg:text-6xl font-extrabold text-text"
+        >
+          <Fa icon={faWarning} />
+        </div>
+        <div
+          class="dark:text-white text-center font-cascadia-mono font-extrabold text-text text-2xl md:text-3xl lg:text-4xl"
+        >
+          Error!
+        </div>
       </div>
     </div>
 

@@ -75,19 +75,19 @@
       <div class="my-auto">
         <div class="mt-2 dark:mt-0 relative">
           <a href="/">
-            <h3
+            <div
               class="text-primary {isBgTransparent
                 ? 'dark:text-white'
                 : 'dark:text-text'} font-mechsuit text-sm md:text-lg z-0 transition-colors duration-500"
             >
               {EMBLEM_NAME}
-            </h3>
+            </div>
 
-            <h3
+            <div
               class="font-mechsuit dark:hidden text-sm md:text-lg absolute -top-1 right-1 transition-colors duration-500"
             >
               {EMBLEM_NAME}
-            </h3>
+            </div>
           </a>
         </div>
       </div>

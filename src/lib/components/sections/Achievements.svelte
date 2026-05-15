@@ -27,12 +27,12 @@
     <Wrappper>
       <div class="w-full pb-16 z-10">
         <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-          <h1
+          <h2
             class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white duration-500"
             id="achievements"
           >
             Achievements
-          </h1>
+          </h2>
         </Saos>
 
         <div
@@ -60,14 +60,17 @@
                 </div>
 
                 <!-- Title: type icon to the left -->
-                <h3 class="font-bold mb-2 text-lg">
+                <h3 class="mb-2">
                   <span class="inline-block mr-1 translate-y-0.5">
                     {#if achievement.type === 'competition'}
-                      <Icon icon="lucide:trophy" class="w-4 h-4" />
+                      <Icon icon="lucide:trophy" class="w-[1.1rem] h-[1.1rem] md:w-5 md:h-5" />
                     {:else if achievement.type === 'course'}
-                      <Icon icon="lucide:book-open-text" class="w-4 h-4" />
+                      <Icon
+                        icon="lucide:book-open-text"
+                        class="w-[1.1rem] h-[1.1rem] md:w-5 md:h-5"
+                      />
                     {:else}
-                      <Icon icon="lucide:award" class="w-4 h-4" />
+                      <Icon icon="lucide:award" class="w-[1.1rem] h-[1.1rem] md:w-5 md:h-5" />
                     {/if}
                   </span>
                   {achievement.title}
@@ -90,7 +93,7 @@
                 <!-- Link Button -->
                 {#if achievement.link}
                   <div class="mt-4">
-                    <a href={achievement.link} target="_blank">
+                    <a href={achievement.link} target="_blank" title={achievement.title}>
                       <Button noDarkVariant={true} fullWidth={false} variant="codeforces" small>
                         <Fa icon={faExternalLink} slot="icon" />
                         View Credentials

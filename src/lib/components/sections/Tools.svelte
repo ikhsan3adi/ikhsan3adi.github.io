@@ -16,12 +16,12 @@
   <Wrappper>
     <div class="w-full pb-16 z-10">
       <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-        <h1
+        <h2
           class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white duration-500"
           id="tools"
         >
           Development tools
-        </h1>
+        </h2>
       </Saos>
 
       <div
@@ -33,7 +33,7 @@
               class="break-inside-avoid border-4 border-slate-900 dark:border-slate-700 p-4 flex flex-col
               {randomizedColors[i]}"
             >
-              <h3 class="font-bold mb-4">
+              <h3 class="mb-4">
                 {category.category}
               </h3>
               <div class="flex flex-wrap gap-4">

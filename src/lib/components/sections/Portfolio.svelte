@@ -60,7 +60,7 @@
     <MarqueeText direction="right" duration={10} repeat={5}>
       <div class="flex items-center gap-8 mx-4">
         {#each bottomMarqueeTexts as text}
-          <h4>{text}</h4>
+          <span class="md:text-lg lg:text-xl font-medium">{text}</span>
         {/each}
       </div>
     </MarqueeText>
@@ -68,12 +68,12 @@
   <Wrappper>
     <div class="w-full pb-36">
       <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-        <h1
+        <h2
           class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white duration-500"
           id="portfolio"
         >
           Projects
-        </h1>
+        </h2>
       </Saos>
 
       <!-- Projects -->

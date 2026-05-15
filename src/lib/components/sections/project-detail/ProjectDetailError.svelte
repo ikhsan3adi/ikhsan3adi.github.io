@@ -26,12 +26,16 @@
         <!-- Image -->
         <div class="w-full bg-red-600 dark:bg-red-400 aspect-[2/1] flex p-2">
           <div class="m-auto inline-flex flex-wrap gap-2 justify-center items-center">
-            <h1 class="text-center text-white dark:text-text">
+            <div
+              class="text-center text-white dark:text-text font-cascadia-mono font-extrabold text-4xl md:text-5xl lg:text-6xl"
+            >
               <Fa icon={faWarning} />
-            </h1>
-            <h2 class="text-center text-white dark:text-text">
+            </div>
+            <div
+              class="font-cascadia-mono font-extrabold text-center text-white dark:text-text text-2xl md:text-3xl lg:text-4xl"
+            >
               {project.description}
-            </h2>
+            </div>
           </div>
         </div>
 

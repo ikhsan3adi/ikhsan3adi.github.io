@@ -49,7 +49,7 @@
         <!-- Socials -->
         <div class="flex justify-center gap-6 my-10 opacity-90 h-10">
           {#each footerSocials as social}
-            <a href={social.link} target="_blank" class="group">
+            <a href={social.link} target="_blank" class="group" title={social.social}>
               <div
                 class="w-8 h-8 text-slate-400 group-hover:text-slate-100 group-active:text-primary"
               >
@@ -64,15 +64,18 @@
           &copy; {new Date().getFullYear()}, made with ❤️ by
           <a
             href={noNavLinks ? '/' : '#social'}
-            class="text-primary hover:underline active:text-custom-3">{FULL_NAME}</a
+            class="text-primary font-semibold hover:underline active:text-custom-3"
+            title="View my social profiles"
           >
+            {FULL_NAME}
+          </a>
         </p>
         <p class="text-slate-300 text-center text-xs mb-3">
           Built with
           <a
             href="https://svelte.dev"
             target="_blank"
-            class="text-orange-500 hover:underline active:text-white"
+            class="text-orange-500 font-semibold hover:underline active:text-white"
           >
             SvelteKit
           </a>
@@ -80,7 +83,7 @@
           <a
             href="https://tailwindcss.com"
             target="_blank"
-            class="text-cyan-500 hover:underline active:text-white"
+            class="text-cyan-500 font-semibold hover:underline active:text-white"
           >
             Tailwind CSS
           </a>

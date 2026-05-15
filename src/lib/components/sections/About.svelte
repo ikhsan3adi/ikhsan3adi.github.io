@@ -27,7 +27,7 @@
     <MarqueeText direction="left">
       <div class="flex items-center gap-8 mx-4">
         {#each topMarqueeTexts as text}
-          <h4>{text}</h4>
+          <span class="md:text-lg lg:text-xl font-medium">{text}</span>
         {/each}
       </div>
     </MarqueeText>
@@ -36,13 +36,13 @@
     <div class="w-full pt-10 sm:pt-12 md:pt-14 lg:pt-16 pb-16">
       <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once />
       <div
-        class="w-full flex flex-col gap-4 lg:gap-5 xl:gap-6 lg:flex-row md:justify-between h-max"
+        class="w-full flex flex-col-reverse lg:flex-row gap-20 sm:gap-4 lg:gap-5 xl:gap-6 md:justify-between h-max"
       >
         <div
           class="w-full border-4 border-slate-900 dark:border-slate-700 p-8 bg-slate-100 dark:bg-fuchsia-400"
         >
           <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-            <h1 class="mb-4 md:mb-6 lg:mb-8 duration-500" id="about">About Me</h1>
+            <h2 class="mb-4 md:mb-6 lg:mb-8 duration-500" id="about">About Me</h2>
             <p class="active:text-indigo-900">
               {aboutText}
             </p>
@@ -50,7 +50,7 @@
               To learn more about my experience and skills, feel free to visit my LinkedIn profile:
             </p>
             <a href={linkedInLink} target="_blank">
-              <Button variant="primary" noDarkVariant={true}>
+              <Button variant="linkedIn" noDarkVariant={true}>
                 <Fa icon={faExternalLink} slot="icon" />Visit LinkedIn
               </Button>
             </a>
@@ -64,7 +64,7 @@
             border-4 border-slate-900 dark:border-slate-700
             bg-amber-200 dark:bg-amber-400
             aspect-[1/1] md:aspect-[4/3] lg:aspect-auto"
-            aria-labelledby="Illustrated About Me"
+            aria-label="Illustrated About Me"
             role="region"
             on:mouseleave={() => (hoveredCard = null)}
           >

@@ -25,7 +25,7 @@
     <div class="w-full {imgClass}" aria-details={imageSrc}></div>
   {/if}
   <figcaption class="p-3 w-full border-t-4 border-slate-900 dark:border-slate-700">
-    <h5 class="font-bold mb-1">{title}</h5>
+    <h3 class="text-base md:text-lg font-bold mb-1">{title}</h3>
     <p class="text-xs">{description}</p>
   </figcaption>
 </figure>
