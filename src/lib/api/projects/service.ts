@@ -19,79 +19,130 @@ class ProjectService {
         }
       });
 
-      const json = JSON.parse(await response.text());
-
-      let newProject: Project;
+      const text = await response.text();
+      const json = text ? JSON.parse(text) : {};
 
       if (response.status === 200) {
-        newProject = {
+        const newProject: Project = {
           ...project,
           description: project.description || json.description,
-          tags: [...new Set([...project.tags, json.language.toLowerCase()])],
+          tags: [...new Set([...project.tags, json.language?.toLowerCase()])],
           starsCount: json.stargazers_count,
           forksCount: json.forks,
           downloadsCount: await this.getDownloadsCount(project.url)
         };
 
-        return projectsStore.update((projects) => {
-          const updatedProjects = [...projects, newProject];
+        projectsStore.update((projects) => {
+          const existsIndex = projects.findIndex((p) => p.id === newProject.id);
+          let updatedProjects: Project[];
+          if (existsIndex !== -1) {
+            updatedProjects = [...projects];
+            updatedProjects[existsIndex] = newProject;
+          } else {
+            updatedProjects = [...projects, newProject];
+          }
 
           if (browser) {
             try {
               localStorage.setItem('projects', JSON.stringify(updatedProjects));
-            } finally {
-              [];
+            } catch (e) {
+              // ignore localStorage write errors
             }
           }
 
           return updatedProjects;
         });
-      } else {
-        console.log(json);
-
-        let fallbackData: Project[] = [];
-
-        if (browser && localStorage.getItem('projects')) {
-          fallbackData = (JSON.parse(localStorage.getItem('projects') ?? '[]') as Project[]).map(
-            (project) => ({ ...project, imageText: 'Server error / API rate limit exceeded' })
-          );
-        } else if (response.status === 403) {
-          fallbackData = [
-            {
-              ...project,
-              name: 'limit',
-              tags: []
-            }
-          ];
-        } else {
-          throw response;
-        }
-
-        projectsStore.update(() => fallbackData);
-
-        return error(response.status ?? 500, 'Failed to fetch data');
+        return;
       }
+
+      // non-200 responses: preserve cached projects if available
+      const status = response.status;
+      let shouldUseCache = false;
+      let cacheData: Project[] = [];
+
+      if (browser && localStorage.getItem('projects')) {
+        try {
+          const stored = JSON.parse(localStorage.getItem('projects') ?? '[]') as Project[];
+          if (stored.length > 0) {
+            shouldUseCache = true;
+            const unique: Project[] = [];
+            const seen = new Set<string>();
+            for (const p of stored) {
+              if (!seen.has(p.id)) {
+                seen.add(p.id);
+                unique.push({ ...p, imageText: 'Server error / API rate limit exceeded' });
+              }
+            }
+            cacheData = unique;
+          }
+        } catch (e) {
+          // ignore JSON parse errors
+        }
+      }
+
+      if (shouldUseCache) {
+        projectsStore.update(() => cacheData);
+      } else if (status === 403) {
+        projectsStore.update((projects) => [
+          ...projects,
+          {
+            ...project,
+            name: 'limit',
+            tags: []
+          }
+        ]);
+      } else {
+        projectsStore.update((projects) => [
+          ...projects,
+          {
+            ...project,
+            name: 'error',
+            description: response.statusText || 'Failed to fetch',
+            tags: []
+          }
+        ]);
+      }
+
+      return error(status ?? 500, 'Failed to fetch data');
     } catch (err) {
       console.log(err);
 
-      let fallbackData: Project[] = [];
+      let shouldUseCache = false;
+      let cacheData: Project[] = [];
 
       if (browser && localStorage.getItem('projects')) {
-        fallbackData = (JSON.parse(localStorage.getItem('projects') ?? '[]') as Project[]).map(
-          (project) => ({ ...project, imageText: 'No internet connection' })
-        );
+        try {
+          const stored = JSON.parse(localStorage.getItem('projects') ?? '[]') as Project[];
+          if (stored.length > 0) {
+            shouldUseCache = true;
+            const unique: Project[] = [];
+            const seen = new Set<string>();
+            for (const p of stored) {
+              if (!seen.has(p.id)) {
+                seen.add(p.id);
+                unique.push({ ...p, imageText: 'No internet connection' });
+              }
+            }
+            cacheData = unique;
+          }
+        } catch (e) {
+          // ignore JSON parse errors
+        }
+      }
+
+      if (shouldUseCache) {
+        projectsStore.update(() => cacheData);
       } else {
-        fallbackData = [
+        projectsStore.update((projects) => [
+          ...projects,
           {
             ...project,
             name: 'error',
             description: 'No internet connection',
             tags: []
           }
-        ];
+        ]);
       }
-
-      projectsStore.update(() => fallbackData);
 
       return error(500, 'Failed to fetch data');
     }
@@ -112,73 +163,69 @@ class ProjectService {
         }
       });
 
-      const json = JSON.parse(await response.text());
-
-      let newProject: ProjectDetail;
+      const text = await response.text();
+      const json = text ? JSON.parse(text) : {};
 
       if (response.status === 200) {
-        newProject = {
+        const newProject: ProjectDetail = {
           ...project,
           description: json.description,
-          tags: [...project.tags, json.language.toLowerCase()],
-          repositoryUrl: json['svn_url'],
-          hasLivePreview: json.homepage ? true : false,
-          livePreviewUrl: json.homepage,
+          tags: [...(project.tags || []), (json.language || '').toLowerCase()],
+          repositoryUrl: json['svn_url'] || '',
+          hasLivePreview: !!json.homepage,
+          livePreviewUrl: json.homepage || '',
           starsCount: json.stargazers_count,
           forksCount: json.forks,
           downloadsCount: await this.getDownloadsCount(project.url)
         };
 
-        return projectDetailStore.update(() => newProject);
-      } else {
-        console.log(json);
-
-        let fallbackData: ProjectDetail;
-
-        if (browser && localStorage.getItem('projectDetail')) {
-          fallbackData = {
-            ...(JSON.parse(localStorage.getItem('projectDetail') ?? '{}') as ProjectDetail),
-            imageText: 'Server error / API rate limit exceeded'
-          };
-        } else if (response.status === 403) {
-          fallbackData = {
-            ...project,
-            name: 'limit',
-            description: json.message,
-            tags: [],
-            hasLivePreview: false,
-            repositoryUrl: ''
-          };
-        } else {
-          throw response;
-        }
-
-        projectDetailStore.update(() => fallbackData);
-
-        return error(response.status ?? 500, 'Failed to fetch data');
+        projectDetailStore.update(() => newProject);
+        return newProject;
       }
+
+      // non-200
+      if (browser && localStorage.getItem('projectDetail')) {
+        const stored = JSON.parse(localStorage.getItem('projectDetail') ?? '{}') as ProjectDetail;
+        projectDetailStore.update(() => ({
+          ...stored,
+          imageText: 'Server error / API rate limit exceeded'
+        }));
+      } else if (response.status === 403) {
+        projectDetailStore.update(
+          () =>
+            ({
+              ...project,
+              name: 'limit',
+              description: json.message,
+              tags: [],
+              hasLivePreview: false,
+              repositoryUrl: ''
+            }) as ProjectDetail
+        );
+      } else {
+        throw response;
+      }
+
+      return error(response.status ?? 500, 'Failed to fetch data');
     } catch (err) {
       console.log(err);
 
-      let fallbackData: ProjectDetail;
-
       if (browser && localStorage.getItem('projectDetail')) {
-        fallbackData = {
-          ...(JSON.parse(localStorage.getItem('projectDetail') ?? '{}') as ProjectDetail),
-          imageText: 'No internet connection'
-        };
+        const stored = JSON.parse(localStorage.getItem('projectDetail') ?? '{}') as ProjectDetail;
+        projectDetailStore.update(() => ({ ...stored, imageText: 'No internet connection' }));
       } else {
-        fallbackData = {
-          ...project,
-          name: 'error',
-          description: 'No internet connection',
-          tags: [],
-          hasLivePreview: false,
-          repositoryUrl: ''
-        };
+        projectDetailStore.update(
+          () =>
+            ({
+              ...project,
+              name: 'error',
+              description: 'No internet connection',
+              tags: [],
+              hasLivePreview: false,
+              repositoryUrl: ''
+            }) as ProjectDetail
+        );
       }
-
-      projectDetailStore.update(() => fallbackData);
 
       return error(500, 'Failed to fetch data');
     }
@@ -192,35 +239,28 @@ class ProjectService {
     fetch: (input: URL | RequestInfo, init?: RequestInit) => Promise<Response>;
   }) {
     try {
-      const response = await fetch(project.readmeUrl ?? '', {
-        method: 'GET'
-      });
-      const text = await response.text();
-      return text;
-    } catch (error) {
+      const response = await fetch(project.readmeUrl ?? '', { method: 'GET' });
+      if (!response.ok) return null;
+      return await response.text();
+    } catch (err) {
       return null;
     }
   }
 
   async getDownloadsCount(url: string) {
-    const response = await fetch(`${url}/releases`, {
-      method: 'GET'
-    });
-
     try {
-      const json = await response.text();
-      const releases = JSON.parse(json);
-
+      const response = await fetch(`${url}/releases`, { method: 'GET' });
+      if (!response.ok) return 0;
+      const text = await response.text();
+      const releases = JSON.parse(text);
       let count = 0;
-
-      for (let i = 0; i < releases.length; ++i) {
-        for (let j = 0; j < releases[i].assets.length; ++j) {
-          count += releases[i].assets[j].download_count;
+      for (let i = 0; i < (releases || []).length; ++i) {
+        for (let j = 0; j < (releases[i].assets || []).length; ++j) {
+          count += releases[i].assets[j].download_count || 0;
         }
       }
-
       return count;
-    } catch (error) {
+    } catch (err) {
       return 0;
     }
   }

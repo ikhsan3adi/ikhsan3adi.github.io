@@ -37,7 +37,7 @@
         setTimeout(async () => {
           console.log('Fetching projects');
 
-          Promise.all(
+          await Promise.all(
             initialProjects.map((project) => projectService.fetchProject({ project, fetch }))
           );
 
