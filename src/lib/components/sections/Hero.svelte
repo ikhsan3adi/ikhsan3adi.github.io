@@ -15,7 +15,7 @@
 <section>
   <!-- Background image -->
   <div
-    class="h-[950px] md:h-[800px] bg-cover bg-no-repeat bg-center flex relative duration-500"
+    class="min-h-[800px] md:min-h-[600px] h-[100vh] max-h-[1350px] bg-cover bg-no-repeat bg-center flex relative duration-500"
     style="background-image: url({bg});"
   >
     <div class="md:mt-16 w-full flex">
