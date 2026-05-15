@@ -23,10 +23,13 @@
         <div class="w-full md:flex md:gap-4 md:justify-between my-auto">
           <div class="mb-52 mt-16 md:m-0 py-2 md:py-8 lg:py-9 sm:max-md:text-center duration-500">
             <!-- Hero text -->
-            <p id="home" class="dark:text-white duration-500 md:text-lg lg:text-xl font-medium">
+            <p
+              id="home"
+              class="dark:text-white duration-500 md:text-lg lg:text-xl font-medium cursor-no-drop"
+            >
               Hello, my name is
             </p>
-            <h1 class="mb-2 dark:text-white duration-500">
+            <h1 class="mb-2 dark:text-white duration-500 cursor-zoom-in">
               {FIRST_NAME}
               <span class="font-cascadia-mono text-inherit text-primary">
                 {LAST_NAME}
@@ -61,14 +64,14 @@
           <!-- Emblem logo -->
           <div class="max-md:mx-auto w-max md:my-auto relative">
             <div
-              class="w-52 h-52 mx-auto md:w-64 md:h-64 lg:w-72 lg:h-72 dark:text-white absolute -top-3 right-2 duration-[50ms]"
+              class="cursor-crosshair w-52 h-52 mx-auto md:w-64 md:h-64 lg:w-72 lg:h-72 dark:text-white absolute -top-3 right-2 duration-[50ms]"
             >
               <Emblem />
             </div>
 
             <!-- Back outline / shadow -->
             <div
-              class="w-52 h-52 mx-auto md:w-64 md:h-64 lg:w-72 lg:h-72 text-custom-3 dark:text-transparent stroke-[4] stroke-slate-900 dark:stroke-custom-3 duration-500"
+              class="cursor-crosshair w-52 h-52 mx-auto md:w-64 md:h-64 lg:w-72 lg:h-72 text-custom-3 dark:text-transparent stroke-[4] stroke-slate-900 dark:stroke-custom-3 duration-500"
             >
               <Emblem />
             </div>

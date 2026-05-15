@@ -34,7 +34,6 @@
   </div>
   <Wrappper>
     <div class="w-full pt-10 sm:pt-12 md:pt-14 lg:pt-16 pb-16">
-      <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once />
       <div
         class="w-full flex flex-col-reverse lg:flex-row gap-20 sm:gap-4 lg:gap-5 xl:gap-6 md:justify-between h-max"
       >
@@ -43,9 +42,14 @@
         >
           <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
             <h2 class="mb-4 md:mb-6 lg:mb-8 duration-500" id="about">About Me</h2>
+          </Saos>
+          <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
             <p class="active:text-indigo-900">
               {aboutText}
             </p>
+          </Saos>
+
+          <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
             <p class="my-6">
               To learn more about my experience and skills, feel free to visit my LinkedIn profile:
             </p>
