@@ -2,13 +2,6 @@
   import type { ProjectDetail } from '$lib/api/projects';
   import { type TagColorKey, type TagColors, tagColors } from '$lib/components/colors';
 
-  import { Octokit } from '@octokit/rest';
-  import hljs from 'highlight.js';
-  import { marked } from 'marked';
-  import markedAlert from 'marked-alert';
-  import { baseUrl as markedBaseUrl } from 'marked-base-url';
-  import { markedEmoji } from 'marked-emoji';
-  import { markedHighlight } from 'marked-highlight';
   import { renderer } from './renderer';
 
   import {
@@ -28,12 +21,53 @@
   export let markdownPromise: Promise<string | null>;
 
   const markdownizePromise = async () => {
+    const [
+      { Octokit },
+      { marked },
+      { default: markedAlert },
+      { baseUrl: markedBaseUrl },
+      { markedEmoji },
+      { markedHighlight },
+      { default: hljs },
+      { default: javascript },
+      { default: typescript },
+      { default: xml },
+      { default: css },
+      { default: bash },
+      { default: json }
+    ] = await Promise.all([
+      import('@octokit/rest'),
+      import('marked'),
+      import('marked-alert'),
+      import('marked-base-url'),
+      import('marked-emoji'),
+      import('marked-highlight'),
+      import('highlight.js/lib/core'),
+      import('highlight.js/lib/languages/javascript'),
+      import('highlight.js/lib/languages/typescript'),
+      import('highlight.js/lib/languages/xml'),
+      import('highlight.js/lib/languages/css'),
+      import('highlight.js/lib/languages/bash'),
+      import('highlight.js/lib/languages/json')
+    ]);
+
+    hljs.registerLanguage('javascript', javascript);
+    hljs.registerLanguage('js', javascript);
+    hljs.registerLanguage('typescript', typescript);
+    hljs.registerLanguage('ts', typescript);
+    hljs.registerLanguage('xml', xml);
+    hljs.registerLanguage('html', xml);
+    hljs.registerLanguage('css', css);
+    hljs.registerLanguage('bash', bash);
+    hljs.registerLanguage('sh', bash);
+    hljs.registerLanguage('json', json);
+
     // Get all the emojis available to use on GitHub.
     const res = await new Octokit().rest.emojis.get().catch(() => null);
     const emojis = res?.data;
 
     return marked.use(
-      { renderer: renderer(project.baseUrl) },
+      { renderer: renderer(project.baseUrl, marked) },
       markedBaseUrl(project.baseUrl),
       markedHighlight({
         langPrefix: 'hljs language-',

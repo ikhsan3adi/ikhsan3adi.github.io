@@ -1,7 +1,7 @@
-import { marked, Renderer } from 'marked';
+import type { Renderer as MarkedRenderer } from 'marked';
 
-export const renderer = (baseUrl: string) => {
-  const renderer: Renderer = new marked.Renderer();
+export const renderer = (baseUrl: string, markedModule: { Renderer: new () => MarkedRenderer }) => {
+  const renderer: MarkedRenderer = new markedModule.Renderer();
 
   renderer.heading = (text, level) => {
     return `<h${level} class="my-4 font-cascadia-mono dark:text-white">${text}</h${level}>`;
