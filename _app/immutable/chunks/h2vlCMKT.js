@@ -1,0 +1,1 @@
+import{f as s,v as e,e as l,j as t,r as x}from"./E1Fz_aMN.js";var d=s('<div class="container mx-auto px-10 sm:px-16 md:px-20 lg:px-24 xl:px-28 w-full flex"><!></div>');function i(r,p){var a=d(),o=t(a);e(o,p,"default",{}),x(a),l(r,a)}export{i as W};
