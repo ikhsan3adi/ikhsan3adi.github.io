@@ -19,13 +19,18 @@
 <section
   class="w-full relative bg-purple-100 dark:bg-fuchsia-800 border-t-4 border-slate-900 dark:border-white"
 >
-  <div
-    class="bg-repeat flex relative duration-500
-    bg-[length:auto_30%] md:bg-[length:auto_50%] lg:bg-[length:auto_55%] xl:bg-[length:auto_60%]"
-    style="background-image: url({bg});"
-  >
+  <div class="relative isolate duration-500">
+    <!-- svelte-ignore element_invalid_self_closing_tag -->
+    <div
+      aria-hidden="true"
+      class="absolute inset-0 bg-repeat bg-center
+        bg-[length:auto_30%] md:bg-[length:auto_50%] lg:bg-[length:auto_55%] xl:bg-[length:auto_60%]
+        brightness-[0.9] dark:brightness-[1.75]"
+      style="background-image: url({bg});"
+    />
+
     <Wrappper>
-      <div class="w-full pb-16 z-10">
+      <div class="w-full pb-16 relative z-10">
         <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
           <h2
             class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white duration-500"

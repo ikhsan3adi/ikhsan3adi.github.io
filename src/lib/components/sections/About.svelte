@@ -15,7 +15,7 @@
 
   function getZIndex(cardIndex: number): number {
     if (hoveredCard === null) return photoCards[cardIndex].baseZ;
-    if (hoveredCard === cardIndex) return 100;
+    if (hoveredCard === cardIndex) return 39;
     return photoCards[cardIndex].baseZ;
   }
 </script>
