@@ -2,7 +2,7 @@ import type { ButtonColorVariants } from '$lib/components/colors';
 import { FULL_NAME } from '$lib/config';
 
 export const whatsappLink = 'https://wa.me/62895338593923';
-export const emailLink = 'mailto:ikhsansatriadi175@gmail.com';
+export const emailLink = 'mailto:ikhsan3adi@proton.me';
 
 export interface Contact {
   contact: string;
