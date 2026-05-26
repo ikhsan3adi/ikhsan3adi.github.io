@@ -1,6 +1,4 @@
-# Ikhsan Satriadi
-
-> A _brutalist_, high-contrast portfolio — built with SvelteKit, styled with Tailwind CSS, served on GitHub Pages.
+# Ikhsan **Satriadi**
 
 [![Continuous Integration](https://github.com/ikhsan3adi/ikhsan3adi.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/ikhsan3adi/ikhsan3adi.github.io/actions/workflows/ci.yml)
 [![GitHub Pages](https://github.com/ikhsan3adi/ikhsan3adi.github.io/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/ikhsan3adi/ikhsan3adi.github.io/actions/workflows/gh-pages.yml)
@@ -8,14 +6,7 @@
 
 **Live**: [ikhsan3adi.github.io](https://ikhsan3adi.github.io)
 
----
-
-| Light                        | Dark                                   |
-| ---------------------------- | -------------------------------------- |
-| ![Hero](./images/hero.png)   | ![Hero Dark](./images/hero-dark.png)   |
-| ![About](./images/about.png) | ![About Dark](./images/about-dark.png) |
-
----
+![Hero Edited](./images/hero-edited.jpg)
 
 ## Design
 
@@ -53,7 +44,7 @@ bun run format   # auto-format with Prettier
 
 ## Contributing
 
-Contributions, issues, and feature requests are welcome. Feel free to open an [issue](https://github.com/ikhsan3adi/ikhsan3adi.github.io/issues) or submit a pull request.
+Contributions, issues, and pull requests are welcome.
 
 ## Author
 
