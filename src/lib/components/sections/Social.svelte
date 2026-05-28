@@ -24,28 +24,29 @@
         <!-- Social buttons -->
         <div class="flex flex-wrap justify-center gap-4 lg:gap-5 xl:gap-6">
           {#each socials as social}
-            <a
-              href={social.link}
-              target="_blank"
-              class="w-full md:w-[48.5%] lg:w-[31.5%]"
-              aria-label={social.name}
+            <Saos
+              animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'}
+              once
+              outerClass="w-full md:w-[48.5%] lg:w-[31.5%]"
             >
-              <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-                <Button
-                  variant={social.colorVariant}
-                  fullWidth={true}
-                  noDarkVariant={false}
-                  centerText={false}
-                >
-                  <div class="w-10 h-10" slot="icon">
-                    <Icon icon={social.icon} class="w-full h-full" />
-                  </div>
-                  <div class="flex justify-start items-center">
-                    {social.social}
-                  </div>
-                </Button>
-              </Saos>
-            </a>
+              <Button
+                href={social.link}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={social.name}
+                variant={social.colorVariant}
+                noDarkVariant={false}
+                centerText={false}
+                className="w-full"
+              >
+                <div class="w-10 h-10" slot="icon">
+                  <Icon icon={social.icon} class="w-full h-full" />
+                </div>
+                <div class="flex justify-start items-center">
+                  {social.social}
+                </div>
+              </Button>
+            </Saos>
           {/each}
         </div>
       </div>

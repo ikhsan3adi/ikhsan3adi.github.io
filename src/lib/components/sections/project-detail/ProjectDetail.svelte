@@ -144,18 +144,25 @@
           <div
             class="my-4 md:my-6 lg:my-8 flex w-full justify-center sm:justify-start gap-4 md:gap-6 lg:gap-8"
           >
-            <a href={project.repositoryUrl} target="_blank">
-              <Button noDarkVariant={false}>
-                <Fa icon={faCode} slot="icon" />Source code
-              </Button>
-            </a>
+            <Button
+              href={project.repositoryUrl}
+              target="_blank"
+              rel="noreferrer"
+              noDarkVariant={false}
+            >
+              <Fa icon={faCode} slot="icon" />Source code
+            </Button>
 
             {#if project.hasLivePreview && project.livePreviewUrl}
-              <a href={project.livePreviewUrl} target="_blank">
-                <Button noDarkVariant={false} variant="white">
-                  <Fa icon={faExternalLink} slot="icon" />Live preview
-                </Button>
-              </a>
+              <Button
+                href={project.livePreviewUrl}
+                target="_blank"
+                rel="noreferrer"
+                noDarkVariant={false}
+                variant="white"
+              >
+                <Fa icon={faExternalLink} slot="icon" />Live preview
+              </Button>
             {/if}
           </div>
         </div>

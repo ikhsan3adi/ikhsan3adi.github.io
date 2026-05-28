@@ -50,16 +50,12 @@
 
             <!-- Call to action buttons -->
             <div class="flex flex-wrap gap-3 sm:max-md:justify-center">
-              <a href="#portfolio">
-                <Button noDarkVariant={false}>
-                  <Fa icon={faFolderOpen} slot="icon" />See projects
-                </Button>
-              </a>
-              <a href="#contact">
-                <Button variant="secondary" noDarkVariant={false}>
-                  <Fa icon={faPaperPlane} slot="icon" />Contact me
-                </Button>
-              </a>
+              <Button href="#portfolio" noDarkVariant={false}>
+                <Fa icon={faFolderOpen} slot="icon" />See projects
+              </Button>
+              <Button href="#contact" variant="secondary" noDarkVariant={false}>
+                <Fa icon={faPaperPlane} slot="icon" />Contact me
+              </Button>
             </div>
           </div>
 

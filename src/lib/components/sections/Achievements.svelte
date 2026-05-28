@@ -98,12 +98,19 @@
                 <!-- Link Button -->
                 {#if achievement.link}
                   <div class="mt-4">
-                    <a href={achievement.link} target="_blank" title={achievement.title}>
-                      <Button noDarkVariant={true} fullWidth={false} variant="codeforces" small>
-                        <Fa icon={faExternalLink} slot="icon" />
-                        View Credentials
-                      </Button>
-                    </a>
+                    <Button
+                      href={achievement.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      title={achievement.title}
+                      noDarkVariant={true}
+                      fullWidth={false}
+                      variant="codeforces"
+                      small
+                    >
+                      <Fa icon={faExternalLink} slot="icon" />
+                      View Credentials
+                    </Button>
                   </div>
                 {/if}
               </div>

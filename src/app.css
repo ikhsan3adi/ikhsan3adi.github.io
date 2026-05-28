@@ -9,7 +9,7 @@
 
   h1 {
     @apply font-cascadia-mono font-extrabold text-text;
-    @apply text-5xl md:text-6xl lg:text-7xl xl:text-8xl;
+    @apply text-5xl md:text-6xl lg:text-7xl xl:text-[5rem];
   }
 
   h2 {
@@ -81,9 +81,9 @@
 
 @keyframes photo-film {
   from {
-    filter: blur(4px) contrast(1.5) saturate(75%) invert(100%);
+    filter: blur(4px) contrast(1.5) saturate(75%) invert(100%) sepia(33%);
   }
   to {
-    filter: blur(0) contrast(1) saturate(100%) invert(0);
+    filter: blur(0) contrast(1) saturate(100%) invert(0) sepia(0);
   }
 }

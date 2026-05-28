@@ -54,21 +54,26 @@
 
         <div class="flex flex-wrap justify-center gap-4 lg:gap-5 xl:gap-6">
           {#each contacts as contact}
-            <a
-              href={contact.link}
-              target="_blank"
-              class="w-full md:w-[48.5%] lg:w-[31.5%]"
-              aria-label={contact.name}
+            <Saos
+              animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'}
+              once
+              outerClass="w-full md:w-[48.5%] lg:w-[31.5%]"
             >
-              <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-                <Button noDarkVariant={false} fullWidth={true} variant={contact.colorVariant}>
-                  <div class="w-8 h-8" slot="icon">
-                    <Icon icon={contact.icon} class="w-full h-full" />
-                  </div>
-                  <span>{contact.contact}</span>
-                </Button>
-              </Saos>
-            </a>
+              <Button
+                href={contact.link}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={contact.name}
+                noDarkVariant={false}
+                variant={contact.colorVariant}
+                className="w-full"
+              >
+                <div class="w-8 h-8" slot="icon">
+                  <Icon icon={contact.icon} class="w-full h-full" />
+                </div>
+                <span>{contact.contact}</span>
+              </Button>
+            </Saos>
           {/each}
         </div>
 
@@ -92,7 +97,7 @@
                 <div
                   class="w-full bg-custom-1 dark:bg-slate-700 border-4 border-slate-900 dark:border-white h-max px-8 py-4 md:px-12 md:py-6"
                 >
-                  <form method="dialog">
+                  <form on:submit|preventDefault={buttonDisabled ? () => 0 : handleSubmit}>
                     <div class="flex flex-col mb-4">
                       <label for="name" class="dark:text-white md:text-lg lg:text-xl font-medium">
                         Name
@@ -133,31 +138,26 @@
                       ></textarea>
                     </div>
                     <div class="ml-1">
-                      <button
+                      <Button
                         type="submit"
-                        class="block w-full"
-                        on:click={buttonDisabled ? () => 0 : handleSubmit}
+                        noDarkVariant={false}
+                        fullWidth={true}
+                        variant={buttonDisabled ? 'disabled' : 'primary'}
+                        disabled={buttonDisabled}
                       >
-                        <Button
-                          noDarkVariant={false}
-                          fullWidth={true}
-                          variant={buttonDisabled ? 'disabled' : 'primary'}
-                          disabled={buttonDisabled}
+                        <Fa icon={faPaperPlane} slot="icon" />
+                        <span
+                          class="{submisstionStatus === 'Failed'
+                            ? 'text-red-500'
+                            : 'text-inherit'} md:text-lg lg:text-xl font-medium"
                         >
-                          <Fa icon={faPaperPlane} slot="icon" />
-                          <span
-                            class="{submisstionStatus === 'Failed'
-                              ? 'text-red-500'
-                              : 'text-inherit'} md:text-lg lg:text-xl font-medium"
-                          >
-                            {submisstionStatus === 'Initial'
-                              ? 'Send'
-                              : submisstionStatus === 'Failed'
-                                ? 'Failed, try again'
-                                : submisstionStatus}
-                          </span>
-                        </Button>
-                      </button>
+                          {submisstionStatus === 'Initial'
+                            ? 'Send'
+                            : submisstionStatus === 'Failed'
+                              ? 'Failed, try again'
+                              : submisstionStatus}
+                        </span>
+                      </Button>
                     </div>
                   </form>
                 </div>

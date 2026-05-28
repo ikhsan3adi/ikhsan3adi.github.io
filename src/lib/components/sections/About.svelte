@@ -3,7 +3,7 @@
   import Saos from 'saos';
   import Fa from 'svelte-fa';
 
-  import { aboutText, photoCards, topMarqueeTexts } from '$lib/api/about';
+  import { aboutTexts, photoCards, topMarqueeTexts } from '$lib/api/about';
   import { linkedInLink } from '$lib/api/socials';
 
   import Button from '$lib/components/buttons/Button.svelte';
@@ -61,21 +61,27 @@
           <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
             <h2 class="mb-4 md:mb-6 lg:mb-8 duration-500" id="about">About Me</h2>
           </Saos>
-          <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-            <p class="active:text-indigo-900">
-              {aboutText}
-            </p>
-          </Saos>
+          {#each aboutTexts as aboutText}
+            <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
+              <p class="active:text-indigo-900 text-justify mb-1">
+                {aboutText}
+              </p>
+            </Saos>
+          {/each}
 
           <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
             <p class="my-6">
               To learn more about my experience and skills, feel free to visit my LinkedIn profile:
             </p>
-            <a href={linkedInLink} target="_blank">
-              <Button variant="linkedIn" noDarkVariant={true}>
-                <Fa icon={faExternalLink} slot="icon" />Visit LinkedIn
-              </Button>
-            </a>
+            <Button
+              href={linkedInLink}
+              target="_blank"
+              rel="noreferrer"
+              variant="linkedIn"
+              noDarkVariant={true}
+            >
+              <Fa icon={faExternalLink} slot="icon" />Visit LinkedIn
+            </Button>
           </Saos>
         </div>
         <div class="w-full">

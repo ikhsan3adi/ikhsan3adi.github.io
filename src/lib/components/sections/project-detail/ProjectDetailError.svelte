@@ -77,11 +77,9 @@
           <div
             class="my-4 md:my-6 lg:my-8 flex w-full justify-center sm:justify-start gap-4 md:gap-6 lg:gap-8"
           >
-            <a href="/" class="flex">
-              <Button noDarkVariant={false} variant="disabled">
-                <Fa icon={faArrowLeft} slot="icon" />Back
-              </Button>
-            </a>
+            <Button href="/" noDarkVariant={false} variant="disabled">
+              <Fa icon={faArrowLeft} slot="icon" />Back
+            </Button>
           </div>
         </div>
       </div>

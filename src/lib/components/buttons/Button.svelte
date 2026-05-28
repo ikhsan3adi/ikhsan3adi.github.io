@@ -1,6 +1,11 @@
 <script lang="ts">
   import type { ButtonColorVariants } from '$lib/components/colors';
 
+  export let href: string | undefined = undefined;
+  export let target: string | undefined = undefined;
+  export let rel: string | undefined = undefined;
+  export let className = '';
+  export let type: 'button' | 'submit' | 'reset' = 'button';
   export let disabled = false;
   export let variant: keyof ButtonColorVariants = disabled ? 'disabled' : 'primary';
   export let noDarkVariant = true;
@@ -87,39 +92,58 @@
     gitlab: 'dark:text-orange-400',
     'custom-3': 'dark:text-custom-3'
   };
+
+  const rootClass = `${noDarkVariant ? '' : backBackgroundColors[variant]} ${
+    fullWidth ? 'w-full' : ''
+  } bg-slate-900 duration-200 inline-block ${className}`.trim();
+
+  const innerClass = `${backgroundColors[variant]} ${noDarkVariant ? '' : 'dark:bg-slate-900'} ${
+    noDarkVariant ? '' : borderColors[variant]
+  } ${centerText ? ' justify-center' : ''} ${disabled ? '' : 'active:translate-x-0 active:translate-y-0'} flex items-center border-slate-900 border-2 duration-200 px-4 py-2 -translate-x-1.5 -translate-y-1.5 hover:-translate-x-2 hover:-translate-y-2 w-full`;
 </script>
 
-<!-- back -->
-<button
-  class="{noDarkVariant ? '' : backBackgroundColors[variant]} {fullWidth ? 'w-full' : ''} 
-	bg-slate-900 duration-200"
->
-  <!-- bg & border-->
-  <div
-    class="{backgroundColors[variant]}
-		{noDarkVariant ? '' : 'dark:bg-slate-900'}
-    {noDarkVariant ? '' : borderColors[variant]}
-		{centerText ? ' justify-center' : ''} {disabled ? '' : 'active:translate-x-0 active:translate-y-0'}
-		flex items-center border-slate-900 border-2 duration-200 px-4 py-2 -translate-x-1.5 -translate-y-1.5 hover:-translate-x-2 hover:-translate-y-2 w-full"
-  >
-    <!-- icon -->
-    {#if $$slots.icon}
-      <div
-        class="{noDarkVariant ? '' : textColors[variant]} {small
-          ? 'mr-2'
-          : 'mr-4'}  flex items-center justify-center"
-      >
-        <slot name="icon" />
-      </div>
-    {/if}
+{#if href}
+  <a class={rootClass} {href} {target} {rel} {...$$restProps}>
+    <div class={innerClass}>
+      {#if $$slots.icon}
+        <div
+          class="{noDarkVariant ? '' : textColors[variant]} {small
+            ? 'mr-2'
+            : 'mr-4'} flex items-center justify-center"
+        >
+          <slot name="icon" />
+        </div>
+      {/if}
 
-    <!-- text -->
-    <span
-      class="{small ? 'text-sm' : 'md:text-lg lg:text-xl font-medium'} {noDarkVariant
-        ? ''
-        : textColors[variant]} duration-200"
-    >
-      <slot />
-    </span>
-  </div>
-</button>
+      <span
+        class="{small ? 'text-sm' : 'md:text-lg lg:text-xl font-medium'} {noDarkVariant
+          ? ''
+          : textColors[variant]} duration-200"
+      >
+        <slot />
+      </span>
+    </div>
+  </a>
+{:else}
+  <button class={rootClass} {type} {disabled} {...$$restProps}>
+    <div class={innerClass}>
+      {#if $$slots.icon}
+        <div
+          class="{noDarkVariant ? '' : textColors[variant]} {small
+            ? 'mr-2'
+            : 'mr-4'} flex items-center justify-center"
+        >
+          <slot name="icon" />
+        </div>
+      {/if}
+
+      <span
+        class="{small ? 'text-sm' : 'md:text-lg lg:text-xl font-medium'} {noDarkVariant
+          ? ''
+          : textColors[variant]} duration-200"
+      >
+        <slot />
+      </span>
+    </div>
+  </button>
+{/if}
