@@ -64,7 +64,7 @@
           </div>
 
           <!-- Emblem logo -->
-          <div class="max-md:mx-auto w-max md:my-auto relative hover:animate-ping">
+          <div class="max-md:mx-auto w-max md:my-auto relative active:animate-ping">
             <div
               class="cursor-crosshair w-52 h-52 mx-auto md:w-64 md:h-64 lg:w-72 lg:h-72 dark:text-white absolute -top-3 right-2 duration-[50ms]"
             >

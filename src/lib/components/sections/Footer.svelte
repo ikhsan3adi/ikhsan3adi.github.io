@@ -27,7 +27,9 @@
         >
           <!-- Emblem -->
           <div class="flex">
-            <div class="h-24 w-24 sm:w-28 sm:h-28 md:w-36 md:h-36 my-auto cursor-wait">
+            <div
+              class="h-24 w-24 sm:w-28 sm:h-28 md:w-36 md:h-36 my-auto cursor-crosshair active:animate-ping"
+            >
               <EmblemSquare />
             </div>
           </div>
@@ -92,7 +94,7 @@
           <a
             href={sourceLink}
             target="_blank"
-            class="text-slate-300 hover:text-slate-100 hover:underline"
+            class="text-slate-300 hover:text-slate-100 hover:underline active:text-primary"
           >
             View source on GitHub
           </a>

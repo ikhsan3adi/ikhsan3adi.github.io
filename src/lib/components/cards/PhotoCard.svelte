@@ -16,7 +16,7 @@
 <div
   role="region"
   style="z-index: {zIndex};"
-  class="absolute transition-all duration-200 cursor-wait
+  class="absolute transition-all duration-200 cursor-crosshair
     {cardSizeClass} {transformClass}"
   on:mouseenter
   on:mouseleave
@@ -25,7 +25,7 @@
     <figure
       class="transition-all duration-200
         shadow-lg hover:shadow-2xl
-        border-4 border-slate-900 dark:border-slate-700 {bgClass}"
+        border-4 border-slate-900 dark:border-slate-700 {bgClass} active:scale-125"
       {title}
     >
       {#if imageSrc}
@@ -48,6 +48,6 @@
 
 <style lang="postcss">
   .img-blur {
-    animation: photo-film 2000ms cubic-bezier(0.86, 0, 0.07, 1) both;
+    animation: photo-film 6767ms cubic-bezier(0.86, 0, 0.07, 1) both;
   }
 </style>

@@ -28,13 +28,13 @@
       );
 
       return cardIndex === topCardIndex
-        ? 'brightness-100 saturate-100 transition-[filter] duration-200'
-        : 'brightness-75 saturate-50 transition-[filter] duration-200';
+        ? 'brightness-100 transition-[filter] duration-200'
+        : 'brightness-75 transition-[filter] duration-200';
     }
 
     return cardIndex === hoveredCard
-      ? 'brightness-100 saturate-100 transition-[filter] duration-200'
-      : 'brightness-75 saturate-50 transition-[filter] duration-200';
+      ? 'brightness-100 transition-[filter] duration-200'
+      : 'brightness-75 transition-[filter] duration-200';
   }
 </script>
 
