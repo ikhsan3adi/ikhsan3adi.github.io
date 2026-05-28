@@ -25,11 +25,11 @@
             <!-- Hero text -->
             <p
               id="home"
-              class="dark:text-white duration-500 md:text-lg lg:text-xl font-medium cursor-no-drop"
+              class="dark:text-white duration-500 md:text-lg lg:text-xl font-medium cursor-not-allowed"
             >
               Hello, my name is
             </p>
-            <h1 class="mb-2 dark:text-white duration-500 cursor-zoom-in">
+            <h1 class="mb-2 dark:text-white duration-500 cursor-not-allowed">
               {FIRST_NAME}
               <span class="font-cascadia-mono text-inherit text-primary">
                 {LAST_NAME}
@@ -37,7 +37,9 @@
             </h1>
 
             <!-- Typing effect -->
-            <div class="mb-4 dark:text-white duration-500 md:text-lg lg:text-xl font-medium">
+            <div
+              class="mb-4 dark:text-white duration-500 md:text-lg lg:text-xl font-medium cursor-not-allowed"
+            >
               <Typewriter mode={'loop'} interval={25}>
                 A
                 <span class="text-emerald-600 dark:text-primary">Student</span>
@@ -62,7 +64,7 @@
           </div>
 
           <!-- Emblem logo -->
-          <div class="max-md:mx-auto w-max md:my-auto relative">
+          <div class="max-md:mx-auto w-max md:my-auto relative hover:animate-ping">
             <div
               class="cursor-crosshair w-52 h-52 mx-auto md:w-64 md:h-64 lg:w-72 lg:h-72 dark:text-white absolute -top-3 right-2 duration-[50ms]"
             >
