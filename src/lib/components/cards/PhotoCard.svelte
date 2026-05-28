@@ -8,6 +8,8 @@
   export let transformClass = '';
   export let cardSizeClass = 'w-96';
   export let imgClass = 'aspect-square';
+  export let imgEffectClass = '';
+  export let animDelayMs = 800;
   export let zIndex = 1;
 </script>
 
@@ -27,7 +29,12 @@
       {title}
     >
       {#if imageSrc}
-        <img src={imageSrc} alt={title} class="w-full object-cover {imgClass}" />
+        <div
+          class="img-blur w-full {imgClass} overflow-hidden"
+          style="animation-delay: {animDelayMs}ms;"
+        >
+          <img src={imageSrc} alt={title} class="w-full h-full object-cover {imgEffectClass}" />
+        </div>
       {:else}
         <div class="w-full {imgClass}" aria-details={imageSrc}></div>
       {/if}
@@ -38,3 +45,9 @@
     </figure>
   </Saos>
 </div>
+
+<style lang="postcss">
+  .img-blur {
+    animation: photo-film 2000ms cubic-bezier(0.86, 0, 0.07, 1) both;
+  }
+</style>

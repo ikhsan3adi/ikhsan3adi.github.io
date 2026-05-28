@@ -7,7 +7,11 @@
     @apply font-space-grotesk;
   }
 
-  h1,
+  h1 {
+    @apply font-cascadia-mono font-extrabold text-text;
+    @apply text-5xl md:text-6xl lg:text-7xl xl:text-8xl;
+  }
+
   h2 {
     @apply font-cascadia-mono font-extrabold text-text;
     @apply text-4xl md:text-5xl lg:text-6xl;
@@ -47,6 +51,10 @@
     src: local('Mechsuit'), url('/fonts/Mechsuit.woff2');
     font-display: swap;
   }
+
+  :global(img) {
+    will-change: filter, transform;
+  }
 }
 
 @-webkit-keyframes scale-up-center {
@@ -68,5 +76,14 @@
   100% {
     -webkit-transform: scale(1);
     transform: scale(1);
+  }
+}
+
+@keyframes photo-film {
+  from {
+    filter: blur(4px) contrast(1.5) saturate(75%) invert(100%);
+  }
+  to {
+    filter: blur(0) contrast(1) saturate(100%) invert(0);
   }
 }

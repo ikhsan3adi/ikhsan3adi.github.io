@@ -18,6 +18,24 @@
     if (hoveredCard === cardIndex) return 39;
     return photoCards[cardIndex].baseZ;
   }
+
+  function getImgEffectClass(cardIndex: number): string {
+    if (hoveredCard === null) {
+      const topCardIndex = photoCards.reduce(
+        (highestIndex, card, currentIndex, cards) =>
+          card.baseZ > cards[highestIndex].baseZ ? currentIndex : highestIndex,
+        0
+      );
+
+      return cardIndex === topCardIndex
+        ? 'brightness-100 saturate-100 transition-[filter] duration-200'
+        : 'brightness-75 saturate-50 transition-[filter] duration-200';
+    }
+
+    return cardIndex === hoveredCard
+      ? 'brightness-100 saturate-100 transition-[filter] duration-200'
+      : 'brightness-75 saturate-50 transition-[filter] duration-200';
+  }
 </script>
 
 <section class="w-full relative pt-12 md:pt-14 lg:pt-16 bg-fuchsia-200 dark:bg-purple-900">
@@ -81,6 +99,8 @@
                 transformClass={card.transformClass}
                 cardSizeClass={card.cardSizeClass}
                 imgClass={card.imgClass}
+                imgEffectClass={getImgEffectClass(i)}
+                animDelayMs={700 + (photoCards.length - 1 - i) * 200}
                 zIndex={getZIndex(i)}
                 on:mouseenter={() => (hoveredCard = i)}
               />
