@@ -47,6 +47,7 @@
 </svelte:head>
 
 <button
+  id="themeModeBtn"
   aria-label="Toggle dark mode"
   title="Better with dark mode off :)"
   class="{dark && isBgTransparent

@@ -67,7 +67,9 @@
       <div
         class="mx-auto py-1 border-t-4 border-slate-900 dark:border-white flex items-center gap-4 pr-4"
       >
-        <p class="dark:text-white py-2 pl-5 duration-200">Darkmode</p>
+        <label for="themeModeBtn" class="dark:text-white py-2 pl-5 duration-200 cursor-pointer">
+          Darkmode
+        </label>
         <ThemeButton isBgTransparent={true} />
       </div>
     </div>

@@ -29,12 +29,12 @@
 
       return cardIndex === topCardIndex
         ? 'brightness-100 transition-[filter] duration-200'
-        : 'brightness-75 transition-[filter] duration-200';
+        : 'brightness-75 transition-[filter] duration-[1000ms]';
     }
 
     return cardIndex === hoveredCard
       ? 'brightness-100 transition-[filter] duration-200'
-      : 'brightness-75 transition-[filter] duration-200';
+      : 'brightness-75 transition-[filter] duration-[1000ms]';
   }
 </script>
 

@@ -11,10 +11,13 @@
   export let imgEffectClass = '';
   export let animDelayMs = 800;
   export let zIndex = 1;
+
+  const labelId = `photo-card-${title.toLowerCase().replace(/\s+/g, '-')}`;
 </script>
 
 <div
-  role="region"
+  role="group"
+  aria-labelledby={labelId}
   style="z-index: {zIndex};"
   class="absolute transition-all duration-200 cursor-crosshair
     {cardSizeClass} {transformClass}"
@@ -25,12 +28,13 @@
     <figure
       class="transition-all duration-200
         shadow-lg hover:shadow-2xl
-        border-4 border-slate-900 dark:border-slate-700 {bgClass} active:scale-125"
+        border-4 border-slate-900 dark:border-slate-700 {bgClass}
+        active:scale-105 sm:active:scale-110 md:active:scale-125"
       {title}
     >
       {#if imageSrc}
         <div
-          class="img-blur w-full {imgClass} overflow-hidden"
+          class="img-film w-full {imgClass} overflow-hidden"
           style="animation-delay: {animDelayMs}ms;"
         >
           <img src={imageSrc} alt={title} class="w-full h-full object-cover {imgEffectClass}" />
@@ -38,7 +42,7 @@
       {:else}
         <div class="w-full {imgClass}" aria-details={imageSrc}></div>
       {/if}
-      <figcaption class="p-3 w-full border-t-4 border-slate-900 dark:border-slate-700">
+      <figcaption id={labelId} class="p-3 w-full border-t-4 border-slate-900 dark:border-slate-700">
         <h3 class="text-base md:text-lg font-bold mb-1">{title}</h3>
         <p class="text-xs">{description}</p>
       </figcaption>
@@ -47,7 +51,7 @@
 </div>
 
 <style lang="postcss">
-  .img-blur {
+  .img-film {
     animation: photo-film 6767ms cubic-bezier(0.86, 0, 0.07, 1) both;
   }
 </style>
