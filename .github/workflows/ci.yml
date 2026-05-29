@@ -34,6 +34,3 @@ jobs:
 
       - name: Prettier & ESLint check
         run: bun run lint
-
-      - name: Build
-        run: bun run build

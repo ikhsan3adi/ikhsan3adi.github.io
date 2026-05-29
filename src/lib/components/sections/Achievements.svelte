@@ -20,14 +20,11 @@
   class="w-full relative bg-purple-100 dark:bg-fuchsia-800 border-t-4 border-slate-900 dark:border-white"
 >
   <div class="relative isolate duration-500">
-    <!-- svelte-ignore element_invalid_self_closing_tag -->
     <div
       aria-hidden="true"
-      class="absolute inset-0 bg-repeat bg-center
-        bg-[length:auto_30%] md:bg-[length:auto_50%] lg:bg-[length:auto_55%] xl:bg-[length:auto_60%]
-        brightness-[0.9] dark:brightness-[1.75]"
+      class="absolute inset-0 bg-repeat bg-center brightness-[0.9] dark:brightness-[1.67] scroll-bg-vertical"
       style="background-image: url({bg});"
-    />
+    ></div>
 
     <Wrappper>
       <div class="w-full pb-16 relative z-10">
@@ -121,3 +118,38 @@
     </Wrappper>
   </div>
 </section>
+
+<style>
+  .scroll-bg-vertical {
+    --tile-height: 30%;
+    background-size: auto var(--tile-height);
+    animation: scroll-vertical 60s linear infinite;
+  }
+
+  @media (min-width: 768px) {
+    .scroll-bg-vertical {
+      --tile-height: 50%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .scroll-bg-vertical {
+      --tile-height: 55%;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .scroll-bg-vertical {
+      --tile-height: 60%;
+    }
+  }
+
+  @keyframes scroll-vertical {
+    from {
+      background-position-y: 0;
+    }
+    to {
+      background-position-y: calc(0px - var(--tile-height));
+    }
+  }
+</style>

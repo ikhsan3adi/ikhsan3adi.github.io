@@ -7,8 +7,6 @@
   import Button from '$lib/components/buttons/Button.svelte';
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
-  import bg from '$lib/components/graphics/hero-bg.svg';
-
   import { contacts, submitContactRequest } from '$lib/api/contact';
   import { inputClass } from '$lib/components/form';
   import { enableMessageForm } from '$lib/config';
@@ -37,10 +35,7 @@
 </script>
 
 <section>
-  <div
-    class="bg-repeat bg-center flex relative duration-500 bg-[length:auto_200%]"
-    style="background-image: url({bg});"
-  >
+  <div class="flex relative duration-500">
     <Wrappper>
       <div class="w-full">
         <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>

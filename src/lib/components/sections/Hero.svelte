@@ -10,14 +10,28 @@
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
   import { FIRST_NAME, LAST_NAME } from '$lib/config';
+
+  const bgItems = [1, 2, 3, 4, 5];
 </script>
 
 <section>
   <!-- Background image -->
   <div
-    class="min-h-[800px] md:min-h-[600px] h-[100vh] max-h-[1350px] bg-cover bg-no-repeat bg-center flex relative duration-500"
-    style="background-image: url({bg});"
+    class="min-h-[800px] md:min-h-[600px] h-[100vh] max-h-[1350px] overflow-hidden flex relative duration-500"
   >
+    <!-- Background image scrolling -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+      <div class="flex h-full w-max scroll-bg-animation">
+        {#each bgItems as item}
+          <div
+            class="h-full aspect-[16/9] bg-cover bg-no-repeat bg-center shrink-0"
+            style="background-image: url({bg});"
+            data-index={item}
+          ></div>
+        {/each}
+      </div>
+    </div>
+
     <div class="md:mt-16 w-full flex">
       <Wrappper>
         <div class="w-full md:flex md:gap-4 md:justify-between my-auto">
@@ -83,5 +97,18 @@
 <style>
   .dark:root {
     --cursor-color: #fff;
+  }
+
+  .scroll-bg-animation {
+    animation: scroll-horizontal 67s linear infinite;
+  }
+
+  @keyframes scroll-horizontal {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-20%);
+    }
   }
 </style>

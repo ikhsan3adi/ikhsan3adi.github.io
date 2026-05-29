@@ -6,9 +6,23 @@
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
   import { socials } from '$lib/api/socials';
+
+  import cobweb from '$lib/components/graphics/cobweb-05.svg';
 </script>
 
-<section>
+<section class="relative overflow-hidden">
+  <!-- Background cobweb -->
+  <div
+    class="absolute inset-0 pointer-events-none -z-10 flex justify-center items-center overflow-hidden"
+  >
+    <div
+      class="absolute
+        w-[96rem] h-[96rem] md:w-[108rem] md:h-[108rem] lg:w-[120rem] lg:h-[120rem] xl:w-[132rem] xl:h-[132rem]
+          opacity-45 dark:opacity-20 spin-slow"
+      style="background-image: url({cobweb}); background-repeat: no-repeat; background-position: center;"
+    ></div>
+  </div>
+
   <div class="w-full pb-16 border-t-4 border-b-4 border-slate-800 dark:border-white">
     <Wrappper>
       <div class="w-full">
@@ -53,3 +67,18 @@
     </Wrappper>
   </div>
 </section>
+
+<style>
+  .spin-slow {
+    animation: spin-slow 720s linear infinite;
+  }
+
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>

@@ -1,6 +1,8 @@
 <script lang="ts">
   import Icon from '@iconify/svelte';
 
+  import bg from '$lib/components/graphics/wave-bg.svg';
+
   import EmblemSquare from '$lib/components/graphics/EmblemSquare.svelte';
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
@@ -14,10 +16,26 @@
   const footerSocials = socials.filter((s) =>
     ['Github', 'LinkedIn', 'Codeberg'].includes(s.social)
   );
+
+  const bgItems = [1, 2, 3];
 </script>
 
 <footer>
-  <div class="w-full bg-slate-800 h-max border-t-4 border-slate-800 dark:border-white">
+  <div class="w-full bg-slate-800 h-max border-t-4 border-accent relative overflow-hidden">
+    <!-- Background wave scrolling -->
+    <div
+      class="absolute inset-0 overflow-hidden flex justify-center items-center pointer-events-none opacity-50"
+    >
+      <div class="flex h-[32rem] w-max scroll-bg-animation">
+        {#each bgItems as item}
+          <div
+            class="h-full aspect-[2306/1080] bg-cover bg-no-repeat bg-center shrink-0 opacity-20"
+            style="background-image: url({bg});"
+            data-index={item}
+          ></div>
+        {/each}
+      </div>
+    </div>
     <Wrappper>
       <div class="w-full py-4">
         <div
@@ -103,3 +121,21 @@
     </Wrappper>
   </div>
 </footer>
+
+<style>
+  .scroll-bg-animation {
+    animation: scroll-horizontal 120s linear infinite;
+  }
+
+  @keyframes scroll-horizontal {
+    from {
+      transform: translateX(-5%);
+    }
+    50% {
+      transform: translateX(5%);
+    }
+    100% {
+      transform: translateX(-5%);
+    }
+  }
+</style>
