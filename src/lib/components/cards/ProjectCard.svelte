@@ -50,22 +50,21 @@
 </script>
 
 <!-- Shadow card -->
-<div in:scale out:scale class="w-full bg-slate-900 {cardColors[cardColor].dark.bg}">
-  <a href="/$projects$/{project.id}">
+<div in:scale out:scale class="w-full bg-slate-900 {cardColors[cardColor].dark.bg} flex">
+  <a href="/$projects$/{project.id}" class="w-full flex">
     <!-- Card -->
     <div
       class="relative group cursor-pointer duration-200 flex flex-col
       {cardColors[cardColor].light}
 			{cardColors[cardColor].dark.border}
-      border-4 border-slate-900
-      aspect-[3/4] sm:aspect-[4/3] lg:aspect-[1/1] xl:aspect-[4/3]
+      border-4 border-slate-900 dark:bg-slate-700
       h-full w-full
-		dark:bg-slate-700 -translate-x-1.5 -translate-y-1.5 active:translate-x-0 active:translate-y-0 hover:-translate-x-2 hover:-translate-y-2"
+		  -translate-x-1.5 -translate-y-1.5 active:translate-x-0 active:translate-y-0 hover:-translate-x-2 hover:-translate-y-2"
     >
       <!-- Background image wrapper -->
       <div
         class="{cardColors[cardColor].dark.border} 
-        h-3/5 md:max-lg:h-3/5
+        aspect-[4/3] sm:aspect-[16/9] lg:aspect-[4/3] xl:aspect-[16/9] w-full flex-shrink-0
 				border-b-4 border-slate-900
 			bg-slate-300 dark:bg-slate-600 flex relative"
       >

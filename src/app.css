@@ -31,7 +31,7 @@
   }
 
   h4 {
-    @apply md:text-lg lg:text-xl font-medium;
+    @apply md:text-lg lg:text-xl font-semibold;
   }
 
   p {

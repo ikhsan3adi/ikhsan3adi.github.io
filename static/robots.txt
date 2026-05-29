@@ -1,0 +1,33 @@
+# https://www.robotstxt.org/robotstxt.html
+
+# Allow search engines (Google, Bing, DuckDuckGo, Yahoo, etc.)
+User-agent: *
+Allow: /
+
+# Disallow aggressive AI scrapers and search crawlers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: OMGILand
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://ikhsan3adi.is-a.dev/sitemap.xml

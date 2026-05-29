@@ -61,16 +61,27 @@
           <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
             <h2 class="mb-4 md:mb-6 lg:mb-8 duration-500" id="about">About Me</h2>
           </Saos>
-          {#each aboutTexts as aboutText}
+          {#each aboutTexts as aboutText, i}
             <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-              <p class="active:text-indigo-900 text-justify mb-1">
-                {aboutText}
-              </p>
+              {#if i == 0}
+                <p
+                  class="active:text-indigo-900 text-justify mb-1
+                  first-letter:leading-[0.8]
+                  first-letter:font-cascadia-mono first-letter:capitalize
+                  first-letter:text-[3.67rem] first-letter:float-left first-letter:mr-1"
+                >
+                  {aboutText}
+                </p>
+              {:else}
+                <p class="active:text-indigo-900 text-justify mb-1">
+                  {aboutText}
+                </p>
+              {/if}
             </Saos>
           {/each}
 
           <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-            <p class="my-6">
+            <p class="my-6 italic">
               To learn more about my experience and skills, feel free to visit my LinkedIn profile:
             </p>
             <Button
