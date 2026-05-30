@@ -14,14 +14,14 @@
   class="w-full relative overflow-hidden pb-16 border-t-4 border-b-4 border-slate-800 dark:border-white"
 >
   <!-- Background cobweb -->
-  <div
-    class="absolute inset-0 pointer-events-none -z-10 flex justify-center items-center overflow-hidden"
-  >
+  <div class="absolute inset-0 flex justify-center items-center">
     <div
       class="absolute
         w-[96rem] h-[96rem] md:w-[108rem] md:h-[108rem] lg:w-[120rem] lg:h-[120rem] xl:w-[132rem] xl:h-[132rem]
-          opacity-45 dark:opacity-20 spin-slow"
+          opacity-45 dark:opacity-20 transform-gpu spin-slow"
       style="background-image: url({cobweb}); background-repeat: no-repeat; background-position: center;"
+      title="I'm not a Spider-Man fan btw lol"
+      aria-hidden="true"
     ></div>
   </div>
 

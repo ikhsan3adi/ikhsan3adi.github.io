@@ -21,7 +21,7 @@
 <footer class="w-full bg-slate-800 h-max border-t-4 border-accent relative overflow-hidden">
   <!-- Background wave scrolling -->
   <div
-    class="absolute inset-0 pointer-events-none scroll-bg-animation"
+    class="absolute inset-y-0 -left-[5%] w-[110%] overflow-hidden pointer-events-none opacity-10 bg-repeat-x bg-center scroll-bg-animation will-change-transform"
     style="background-image: url({bg});"
   ></div>
   <Wrappper>
@@ -111,22 +111,19 @@
 
 <style>
   .scroll-bg-animation {
-    background-repeat: repeat-x;
-    background-position: center center;
     background-size: auto 32rem;
-    opacity: 0.1;
     animation: scroll-horizontal 120s linear infinite;
   }
 
   @keyframes scroll-horizontal {
     from {
-      background-position-x: 0;
+      transform: translate3d(0, 0, 0);
     }
     50% {
-      background-position-x: 100%;
+      transform: translate3d(4%, 0, 0);
     }
-    100% {
-      background-position-x: 0;
+    to {
+      transform: translate3d(0, 0, 0);
     }
   }
 </style>

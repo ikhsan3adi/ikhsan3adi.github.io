@@ -17,7 +17,7 @@
 >
   <!-- Background image scrolling -->
   <div
-    class="absolute inset-0 overflow-hidden pointer-events-none -z-10 scroll-bg-animation"
+    class="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-repeat bg-[0_-100px] scroll-bg-animation will-change-transform"
     style="background-image: url({bg});"
   ></div>
 
@@ -89,8 +89,7 @@
 
   .scroll-bg-animation {
     --bg-height: clamp(800px, 100vh, 1350px);
-    background-repeat: repeat;
-    background-position: 0 -100px;
+    width: calc(100% + (var(--bg-height) * 16 / 9));
     background-size: calc(var(--bg-height) * 16 / 9) var(--bg-height);
     animation: scroll-horizontal 67s linear infinite;
   }
@@ -103,10 +102,10 @@
 
   @keyframes scroll-horizontal {
     from {
-      background-position-x: 0;
+      transform: translate3d(0, 0, 0);
     }
     to {
-      background-position-x: calc(var(--bg-height) * -16 / 9);
+      transform: translate3d(calc(var(--bg-height) * -16 / 9), 0, 0);
     }
   }
 </style>
