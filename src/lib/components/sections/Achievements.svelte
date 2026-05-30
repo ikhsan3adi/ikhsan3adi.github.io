@@ -17,139 +17,128 @@
 </script>
 
 <section
-  class="w-full relative bg-purple-100 dark:bg-fuchsia-800 border-t-4 border-slate-900 dark:border-white"
+  class="w-full relative isolate bg-purple-100 dark:bg-fuchsia-800 border-t-4 border-slate-900 dark:border-white duration-500"
 >
-  <div class="relative isolate duration-500">
-    <div
-      aria-hidden="true"
-      class="absolute inset-0 bg-repeat bg-center brightness-[0.9] dark:brightness-[1.67] scroll-bg-vertical"
-      style="background-image: url({bg});"
-    ></div>
+  <!-- Background image scrolling -->
+  <div
+    class="absolute inset-0 overflow-hidden pointer-events-none -z-10 scroll-bg-animation-reverse
+      brightness-[0.9] dark:brightness-[1.75]"
+    style="background-image: url({bg});"
+  ></div>
 
-    <Wrappper>
-      <div class="w-full pb-16 relative z-10">
-        <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-          <h2
-            class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white duration-500"
-            id="achievements"
-          >
-            Achievements
-          </h2>
-        </Saos>
-
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5 xl:gap-6 items-stretch"
+  <Wrappper>
+    <div class="w-full pb-16 relative z-10">
+      <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
+        <h2
+          class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white duration-500"
+          id="achievements"
         >
-          {#each achievements as achievement, i}
-            <Saos
-              animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'}
-              once
-              css_observer="height: 100%"
-              css_animation="height: 100%"
-            >
-              <div
-                class="border-4 border-slate-900 dark:border-slate-700 p-4
+          Achievements
+        </h2>
+      </Saos>
+
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5 xl:gap-6 items-stretch"
+      >
+        {#each achievements as achievement, i}
+          <Saos
+            animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'}
+            once
+            css_observer="height: 100%"
+            css_animation="height: 100%"
+          >
+            <div
+              class="border-4 border-slate-900 dark:border-slate-700 p-4
               {randomizedColors[i]}
                h-full flex flex-col hover:shadow-lg transition-all duration-200"
-              >
-                <!-- Icon -->
-                <div class="mb-4">
-                  <div
-                    class="w-12 h-12 bg-slate-200 border-2 border-slate-900 dark:border-slate-700 flex items-center justify-center"
-                  >
-                    <Icon icon={achievement.icon} class="w-8 h-8 text-black" />
-                  </div>
+            >
+              <!-- Icon -->
+              <div class="mb-4">
+                <div
+                  class="w-12 h-12 bg-slate-200 border-2 border-slate-900 dark:border-slate-700 flex items-center justify-center"
+                >
+                  <Icon icon={achievement.icon} class="w-8 h-8 text-black" />
                 </div>
-
-                <!-- Title: type icon to the left -->
-                <h3 class="mb-2">
-                  <span class="inline-block mr-1 translate-y-0.5">
-                    {#if achievement.type === 'competition'}
-                      <Icon icon="lucide:trophy" class="w-[1.1rem] h-[1.1rem] md:w-5 md:h-5" />
-                    {:else if achievement.type === 'course'}
-                      <Icon
-                        icon="lucide:book-open-text"
-                        class="w-[1.1rem] h-[1.1rem] md:w-5 md:h-5"
-                      />
-                    {:else}
-                      <Icon icon="lucide:award" class="w-[1.1rem] h-[1.1rem] md:w-5 md:h-5" />
-                    {/if}
-                  </span>
-                  {achievement.title}
-                </h3>
-
-                <!-- Issuer & Date -->
-                <p class="text-slate-800 mb-3">
-                  <span>Issued by <span class="font-semibold">{achievement.issuer}</span></span>
-                  <span class="text-sm flex items-center gap-1 mt-1">
-                    <Icon icon="lucide:calendar" class="w-3 h-3" />
-                    {achievement.date}
-                  </span>
-                </p>
-
-                <!-- Description -->
-                <p class="text-sm flex-grow">
-                  {achievement.description}
-                </p>
-
-                <!-- Link Button -->
-                {#if achievement.link}
-                  <div class="mt-4">
-                    <Button
-                      href={achievement.link}
-                      target="_blank"
-                      rel="noreferrer"
-                      title={achievement.title}
-                      noDarkVariant={true}
-                      fullWidth={false}
-                      variant="codeforces"
-                      small
-                    >
-                      <Fa icon={faExternalLink} slot="icon" />
-                      View Credentials
-                    </Button>
-                  </div>
-                {/if}
               </div>
-            </Saos>
-          {/each}
-        </div>
+
+              <!-- Title: type icon to the left -->
+              <h3 class="mb-2">
+                <span class="inline-block mr-1 translate-y-0.5">
+                  {#if achievement.type === 'competition'}
+                    <Icon icon="lucide:trophy" class="w-[1.1rem] h-[1.1rem] md:w-5 md:h-5" />
+                  {:else if achievement.type === 'course'}
+                    <Icon
+                      icon="lucide:book-open-text"
+                      class="w-[1.1rem] h-[1.1rem] md:w-5 md:h-5"
+                    />
+                  {:else}
+                    <Icon icon="lucide:award" class="w-[1.1rem] h-[1.1rem] md:w-5 md:h-5" />
+                  {/if}
+                </span>
+                {achievement.title}
+              </h3>
+
+              <!-- Issuer & Date -->
+              <p class="text-slate-800 mb-3">
+                <span>Issued by <span class="font-semibold">{achievement.issuer}</span></span>
+                <span class="text-sm flex items-center gap-1 mt-1">
+                  <Icon icon="lucide:calendar" class="w-3 h-3" />
+                  {achievement.date}
+                </span>
+              </p>
+
+              <!-- Description -->
+              <p class="text-sm flex-grow">
+                {achievement.description}
+              </p>
+
+              <!-- Link Button -->
+              {#if achievement.link}
+                <div class="mt-4">
+                  <Button
+                    href={achievement.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    title={achievement.title}
+                    noDarkVariant={true}
+                    fullWidth={false}
+                    variant="codeforces"
+                    small
+                  >
+                    <Fa icon={faExternalLink} slot="icon" />
+                    View Credentials
+                  </Button>
+                </div>
+              {/if}
+            </div>
+          </Saos>
+        {/each}
       </div>
-    </Wrappper>
-  </div>
+    </div>
+  </Wrappper>
 </section>
 
 <style>
-  .scroll-bg-vertical {
-    --tile-height: 30%;
-    background-size: auto var(--tile-height);
-    animation: scroll-vertical 60s linear infinite;
+  .scroll-bg-animation-reverse {
+    --bg-height: clamp(800px, 100vh, 1350px);
+    background-repeat: repeat;
+    background-position: 0 -100px;
+    background-size: calc(var(--bg-height) * 16 / 9) var(--bg-height);
+    animation: scroll-horizontal-reverse 67s linear infinite;
   }
 
   @media (min-width: 768px) {
-    .scroll-bg-vertical {
-      --tile-height: 50%;
+    .scroll-bg-animation-reverse {
+      --bg-height: clamp(600px, 100vh, 1350px);
     }
   }
 
-  @media (min-width: 1024px) {
-    .scroll-bg-vertical {
-      --tile-height: 55%;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .scroll-bg-vertical {
-      --tile-height: 60%;
-    }
-  }
-
-  @keyframes scroll-vertical {
+  @keyframes scroll-horizontal-reverse {
     from {
-      background-position-y: 0;
+      background-position-x: calc(var(--bg-height) * -16 / 9);
     }
     to {
-      background-position-y: calc(0px - var(--tile-height));
+      background-position-x: 0;
     }
   }
 </style>

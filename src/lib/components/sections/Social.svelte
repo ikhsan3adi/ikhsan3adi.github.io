@@ -10,7 +10,9 @@
   import cobweb from '$lib/components/graphics/cobweb-05.svg';
 </script>
 
-<section class="relative overflow-hidden">
+<section
+  class="w-full relative overflow-hidden pb-16 border-t-4 border-b-4 border-slate-800 dark:border-white"
+>
   <!-- Background cobweb -->
   <div
     class="absolute inset-0 pointer-events-none -z-10 flex justify-center items-center overflow-hidden"
@@ -23,49 +25,47 @@
     ></div>
   </div>
 
-  <div class="w-full pb-16 border-t-4 border-b-4 border-slate-800 dark:border-white">
-    <Wrappper>
-      <div class="w-full">
-        <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-          <h2
-            class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white duration-500"
-            id="social"
-          >
-            Connect with me
-          </h2>
-        </Saos>
+  <Wrappper>
+    <div class="w-full">
+      <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
+        <h2
+          class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white duration-500"
+          id="social"
+        >
+          Connect with me
+        </h2>
+      </Saos>
 
-        <!-- Social buttons -->
-        <div class="flex flex-wrap justify-center gap-4 lg:gap-5 xl:gap-6">
-          {#each socials as social}
-            <Saos
-              animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'}
-              once
-              outerClass="w-full md:w-[48.5%] lg:w-[31.5%]"
+      <!-- Social buttons -->
+      <div class="flex flex-wrap justify-center gap-4 lg:gap-5 xl:gap-6">
+        {#each socials as social}
+          <Saos
+            animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'}
+            once
+            outerClass="w-full md:w-[48.5%] lg:w-[31.5%]"
+          >
+            <Button
+              href={social.link}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={social.name}
+              variant={social.colorVariant}
+              noDarkVariant={false}
+              centerText={false}
+              className="w-full"
             >
-              <Button
-                href={social.link}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={social.name}
-                variant={social.colorVariant}
-                noDarkVariant={false}
-                centerText={false}
-                className="w-full"
-              >
-                <div class="w-10 h-10" slot="icon">
-                  <Icon icon={social.icon} class="w-full h-full" />
-                </div>
-                <div class="flex justify-start items-center">
-                  {social.social}
-                </div>
-              </Button>
-            </Saos>
-          {/each}
-        </div>
+              <div class="w-10 h-10" slot="icon">
+                <Icon icon={social.icon} class="w-full h-full" />
+              </div>
+              <div class="flex justify-start items-center">
+                {social.social}
+              </div>
+            </Button>
+          </Saos>
+        {/each}
       </div>
-    </Wrappper>
-  </div>
+    </div>
+  </Wrappper>
 </section>
 
 <style>

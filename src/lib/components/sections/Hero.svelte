@@ -10,87 +10,75 @@
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
   import { FIRST_NAME, LAST_NAME } from '$lib/config';
-
-  const bgItems = [1, 2, 3, 4, 5];
 </script>
 
-<section>
-  <!-- Background image -->
+<section
+  class="min-h-[800px] md:min-h-[600px] h-[100vh] max-h-[1350px] overflow-hidden flex relative duration-500"
+>
+  <!-- Background image scrolling -->
   <div
-    class="min-h-[800px] md:min-h-[600px] h-[100vh] max-h-[1350px] overflow-hidden flex relative duration-500"
-  >
-    <!-- Background image scrolling -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-      <div class="flex h-full w-max scroll-bg-animation">
-        {#each bgItems as item}
+    class="absolute inset-0 overflow-hidden pointer-events-none -z-10 scroll-bg-animation"
+    style="background-image: url({bg});"
+  ></div>
+
+  <div class="md:mt-16 w-full flex">
+    <Wrappper>
+      <div class="w-full md:flex md:gap-4 md:justify-between my-auto">
+        <div class="mb-52 mt-16 md:m-0 py-2 md:py-8 lg:py-9 sm:max-md:text-center duration-500">
+          <!-- Hero text -->
+          <p
+            id="home"
+            class="dark:text-white duration-500 md:text-lg lg:text-xl font-medium cursor-not-allowed"
+          >
+            Hello, my name is
+          </p>
+          <h1 class="mb-2 dark:text-white duration-500 cursor-not-allowed">
+            {FIRST_NAME}
+            <span class="font-cascadia-mono text-inherit text-primary">
+              {LAST_NAME}
+            </span>
+          </h1>
+
+          <!-- Typing effect -->
           <div
-            class="h-full aspect-[16/9] bg-cover bg-no-repeat bg-center shrink-0"
-            style="background-image: url({bg});"
-            data-index={item}
-          ></div>
-        {/each}
-      </div>
-    </div>
-
-    <div class="md:mt-16 w-full flex">
-      <Wrappper>
-        <div class="w-full md:flex md:gap-4 md:justify-between my-auto">
-          <div class="mb-52 mt-16 md:m-0 py-2 md:py-8 lg:py-9 sm:max-md:text-center duration-500">
-            <!-- Hero text -->
-            <p
-              id="home"
-              class="dark:text-white duration-500 md:text-lg lg:text-xl font-medium cursor-not-allowed"
-            >
-              Hello, my name is
-            </p>
-            <h1 class="mb-2 dark:text-white duration-500 cursor-not-allowed">
-              {FIRST_NAME}
-              <span class="font-cascadia-mono text-inherit text-primary">
-                {LAST_NAME}
-              </span>
-            </h1>
-
-            <!-- Typing effect -->
-            <div
-              class="mb-4 dark:text-white duration-500 md:text-lg lg:text-xl font-medium cursor-not-allowed"
-            >
-              <Typewriter mode={'loop'} interval={25}>
-                A
-                <span class="text-emerald-600 dark:text-primary">Student</span>
-                <span class="text-green-600 dark:text-green-400">Programmer</span>
-                <span class="text-orange-600 dark:text-orange-400">Computer User</span>
-              </Typewriter>
-            </div>
-
-            <!-- Call to action buttons -->
-            <div class="flex flex-wrap gap-3 sm:max-md:justify-center">
-              <Button href="#portfolio" noDarkVariant={false}>
-                <Fa icon={faFolderOpen} slot="icon" />See projects
-              </Button>
-              <Button href="#contact" variant="secondary" noDarkVariant={false}>
-                <Fa icon={faPaperPlane} slot="icon" />Contact me
-              </Button>
-            </div>
+            class="mb-4 dark:text-white duration-500 md:text-lg lg:text-xl font-medium cursor-not-allowed"
+          >
+            <Typewriter mode={'loop'} interval={25}>
+              A
+              <span class="text-emerald-600 dark:text-primary">Student</span>
+              <span class="text-green-600 dark:text-green-400">Programmer</span>
+              <span class="text-orange-600 dark:text-orange-400">Computer User</span>
+            </Typewriter>
           </div>
 
-          <!-- Emblem logo -->
-          <div class="max-md:mx-auto w-max md:my-auto relative active:animate-ping">
-            <div
-              class="cursor-crosshair w-52 h-52 mx-auto md:w-64 md:h-64 lg:w-72 lg:h-72 dark:text-white absolute -top-3 right-2 duration-[50ms]"
-            >
-              <Emblem />
-            </div>
-
-            <!-- Back outline / shadow -->
-            <div
-              class="cursor-crosshair w-52 h-52 mx-auto md:w-64 md:h-64 lg:w-72 lg:h-72 text-custom-3 dark:text-transparent stroke-[4] stroke-slate-900 dark:stroke-custom-3 duration-500"
-            >
-              <Emblem />
-            </div>
+          <!-- Call to action buttons -->
+          <div class="flex flex-wrap gap-3 sm:max-md:justify-center">
+            <Button href="#portfolio" noDarkVariant={false}>
+              <Fa icon={faFolderOpen} slot="icon" />See projects
+            </Button>
+            <Button href="#contact" variant="secondary" noDarkVariant={false}>
+              <Fa icon={faPaperPlane} slot="icon" />Contact me
+            </Button>
           </div>
         </div>
-      </Wrappper>
-    </div>
+
+        <!-- Emblem logo -->
+        <div class="max-md:mx-auto w-max md:my-auto relative active:animate-ping">
+          <div
+            class="cursor-crosshair w-52 h-52 mx-auto md:w-64 md:h-64 lg:w-72 lg:h-72 dark:text-white absolute -top-3 right-2 duration-[50ms]"
+          >
+            <Emblem />
+          </div>
+
+          <!-- Back outline / shadow -->
+          <div
+            class="cursor-crosshair w-52 h-52 mx-auto md:w-64 md:h-64 lg:w-72 lg:h-72 text-custom-3 dark:text-transparent stroke-[4] stroke-slate-900 dark:stroke-custom-3 duration-500"
+          >
+            <Emblem />
+          </div>
+        </div>
+      </div>
+    </Wrappper>
   </div>
 </section>
 
@@ -100,15 +88,25 @@
   }
 
   .scroll-bg-animation {
+    --bg-height: clamp(800px, 100vh, 1350px);
+    background-repeat: repeat;
+    background-position: 0 -100px;
+    background-size: calc(var(--bg-height) * 16 / 9) var(--bg-height);
     animation: scroll-horizontal 67s linear infinite;
+  }
+
+  @media (min-width: 768px) {
+    .scroll-bg-animation {
+      --bg-height: clamp(600px, 100vh, 1350px);
+    }
   }
 
   @keyframes scroll-horizontal {
     from {
-      transform: translateX(0);
+      background-position-x: 0;
     }
     to {
-      transform: translateX(-20%);
+      background-position-x: calc(var(--bg-height) * -16 / 9);
     }
   }
 </style>
