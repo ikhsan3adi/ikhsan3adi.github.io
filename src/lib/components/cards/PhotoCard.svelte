@@ -50,8 +50,17 @@
   </Saos>
 </div>
 
-<style lang="postcss">
+<style>
   .img-film {
     animation: photo-film 6767ms cubic-bezier(0.86, 0, 0.07, 1) both;
+  }
+
+  @keyframes photo-film {
+    from {
+      filter: blur(4px) contrast(1.5) saturate(75%) invert(100%) sepia(33%);
+    }
+    to {
+      filter: blur(0) contrast(1) saturate(100%) invert(0) sepia(0);
+    }
   }
 </style>

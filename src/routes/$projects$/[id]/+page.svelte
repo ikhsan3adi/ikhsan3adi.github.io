@@ -1,7 +1,7 @@
 <script lang="ts">
+  import { projectDetail } from '$lib/api/projects';
   import { onMount } from 'svelte';
   import type { PageData } from './$types';
-  import { projectDetail } from '$lib/api/projects';
 
   import ProjectDetail from '$lib/components/sections/project-detail/ProjectDetail.svelte';
   import ProjectDetailError from '$lib/components/sections/project-detail/ProjectDetailError.svelte';
@@ -25,6 +25,10 @@
 
 <svelte:head>
   <title>{data.project.name}</title>
+
+  <meta name="description" content={data.project.description || ''} />
+  <meta property="og:description" content={data.project.description || ''} />
+  <meta name="twitter:description" content={data.project.description || ''} />
 </svelte:head>
 
 <main>

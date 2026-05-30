@@ -78,12 +78,3 @@
     transform: scale(1);
   }
 }
-
-@keyframes photo-film {
-  from {
-    filter: blur(4px) contrast(1.5) saturate(75%) invert(100%) sepia(33%);
-  }
-  to {
-    filter: blur(0) contrast(1) saturate(100%) invert(0) sepia(0);
-  }
-}
