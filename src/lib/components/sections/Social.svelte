@@ -70,7 +70,7 @@
 
 <style>
   .spin-slow {
-    animation: spin-slow 720s linear infinite;
+    animation: spin-slow 670s linear infinite;
   }
 
   @keyframes spin-slow {

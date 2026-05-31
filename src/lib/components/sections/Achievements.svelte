@@ -123,12 +123,12 @@
     --bg-height: clamp(800px, 100vh, 1350px);
     width: calc(100% + (var(--bg-height) * 16 / 9));
     background-size: calc(var(--bg-height) * 16 / 9) var(--bg-height);
-    animation: scroll-horizontal-reverse 67s linear infinite;
   }
 
   @media (min-width: 768px) {
     .scroll-bg-animation-reverse {
       --bg-height: clamp(600px, 100vh, 1350px);
+      animation: scroll-horizontal-reverse 67s linear infinite;
     }
   }
 
