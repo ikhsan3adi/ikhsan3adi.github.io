@@ -1,9 +1,5 @@
 <script lang="ts">
-  import { createBubbler } from 'svelte/legacy';
-
   import Saos from '$lib/components/widgets/Saos.svelte';
-
-  const bubble = createBubbler();
 
   interface Props {
     imageSrc?: string | undefined;
@@ -29,7 +25,8 @@
     imgClass = 'aspect-square',
     imgEffectClass = '',
     animDelayMs = 800,
-    zIndex = 1
+    zIndex = 1,
+    onmouseenter
   }: Props = $props();
 
   const labelId = $derived(`photo-card-${title.toLowerCase().replace(/\s+/g, '-')}`);
@@ -41,8 +38,7 @@
   style="z-index: {zIndex};"
   class="absolute transition-all duration-200 cursor-crosshair
     {cardSizeClass} {transformClass}"
-  onmouseenter={bubble('mouseenter')}
-  onmouseleave={bubble('mouseleave')}
+  {onmouseenter}
 >
   <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
     <figure
