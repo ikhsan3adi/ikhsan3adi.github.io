@@ -54,10 +54,14 @@
           <!-- Call to action buttons -->
           <div class="flex flex-wrap gap-3 sm:max-md:justify-center">
             <Button href="#portfolio" noDarkVariant={false}>
-              <Fa icon={faFolderOpen} slot="icon" />See projects
+              {#snippet icon()}
+                <Fa icon={faFolderOpen} />
+              {/snippet}See projects
             </Button>
             <Button href="#contact" variant="secondary" noDarkVariant={false}>
-              <Fa icon={faPaperPlane} slot="icon" />Contact me
+              {#snippet icon()}
+                <Fa icon={faPaperPlane} />
+              {/snippet}Contact me
             </Button>
           </div>
         </div>

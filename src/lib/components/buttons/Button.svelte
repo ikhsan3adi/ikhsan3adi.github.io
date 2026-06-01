@@ -1,17 +1,38 @@
 <script lang="ts">
   import type { ButtonColorVariants } from '$lib/components/colors';
 
-  export let href: string | undefined = undefined;
-  export let target: string | undefined = undefined;
-  export let rel: string | undefined = undefined;
-  export let className = '';
-  export let type: 'button' | 'submit' | 'reset' = 'button';
-  export let disabled = false;
-  export let variant: keyof ButtonColorVariants = disabled ? 'disabled' : 'primary';
-  export let noDarkVariant = true;
-  export let fullWidth = false;
-  export let centerText = true;
-  export let small = false;
+  interface Props {
+    href?: string | undefined;
+    target?: string | undefined;
+    rel?: string | undefined;
+    className?: string;
+    type?: 'button' | 'submit' | 'reset';
+    disabled?: boolean;
+    variant?: keyof ButtonColorVariants;
+    noDarkVariant?: boolean;
+    fullWidth?: boolean;
+    centerText?: boolean;
+    small?: boolean;
+    icon?: import('svelte').Snippet;
+    children?: import('svelte').Snippet;
+    [key: string]: unknown;
+  }
+
+  let {
+    href = undefined,
+    target = undefined,
+    rel = undefined,
+    className = '',
+    type = 'button',
+    disabled = false,
+    variant = disabled ? 'disabled' : 'primary',
+    noDarkVariant = true,
+    fullWidth = false,
+    centerText = true,
+    small = false,
+    icon,
+    children
+  }: Props = $props();
 
   const backBackgroundColors: ButtonColorVariants = {
     primary: 'dark:bg-primary',
@@ -93,25 +114,29 @@
     'custom-3': 'dark:text-custom-3'
   };
 
-  const rootClass = `${noDarkVariant ? '' : backBackgroundColors[variant]} ${
-    fullWidth ? 'w-full' : ''
-  } bg-slate-900 duration-200 inline-block ${className}`.trim();
+  const rootClass = $derived(
+    `${noDarkVariant ? '' : backBackgroundColors[variant]} ${
+      fullWidth ? 'w-full' : ''
+    } bg-slate-900 duration-200 inline-block ${className}`.trim()
+  );
 
-  const innerClass = `${backgroundColors[variant]} ${noDarkVariant ? '' : 'dark:bg-slate-900'} ${
-    noDarkVariant ? '' : borderColors[variant]
-  } ${centerText ? ' justify-center' : ''} ${disabled ? '' : 'active:translate-x-0 active:translate-y-0'} flex items-center border-slate-900 border-2 duration-200 px-4 py-2 -translate-x-1.5 -translate-y-1.5 hover:-translate-x-2 hover:-translate-y-2 w-full`;
+  const innerClass = $derived(
+    `${backgroundColors[variant]} ${noDarkVariant ? '' : 'dark:bg-slate-900'} ${
+      noDarkVariant ? '' : borderColors[variant]
+    } ${centerText ? ' justify-center' : ''} ${disabled ? '' : 'active:translate-x-0 active:translate-y-0'} flex items-center border-slate-900 border-2 duration-200 px-4 py-2 -translate-x-1.5 -translate-y-1.5 hover:-translate-x-2 hover:-translate-y-2 w-full`
+  );
 </script>
 
 {#if href}
-  <a class={rootClass} {href} {target} {rel} {...$$restProps}>
+  <a class={rootClass} {href} {target} {rel}>
     <div class={innerClass}>
-      {#if $$slots.icon}
+      {#if icon}
         <div
           class="{noDarkVariant ? '' : textColors[variant]} {small
             ? 'mr-2'
             : 'mr-4'} flex items-center justify-center"
         >
-          <slot name="icon" />
+          {@render icon?.()}
         </div>
       {/if}
 
@@ -120,20 +145,20 @@
           ? ''
           : textColors[variant]} duration-200"
       >
-        <slot />
+        {@render children?.()}
       </span>
     </div>
   </a>
 {:else}
-  <button class={rootClass} {type} {disabled} {...$$restProps}>
+  <button class={rootClass} {type} {disabled}>
     <div class={innerClass}>
-      {#if $$slots.icon}
+      {#if icon}
         <div
           class="{noDarkVariant ? '' : textColors[variant]} {small
             ? 'mr-2'
             : 'mr-4'} flex items-center justify-center"
         >
-          <slot name="icon" />
+          {@render icon?.()}
         </div>
       {/if}
 
@@ -142,7 +167,7 @@
           ? ''
           : textColors[variant]} duration-200"
       >
-        <slot />
+        {@render children?.()}
       </span>
     </div>
   </button>

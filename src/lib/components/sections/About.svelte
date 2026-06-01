@@ -11,7 +11,7 @@
   import MarqueeText from '$lib/components/widgets/MarqueeText.svelte';
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
-  let hoveredCard: number | null = null;
+  let hoveredCard: number | null = $state(null);
 
   function getZIndex(cardIndex: number): number {
     if (hoveredCard === null) return photoCards[cardIndex].baseZ;
@@ -91,7 +91,9 @@
               variant="linkedIn"
               noDarkVariant={true}
             >
-              <Fa icon={faExternalLink} slot="icon" />Visit LinkedIn
+              {#snippet icon()}
+                <Fa icon={faExternalLink} />
+              {/snippet}Visit LinkedIn
             </Button>
           </Saos>
         </div>
@@ -105,7 +107,7 @@
             aspect-[1/1] md:aspect-[4/3] lg:aspect-auto"
             aria-label="Illustrated About Me"
             role="region"
-            on:mouseleave={() => (hoveredCard = null)}
+            onmouseleave={() => (hoveredCard = null)}
           >
             {#each photoCards as card, i}
               <PhotoCard
@@ -119,7 +121,7 @@
                 imgEffectClass={getImgEffectClass(i)}
                 animDelayMs={700 + (photoCards.length - 1 - i) * 200}
                 zIndex={getZIndex(i)}
-                on:mouseenter={() => (hoveredCard = i)}
+                onmouseenter={() => (hoveredCard = i)}
               />
             {/each}
           </div>

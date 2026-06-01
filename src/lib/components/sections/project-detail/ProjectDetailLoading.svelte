@@ -24,7 +24,9 @@
           <p class="dark:text-slate-300">Fetching data...</p>
           <div class="my-4 md:my-6 lg:my-8 flex gap-4 md:gap-6 lg:gap-8">
             <Button noDarkVariant={false} variant="disabled">
-              <Fa icon={faRefresh} slot="icon" class="animate-spin" /> Loading
+              {#snippet icon()}
+                <Fa icon={faRefresh} class="animate-spin" />
+              {/snippet} Loading
             </Button>
           </div>
         </div>

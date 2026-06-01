@@ -39,7 +39,9 @@
       <div class="flex flex-row flex-wrap justify-center gap-4 lg:gap-8">
         <!-- button for go back -->
         <Button variant="primary" href="/" fullWidth={false} noDarkVariant={false}>
-          <Fa icon={faArrowLeft} size="lg" slot="icon" />
+          {#snippet icon()}
+            <Fa icon={faArrowLeft} size="lg" />
+          {/snippet}
           Home
         </Button>
 
@@ -50,7 +52,9 @@
           fullWidth={false}
           noDarkVariant={false}
         >
-          <Fa icon={faExclamationCircle} size="lg" slot="icon" />
+          {#snippet icon()}
+            <Fa icon={faExclamationCircle} size="lg" />
+          {/snippet}
           Report
         </Button>
       </div>

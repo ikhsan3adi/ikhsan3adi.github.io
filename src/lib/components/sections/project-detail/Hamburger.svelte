@@ -3,9 +3,13 @@
   import { hamburgerMenuExpanded } from '$lib/config';
   import { onMount } from 'svelte';
 
-  export let isBgTransparent = true;
+  interface Props {
+    isBgTransparent?: boolean;
+  }
 
-  let open = false;
+  let { isBgTransparent = true }: Props = $props();
+
+  let open = $state(false);
 
   onMount(() => {
     hamburgerMenuExpanded.subscribe((value) => {
@@ -24,7 +28,7 @@
   text-text my-auto flex flex-col lg:hidden"
 >
   <!-- Hamburger button -->
-  <button class="m-auto block" on:click={() => toggle(!open)}>
+  <button class="m-auto block" onclick={() => toggle(!open)}>
     {#if open}
       <svg
         class="fill-current"
@@ -64,7 +68,7 @@
   </div>
 
   <!-- Click outside to close -->
-  <button on:click={() => (open = false)} class="z-40" title="Click outside to close">
+  <button onclick={() => (open = false)} class="z-40" title="Click outside to close">
     <div class="fixed left-0 right-0 top-0 bottom-0 cursor-default {open ? '' : 'hidden'}"></div>
   </button>
 </div>

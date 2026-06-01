@@ -1,8 +1,13 @@
 <script lang="ts">
-  export let duration = 15;
-  export let repeat = 2;
-  export let paused = false;
-  export let direction: 'left' | 'right' = 'left';
+  interface Props {
+    duration?: number;
+    repeat?: number;
+    paused?: boolean;
+    direction?: 'left' | 'right';
+    children?: import('svelte').Snippet;
+  }
+
+  let { duration = 15, repeat = 2, paused = false, direction = 'left', children }: Props = $props();
 </script>
 
 <div class="overflow-hidden">
@@ -15,7 +20,7 @@
           : 'marquee-direction-right'} content"
         style="animation-duration: {duration}s"
       >
-        <slot />
+        {@render children?.()}
       </div>
     {/each}
   </div>

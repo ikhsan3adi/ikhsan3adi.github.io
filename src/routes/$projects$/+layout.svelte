@@ -3,10 +3,15 @@
 
   import Footer from '$lib/components/sections/Footer.svelte';
   import Navbar from '$lib/components/sections/project-detail/Navbar.svelte';
+  interface Props {
+    children?: import('svelte').Snippet;
+  }
+
+  let { children }: Props = $props();
 </script>
 
 <Navbar />
 
-<slot />
+{@render children?.()}
 
 <Footer noNavLinks />

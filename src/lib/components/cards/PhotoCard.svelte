@@ -1,18 +1,36 @@
 <script lang="ts">
   import Saos from 'saos';
+  import { createBubbler } from 'svelte/legacy';
+  const bubble = createBubbler();
 
-  export let imageSrc: string | undefined = undefined;
-  export let title: string;
-  export let description: string;
-  export let bgClass = 'bg-slate-100 dark:bg-slate-800';
-  export let transformClass = '';
-  export let cardSizeClass = 'w-96';
-  export let imgClass = 'aspect-square';
-  export let imgEffectClass = '';
-  export let animDelayMs = 800;
-  export let zIndex = 1;
+  interface Props {
+    imageSrc?: string | undefined;
+    title: string;
+    description: string;
+    bgClass?: string;
+    transformClass?: string;
+    cardSizeClass?: string;
+    imgClass?: string;
+    imgEffectClass?: string;
+    animDelayMs?: number;
+    zIndex?: number;
+    onmouseenter?: () => void;
+  }
 
-  const labelId = `photo-card-${title.toLowerCase().replace(/\s+/g, '-')}`;
+  let {
+    imageSrc = undefined,
+    title,
+    description,
+    bgClass = 'bg-slate-100 dark:bg-slate-800',
+    transformClass = '',
+    cardSizeClass = 'w-96',
+    imgClass = 'aspect-square',
+    imgEffectClass = '',
+    animDelayMs = 800,
+    zIndex = 1
+  }: Props = $props();
+
+  const labelId = $derived(`photo-card-${title.toLowerCase().replace(/\s+/g, '-')}`);
 </script>
 
 <div
@@ -21,8 +39,8 @@
   style="z-index: {zIndex};"
   class="absolute transition-all duration-200 cursor-crosshair
     {cardSizeClass} {transformClass}"
-  on:mouseenter
-  on:mouseleave
+  onmouseenter={bubble('mouseenter')}
+  onmouseleave={bubble('mouseleave')}
 >
   <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
     <figure

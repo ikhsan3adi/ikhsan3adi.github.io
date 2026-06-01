@@ -12,7 +12,11 @@
   import Tools from '$lib/components/sections/Tools.svelte';
   import { FULL_NAME } from '$lib/config';
 
-  export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
 
   const description =
     "Just a simple space to get to know Ikhsan Satriadi. Explore the everyday problems I'm trying to solve and creations made to help people make things just a bit easier.";

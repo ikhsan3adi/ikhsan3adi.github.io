@@ -9,6 +9,11 @@
   import '@fontsource/space-grotesk/latin-600.css';
   import '@fontsource/space-grotesk/latin-700.css';
   import '../app.css';
+  interface Props {
+    children?: import('svelte').Snippet;
+  }
+
+  let { children }: Props = $props();
 </script>
 
-<slot />
+{@render children?.()}

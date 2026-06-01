@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { preventDefault } from 'svelte/legacy';
+
   import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
   import Icon from '@iconify/svelte';
   import Saos from 'saos';
@@ -11,10 +13,10 @@
   import { inputClass } from '$lib/components/form';
   import { enableMessageForm } from '$lib/config';
 
-  let submisstionStatus: 'Initial' | 'Loading' | 'Success' | 'Failed' = 'Initial';
-  let buttonDisabled = false;
+  let submisstionStatus: 'Initial' | 'Loading' | 'Success' | 'Failed' = $state('Initial');
+  let buttonDisabled = $state(false);
 
-  let data = { name: '', email: '', message: '' };
+  let data = $state({ name: '', email: '', message: '' });
 
   const handleSubmit = async () => {
     if (!data.name || !data.email.includes('@') || !data.message) return;
@@ -62,9 +64,11 @@
               variant={contact.colorVariant}
               className="w-full"
             >
-              <div class="w-8 h-8" slot="icon">
-                <Icon icon={contact.icon} class="w-full h-full" />
-              </div>
+              {#snippet icon()}
+                <div class="w-8 h-8">
+                  <Icon icon={contact.icon} class="w-full h-full" />
+                </div>
+              {/snippet}
               <span>{contact.contact}</span>
             </Button>
           </Saos>
@@ -91,7 +95,7 @@
               <div
                 class="w-full bg-custom-1 dark:bg-slate-700 border-4 border-slate-900 dark:border-white h-max px-8 py-4 md:px-12 md:py-6"
               >
-                <form on:submit|preventDefault={buttonDisabled ? () => 0 : handleSubmit}>
+                <form onsubmit={preventDefault(buttonDisabled ? () => 0 : handleSubmit)}>
                   <div class="flex flex-col mb-4">
                     <label for="name" class="dark:text-white md:text-lg lg:text-xl font-medium">
                       Name
@@ -136,7 +140,9 @@
                       variant={buttonDisabled ? 'disabled' : 'primary'}
                       disabled={buttonDisabled}
                     >
-                      <Fa icon={faPaperPlane} slot="icon" />
+                      {#snippet icon()}
+                        <Fa icon={faPaperPlane} />
+                      {/snippet}
                       <span
                         class="{submisstionStatus === 'Failed'
                           ? 'text-red-500'

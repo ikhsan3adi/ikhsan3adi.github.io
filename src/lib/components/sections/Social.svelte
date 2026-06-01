@@ -54,9 +54,11 @@
               centerText={false}
               className="w-full"
             >
-              <div class="w-10 h-10" slot="icon">
-                <Icon icon={social.icon} class="w-full h-full" />
-              </div>
+              {#snippet icon()}
+                <div class="w-10 h-10">
+                  <Icon icon={social.icon} class="w-full h-full" />
+                </div>
+              {/snippet}
               <div class="flex justify-start items-center">
                 {social.social}
               </div>

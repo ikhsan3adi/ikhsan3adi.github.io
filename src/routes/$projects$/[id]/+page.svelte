@@ -7,19 +7,14 @@
   import ProjectDetailError from '$lib/components/sections/project-detail/ProjectDetailError.svelte';
   import ProjectDetailLoading from '$lib/components/sections/project-detail/ProjectDetailLoading.svelte';
 
-  export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
 
-  let markdownPromise: Promise<string | null>;
+  let { data }: Props = $props();
 
   onMount(() => {
     data.projectService.fetchProjectDetail({ project: data.project, fetch: data.fetch });
-
-    markdownPromise = data.project.readmeUrl
-      ? data.projectService.getProjectReadme({
-          project: data.project,
-          fetch: data.fetch
-        })
-      : new Promise<string>((resolve) => resolve('<h2>No README file</h2>'));
   });
 </script>
 
@@ -35,7 +30,7 @@
   {#if !$projectDetail}
     <ProjectDetailLoading />
   {:else if $projectDetail.name !== 'error' && $projectDetail.name !== 'limit'}
-    <ProjectDetail project={$projectDetail} {markdownPromise} />
+    <ProjectDetail project={$projectDetail} markdownPromise={data.markdownPromise} />
   {:else}
     <ProjectDetailError project={$projectDetail} />
   {/if}

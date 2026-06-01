@@ -105,7 +105,9 @@
                     variant="codeforces"
                     small
                   >
-                    <Fa icon={faExternalLink} slot="icon" />
+                    {#snippet icon()}
+                      <Fa icon={faExternalLink} />
+                    {/snippet}
                     View Credentials
                   </Button>
                 </div>

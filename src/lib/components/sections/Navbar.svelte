@@ -8,14 +8,14 @@
   import ThemeButton from '$lib/components/widgets/ThemeButton.svelte';
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
-  let navbar: HTMLElement;
+  let navbar = $state<HTMLElement | undefined>();
 
-  let scrollY = 0;
-  let prevScrollpos = scrollY;
-  let prevScrollpos2 = scrollY;
+  let scrollY = $state(0);
+  let prevScrollpos = 0;
+  let prevScrollpos2 = 0;
 
-  let isBgTransparent = true;
-  let backgroundClasses = 'bg-opacity-0 border-opacity-0';
+  let isBgTransparent = $state(true);
+  let backgroundClasses = $state('bg-opacity-0 border-opacity-0');
 
   onMount(() => {
     changeColors();
@@ -29,6 +29,8 @@
 
   function autoHideNavbar() {
     let currentScrollPos = scrollY;
+    if (!navbar) return;
+
     if (prevScrollpos > currentScrollPos) {
       navbar.style.top = '0';
     } else {

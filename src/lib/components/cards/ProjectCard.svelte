@@ -11,9 +11,12 @@
   import { faCodeFork, faDownload, faStar, faWarning } from '@fortawesome/free-solid-svg-icons';
   import Fa from 'svelte-fa';
 
-  export let project: Project;
+  interface Props {
+    project: Project;
+    cardColor?: keyof CardColors;
+  }
 
-  export let cardColor: keyof CardColors = 'default';
+  let { project, cardColor = 'default' }: Props = $props();
 
   const cardColors: CardColors = {
     default: {
@@ -42,11 +45,13 @@
     }
   };
 
-  const tags: TagColorKey[] = project.tags.map((tag) => {
-    return Object.prototype.hasOwnProperty.call(tagColors, tag)
-      ? { key: tag as keyof TagColors, name: tag }
-      : { key: 'default', name: tag };
-  });
+  const tags: TagColorKey[] = $derived(
+    project.tags.map((tag) => {
+      return Object.prototype.hasOwnProperty.call(tagColors, tag)
+        ? { key: tag as keyof TagColors, name: tag }
+        : { key: 'default', name: tag };
+    })
+  );
 </script>
 
 <!-- Shadow card -->

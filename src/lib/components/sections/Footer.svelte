@@ -10,7 +10,11 @@
   import { navLinks } from '$lib/components/navigation';
   import { FULL_NAME, sourceLink } from '$lib/config';
 
-  export let noNavLinks = false;
+  interface Props {
+    noNavLinks?: boolean;
+  }
+
+  let { noNavLinks = false }: Props = $props();
 
   // Filter socials for footer: GitHub, LinkedIn, and Codeberg (exclude Facebook & casual ones)
   const footerSocials = socials.filter((s) =>

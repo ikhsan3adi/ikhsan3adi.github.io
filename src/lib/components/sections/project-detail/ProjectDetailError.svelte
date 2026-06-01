@@ -12,7 +12,11 @@
   } from '@fortawesome/free-solid-svg-icons';
   import Fa from 'svelte-fa';
 
-  export let project: ProjectDetail;
+  interface Props {
+    project: ProjectDetail;
+  }
+
+  let { project }: Props = $props();
 </script>
 
 <section class="mt-16">
@@ -78,7 +82,9 @@
             class="my-4 md:my-6 lg:my-8 flex w-full justify-center sm:justify-start gap-4 md:gap-6 lg:gap-8"
           >
             <Button href="/" noDarkVariant={false} variant="disabled">
-              <Fa icon={faArrowLeft} slot="icon" />Back
+              {#snippet icon()}
+                <Fa icon={faArrowLeft} />
+              {/snippet}Back
             </Button>
           </div>
         </div>

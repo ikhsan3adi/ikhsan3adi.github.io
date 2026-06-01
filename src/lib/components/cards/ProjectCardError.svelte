@@ -4,7 +4,11 @@
   import Fa from 'svelte-fa';
   import { scale } from 'svelte/transition';
 
-  export let project: Project;
+  interface Props {
+    project: Project;
+  }
+
+  let { project }: Props = $props();
 </script>
 
 <div in:scale class="w-full bg-slate-900 dark:bg-red-400">

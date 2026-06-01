@@ -17,8 +17,12 @@
   import Button from '$lib/components/buttons/Button.svelte';
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
-  export let project: ProjectDetail;
-  export let markdownPromise: Promise<string | null>;
+  interface Props {
+    project: ProjectDetail;
+    markdownPromise: Promise<string | null>;
+  }
+
+  let { project, markdownPromise }: Props = $props();
 
   const markdownizePromise = async () => {
     const [
@@ -81,11 +85,13 @@
     );
   };
 
-  const tags: TagColorKey[] = project.tags.map((tag) => {
-    return Object.prototype.hasOwnProperty.call(tagColors, tag)
-      ? { key: tag as keyof TagColors, name: tag }
-      : { key: 'default', name: tag };
-  });
+  const tags: TagColorKey[] = $derived(
+    project.tags.map((tag) => {
+      return Object.prototype.hasOwnProperty.call(tagColors, tag)
+        ? { key: tag as keyof TagColors, name: tag }
+        : { key: 'default', name: tag };
+    })
+  );
 </script>
 
 <section class="mt-16">
@@ -150,7 +156,9 @@
               rel="noreferrer"
               noDarkVariant={false}
             >
-              <Fa icon={faCode} slot="icon" />Source code
+              {#snippet icon()}
+                <Fa icon={faCode} />
+              {/snippet}Source code
             </Button>
 
             {#if project.hasLivePreview && project.livePreviewUrl}
@@ -161,7 +169,9 @@
                 noDarkVariant={false}
                 variant="white"
               >
-                <Fa icon={faExternalLink} slot="icon" />Live preview
+                {#snippet icon()}
+                  <Fa icon={faExternalLink} />
+                {/snippet}Live preview
               </Button>
             {/if}
           </div>

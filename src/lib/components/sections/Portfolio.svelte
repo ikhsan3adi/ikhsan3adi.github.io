@@ -12,8 +12,12 @@
 
   import { bottomMarqueeTexts } from '$lib/api/about';
 
-  export let fetch: (input: URL | RequestInfo, init?: RequestInit) => Promise<Response>;
-  export let projectService: ProjectService;
+  interface Props {
+    fetch: (input: URL | RequestInfo, init?: RequestInit) => Promise<Response>;
+    projectService: ProjectService;
+  }
+
+  let { fetch, projectService }: Props = $props();
 
   const cardColorVariants: (keyof CardColors)[] = [
     'default',
