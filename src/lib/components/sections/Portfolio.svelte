@@ -1,6 +1,4 @@
 <script lang="ts">
-  import Saos from 'saos';
-
   import { initialProjects, projects, type ProjectService } from '$lib/api/projects';
   import { randomizeElements, type CardColors } from '$lib/components/colors';
 
@@ -8,6 +6,7 @@
   import ProjectCardError from '$lib/components/cards/ProjectCardError.svelte';
   import ProjectCardLoading from '$lib/components/cards/ProjectCardLoading.svelte';
   import MarqueeText from '$lib/components/widgets/MarqueeText.svelte';
+  import Saos from '$lib/components/widgets/Saos.svelte';
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
   import { bottomMarqueeTexts } from '$lib/api/about';

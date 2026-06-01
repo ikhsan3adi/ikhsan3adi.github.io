@@ -1,8 +1,8 @@
 <script lang="ts">
   import Icon from '@iconify/svelte';
-  import Saos from 'saos';
 
   import Button from '$lib/components/buttons/Button.svelte';
+  import Saos from '$lib/components/widgets/Saos.svelte';
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
   import { socials } from '$lib/api/socials';

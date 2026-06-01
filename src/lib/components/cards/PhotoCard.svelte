@@ -1,6 +1,8 @@
 <script lang="ts">
-  import Saos from 'saos';
   import { createBubbler } from 'svelte/legacy';
+
+  import Saos from '$lib/components/widgets/Saos.svelte';
+
   const bubble = createBubbler();
 
   interface Props {

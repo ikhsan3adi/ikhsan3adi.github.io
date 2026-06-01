@@ -3,10 +3,10 @@
 
   import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
   import Icon from '@iconify/svelte';
-  import Saos from 'saos';
   import Fa from 'svelte-fa';
 
   import Button from '$lib/components/buttons/Button.svelte';
+  import Saos from '$lib/components/widgets/Saos.svelte';
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
   import { contacts, submitContactRequest } from '$lib/api/contact';

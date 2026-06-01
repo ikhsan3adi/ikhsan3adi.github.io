@@ -1,6 +1,5 @@
 <script lang="ts">
   import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
-  import Saos from 'saos';
   import Fa from 'svelte-fa';
 
   import { aboutTexts, photoCards, topMarqueeTexts } from '$lib/api/about';
@@ -9,6 +8,7 @@
   import Button from '$lib/components/buttons/Button.svelte';
   import PhotoCard from '$lib/components/cards/PhotoCard.svelte';
   import MarqueeText from '$lib/components/widgets/MarqueeText.svelte';
+  import Saos from '$lib/components/widgets/Saos.svelte';
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
   let hoveredCard: number | null = $state(null);

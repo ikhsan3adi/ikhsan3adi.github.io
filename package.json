@@ -28,7 +28,6 @@
     "postcss": "^8.5.15",
     "prettier": "^3.8.3",
     "prettier-plugin-svelte": "^3.5.2",
-    "saos": "github:XiboxCode/saos#9c5195f",
     "svelte": "^5.56.0",
     "svelte-check": "^4.5.0",
     "tailwindcss": "^3.4.19",
