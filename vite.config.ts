@@ -50,7 +50,6 @@ export default defineConfig({
               return 'octokit';
             }
 
-
             if (id.includes('svelte-typewriter')) {
               return 'typewriter';
             }

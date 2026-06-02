@@ -19,7 +19,7 @@
     return photoCards[cardIndex].baseZ;
   }
 
-  function getImgEffectClass(cardIndex: number): string {
+  function getImgOverlayFxCls(cardIndex: number): string {
     if (hoveredCard === null) {
       const topCardIndex = photoCards.reduce(
         (highestIndex, card, currentIndex, cards) =>
@@ -28,13 +28,13 @@
       );
 
       return cardIndex === topCardIndex
-        ? 'brightness-100 transition-[filter] duration-200'
-        : 'brightness-75 transition-[filter] duration-[1000ms]';
+        ? 'opacity-0 bg-slate-800 duration-200'
+        : 'opacity-25 bg-slate-800 duration-[1000ms]';
     }
 
     return cardIndex === hoveredCard
-      ? 'brightness-100 transition-[filter] duration-200'
-      : 'brightness-75 transition-[filter] duration-[1000ms]';
+      ? 'opacity-0 bg-slate-800 duration-200'
+      : 'opacity-25 bg-slate-800 duration-[1000ms]';
   }
 </script>
 
@@ -118,10 +118,11 @@
                 transformClass={card.transformClass}
                 cardSizeClass={card.cardSizeClass}
                 imgClass={card.imgClass}
-                imgEffectClass={getImgEffectClass(i)}
+                imgOverlayFxClass={getImgOverlayFxCls(i)}
                 animDelayMs={700 + (photoCards.length - 1 - i) * 200}
                 zIndex={getZIndex(i)}
                 onmouseenter={() => (hoveredCard = i)}
+                halftone
               />
             {/each}
           </div>

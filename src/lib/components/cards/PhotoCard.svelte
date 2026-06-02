@@ -9,9 +9,10 @@
     transformClass?: string;
     cardSizeClass?: string;
     imgClass?: string;
-    imgEffectClass?: string;
+    imgOverlayFxClass?: string;
     animDelayMs?: number;
     zIndex?: number;
+    halftone?: boolean;
     onmouseenter?: () => void;
   }
 
@@ -23,9 +24,10 @@
     transformClass = '',
     cardSizeClass = 'w-96',
     imgClass = 'aspect-square',
-    imgEffectClass = '',
+    imgOverlayFxClass = '',
     animDelayMs = 800,
     zIndex = 1,
+    halftone = false,
     onmouseenter
   }: Props = $props();
 
@@ -49,11 +51,24 @@
       {title}
     >
       {#if imageSrc}
-        <div
-          class="img-film w-full {imgClass} overflow-hidden"
-          style="animation-delay: {animDelayMs}ms;"
-        >
-          <img src={imageSrc} alt={title} class="w-full h-full object-cover {imgEffectClass}" />
+        <div class="w-full {imgClass} overflow-hidden relative transform-gpu">
+          <div class="absolute inset-0 z-10 isolate {imgOverlayFxClass} pointer-events-none"></div>
+          <div
+            class="img-film w-full h-full"
+            style="animation-delay: {animDelayMs}ms; --final-sepia: {halftone ? 0.367 : 0};"
+          >
+            {#if halftone}
+              <div class="w-full h-full halftone">
+                <img src={imageSrc} alt={title} class="w-full h-full object-cover halftone-media" />
+                <div class="halftone-ink"></div>
+              </div>
+              <div class="w-full h-full halftone-k-layer">
+                <img src={imageSrc} alt={title} class="w-full h-full object-cover halftone-media" />
+              </div>
+            {:else}
+              <img src={imageSrc} alt={title} class="w-full h-full object-cover" />
+            {/if}
+          </div>
         </div>
       {:else}
         <div class="w-full {imgClass}" aria-details={imageSrc}></div>
@@ -67,16 +82,98 @@
 </div>
 
 <style>
+  .halftone,
+  .halftone-k-layer {
+    --halftone-dot-size: calc(var(--halftone-size) * var(--halftone-bleed));
+    --halftone-color-dot-size: var(--halftone-dot-size);
+    position: relative;
+    filter: brightness(calc(0.5 + var(--halftone-bleed) * 0.3 - var(--halftone-separate-k) * 0.02))
+      blur(calc(var(--halftone-size) * 0.1)) contrast(1000) blur(0.6px);
+    overflow: hidden;
+    transition: transform 800ms;
+  }
+
+  .halftone > .halftone-media {
+    filter: invert(1) brightness(0.67) invert(1) saturate(1.67);
+  }
+
+  .halftone-k-layer > .halftone-media {
+    filter: grayscale(1) brightness(2);
+  }
+
+  .halftone-ink {
+    mix-blend-mode: screen;
+  }
+
+  .halftone-ink::before {
+    background-image:
+      radial-gradient(var(--halftone-color-dot-size) at 25% 25%, #ff0, #ff6, #fff),
+      radial-gradient(var(--halftone-color-dot-size) at 75% 75%, #ff0, #ff6, #fff);
+  }
+
+  .halftone-ink::after {
+    transform: rotate(calc(-21deg + var(--halftone-rotation)))
+      translateX(calc(var(--halftone-size) * 0.58));
+    background-image:
+      radial-gradient(var(--halftone-color-dot-size) at 75% 25%, #f0f, #f6f, #fff),
+      radial-gradient(var(--halftone-color-dot-size) at 25% 75%, #f0f, #f6f, #fff),
+      radial-gradient(var(--halftone-color-dot-size) at 75% 75%, #0ff, #6ff, #fff),
+      radial-gradient(var(--halftone-color-dot-size) at 25% 25%, #0ff, #6ff, #fff);
+    transition: transform 1000ms;
+  }
+
+  .halftone-ink::before,
+  .halftone-ink::after {
+    content: '';
+    position: absolute;
+    inset: -45%;
+    background-size: var(--halftone-size) var(--halftone-size);
+    background-blend-mode: multiply;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    transition: transform 1200ms;
+  }
+
+  .halftone-k-layer::after {
+    content: '';
+    position: absolute;
+    inset: -30%;
+    background-size: var(--halftone-size) var(--halftone-size);
+    background-blend-mode: multiply;
+    mix-blend-mode: screen;
+    transform: rotate(30deg);
+    background-image:
+      radial-gradient(var(--halftone-color-dot-size) at 25% 25%, #000, #666, #ccc, #fff),
+      radial-gradient(var(--halftone-color-dot-size) at 75% 75%, #000, #fff);
+    transition: transform 700ms;
+  }
+
   .img-film {
-    animation: photo-film 6767ms cubic-bezier(0.86, 0, 0.07, 1) both;
+    --halftone-size: 3.67px;
+    --halftone-bleed: 0.467;
+    --halftone-separate-k: 2.67;
+    --halftone-rotation: 35deg;
+
+    animation: photo-film 6767ms cubic-bezier(1, 0, 0.5, 1) both;
   }
 
   @keyframes photo-film {
     from {
-      filter: blur(4px) contrast(1.5) saturate(75%) invert(100%) sepia(33%);
+      filter: opacity(0.85) blur(4px) contrast(1.6) saturate(75%) invert(100%) sepia(33%);
+    }
+    35% {
+      filter: opacity(0.9) blur(3px) contrast(1.5) saturate(90%) invert(100%) sepia(45%);
+    }
+    45% {
+      filter: opacity(0.95) blur(2px) contrast(1.367) saturate(110%) invert(0%) sepia(50%);
+    }
+    77% {
+      filter: opacity(0.99) blur(0) contrast(1.2) saturate(105%) invert(0)
+        sepia(calc(var(--final-sepia) - 0.05));
     }
     to {
-      filter: blur(0) contrast(1) saturate(100%) invert(0) sepia(0);
+      --halftone-size: 5.67px;
+      filter: opacity(1) blur(0) contrast(1) saturate(100%) invert(0) sepia(var(--final-sepia));
     }
   }
 </style>
