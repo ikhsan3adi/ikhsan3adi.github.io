@@ -32,6 +32,20 @@
   }: Props = $props();
 
   const labelId = $derived(`photo-card-${title.toLowerCase().replace(/\s+/g, '-')}`);
+
+  function randomRotate(node: HTMLDivElement) {
+    // Keep randomized angles close to the original/standard design values:
+    // Yellow (standard 30deg), CMY base (standard 35deg), K (standard 30deg)
+    // We add a subtle random offset of +/- 6 degrees for organic halftone separation.
+    const offsetLimit = 6;
+    const randY = 30 + (Math.floor(Math.random() * (offsetLimit * 2 + 1)) - offsetLimit);
+    const randCMY = 35 + (Math.floor(Math.random() * (offsetLimit * 2 + 1)) - offsetLimit);
+    const randK = 30 + (Math.floor(Math.random() * (offsetLimit * 2 + 1)) - offsetLimit);
+
+    node.style.setProperty('--halftone-rotation-y', `${randY}deg`);
+    node.style.setProperty('--halftone-rotation-cmy', `${randCMY}deg`);
+    node.style.setProperty('--halftone-rotation-k', `${randK}deg`);
+  }
 </script>
 
 <div
@@ -56,6 +70,7 @@
           <div
             class="img-film w-full h-full"
             style="animation-delay: {animDelayMs}ms; --final-sepia: {halftone ? 0.367 : 0};"
+            use:randomRotate
           >
             {#if halftone}
               <div class="w-full h-full halftone">
@@ -94,11 +109,17 @@
   }
 
   .halftone > .halftone-media {
-    filter: invert(1) brightness(0.67) invert(1) saturate(1.67);
+    filter: invert(1) brightness(0.75) invert(1) saturate(2);
   }
 
   .halftone-k-layer > .halftone-media {
     filter: grayscale(1) brightness(2);
+  }
+
+  .halftone-k-layer {
+    position: absolute;
+    inset: 0;
+    mix-blend-mode: multiply;
   }
 
   .halftone-ink {
@@ -106,13 +127,14 @@
   }
 
   .halftone-ink::before {
+    transform: rotate(var(--halftone-rotation-y, 30deg));
     background-image:
       radial-gradient(var(--halftone-color-dot-size) at 25% 25%, #ff0, #ff6, #fff),
       radial-gradient(var(--halftone-color-dot-size) at 75% 75%, #ff0, #ff6, #fff);
   }
 
   .halftone-ink::after {
-    transform: rotate(calc(-21deg + var(--halftone-rotation)))
+    transform: rotate(calc(-21deg + var(--halftone-rotation-cmy, 35deg)))
       translateX(calc(var(--halftone-size) * 0.58));
     background-image:
       radial-gradient(var(--halftone-color-dot-size) at 75% 25%, #f0f, #f6f, #fff),
@@ -126,7 +148,7 @@
   .halftone-ink::after {
     content: '';
     position: absolute;
-    inset: -45%;
+    inset: -30%;
     background-size: var(--halftone-size) var(--halftone-size);
     background-blend-mode: multiply;
     mix-blend-mode: multiply;
@@ -141,7 +163,7 @@
     background-size: var(--halftone-size) var(--halftone-size);
     background-blend-mode: multiply;
     mix-blend-mode: screen;
-    transform: rotate(30deg);
+    transform: rotate(var(--halftone-rotation-k, 30deg));
     background-image:
       radial-gradient(var(--halftone-color-dot-size) at 25% 25%, #000, #666, #ccc, #fff),
       radial-gradient(var(--halftone-color-dot-size) at 75% 75%, #000, #fff);
@@ -149,10 +171,12 @@
   }
 
   .img-film {
-    --halftone-size: 3.67px;
+    --halftone-size: 5.67px;
     --halftone-bleed: 0.467;
     --halftone-separate-k: 2.67;
-    --halftone-rotation: 35deg;
+    --halftone-rotation-y: 30deg;
+    --halftone-rotation-cmy: 35deg;
+    --halftone-rotation-k: 30deg;
 
     animation: photo-film 6767ms cubic-bezier(1, 0, 0.5, 1) both;
   }
@@ -172,7 +196,6 @@
         sepia(calc(var(--final-sepia) - 0.05));
     }
     to {
-      --halftone-size: 5.67px;
       filter: opacity(1) blur(0) contrast(1) saturate(100%) invert(0) sepia(var(--final-sepia));
     }
   }
