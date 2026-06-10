@@ -12,7 +12,9 @@
       <div
         class="w-full justify-between flex flex-col lg:flex-row-reverse gap-4 md:gap-8 lg:gap-12 mb-24 lg:mb-32"
       >
-        <div class="w-full bg-primary animate-pulse aspect-[2/1] flex items-center">
+        <div
+          class="w-full bg-primary animate-pulse aspect-[2/1] flex items-center border-4 border-slate-900 dark:border-slate-700"
+        >
           <div
             class="text-center m-auto text-white dark:text-text inline-flex gap-2 animate-bounce
             font-cascadia-mono font-extrabold text-4xl md:text-5xl lg:text-6xl"

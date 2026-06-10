@@ -28,7 +28,9 @@
         class="w-full justify-between flex flex-col lg:flex-row-reverse gap-4 md:gap-8 lg:gap-12 mb-24 lg:mb-32"
       >
         <!-- Image -->
-        <div class="w-full bg-red-600 dark:bg-red-400 aspect-[2/1] flex p-2">
+        <div
+          class="w-full bg-red-600 dark:bg-red-400 aspect-[2/1] flex p-2 border-4 border-slate-900 dark:border-slate-700"
+        >
           <div class="m-auto inline-flex flex-wrap gap-2 justify-center items-center">
             <div
               class="text-center text-white dark:text-text font-cascadia-mono font-extrabold text-4xl md:text-5xl lg:text-6xl"

@@ -38,7 +38,8 @@
       { default: xml },
       { default: css },
       { default: bash },
-      { default: json }
+      { default: json },
+      { default: plaintext }
     ] = await Promise.all([
       import('@octokit/rest'),
       import('marked'),
@@ -52,7 +53,8 @@
       import('highlight.js/lib/languages/xml'),
       import('highlight.js/lib/languages/css'),
       import('highlight.js/lib/languages/bash'),
-      import('highlight.js/lib/languages/json')
+      import('highlight.js/lib/languages/json'),
+      import('highlight.js/lib/languages/plaintext')
     ]);
 
     hljs.registerLanguage('javascript', javascript);
@@ -65,6 +67,8 @@
     hljs.registerLanguage('bash', bash);
     hljs.registerLanguage('sh', bash);
     hljs.registerLanguage('json', json);
+    hljs.registerLanguage('plaintext', plaintext);
+    hljs.registerLanguage('txt', plaintext);
 
     // Get all the emojis available to use on GitHub.
     const res = await new Octokit().rest.emojis.get().catch(() => null);
@@ -103,8 +107,31 @@
         class="w-full grid grid-cols-1 grid-flow-row grid-rows-2 lg:flex lg:flex-row-reverse lg:justify-between gap-4 md:gap-8 lg:gap-12 mb-24 lg:mb-32"
       >
         <!-- Image preview -->
-        <div class="w-full border flex items-center">
-          <img class="w-full" src={project.imageUrl} alt="Preview" />
+        <div class="w-full flex items-center relative min-h-[250px] md:min-h-[320px]">
+          <!-- Fallback text (behind image, visible when image is rate limited/unavailable) -->
+          <div
+            class="inline-flex flex-wrap m-auto justify-center gap-2 items-center w-max py-8 pointer-events-none"
+          >
+            <div
+              class="dark:text-white text-center text-4xl md:text-5xl lg:text-6xl font-extrabold text-text"
+            >
+              <Fa icon={faWarning} />
+            </div>
+            <div
+              class="dark:text-white text-center font-cascadia-mono font-extrabold text-text text-2xl md:text-3xl lg:text-4xl"
+            >
+              {project.imageText ?? 'Image not available'}
+            </div>
+          </div>
+
+          <!-- Image overlay (covers fallback when image loads successfully) -->
+          <div
+            class="absolute z-10 top-0 left-0 w-full h-full bg-no-repeat bg-contain bg-center
+                 border-4 border-slate-900 dark:border-white
+                 cursor-crosshair duration-200 active:brightness-75"
+            style="background-image: url('{project.imageUrl}');"
+            title={project.imageText ?? project.name}
+          ></div>
         </div>
 
         <!-- Project description -->
