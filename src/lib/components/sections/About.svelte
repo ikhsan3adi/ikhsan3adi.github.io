@@ -119,7 +119,7 @@
                 cardSizeClass={card.cardSizeClass}
                 imgClass={card.imgClass}
                 imgOverlayFxClass={getImgOverlayFxCls(i)}
-                animDelayMs={1000 + (photoCards.length - 1 - i) * 767}
+                animDelayMs={1000 + (photoCards.length - 1 - i) * 676}
                 zIndex={getZIndex(i)}
                 onmouseenter={() => (hoveredCard = i)}
                 halftone

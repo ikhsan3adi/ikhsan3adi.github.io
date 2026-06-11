@@ -74,7 +74,7 @@
             use:randomRotate
           >
             {#if halftone}
-              <div class="w-full h-full halftone" style="animation-delay: {animDelayMs * 2}ms;">
+              <div class="w-full h-full halftone" style="animation-delay: {animDelayMs + 1067}ms;">
                 <img src={imageSrc} alt={title} class="w-full h-full object-cover halftone-media" />
                 <div class="halftone-ink"></div>
               </div>
@@ -107,6 +107,8 @@
       blur(calc(var(--halftone-size) * 0.1)) contrast(1000) blur(0.6px);
     overflow: hidden;
     transition: transform 800ms;
+    backface-visibility: hidden;
+    will-change: clip-path;
   }
 
   .halftone > .halftone-media {
@@ -155,6 +157,8 @@
     mix-blend-mode: multiply;
     pointer-events: none;
     transition: transform 1200ms;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   .halftone-k-layer::after {
@@ -164,11 +168,12 @@
     background-size: var(--halftone-size) var(--halftone-size);
     background-blend-mode: multiply;
     mix-blend-mode: screen;
-    transform: rotate(var(--halftone-rotation-k, 30deg));
+    transform: rotate(var(--halftone-rotation-k, 30deg)) translateZ(0);
     background-image:
       radial-gradient(var(--halftone-color-dot-size) at 25% 25%, #000, #666, #ccc, #fff),
       radial-gradient(var(--halftone-color-dot-size) at 75% 75%, #000, #fff);
     transition: transform 700ms;
+    backface-visibility: hidden;
   }
 
   .img-halftone {
@@ -180,17 +185,17 @@
     --halftone-rotation-k: 30deg;
 
     filter: sepia(var(--final-sepia));
-
-    /*animation: photo-film 6767ms cubic-bezier(1, 0, 0.5, 1) both;*/
-    /*animation: halftone-print 1000ms cubic-bezier(1, 0, 0.5, 1) both;*/
   }
 
-  .img-halftone > .halftone {
-    animation: drops-reveal 1067ms cubic-bezier(1, 0, 0.5, 1) both;
+  .img-halftone {
+    contain: layout style;
+    backface-visibility: hidden;
   }
 
+  .img-halftone > .halftone,
   .img-halftone > .halftone-k-layer {
     animation: drops-reveal 1067ms cubic-bezier(1, 0, 0.5, 1) both;
+    backface-visibility: hidden;
   }
 
   @keyframes drops-reveal {
