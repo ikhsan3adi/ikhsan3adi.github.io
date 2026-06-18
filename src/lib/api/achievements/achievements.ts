@@ -72,10 +72,11 @@ export const achievements: Achievement[] = [
   {
     title: 'Semifinalist of Coding & Algorithms Tournament 2026',
     issuer: 'CAT2026',
-    date: 'May 2026 (Ongoing)',
+    date: 'May 2026',
     description:
       'Advanced to the semifinal round in an individual programming competition, demonstrating problem-solving ability and strong data structure and algorithmic skills.',
     icon: 'simple-icons:cplusplus',
-    type: 'competition'
+    type: 'competition',
+    link: 'https://drive.google.com/file/d/1HnXdFcKp5rjwL-yNW0145Qfxfvl8ZKrq/view?usp=sharing'
   }
 ];
