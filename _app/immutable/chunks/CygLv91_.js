@@ -1,1 +1,0 @@
-import{G as e,Y as o,e as x,k as l,Z as d,r as i}from"./BGU01sQD.js";var m=e('<div class="mx-auto w-full max-w-screen-2xl px-10 sm:px-16 md:px-20 lg:px-24 xl:px-28 flex"><!></div>');function t(p,r){var a=m(),s=l(a);o(s,()=>r.children??d),i(a),x(p,a)}export{t as W};
