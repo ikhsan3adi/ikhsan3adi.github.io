@@ -29,7 +29,7 @@
 
       submisstionStatus = 'Success';
       buttonDisabled = true;
-    } catch (error) {
+    } catch {
       submisstionStatus = 'Failed';
       buttonDisabled = false;
     }

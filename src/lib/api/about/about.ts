@@ -7,7 +7,7 @@ export const photoCards = [
     bgClass: 'bg-emerald-200 dark:bg-emerald-400',
     transformClass: 'rotate-2 -bottom-16 sm:-bottom-12 -right-4 sm:right-4',
     cardSizeClass: 'w-80',
-    imgClass: 'aspect-[4/3]',
+    imgClass: 'aspect-4/3',
     baseZ: 1
   },
   {
@@ -17,7 +17,7 @@ export const photoCards = [
     bgClass: 'bg-fuchsia-200 dark:bg-fuchsia-400',
     transformClass: 'rotate-1 -top-2 sm:top-2 lg:-top-12 -right-8 sm:-right-4',
     cardSizeClass: 'w-96',
-    imgClass: 'aspect-[16/9]',
+    imgClass: 'aspect-video',
     baseZ: 2
   },
   {
@@ -27,7 +27,7 @@ export const photoCards = [
     bgClass: 'bg-indigo-200 dark:bg-indigo-400',
     transformClass: 'rotate-[-1.5deg] -top-2 sm:top-0 lg:-top-3 -left-8 sm:left-0',
     cardSizeClass: 'w-72',
-    imgClass: 'aspect-[3/4]',
+    imgClass: 'aspect-3/4',
     baseZ: 3
   }
 ];

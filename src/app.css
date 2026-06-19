@@ -1,6 +1,29 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --font-cascadia-mono: 'Cascadia Mono', mono;
+  --font-space-grotesk: 'Space Grotesk', sans-serif;
+  --font-mechsuit: 'Mechsuit', sans-serif;
+
+  --color-text: #280609;
+  --color-background: #e7fdfd;
+  --color-primary: #22ddcd;
+  --color-secondary: #f5c1c6;
+  --color-accent: #20cbbd;
+  --color-custom-1: #d1f2f5;
+  --color-custom-2: #b1a2e2;
+  --color-custom-3: #de86ea;
+  --color-custom-4: #8fb3ff;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@utility text-stroke-* {
+  -webkit-text-stroke-width: --value(integer) px;
+  -webkit-text-stroke-width: --value([*]);
+  -webkit-text-stroke-color: --value(--color-*);
+  -webkit-text-stroke-color: --value([*]);
+}
 
 @layer base {
   body {
@@ -16,10 +39,6 @@
     @apply font-cascadia-mono font-extrabold text-text;
     @apply text-4xl md:text-5xl lg:text-6xl;
   }
-
-  /* h2 {
-    @apply text-2xl md:text-3xl lg:text-4xl;
-  } */
 
   h3,
   h4 {

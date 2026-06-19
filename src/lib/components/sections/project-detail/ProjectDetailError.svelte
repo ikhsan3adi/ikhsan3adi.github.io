@@ -29,7 +29,7 @@
       >
         <!-- Image -->
         <div
-          class="w-full bg-red-600 dark:bg-red-400 aspect-[2/1] flex p-2 border-4 border-slate-900 dark:border-slate-700"
+          class="w-full bg-red-600 dark:bg-red-400 aspect-2/1 flex p-2 border-4 border-slate-900 dark:border-slate-700"
         >
           <div class="m-auto inline-flex flex-wrap gap-2 justify-center items-center">
             <div

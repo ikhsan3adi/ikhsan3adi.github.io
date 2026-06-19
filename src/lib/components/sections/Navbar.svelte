@@ -15,7 +15,7 @@
   let prevScrollpos2 = 0;
 
   let isBgTransparent = $state(true);
-  let backgroundClasses = $state('bg-opacity-0 border-opacity-0');
+  let backgroundClasses = $state('bg-primary/0 border-slate-900/0');
 
   onMount(() => {
     changeColors();
@@ -42,19 +42,19 @@
   function changeColors() {
     if (scrollY < 300) {
       isBgTransparent = true;
-      backgroundClasses = 'bg-opacity-0 border-opacity-0';
+      backgroundClasses = 'bg-primary/0 border-slate-900/0';
     } else if (scrollY < 400) {
       isBgTransparent = true;
-      backgroundClasses = 'bg-opacity-20 border-opacity-0';
+      backgroundClasses = 'bg-primary/20 border-slate-900/0';
     } else if (scrollY < 600) {
       isBgTransparent = true;
-      backgroundClasses = 'bg-opacity-50 border-opacity-0';
+      backgroundClasses = 'bg-primary/50 border-slate-900/0';
     } else if (scrollY < 800) {
       isBgTransparent = true;
-      backgroundClasses = 'bg-opacity-60 border-opacity-0';
+      backgroundClasses = 'bg-primary/60 border-slate-900/0';
     } else {
       isBgTransparent = false;
-      backgroundClasses = 'bg-opacity-100 border-opacity-100';
+      backgroundClasses = 'bg-primary/100 border-slate-900/100';
     }
   }
 
@@ -71,7 +71,7 @@
 
 <section
   bind:this={navbar}
-  class="fixed top-0 left-0 right-0 bg-primary border-b-4 border-slate-900 z-40 duration-300 {backgroundClasses}"
+  class="fixed top-0 left-0 right-0 border-b-4 z-40 duration-300 {backgroundClasses}"
 >
   <Wrappper>
     <div class="my-auto h-14 md:h-16 flex justify-between w-full">
@@ -88,7 +88,7 @@
             </div>
 
             <div
-              class="font-mechsuit dark:hidden text-sm md:text-lg absolute -top-1 right-1 transition-colors duration-500"
+              class="font-mechsuit dark:hidden text-sm md:text-lg absolute -top-1 right-1 transition-colors duration-500 pointer-events-none select-none"
             >
               {EMBLEM_NAME}
             </div>

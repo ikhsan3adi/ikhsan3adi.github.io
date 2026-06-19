@@ -69,7 +69,7 @@
       <!-- Background image wrapper -->
       <div
         class="{cardColors[cardColor].dark.border} 
-        aspect-[4/3] sm:aspect-[16/9] lg:aspect-[4/3] xl:aspect-[16/9] w-full flex-shrink-0
+        aspect-4/3 sm:aspect-video lg:aspect-4/3 xl:aspect-video w-full shrink-0
 				border-b-4 border-slate-900
 			bg-slate-300 dark:bg-slate-600 flex relative"
       >
@@ -94,7 +94,7 @@
 
         <!-- Hover show view detail -->
         <div
-          class="bg-opacity-0 group-hover:bg-opacity-70 absolute top-0 right-0 bottom-0 left-0 flex bg-slate-900 duration-200"
+          class="bg-slate-900/0 group-hover:bg-slate-900/70 absolute top-0 right-0 bottom-0 left-0 flex duration-200"
         >
           <span
             class="text-white m-auto opacity-0 group-hover:opacity-100 md:text-lg lg:text-xl font-medium"
