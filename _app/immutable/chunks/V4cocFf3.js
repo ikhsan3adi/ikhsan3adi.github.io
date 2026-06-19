@@ -1,0 +1,1 @@
+import{G as s,Y as e,e as i,k as l,Z as n,r as t}from"./CwC6Txg3.js";var x=s('<div class="container mx-auto px-10 sm:px-16 md:px-20 lg:px-24 xl:px-28 w-full flex"><!></div>');function m(p,r){var a=x(),o=l(a);e(o,()=>r.children??n),t(a),i(p,a)}export{m as W};
