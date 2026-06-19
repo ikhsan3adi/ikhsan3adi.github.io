@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { onMount } from 'svelte';
 
   let {
@@ -25,10 +25,7 @@
 
   const countainer = `__saos-${Math.random()}__`;
 
-  /**
-   * @param {HTMLElement} box
-   */
-  function intersection_verify(box) {
+  function intersection_verify(box: HTMLElement) {
     // bottom left top right
     const rootMargin = `${-bottom}px 0px ${-top}px 0px`;
     const observer = new IntersectionObserver(
@@ -46,10 +43,7 @@
     return () => observer.unobserve(box);
   }
 
-  /**
-   * @param {HTMLElement} box
-   */
-  function bounding_verify(box) {
+  function bounding_verify(box: HTMLElement) {
     const verify = () => {
       const c = box.getBoundingClientRect();
       observing = c.top + top < window.innerHeight && c.bottom - bottom > 0;

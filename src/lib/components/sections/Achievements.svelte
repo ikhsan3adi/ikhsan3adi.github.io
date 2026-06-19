@@ -90,7 +90,7 @@
                     </span>
                   </p>
 
-                  <p class="text-sm flex-grow">
+                  <p class="text-sm grow">
                     {achievement.description}
                   </p>
 
@@ -173,7 +173,7 @@
                     </span>
                   </p>
 
-                  <p class="text-sm flex-grow">
+                  <p class="text-sm grow">
                     {achievement.description}
                   </p>
 

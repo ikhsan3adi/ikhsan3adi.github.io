@@ -45,7 +45,7 @@ class ProjectService {
           if (browser) {
             try {
               localStorage.setItem('projects', JSON.stringify(updatedProjects));
-            } catch (e) {
+            } catch {
               // ignore localStorage write errors
             }
           }
@@ -75,7 +75,7 @@ class ProjectService {
             }
             cacheData = unique;
           }
-        } catch (e) {
+        } catch {
           // ignore JSON parse errors
         }
       }
@@ -125,7 +125,7 @@ class ProjectService {
             }
             cacheData = unique;
           }
-        } catch (e) {
+        } catch {
           // ignore JSON parse errors
         }
       }
@@ -242,7 +242,7 @@ class ProjectService {
       const response = await fetch(project.readmeUrl ?? '', { method: 'GET' });
       if (!response.ok) return null;
       return await response.text();
-    } catch (err) {
+    } catch {
       return null;
     }
   }
@@ -260,7 +260,7 @@ class ProjectService {
         }
       }
       return count;
-    } catch (err) {
+    } catch {
       return 0;
     }
   }

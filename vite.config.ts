@@ -1,9 +1,11 @@
+import tailwindcss from '@tailwindcss/vite';
 import svg from '@poppanator/sveltekit-svg';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [
+    tailwindcss(),
     sveltekit(),
     svg({
       includePaths: ['./src/lib/graphics/'],

@@ -56,7 +56,7 @@
   title="Better with dark mode off :)"
   class="{dark && isBgTransparent
     ? 'border-white focus:ring-white'
-    : 'border-slate-900 focus:ring-slate-900 focus:ring-offset-text'} border-2 relative inline-flex flex-shrink-0 h-6 w-11 items-center px-0.5 rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-1 focus:ring-offset-1"
+    : 'border-slate-900 focus:ring-slate-900 focus:ring-offset-text'} border-2 relative inline-flex shrink-0 h-6 w-11 items-center px-0.5 rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-1 focus:ring-offset-1"
   onclick={toggle}
 >
   <span
