@@ -41,7 +41,7 @@
 
           <!-- Typing effect -->
           <div
-            class="mb-4 dark:text-white duration-500 md:text-lg lg:text-xl font-medium cursor-not-allowed"
+            class="mb-4 dark:text-white duration-500 italic md:text-lg lg:text-xl font-medium cursor-not-allowed"
           >
             <Typewriter mode={'loop'} interval={25}>
               A
