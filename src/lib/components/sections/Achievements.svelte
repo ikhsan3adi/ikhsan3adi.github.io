@@ -31,9 +31,19 @@
 
   <Wrappper>
     <div class="w-full pb-16 relative z-10">
-      <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
+      <Saos
+        animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'}
+        outerClass="w-full flex justify-center my-10 md:my-12 lg:my-16"
+        once
+      >
+        <h2 class="relative z-10 text-center dark:text-white duration-500" id="achievements">
+          Achievements
+        </h2>
         <h2
-          class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white duration-500"
+          class="absolute z-0 text-center duration-500
+            text-stroke-1 text-stroke-slate-900 dark:text-stroke-accent
+            dark:bg-none bg-clip-text text-transparent bg-linear-to-r from-accent to-custom-3
+            bottom-[-2.5px] right-[-2.5px] pointer-events-none select-none"
           id="achievements"
         >
           Achievements
@@ -42,11 +52,28 @@
 
       <!-- Competitions -->
       {#if competitions.length > 0}
-        <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
+        <Saos
+          animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'}
+          outerClass="w-full flex justify-center mb-6 md:mb-8 mt-12 md:mt-16"
+          once
+        >
           <h3
-            class="text-center mx-auto mb-6 md:mb-8 mt-12 md:mt-16 dark:text-white duration-500 text-2xl font-bold uppercase tracking-widest"
+            class="relative z-10 text-center dark:text-white duration-500 text-2xl font-bold uppercase tracking-wide"
           >
             <Icon icon="lucide:trophy" class="inline-block w-6 h-6 md:w-7 md:h-7 mr-2" />
+            Competitions
+          </h3>
+          <h3
+            class="z-0 text-center
+                text-stroke-[1px] dark:text-stroke-amber-400 text-stroke-slate-900
+                text-orange-400 dark:text-transparent
+                duration-500 text-2xl font-bold uppercase tracking-wide
+                absolute -bottom-0.5 -right-0.5 pointer-events-none select-none"
+          >
+            <Icon
+              icon="lucide:trophy"
+              class="inline-block w-6 h-6 md:w-7 md:h-7 mr-2 dark:text-amber-400"
+            />
             Competitions
           </h3>
         </Saos>
@@ -122,13 +149,32 @@
 
       <!-- Courses -->
       {#if courses.length > 0}
-        <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-          <h3
-            class="text-center mx-auto mb-6 md:mb-8 mt-12 md:mt-16 dark:text-white duration-500 text-2xl font-bold uppercase tracking-widest"
-          >
-            <Icon icon="lucide:book-open-text" class="inline-block w-6 h-6 md:w-7 md:h-7 mr-2" />
-            Courses
-          </h3>
+        <Saos
+          animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'}
+          outerClass="relative w-full flex justify-center"
+          once
+        >
+          <div class="inline-block">
+            <h3
+              class="relative z-10 text-center mb-6 md:mb-8 mt-12 md:mt-16 dark:text-white duration-500 text-2xl font-bold uppercase tracking-wide"
+            >
+              <Icon icon="lucide:book-open-text" class="inline-block w-6 h-6 md:w-7 md:h-7 mr-2" />
+              Courses
+            </h3>
+            <h3
+              class="z-0 text-center mb-6 md:mb-8 mt-12 md:mt-16
+                text-stroke-[1px] dark:text-stroke-sky-400 text-stroke-slate-900
+                text-sky-400 dark:text-transparent
+                duration-500 text-2xl font-bold uppercase tracking-wide
+                absolute -bottom-0.5 -right-0.5 pointer-events-none select-none"
+            >
+              <Icon
+                icon="lucide:book-open-text"
+                class="inline-block w-6 h-6 md:w-7 md:h-7 mr-2 dark:text-sky-400"
+              />
+              Courses
+            </h3>
+          </div>
         </Saos>
 
         <div class="flex flex-wrap justify-center gap-4 lg:gap-5 xl:gap-6">

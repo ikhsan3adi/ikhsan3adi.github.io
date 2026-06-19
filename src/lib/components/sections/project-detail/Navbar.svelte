@@ -86,7 +86,7 @@
             </div>
 
             <div
-              class="font-mechsuit dark:hidden text-sm md:text-lg absolute -top-1 right-1 transition-colors duration-500"
+              class="font-mechsuit dark:hidden text-sm md:text-lg absolute -top-1 right-1 transition-colors duration-500 pointer-events-none select-none"
             >
               {EMBLEM_NAME}
             </div>
