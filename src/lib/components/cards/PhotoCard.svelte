@@ -90,8 +90,8 @@
         <div class="w-full {imgClass}" aria-hidden="true"></div>
       {/if}
       <figcaption id={labelId} class="p-3 w-full border-t-4 border-slate-900 dark:border-slate-700">
-        <h3 class="text-base md:text-lg font-bold mb-1">{title}</h3>
-        <p class="text-xs">{description}</p>
+        <h3 class="text-base md:text-lg font-bold mb-1 select-none">{title}</h3>
+        <p class="text-xs select-none">{description}</p>
       </figcaption>
     </figure>
   </Saos>

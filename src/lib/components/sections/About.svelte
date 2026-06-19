@@ -59,7 +59,9 @@
           class="w-full border-4 border-slate-900 dark:border-slate-700 p-8 bg-slate-100 dark:bg-fuchsia-400"
         >
           <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-            <h2 class="mb-4 md:mb-6 lg:mb-8 duration-500" id="about">About Me</h2>
+            <h2 class="mb-4 md:mb-6 lg:mb-8 duration-500" id="about">
+              About <u class="select-none">Me</u>
+            </h2>
           </Saos>
           {#each aboutTexts as aboutText, i}
             <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>

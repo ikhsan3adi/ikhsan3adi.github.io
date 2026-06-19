@@ -61,20 +61,20 @@
             class="relative z-10 text-center dark:text-white duration-500 text-2xl font-bold uppercase tracking-wide"
           >
             <Icon icon="lucide:trophy" class="inline-block w-6 h-6 md:w-7 md:h-7 mr-2" />
-            Competitions
+            <span class="dark:underline">Competitions</span>
           </h3>
           <h3
             class="z-0 text-center
                 text-stroke-[1px] dark:text-stroke-amber-400 text-stroke-slate-900
                 text-orange-400 dark:text-transparent
                 duration-500 text-2xl font-bold uppercase tracking-wide
-                absolute -bottom-0.5 -right-0.5 pointer-events-none select-none"
+                absolute bottom-[-.5px] right-[-.5px] pointer-events-none select-none"
           >
             <Icon
               icon="lucide:trophy"
               class="inline-block w-6 h-6 md:w-7 md:h-7 mr-2 dark:text-amber-400"
             />
-            Competitions
+            <u>Competitions</u>
           </h3>
         </Saos>
 
@@ -151,28 +151,28 @@
       {#if courses.length > 0}
         <Saos
           animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'}
-          outerClass="relative w-full flex justify-center"
+          outerClass="relative w-full flex justify-center mb-6 md:mb-8 mt-12 md:mt-16"
           once
         >
           <div class="inline-block">
             <h3
-              class="relative z-10 text-center mb-6 md:mb-8 mt-12 md:mt-16 dark:text-white duration-500 text-2xl font-bold uppercase tracking-wide"
+              class="relative z-10 text-center dark:text-white duration-500 text-2xl font-bold uppercase tracking-wide"
             >
               <Icon icon="lucide:book-open-text" class="inline-block w-6 h-6 md:w-7 md:h-7 mr-2" />
-              Courses
+              <span class="dark:underline">Courses</span>
             </h3>
             <h3
-              class="z-0 text-center mb-6 md:mb-8 mt-12 md:mt-16
+              class="z-0 text-center
                 text-stroke-[1px] dark:text-stroke-sky-400 text-stroke-slate-900
                 text-sky-400 dark:text-transparent
                 duration-500 text-2xl font-bold uppercase tracking-wide
-                absolute -bottom-0.5 -right-0.5 pointer-events-none select-none"
+                absolute bottom-[-.5px] right-[-.5px] pointer-events-none select-none"
             >
               <Icon
                 icon="lucide:book-open-text"
                 class="inline-block w-6 h-6 md:w-7 md:h-7 mr-2 dark:text-sky-400"
               />
-              Courses
+              <u>Courses</u>
             </h3>
           </div>
         </Saos>
