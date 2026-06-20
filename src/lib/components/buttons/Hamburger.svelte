@@ -6,9 +6,10 @@
 
   interface Props {
     isBgTransparent?: boolean;
+    showNavLinks?: boolean;
   }
 
-  let { isBgTransparent = true }: Props = $props();
+  let { isBgTransparent = true, showNavLinks = true }: Props = $props();
 
   let open = $state(false);
 
@@ -57,19 +58,22 @@
 
   <!-- Menu -->
   <div class="relative {open ? '' : 'hidden'} text-slate-800 z-50">
-    <!-- Navlinks -->
     <div
       class="absolute right-0 w-max p-0 flex flex-col overflow-hidden bg-slate-100 dark:bg-slate-700 border-4 border-slate-900 dark:border-white"
     >
-      {#each navLinks as link}
-        <a
-          class="py-2 pl-5 pr-12 hover:bg-accent hover:underline active:text-indigo-500 dark:text-white duration-200"
-          href="#{link.link}">{link.text}</a
-        >
-      {/each}
+      {#if showNavLinks}
+        {#each navLinks as link}
+          <a
+            class="py-2 pl-5 pr-12 hover:bg-accent hover:underline active:text-indigo-500 dark:text-white duration-200"
+            href="#{link.link}">{link.text}</a
+          >
+        {/each}
+      {/if}
       <!-- Dark mode toggle -->
       <div
-        class="mx-auto py-1 border-t-4 border-slate-900 dark:border-white flex items-center gap-4 pr-4"
+        class="mx-auto py-1 {showNavLinks
+          ? 'border-t-4 border-slate-900 dark:border-white'
+          : ''} flex items-center gap-4 pr-4"
       >
         <label for="themeModeBtn" class="dark:text-white py-2 pl-5 duration-200 cursor-pointer">
           Darkmode

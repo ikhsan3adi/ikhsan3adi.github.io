@@ -2,11 +2,18 @@
   import { onMount } from 'svelte';
 
   import { navLinks } from '$lib/components/navigation';
-  import { EMBLEM_NAME, hamburgerMenuExpanded } from '$lib/config';
+  import { hamburgerMenuExpanded } from '$lib/config';
 
   import Hamburger from '$lib/components/buttons/Hamburger.svelte';
   import ThemeButton from '$lib/components/widgets/ThemeButton.svelte';
   import Wrappper from '$lib/components/widgets/Wrappper.svelte';
+  import SimpleLogoText from '$lib/components/graphics/SimpleLogoText.svelte';
+
+  interface Props {
+    showNavLinks?: boolean;
+  }
+
+  let { showNavLinks = true }: Props = $props();
 
   let navbar = $state<HTMLElement | undefined>();
 
@@ -43,13 +50,13 @@
     if (scrollY < 300) {
       isBgTransparent = true;
       backgroundClasses = 'bg-primary/0 border-slate-900/0';
-    } else if (scrollY < 400) {
+    } else if (showNavLinks ? scrollY < 400 : scrollY < 333) {
       isBgTransparent = true;
       backgroundClasses = 'bg-primary/20 border-slate-900/0';
-    } else if (scrollY < 600) {
+    } else if (showNavLinks ? scrollY < 600 : scrollY < 367) {
       isBgTransparent = true;
       backgroundClasses = 'bg-primary/50 border-slate-900/0';
-    } else if (scrollY < 800) {
+    } else if (showNavLinks ? scrollY < 800 : scrollY < 400) {
       isBgTransparent = true;
       backgroundClasses = 'bg-primary/60 border-slate-900/0';
     } else {
@@ -76,38 +83,22 @@
   <Wrappper>
     <div class="my-auto h-14 md:h-16 flex justify-between w-full">
       <!-- Logo -->
-      <div class="my-auto">
-        <div class="mt-2 dark:mt-0 relative">
-          <a href="/">
-            <div
-              class="text-primary {isBgTransparent
-                ? 'dark:text-white'
-                : 'dark:text-text'} font-mechsuit text-sm md:text-lg z-0 transition-colors duration-500"
-            >
-              {EMBLEM_NAME}
-            </div>
-
-            <div
-              class="font-mechsuit dark:hidden text-sm md:text-lg absolute -top-1 right-1 transition-colors duration-500 pointer-events-none select-none"
-            >
-              {EMBLEM_NAME}
-            </div>
-          </a>
-        </div>
-      </div>
+      <SimpleLogoText {isBgTransparent} />
 
       <!-- Nav links -->
-      <div
-        class="hidden w-full pr-12 xl:pr-16 pl-16 xl:pl-24 lg:flex justify-evenly flex-wrap items-center text-text
-				{isBgTransparent ? 'dark:text-white' : 'dark:text-text'}"
-      >
-        {#each navLinks as link}
-          <a class="hover:underline active:text-indigo-500" href="#{link.link}">{link.text}</a>
-        {/each}
-      </div>
+      {#if showNavLinks}
+        <div
+          class="hidden w-full pr-12 xl:pr-16 pl-16 xl:pl-24 lg:flex justify-evenly flex-wrap items-center text-text
+					{isBgTransparent ? 'dark:text-white' : 'dark:text-text'}"
+        >
+          {#each navLinks as link}
+            <a class="hover:underline active:text-indigo-500" href="#{link.link}">{link.text}</a>
+          {/each}
+        </div>
+      {/if}
 
       <!-- Hamburger menu -->
-      <Hamburger {isBgTransparent} />
+      <Hamburger {isBgTransparent} {showNavLinks} />
 
       <!-- Dark mode toggle -->
       <div class="hidden lg:block my-auto">
