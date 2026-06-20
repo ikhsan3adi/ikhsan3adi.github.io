@@ -48,8 +48,5 @@
     "marked-highlight": "^2.2.4",
     "svelte-fa": "^4.0.4",
     "svelte-typewriter": "^3.2.3"
-  },
-  "trustedDependencies": [
-    "saos"
-  ]
+  }
 }

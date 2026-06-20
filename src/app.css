@@ -70,10 +70,6 @@
     src: local('Mechsuit'), url('/fonts/Mechsuit.woff2');
     font-display: swap;
   }
-
-  :global(img) {
-    will-change: filter, transform;
-  }
 }
 
 @-webkit-keyframes scale-up-center {

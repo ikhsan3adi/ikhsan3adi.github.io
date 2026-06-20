@@ -98,6 +98,10 @@
 </div>
 
 <style>
+  img {
+    will-change: filter, transform;
+  }
+
   .halftone,
   .halftone-k-layer {
     --halftone-dot-size: calc(var(--halftone-size) * var(--halftone-bleed));
