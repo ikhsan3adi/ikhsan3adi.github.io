@@ -87,7 +87,9 @@
           </div>
         </div>
       {:else}
-        <div class="w-full {imgClass}" aria-hidden="true"></div>
+        <div class="w-full flex items-center justify-center italic {imgClass}" aria-hidden="true">
+          No Photo Yet :(
+        </div>
       {/if}
       <figcaption id={labelId} class="p-3 w-full border-t-4 border-slate-900 dark:border-slate-700">
         <h3 class="text-base md:text-lg font-bold mb-1 select-none">{title}</h3>
