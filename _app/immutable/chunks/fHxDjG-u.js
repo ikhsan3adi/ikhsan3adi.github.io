@@ -1,1 +1,0 @@
-import{O as t,r as o}from"./RZBkwrFc.js";import{p as s}from"./BiEE8sZ_.js";import{l as e}from"./DfTtQ1R-.js";const r="21.1.1",n=t.plugin(o,e,s).defaults({userAgent:`octokit-rest.js/${r}`});export{n as Octokit};
