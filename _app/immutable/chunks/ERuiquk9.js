@@ -1,0 +1,1 @@
+import{r as e}from"./Cyuzqnbw.js";import{n as t,t as n}from"./DLn9cFAg.js";import{t as r}from"./gCt8Dtu0.js";import{t as i}from"./DV1rIHbo.js";var a=`21.1.1`,o=e({Octokit:()=>s}),s=t.plugin(n,i,r).defaults({userAgent:`octokit-rest.js/${a}`});export{o as t};

@@ -1,4 +1,4 @@
-const e=({status:n,message:t})=>`<!doctype html>
+var e=({status:e,message:t})=>`<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -71,7 +71,7 @@ const e=({status:n,message:t})=>`<!doctype html>
 	</head>
 	<body>
 		<div class="error">
-			<span class="status">`+n+`</span>
+			<span class="status">`+e+`</span>
 			<div class="message">
 				<h1>`+t+`</h1>
 			</div>
