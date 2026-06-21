@@ -56,7 +56,7 @@
         class="w-full flex flex-col-reverse lg:flex-row gap-20 sm:gap-4 lg:gap-5 xl:gap-6 md:justify-between h-max"
       >
         <div
-          class="w-full border-4 border-slate-900 dark:border-slate-700 p-8 bg-slate-100 dark:bg-fuchsia-400"
+          class="w-full border-4 border-slate-900 dark:border-slate-700 p-8 bg-slate-100 dark:bg-fuchsia-400 z-38"
         >
           <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
             <h2 class="mb-4 md:mb-6 lg:mb-8 duration-500" id="about">
@@ -101,7 +101,7 @@
         </div>
         <div class="w-full">
           <div
-            class="h-full w-full max-h-[600px]
+            class="h-full w-full max-h-150
             overflow-visible relative
             flex items-center justify-center
             border-4 border-slate-900 dark:border-slate-700

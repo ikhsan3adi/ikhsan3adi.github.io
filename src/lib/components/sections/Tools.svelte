@@ -11,7 +11,7 @@
 </script>
 
 <section
-  class="bg-custom-4 dark:bg-cyan-800 border-t-4 border-slate-900 dark:border-white bg-no-repeat bg-cover bg-center overflow-hidden relative"
+  class="bg-custom-4 dark:bg-violet-500/25 border-t-4 border-slate-900 dark:border-white bg-no-repeat bg-cover bg-center overflow-hidden relative"
 >
   <Wrappper>
     <div class="w-full pb-16 z-10">

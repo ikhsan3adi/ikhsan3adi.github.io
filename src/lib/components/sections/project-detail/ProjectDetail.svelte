@@ -107,7 +107,7 @@
         class="w-full grid grid-cols-1 grid-flow-row grid-rows-2 lg:flex lg:flex-row-reverse lg:justify-between gap-4 md:gap-8 lg:gap-12 mb-24 lg:mb-32"
       >
         <!-- Image preview -->
-        <div class="w-full flex items-center relative min-h-[250px] md:min-h-[320px]">
+        <div class="w-full flex items-center relative min-h-62.5 md:min-h-80">
           <!-- Fallback text (behind image, visible when image is rate limited/unavailable) -->
           <div
             class="inline-flex flex-wrap m-auto justify-center gap-2 items-center w-max py-8 pointer-events-none"

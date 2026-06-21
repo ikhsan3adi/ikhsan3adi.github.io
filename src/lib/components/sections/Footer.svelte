@@ -25,7 +25,7 @@
 <footer class="w-full bg-slate-800 h-max border-t-4 border-accent relative overflow-hidden">
   <!-- Background wave scrolling -->
   <div
-    class="absolute inset-y-0 -left-[5%] w-[110%] overflow-hidden pointer-events-none opacity-10 bg-repeat scroll-bg-animation will-change-transform"
+    class="absolute inset-y-0 left-[-5%] w-[110%] overflow-hidden pointer-events-none opacity-10 bg-repeat scroll-bg-animation will-change-transform"
     style="background-image: url({bg});"
   ></div>
   <Wrappper>

@@ -13,7 +13,7 @@
     <a href="/">
       <div
         class="{isBgTransparent
-          ? 'text-primary'
+          ? 'text-accent'
           : 'text-text'} font-mechsuit text-sm md:text-lg z-0 transition-colors duration-500"
       >
         {EMBLEM_NAME}

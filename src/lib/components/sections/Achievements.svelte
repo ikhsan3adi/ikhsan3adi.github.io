@@ -20,12 +20,12 @@
 </script>
 
 <section
-  class="w-full relative isolate overflow-hidden bg-purple-100 dark:bg-fuchsia-800 border-t-4 border-slate-900 dark:border-white duration-500"
+  class="w-full relative isolate overflow-hidden bg-purple-100 dark:bg-fuchsia-700/35 border-t-4 border-slate-900 dark:border-white duration-500"
 >
   <!-- Background image scrolling -->
   <div
-    class="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-repeat bg-[0_-100px] scroll-bg-animation-reverse will-change-transform
-      brightness-[0.9] dark:brightness-[1.75]"
+    class="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-repeat bg-position-[0_-100px] scroll-bg-animation-reverse will-change-transform
+      brightness-[0.9] dark:brightness-[1.25]"
     style="background-image: url({bg});"
   ></div>
 

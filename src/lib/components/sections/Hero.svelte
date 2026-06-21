@@ -13,11 +13,11 @@
 </script>
 
 <section
-  class="min-h-[800px] md:min-h-[600px] h-[100vh] max-h-[1350px] overflow-hidden flex relative duration-500"
+  class="min-h-200 md:min-h-150 h-screen max-h-337.5 overflow-hidden flex relative duration-500"
 >
   <!-- Background image scrolling -->
   <div
-    class="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-repeat bg-[0_-100px] scroll-bg-animation will-change-transform"
+    class="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-repeat bg-position-[0_-100px] scroll-bg-animation will-change-transform"
     style="background-image: url({bg});"
   ></div>
 
@@ -34,7 +34,7 @@
           </p>
           <h1 class="mb-2 dark:text-white duration-500 cursor-not-allowed">
             {FIRST_NAME}
-            <span class="font-cascadia-mono text-inherit text-primary">
+            <span class="font-cascadia-mono text-accent dark:text-primary">
               {LAST_NAME}
             </span>
           </h1>
@@ -46,7 +46,7 @@
             <Typewriter mode={'loop'} interval={25}>
               A
               <span class="text-emerald-600 dark:text-primary">Student</span>
-              <span class="text-green-600 dark:text-green-400">Programmer</span>
+              <span class="text-fuchsia-800 dark:text-custom-3">Programmer</span>
               <span class="text-orange-600 dark:text-orange-400">Computer User</span>
             </Typewriter>
           </div>
@@ -69,14 +69,14 @@
         <!-- Emblem logo -->
         <div class="max-md:mx-auto w-max md:my-auto relative active:animate-ping transform-gpu">
           <div
-            class="cursor-crosshair w-52 h-52 mx-auto md:w-64 md:h-64 lg:w-72 lg:h-72 dark:text-white absolute -top-3 right-2 duration-[50ms]"
+            class="cursor-crosshair w-52 h-52 mx-auto md:w-64 md:h-64 lg:w-72 lg:h-72 dark:text-white absolute -top-3 right-2 duration-50"
           >
             <Emblem />
           </div>
 
           <!-- Back outline / shadow -->
           <div
-            class="cursor-crosshair w-52 h-52 mx-auto md:w-64 md:h-64 lg:w-72 lg:h-72 text-custom-3 dark:text-transparent stroke-[4] stroke-slate-900 dark:stroke-custom-3 duration-500"
+            class="cursor-crosshair w-52 h-52 mx-auto md:w-64 md:h-64 lg:w-72 lg:h-72 text-custom-3 dark:text-transparent stroke-4 stroke-slate-900 dark:stroke-custom-3 duration-500"
           >
             <Emblem />
           </div>
