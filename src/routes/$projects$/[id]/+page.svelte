@@ -1,4 +1,6 @@
 <script lang="ts">
+  import 'highlight.js/styles/github-dark-dimmed.css';
+
   import { projectDetail } from '$lib/api/projects';
   import { onMount } from 'svelte';
   import type { PageData } from './$types';

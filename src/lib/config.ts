@@ -14,6 +14,9 @@ const EMBLEM_NAME = 'IKHSaN3ADI';
 
 const sourceLink = 'https://github.com/ikhsan3adi/ikhsan3adi.github.io';
 
+const metaDescription =
+  "Just a simple space to get to know Ikhsan Satriadi. Explore the everyday problems I'm trying to solve and creations made to help people make things just a bit easier.";
+
 export {
   darkEnabled,
   EMBLEM_NAME,
@@ -22,6 +25,7 @@ export {
   FULL_NAME,
   hamburgerMenuExpanded,
   LAST_NAME,
+  metaDescription,
   sourceLink,
   USERNAME
 };

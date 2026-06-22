@@ -76,7 +76,7 @@
 
 <svelte:window bind:scrollY />
 
-<section
+<header
   bind:this={navbar}
   class="fixed top-0 left-0 right-0 border-b-4 z-40 duration-300 {backgroundClasses}"
 >
@@ -106,4 +106,4 @@
       </div>
     </div>
   </Wrappper>
-</section>
+</header>
