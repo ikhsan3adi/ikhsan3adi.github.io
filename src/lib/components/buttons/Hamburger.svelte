@@ -57,7 +57,7 @@
   </button>
 
   <!-- Menu -->
-  <div class="relative {open ? '' : 'hidden'} text-slate-800 z-50">
+  <div class="relative {open ? '' : 'hidden'} text-text z-50">
     <div
       class="absolute right-0 w-max p-0 flex flex-col overflow-hidden bg-slate-100 dark:bg-slate-700 border-4 border-slate-900 dark:border-white"
     >

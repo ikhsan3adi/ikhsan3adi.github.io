@@ -36,7 +36,7 @@
   };
 </script>
 
-<section class="flex relative duration-500">
+<section class="flex relative duration-500 bg-halftone bg-halftone-45">
   <Wrappper>
     <div class="w-full">
       <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>

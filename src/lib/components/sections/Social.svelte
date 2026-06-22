@@ -7,14 +7,14 @@
 
   import { socials } from '$lib/api/socials';
 
-  import cobweb from '$lib/components/graphics/cobweb-05.svg';
+  // import cobweb from '$lib/components/graphics/cobweb-05.svg';
 </script>
 
 <section
   class="w-full relative pb-16 border-t-4 border-b-4 border-slate-800 dark:border-white bg-secondary dark:bg-rose-800/30"
 >
   <!-- Background cobweb -->
-  <div class="absolute overflow-clip inset-0 flex justify-center items-center">
+  <!-- <div class="absolute overflow-clip inset-0 flex justify-center items-center">
     <div
       class="absolute
         w-384 h-384 md:w-[108rem] md:h-[108rem] lg:w-[120rem] lg:h-[120rem] xl:w-[132rem] xl:h-[132rem]
@@ -23,7 +23,7 @@
       title="I'm not a Spider-Man fan btw lol"
       aria-hidden="true"
     ></div>
-  </div>
+  </div> -->
 
   <Wrappper>
     <div class="w-full">
@@ -71,9 +71,9 @@
 </section>
 
 <style>
-  .spin-slow {
+  /*.spin-slow {
     animation: spin-slow 670s linear infinite;
-  }
+  }*/
 
   @keyframes spin-slow {
     from {

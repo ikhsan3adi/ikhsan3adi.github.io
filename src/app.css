@@ -93,3 +93,25 @@
     transform: scale(1);
   }
 }
+
+.bg-halftone {
+  --dot-color: var(--color-slate-600);
+
+  background-image: radial-gradient(circle at center, var(--dot-color) 1px, transparent 0);
+  background-size: 1rem 1rem;
+  background-repeat: round;
+}
+
+.dark .bg-halftone {
+  --dot-color: var(--color-slate-500);
+}
+
+.bg-halftone.bg-halftone-45 {
+  background-image:
+    radial-gradient(circle at center, var(--dot-color) 1px, transparent 0),
+    radial-gradient(circle at center, var(--dot-color) 1px, transparent 0);
+  background-size: 1.3rem 1.3rem;
+  background-position:
+    0 0,
+    0.65rem 0.65rem;
+}

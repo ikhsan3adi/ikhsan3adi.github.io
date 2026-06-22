@@ -56,7 +56,7 @@
   }
 </script>
 
-<section class="relative pt-12 md:pt-14 lg:pt-16" use:checkIntersecting>
+<section class="relative pt-12 md:pt-14 lg:pt-16 bg-halftone" use:checkIntersecting>
   <div
     class="absolute left-0 right-0 top-0 bg-custom-3 h-12 md:h-14 lg:h-16 border-slate-900 dark:border-slate-700 border-y-4 flex items-center"
   >
