@@ -364,6 +364,17 @@
   :global(.markdown-content table) {
     display: block;
     overflow-x: auto;
+    border-collapse: collapse;
+  }
+
+  :global(.markdown-content th),
+  :global(.markdown-content td) {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-slate-300);
+  }
+  :global(.dark .markdown-content th),
+  :global(.dark .markdown-content td) {
+    border-color: var(--color-slate-600);
   }
 
   :global(.markdown-content p),
