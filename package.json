@@ -41,11 +41,13 @@
     "@iconify/svelte": "^5.2.2",
     "@octokit/rest": "^21.1.1",
     "highlight.js": "^11.11.1",
+    "katex": "^0.17.0",
     "marked": "^12.0.2",
     "marked-alert": "^2.1.2",
     "marked-base-url": "^1.1.9",
     "marked-emoji": "^1.4.3",
     "marked-highlight": "^2.2.4",
+    "marked-katex-extension": "^5.1.10",
     "svelte-fa": "^4.0.4",
     "svelte-typewriter": "^3.2.3"
   }

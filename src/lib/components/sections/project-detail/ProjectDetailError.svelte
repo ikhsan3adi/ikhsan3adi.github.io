@@ -25,7 +25,7 @@
       <h1 class="dark:text-white mb-6 md:mb-8 lg:mb-12 xl:mb-16">Error!</h1>
       <!-- Hero section -->
       <div
-        class="w-full justify-between flex flex-col lg:flex-row-reverse gap-4 md:gap-8 lg:gap-12 mb-24 lg:mb-32"
+        class="w-full justify-between flex flex-col xl:flex-row-reverse gap-4 md:gap-8 xl:gap-12 mb-24 xl:mb-32"
       >
         <!-- Image -->
         <div
@@ -38,7 +38,7 @@
               <Fa icon={faWarning} />
             </div>
             <div
-              class="font-cascadia-mono font-extrabold text-center text-white dark:text-text text-2xl md:text-3xl lg:text-4xl"
+              class="text-wrap font-cascadia-mono font-extrabold text-center text-white dark:text-text text-2xl md:text-3xl lg:text-4xl"
             >
               {project.description}
             </div>

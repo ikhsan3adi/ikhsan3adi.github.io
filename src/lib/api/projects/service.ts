@@ -183,49 +183,38 @@ class ProjectService {
         return newProject;
       }
 
-      // non-200
-      if (browser && localStorage.getItem('projectDetail')) {
-        const stored = JSON.parse(localStorage.getItem('projectDetail') ?? '{}') as ProjectDetail;
-        projectDetailStore.update(() => ({
-          ...stored,
-          imageText: 'Server error / API rate limit exceeded'
-        }));
-      } else if (response.status === 403) {
-        projectDetailStore.update(
-          () =>
-            ({
-              ...project,
-              name: 'limit',
-              description: json.message,
-              tags: [],
-              hasLivePreview: false,
-              repositoryUrl: ''
-            }) as ProjectDetail
-        );
-      } else {
-        throw response;
-      }
-
-      return error(response.status ?? 500, 'Failed to fetch data');
+      // non-200: show fallback using existing project data
+      const repositoryUrl = project.url.replace('api.github.com/repos', 'github.com');
+      const fallback: ProjectDetail = {
+        ...project,
+        description: json.message || project.description || 'Failed to fetch project details',
+        tags: project.tags || [],
+        repositoryUrl,
+        hasLivePreview: false,
+        starsCount: project.starsCount || 0,
+        forksCount: project.forksCount || 0,
+        downloadsCount: project.downloadsCount || 0,
+        imageText: 'Server error / API rate limit exceeded'
+      };
+      projectDetailStore.update(() => fallback);
     } catch (err) {
       console.log(err);
 
-      if (browser && localStorage.getItem('projectDetail')) {
-        const stored = JSON.parse(localStorage.getItem('projectDetail') ?? '{}') as ProjectDetail;
-        projectDetailStore.update(() => ({ ...stored, imageText: 'No internet connection' }));
-      } else {
-        projectDetailStore.update(
-          () =>
-            ({
-              ...project,
-              name: 'error',
-              description: 'No internet connection',
-              tags: [],
-              hasLivePreview: false,
-              repositoryUrl: ''
-            }) as ProjectDetail
-        );
-      }
+      const repositoryUrl = project.url.replace('api.github.com/repos', 'github.com');
+      projectDetailStore.update(
+        () =>
+          ({
+            ...project,
+            description: 'No internet connection',
+            tags: project.tags || [],
+            repositoryUrl,
+            hasLivePreview: false,
+            starsCount: project.starsCount || 0,
+            forksCount: project.forksCount || 0,
+            downloadsCount: project.downloadsCount || 0,
+            imageText: 'No internet connection'
+          }) as ProjectDetail
+      );
 
       return error(500, 'Failed to fetch data');
     }

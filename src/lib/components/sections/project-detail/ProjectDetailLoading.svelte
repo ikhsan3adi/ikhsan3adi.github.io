@@ -10,14 +10,14 @@
     <div class="mt-16 w-full">
       <h1 class="dark:text-white mb-6 md:mb-8 lg:mb-12 xl:mb-16 animate-bounce">Loading...</h1>
       <div
-        class="w-full justify-between flex flex-col lg:flex-row-reverse gap-4 md:gap-8 lg:gap-12 mb-24 lg:mb-32"
+        class="w-full justify-between flex flex-col xl:flex-row-reverse gap-4 md:gap-8 xl:gap-12 mb-24 xl:mb-32"
       >
         <div
           class="w-full bg-primary animate-pulse aspect-2/1 flex items-center border-4 border-slate-900 dark:border-slate-700"
         >
           <div
             class="text-center m-auto text-white dark:text-text inline-flex gap-2 animate-bounce
-            font-cascadia-mono font-extrabold text-4xl md:text-5xl lg:text-6xl"
+            font-cascadia-mono text-wrap font-extrabold text-4xl md:text-5xl lg:text-6xl"
           >
             <span class="animate-spin"><Fa icon={faRefresh} /></span>Loading...
           </div>

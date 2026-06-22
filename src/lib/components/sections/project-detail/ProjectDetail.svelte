@@ -4,6 +4,8 @@
 
   import { renderer } from './renderer';
 
+  import 'katex/dist/katex.min.css';
+
   import {
     faCode,
     faCodeFork,
@@ -38,8 +40,10 @@
       { default: xml },
       { default: css },
       { default: bash },
+      { default: shell },
       { default: json },
-      { default: plaintext }
+      { default: plaintext },
+      { default: markedKatex }
     ] = await Promise.all([
       import('@octokit/rest'),
       import('marked'),
@@ -53,8 +57,10 @@
       import('highlight.js/lib/languages/xml'),
       import('highlight.js/lib/languages/css'),
       import('highlight.js/lib/languages/bash'),
+      import('highlight.js/lib/languages/shell'),
       import('highlight.js/lib/languages/json'),
-      import('highlight.js/lib/languages/plaintext')
+      import('highlight.js/lib/languages/plaintext'),
+      import('marked-katex-extension')
     ]);
 
     hljs.registerLanguage('javascript', javascript);
@@ -65,6 +71,7 @@
     hljs.registerLanguage('html', xml);
     hljs.registerLanguage('css', css);
     hljs.registerLanguage('bash', bash);
+    hljs.registerLanguage('shell', shell);
     hljs.registerLanguage('sh', bash);
     hljs.registerLanguage('json', json);
     hljs.registerLanguage('plaintext', plaintext);
@@ -85,7 +92,8 @@
         }
       }),
       markedAlert(),
-      markedEmoji({ emojis: emojis ?? {} })
+      markedEmoji({ emojis: emojis ?? {} }),
+      markedKatex()
     );
   };
 
@@ -104,7 +112,7 @@
       <h1 class="dark:text-white mb-6 md:mb-8 lg:mb-12 xl:mb-16">{project.name}</h1>
       <!-- Hero section -->
       <div
-        class="w-full grid grid-cols-1 grid-flow-row grid-rows-2 lg:flex lg:flex-row-reverse lg:justify-between gap-4 md:gap-8 lg:gap-12 mb-24 lg:mb-32"
+        class="w-full grid grid-cols-1 grid-flow-row grid-rows-2 xl:flex xl:flex-row-reverse xl:justify-between gap-4 md:gap-8 xl:gap-12 mb-24 xl:mb-32"
       >
         <!-- Image preview -->
         <div class="w-full flex items-center relative min-h-62.5 md:min-h-80">
@@ -118,7 +126,7 @@
               <Fa icon={faWarning} />
             </div>
             <div
-              class="dark:text-white text-center font-cascadia-mono font-extrabold text-text text-2xl md:text-3xl lg:text-4xl"
+              class="dark:text-white text-wrap text-center font-cascadia-mono font-extrabold text-text text-2xl md:text-3xl lg:text-4xl"
             >
               {project.imageText ?? 'Image not available'}
             </div>
@@ -245,78 +253,147 @@
 
 <div class="markdown-content hidden"><a href="/">_</a></div>
 
-<svelte:head>
-  <style lang="postcss">
-    .markdown-alert {
-      @apply border-l-4 py-4 my-4 -ml-2 pl-4 bg-slate-100 dark:bg-slate-700;
-    }
+<style>
+  :global(.markdown-alert) {
+    border-left-width: 4px;
+    border-left-style: solid;
+    padding: 1rem 1rem 1rem 1rem;
+    margin: 1rem 1rem 1rem -0.5rem;
+    background-color: var(--color-slate-100);
+    border-color: var(--color-slate-400);
+  }
+  :global(.dark .markdown-alert) {
+    background-color: var(--color-slate-700);
+    border-color: var(--color-slate-600);
+  }
 
-    .markdown-alert-title {
-      @apply text-slate-600 dark:text-slate-300 dark:outline-slate-300 flex gap-2 items-center;
-    }
+  :global(.markdown-alert-title) {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    color: var(--color-slate-600);
+  }
+  :global(.dark .markdown-alert-title) {
+    color: var(--color-slate-300);
+  }
 
-    .markdown-alert-title > svg {
-      @apply fill-slate-600 dark:fill-slate-300;
-    }
+  :global(.markdown-alert-title > svg) {
+    fill: var(--color-slate-600);
+  }
+  :global(.dark .markdown-alert-title > svg) {
+    fill: var(--color-slate-300);
+  }
 
-    .markdown-alert-note {
-      @apply border-blue-500 bg-blue-50;
-    }
+  :global(.markdown-alert-note) {
+    border-color: var(--color-blue-500);
+    background-color: var(--color-blue-50);
+  }
+  :global(.markdown-alert-note > .markdown-alert-title) {
+    color: var(--color-blue-500);
+  }
+  :global(.markdown-alert-note > .markdown-alert-title > svg) {
+    fill: var(--color-blue-500);
+  }
 
-    .markdown-alert-note > .markdown-alert-title {
-      @apply text-blue-500;
-    }
+  :global(.markdown-alert-tip) {
+    border-color: var(--color-green-500);
+    background-color: var(--color-green-50);
+  }
+  :global(.markdown-alert-tip > .markdown-alert-title) {
+    color: var(--color-green-500);
+  }
+  :global(.markdown-alert-tip > .markdown-alert-title > svg) {
+    fill: var(--color-green-500);
+  }
 
-    .markdown-alert-note > .markdown-alert-title > svg {
-      @apply fill-blue-500;
-    }
+  :global(.markdown-alert-important) {
+    border-color: var(--color-purple-500);
+    background-color: var(--color-purple-50);
+  }
+  :global(.markdown-alert-important > .markdown-alert-title) {
+    color: var(--color-purple-500);
+  }
+  :global(.markdown-alert-important > .markdown-alert-title > svg) {
+    fill: var(--color-purple-500);
+  }
 
-    .markdown-alert-tip {
-      @apply border-green-500 bg-green-50;
-    }
+  :global(.markdown-alert-warning) {
+    border-color: var(--color-yellow-500);
+    background-color: var(--color-yellow-50);
+  }
+  :global(.markdown-alert-warning > .markdown-alert-title) {
+    color: var(--color-yellow-500);
+  }
+  :global(.markdown-alert-warning > .markdown-alert-title > svg) {
+    fill: var(--color-yellow-500);
+  }
 
-    .markdown-alert-tip > .markdown-alert-title {
-      @apply text-green-500;
-    }
+  :global(.markdown-alert-caution) {
+    border-color: var(--color-red-500);
+    background-color: var(--color-red-50);
+  }
+  :global(.markdown-alert-caution > .markdown-alert-title) {
+    color: var(--color-red-500);
+  }
+  :global(.markdown-alert-caution > .markdown-alert-title > svg) {
+    fill: var(--color-red-500);
+  }
 
-    .markdown-alert-tip > .markdown-alert-title > svg {
-      @apply fill-green-500;
-    }
+  :global(.markdown-content pre) {
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    margin: 1rem 0;
+  }
 
-    .markdown-alert-important {
-      @apply border-purple-500 bg-purple-50;
-    }
+  :global(.markdown-content pre code) {
+    font-family: var(--font-cascadia-mono);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
 
-    .markdown-alert-important > .markdown-alert-title {
-      @apply text-purple-500;
-    }
+  :global(.markdown-content :not(pre) > code),
+  :global(.markdown-content p > code) {
+    font-family: var(--font-cascadia-mono);
+  }
 
-    .markdown-alert-important > .markdown-alert-title > svg {
-      @apply fill-purple-500;
-    }
+  :global(.markdown-content img) {
+    max-width: 100%;
+    height: auto;
+  }
 
-    .markdown-alert-warning {
-      @apply border-yellow-500 bg-yellow-50;
-    }
+  :global(.markdown-content table) {
+    display: block;
+    overflow-x: auto;
+  }
 
-    .markdown-alert-warning > .markdown-alert-title {
-      @apply text-yellow-500;
-    }
+  :global(.markdown-content p),
+  :global(.markdown-content li) {
+    color: inherit;
+  }
 
-    .markdown-alert-warning > .markdown-alert-title > svg {
-      @apply fill-yellow-500;
-    }
+  :global(.markdown-content .katex-display) {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.5rem 0;
+  }
 
-    .markdown-alert-caution {
-      @apply border-red-500 bg-red-50;
+  :global(.markdown-content h1) {
+    font-size: var(--text-3xl);
+    @media (width >= 48rem) {
+      font-size: var(--text-4xl);
     }
+    @media (width >= 64rem) {
+      font-size: var(--text-5xl);
+    }
+  }
 
-    .markdown-alert-caution > .markdown-alert-title {
-      @apply text-red-500;
+  :global(.markdown-content h2) {
+    font-size: var(--text-2xl);
+    @media (width >= 48rem) {
+      font-size: var(--text-3xl);
     }
-
-    .markdown-alert-caution > .markdown-alert-title > svg {
-      @apply fill-red-500;
+    @media (width >= 64rem) {
+      font-size: var(--text-4xl);
     }
-  </style>
-</svelte:head>
+  }
+</style>
