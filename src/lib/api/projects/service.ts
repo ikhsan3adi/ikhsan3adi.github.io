@@ -180,10 +180,34 @@ class ProjectService {
         };
 
         projectDetailStore.update(() => newProject);
+
+        if (browser) {
+          try {
+            localStorage.setItem(`project-detail:${project.id}`, JSON.stringify(newProject));
+          } catch {
+            // ignore localStorage write errors
+          }
+        }
+
         return newProject;
       }
 
-      // non-200: show fallback using existing project data
+      // non-200: try localStorage cache first
+      if (browser) {
+        const cached = localStorage.getItem(`project-detail:${project.id}`);
+        if (cached) {
+          try {
+            const detail = JSON.parse(cached) as ProjectDetail;
+            detail.imageText = 'Server error / API rate limit exceeded';
+            projectDetailStore.update(() => detail);
+            return detail;
+          } catch {
+            // ignore parse errors
+          }
+        }
+      }
+
+      // fallback: derive a minimal ProjectDetail from the given project
       const repositoryUrl = project.url.replace('api.github.com/repos', 'github.com');
       const fallback: ProjectDetail = {
         ...project,
@@ -197,8 +221,24 @@ class ProjectService {
         imageText: 'Server error / API rate limit exceeded'
       };
       projectDetailStore.update(() => fallback);
+      return fallback;
     } catch (err) {
       console.log(err);
+
+      // try localStorage cache first
+      if (browser) {
+        const cached = localStorage.getItem(`project-detail:${project.id}`);
+        if (cached) {
+          try {
+            const detail = JSON.parse(cached) as ProjectDetail;
+            detail.imageText = 'No internet connection';
+            projectDetailStore.update(() => detail);
+            return detail;
+          } catch {
+            // ignore parse errors
+          }
+        }
+      }
 
       const repositoryUrl = project.url.replace('api.github.com/repos', 'github.com');
       projectDetailStore.update(
@@ -229,14 +269,47 @@ class ProjectService {
   }) {
     try {
       const response = await fetch(project.readmeUrl ?? '', { method: 'GET' });
-      if (!response.ok) return null;
-      return await response.text();
+      if (!response.ok) {
+        // try localStorage cache
+        if (browser) {
+          const cached = localStorage.getItem(`project-readme:${project.id}`);
+          if (cached) return cached;
+        }
+        return null;
+      }
+      const text = await response.text();
+
+      if (browser) {
+        try {
+          localStorage.setItem(`project-readme:${project.id}`, text);
+        } catch {
+          // ignore localStorage write errors
+        }
+      }
+
+      return text;
     } catch {
+      // try localStorage cache on network error
+      if (browser) {
+        const cached = localStorage.getItem(`project-readme:${project.id}`);
+        if (cached) return cached;
+      }
       return null;
     }
   }
 
   async getDownloadsCount(url: string) {
+    const cacheKey = `download-count:${url}`;
+
+    // check localStorage cache first
+    if (browser) {
+      const cached = localStorage.getItem(cacheKey);
+      if (cached !== null) {
+        const parsed = Number(cached);
+        if (!Number.isNaN(parsed)) return parsed;
+      }
+    }
+
     try {
       const response = await fetch(`${url}/releases`, { method: 'GET' });
       if (!response.ok) return 0;
@@ -248,8 +321,25 @@ class ProjectService {
           count += releases[i].assets[j].download_count || 0;
         }
       }
+
+      if (browser) {
+        try {
+          localStorage.setItem(cacheKey, String(count));
+        } catch {
+          // ignore localStorage write errors
+        }
+      }
+
       return count;
     } catch {
+      // network error: return cached value if available, otherwise 0
+      if (browser) {
+        const cached = localStorage.getItem(cacheKey);
+        if (cached !== null) {
+          const parsed = Number(cached);
+          if (!Number.isNaN(parsed)) return parsed;
+        }
+      }
       return 0;
     }
   }

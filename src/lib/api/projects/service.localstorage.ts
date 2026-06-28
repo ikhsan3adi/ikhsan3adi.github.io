@@ -8,9 +8,8 @@ import type { Project, ProjectDetail } from './types';
  * instead of making GitHub API calls. Useful for avoiding API rate limits
  * during development.
  */
-class LocalStorageProjectService extends ProjectService {
+class LocalStorageProjectService implements ProjectService {
   constructor() {
-    super();
     console.log(`Using ${this.constructor.name}`);
   }
 
@@ -48,7 +47,7 @@ class LocalStorageProjectService extends ProjectService {
     fetch: (input: URL | RequestInfo, init?: RequestInit) => Promise<Response>;
   }) {
     if (browser) {
-      const stored = localStorage.getItem('projectDetail');
+      const stored = localStorage.getItem(`project-detail:${project.id}`);
       if (stored) {
         try {
           const detail = JSON.parse(stored) as ProjectDetail;
@@ -73,14 +72,26 @@ class LocalStorageProjectService extends ProjectService {
     return fallback;
   }
 
-  async getProjectReadme({ project }: { project: Project; _fetch?: Function }) {
+  async getProjectReadme({
+    project
+  }: {
+    project: Project;
+    _fetch?: (input: URL | RequestInfo, init?: RequestInit) => Promise<Response>;
+  }) {
     if (browser) {
       return localStorage.getItem(`project-readme:${project.id}`) ?? null;
     }
     return null;
   }
 
-  async getDownloadsCount(_url: string) {
+  async getDownloadsCount(url: string) {
+    if (browser) {
+      const cached = localStorage.getItem(`download-count:${url}`);
+      if (cached !== null) {
+        const parsed = Number(cached);
+        if (!Number.isNaN(parsed)) return parsed;
+      }
+    }
     return 0;
   }
 }

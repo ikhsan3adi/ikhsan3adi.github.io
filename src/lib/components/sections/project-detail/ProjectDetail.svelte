@@ -26,6 +26,15 @@
 
   let { project, markdownPromise }: Props = $props();
 
+  /** Preprocess raw markdown to fix GitHub-vs-KaTeX escaping mismatches.
+   *  GitHub READMEs use double backslash before LaTeX special characters
+   *  (e.g. \\_ for underscore, \\$ for dollar), but KaTeX expects only
+   *  a single backslash (\_, \$, etc.). */
+  const preprocessMarkdown = (raw: string | null): string => {
+    if (!raw) return '';
+    return raw.replace(/\\\\([_$%&#{}~^])/g, '\\$1');
+  };
+
   const markdownizePromise = async () => {
     const [
       { Octokit },
@@ -233,7 +242,7 @@
         {#await markdownPromise then markdown}
           <div class="text-slate-600 dark:text-slate-300 markdown-content">
             {#await markdownizePromise() then markdownize}
-              {#await markdownize(markdown ?? '', { gfm: true }) then html}
+              {#await markdownize(preprocessMarkdown(markdown), { gfm: true }) then html}
                 {@html html}
               {/await}
             {/await}
