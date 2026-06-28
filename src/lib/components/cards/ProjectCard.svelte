@@ -78,7 +78,7 @@
         class="{cardColors[cardColor].dark.border} 
         aspect-4/3 sm:aspect-video lg:aspect-4/3 xl:aspect-video w-full shrink-0
 				border-b-4 border-slate-900
-			bg-slate-300 dark:bg-slate-600 flex relative"
+			bg-slate-300 dark:bg-slate-600 flex relative overflow-clip"
       >
         <div class="inline-flex flex-wrap m-auto justify-center gap-2 items-center w-max">
           <div
@@ -113,7 +113,8 @@
         <!-- Stats -->
         <div
           class="{cardColors[cardColor].dark.bg}
-						bg-slate-900 absolute text-white dark:text-text flex justify-evenly bottom-0 left-0 max-sm:right-0 gap-4 duration-200 py-2 px-4 font-space-grotesk"
+						bg-slate-900 absolute text-white dark:text-text flex justify-evenly bottom-0 left-0 max-sm:right-0 gap-4 xl:gap-3 duration-200 py-2 px-4"
+          title={`${project.starsCount} Stars\n${project.forksCount} Forks\n${project.downloadsCount} Downloads\n${project.issuesCount ?? 0} Issues\n${project.pullRequestsCount ?? 0} PRs`}
         >
           <div class="flex gap-2 items-center">
             <Fa icon={faStar} />
@@ -130,24 +131,24 @@
             </span>
           </div>
           <div class="flex gap-2 items-center">
-            <Fa icon={faDownload} />
-            {project.downloadsCount}
-            <span class="hidden sm:inline-block lg:hidden xl:inline-block">
-              {(project.downloadsCount ?? 0) <= 1 ? 'Download' : 'Downloads'}
-            </span>
-          </div>
-          <div class="hidden md:flex gap-2 items-center">
             <Fa icon={faBug} />
             {project.issuesCount ?? 0}
             <span class="hidden sm:inline-block lg:hidden xl:inline-block">
               {(project.issuesCount ?? 0) <= 1 ? 'Issue' : 'Issues'}
             </span>
           </div>
-          <div class="hidden md:flex gap-2 items-center">
+          <div class="flex gap-2 items-center">
             <Fa icon={faCodePullRequest} />
             {project.pullRequestsCount ?? 0}
             <span class="hidden sm:inline-block lg:hidden xl:inline-block">
               {(project.pullRequestsCount ?? 0) <= 1 ? 'PR' : 'PRs'}
+            </span>
+          </div>
+          <div class="flex gap-2 items-center">
+            <Fa icon={faDownload} />
+            {project.downloadsCount}
+            <span class="hidden sm:inline-block lg:hidden xl:inline-block">
+              {(project.downloadsCount ?? 0) <= 1 ? 'Download' : 'Downloads'}
             </span>
           </div>
         </div>

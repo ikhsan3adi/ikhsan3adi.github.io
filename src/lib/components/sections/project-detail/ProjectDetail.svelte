@@ -111,51 +111,79 @@
       markedMermaid()
     );
   };
+
   onMount(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     let mermaidInstance: any;
     let diagramId = 0;
-    let obs: MutationObserver | null = null;
+    let loading = false;
+    let rendering = false;
+
+    const loadMermaid = (): Promise<any> =>
+      new Promise((resolve, reject) => {
+        const s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js';
+        s.onload = () => resolve((window as any).mermaid);
+        s.onerror = () => reject(new Error('Failed to load mermaid from CDN'));
+        document.head.appendChild(s);
+      });
 
     const renderDiagrams = () => {
+      if (rendering) return;
+
       const el = document.querySelector<HTMLElement>('.markdown-content');
       if (!el) return;
 
       const diagrams = el.querySelectorAll<HTMLElement>('.mermaid:not([data-processed])');
       if (!diagrams.length) return;
 
+      if (!mermaidInstance) {
+        if (loading) return;
+        loading = true;
+        loadMermaid()
+          .then((mermaid: any) => {
+            mermaidInstance = mermaid;
+            return mermaidInstance.initialize({ startOnLoad: false, maxTextSize: 1_000_000 });
+          })
+          .then(() => {
+            loading = false;
+            renderDiagrams();
+          });
+        return;
+      }
+
+      rendering = true;
+      const batch: Promise<void>[] = [];
+
       diagrams.forEach((diagram) => {
         const text = diagram.textContent ?? '';
         const id = `mermaid-${diagramId++}`;
 
-        mermaidInstance
-          .render(id, text)
-          .then(({ svg }: { svg: string }) => {
-            diagram.innerHTML = svg;
-            diagram.setAttribute('data-processed', 'true');
-          })
-          .catch((e: Error) => {
-            console.error('Mermaid:', e);
-            diagram.textContent = `Mermaid error: ${e.message}`;
-          });
+        batch.push(
+          mermaidInstance
+            .render(id, text)
+            .then(({ svg }: { svg: string }) => {
+              diagram.innerHTML = svg;
+              diagram.setAttribute('data-processed', 'true');
+            })
+            .catch((e: Error) => {
+              console.error('Mermaid:', e);
+              diagram.textContent = `Mermaid error: ${e.message}`;
+            })
+        );
+      });
+
+      Promise.all(batch).then(() => {
+        rendering = false;
       });
     };
 
-    import('mermaid')
-      .then(({ default: mermaid }) => {
-        mermaidInstance = mermaid;
-        return mermaidInstance.initialize({ startOnLoad: false, maxTextSize: 1_000_000 });
-      })
-      .then(() => {
-        renderDiagrams();
+    const obs = new MutationObserver(renderDiagrams);
+    obs.observe(document.body, { childList: true, subtree: true });
+    renderDiagrams();
 
-        const el = document.querySelector<HTMLElement>('.markdown-content');
-        if (!el) return;
-        obs = new MutationObserver(renderDiagrams);
-        obs.observe(el, { childList: true, subtree: true });
-      });
-
-    return () => obs?.disconnect();
+    /* eslint-enable @typescript-eslint/no-explicit-any */
+    return () => obs.disconnect();
   });
 
   const tags: TagColorKey[] = $derived(
@@ -195,7 +223,7 @@
 
           <!-- Image overlay (covers fallback when image loads successfully) -->
           <div
-            class="absolute z-10 top-0 left-0 w-full h-full bg-no-repeat bg-contain bg-center
+            class="absolute z-10 top-0 left-0 w-full h-full bg-no-repeat bg-cover bg-center
                  border-4 border-slate-900 dark:border-white
                  cursor-crosshair duration-200 active:brightness-75"
             style="background-image: url('{project.imageUrl}');"
