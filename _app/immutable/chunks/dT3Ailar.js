@@ -1,0 +1,1 @@
+import{Ft as e,J as t,Pt as n,X as r,gt as i,z as a}from"./DEyA5LFe.js";var o=r(`<div class="mx-auto w-full max-w-screen-2xl px-10 sm:px-16 md:px-20 lg:px-24 xl:px-28 flex"><!></div>`);function s(r,s){var c=o();a(i(c),()=>s.children??e),n(c),t(r,c)}export{s as t};

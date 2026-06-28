@@ -1,1 +1,0 @@
-import{J as e,K as t,L as n,Mt as r,Nt as i,mt as a}from"./BqjPY6ap.js";var o=e(`<div class="mx-auto w-full max-w-screen-2xl px-10 sm:px-16 md:px-20 lg:px-24 xl:px-28 flex"><!></div>`);function s(e,s){var c=o();n(a(c),()=>s.children??i),r(c),t(e,c)}export{s as t};

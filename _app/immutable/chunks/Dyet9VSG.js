@@ -1,0 +1,1 @@
+var e=/^```mermaid[ \t]*\n([\s\S]*?)```(?:\n|$)/;function t(){return{extensions:[{name:`mermaid`,level:`block`,tokenizer(t){let n=t.match(e);if(n)return{type:`mermaid`,raw:n[0],text:n[1].trim()}},renderer(e){return`<div class="mermaid">${e.text}</div>\n`}}]}}export{t as default};
