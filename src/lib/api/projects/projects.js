@@ -3,6 +3,17 @@ const githubApiLink = 'https://api.github.com/repos/ikhsan3adi';
 /** @type {import('./types').Project[]} */
 const initialProjects = [
   {
+    id: 'ruwet-meter',
+    name: 'RuwetMeter',
+    url: `${githubApiLink}/RuwetMeter`,
+    description:
+      'AI Agent buat mantau keruwetan Indonesia. Scrape berita, analisis pakai LLM, dengan chatbot RAG interaktif. ',
+    baseUrl: 'https://github.com/ikhsan3adi/RuwetMeter/raw/master/',
+    imageUrl: 'https://github.com/ikhsan3adi/RuwetMeter/raw/master/img/RuwetMeter.png',
+    readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/RuwetMeter/master/README.md',
+    tags: ['ai-agent', 'chatbot', 'rag', 'postgresql', 'pgvector', 'rss']
+  },
+  {
     id: 'kegiatin',
     name: 'Kegiatin: Event Management App',
     url: `${githubApiLink}/kegiatin`,
@@ -80,6 +91,17 @@ const initialProjects = [
     imageUrl: 'https://github.com/ikhsan3adi/backtix/raw/main/assets/social_preview.png',
     readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/backtix/main/README.md',
     tags: ['flutter', 'nestjs', 'svelte', 'prisma', 'postgresql', 'midtrans']
+  },
+  {
+    id: 'sistem-perpustakaan-qr-code',
+    name: 'BukuHub: Sistem Perpustakaan',
+    url: `${githubApiLink}/sistem-perpustakaan-qr-code`,
+    baseUrl: 'https://github.com/ikhsan3adi/sistem-perpustakaan-qr-code/raw/main/',
+    imageUrl:
+      'https://github.com/ikhsan3adi/sistem-perpustakaan-qr-code/raw/main/screenshots/home.png',
+    readmeUrl:
+      'https://raw.githubusercontent.com/ikhsan3adi/sistem-perpustakaan-qr-code/main/README.md',
+    tags: ['codeigniter', 'mysql', 'bootstrap']
   },
   {
     id: 'absensi-sekolah-qr-code',

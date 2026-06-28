@@ -61,6 +61,41 @@ export const tagColors: TagColors = {
     bg: 'bg-orange-400 dark:bg-slate-800',
     border: 'dark:border-orange-400',
     text: 'dark:text-orange-400'
+  },
+  mysql: {
+    bg: 'bg-blue-400 dark:bg-slate-800',
+    border: 'dark:border-blue-400',
+    text: 'dark:text-blue-400'
+  },
+  bootstrap: {
+    bg: 'bg-purple-400 dark:bg-slate-800',
+    border: 'dark:border-purple-400',
+    text: 'dark:text-purple-400'
+  },
+  postgresql: {
+    bg: 'bg-blue-400 dark:bg-slate-800',
+    border: 'dark:border-blue-400',
+    text: 'dark:text-blue-400'
+  },
+  hono: {
+    bg: 'bg-green-400 dark:bg-slate-800',
+    border: 'dark:border-green-400',
+    text: 'dark:text-green-400'
+  },
+  pgvector: {
+    bg: 'bg-purple-400 dark:bg-slate-800',
+    border: 'dark:border-purple-400',
+    text: 'dark:text-purple-400'
+  },
+  'ai-agent': {
+    bg: 'bg-indigo-400 dark:bg-slate-800',
+    border: 'dark:border-indigo-400',
+    text: 'dark:text-indigo-400'
+  },
+  chatbot: {
+    bg: 'bg-yellow-400 dark:bg-slate-800',
+    border: 'dark:border-yellow-400',
+    text: 'dark:text-yellow-400'
   }
 };
 

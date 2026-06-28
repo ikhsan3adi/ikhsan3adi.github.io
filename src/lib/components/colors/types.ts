@@ -17,6 +17,13 @@ interface TagColors {
   typescript: TagColor;
   nestjs: TagColor;
   svelte: TagColor;
+  mysql: TagColor;
+  bootstrap: TagColor;
+  postgresql: TagColor;
+  hono: TagColor;
+  pgvector: TagColor;
+  'ai-agent': TagColor;
+  chatbot: TagColor;
 }
 
 interface TagColorKey {
