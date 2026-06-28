@@ -49,19 +49,19 @@
   function changeColors() {
     if (scrollY < 300) {
       isBgTransparent = true;
-      backgroundClasses = 'bg-primary/0 border-slate-900/0';
+      backgroundClasses = 'bg-primary/0 border-slate-900/0 dark:border-slate-700/0';
     } else if (showNavLinks ? scrollY < 400 : scrollY < 333) {
       isBgTransparent = true;
-      backgroundClasses = 'bg-primary/20 border-slate-900/0';
+      backgroundClasses = 'bg-primary/20 border-slate-900/0 dark:border-slate-700/0';
     } else if (showNavLinks ? scrollY < 600 : scrollY < 367) {
       isBgTransparent = true;
-      backgroundClasses = 'bg-primary/50 border-slate-900/0';
+      backgroundClasses = 'bg-primary/50 border-slate-900/0 dark:border-slate-700/0';
     } else if (showNavLinks ? scrollY < 800 : scrollY < 400) {
       isBgTransparent = true;
-      backgroundClasses = 'bg-primary/60 border-slate-900/0';
+      backgroundClasses = 'bg-primary/60 border-slate-900/0 dark:border-slate-700/0';
     } else {
       isBgTransparent = false;
-      backgroundClasses = 'bg-primary/100 border-slate-900/100';
+      backgroundClasses = 'bg-primary/100 border-slate-900/100 dark:border-slate-700/100';
     }
   }
 
@@ -92,7 +92,12 @@
 					{isBgTransparent ? 'dark:text-white' : 'dark:text-text'}"
         >
           {#each navLinks as link}
-            <a class="hover:underline active:text-indigo-500" href="#{link.link}">{link.text}</a>
+            <a
+              class="hover:underline active:text-indigo-500 dark:active:text-custom-3 active:text-shadow-sm"
+              href="#{link.link}"
+            >
+              {link.text}
+            </a>
           {/each}
         </div>
       {/if}
