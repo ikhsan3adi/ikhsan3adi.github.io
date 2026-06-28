@@ -84,6 +84,11 @@ class LocalStorageProjectService implements ProjectService {
     return null;
   }
 
+  async getPullRequestsCount(_url: string) {
+    void _url;
+    return 0;
+  }
+
   async getDownloadsCount(url: string) {
     if (browser) {
       const cached = localStorage.getItem(`download-count:${url}`);

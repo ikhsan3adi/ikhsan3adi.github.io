@@ -48,6 +48,7 @@
     "marked-emoji": "^1.4.3",
     "marked-highlight": "^2.2.4",
     "marked-katex-extension": "^5.1.10",
+    "mermaid": "^11.16.0",
     "svelte-fa": "^4.0.4",
     "svelte-typewriter": "^3.2.3"
   }

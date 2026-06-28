@@ -1,14 +1,17 @@
 <script lang="ts">
   import type { ProjectDetail } from '$lib/api/projects';
   import { type TagColorKey, type TagColors, tagColors } from '$lib/components/colors';
+  import { onMount } from 'svelte';
 
   import { renderer } from './renderer';
 
   import 'katex/dist/katex.min.css';
 
   import {
+    faBug,
     faCode,
     faCodeFork,
+    faCodePullRequest,
     faDownload,
     faExternalLink,
     faStar,
@@ -52,7 +55,8 @@
       { default: shell },
       { default: json },
       { default: plaintext },
-      { default: markedKatex }
+      { default: markedKatex },
+      { default: markedMermaid }
     ] = await Promise.all([
       import('@octokit/rest'),
       import('marked'),
@@ -69,7 +73,8 @@
       import('highlight.js/lib/languages/shell'),
       import('highlight.js/lib/languages/json'),
       import('highlight.js/lib/languages/plaintext'),
-      import('marked-katex-extension')
+      import('marked-katex-extension'),
+      import('./marked-mermaid')
     ]);
 
     hljs.registerLanguage('javascript', javascript);
@@ -102,9 +107,56 @@
       }),
       markedAlert(),
       markedEmoji({ emojis: emojis ?? {} }),
-      markedKatex()
+      markedKatex(),
+      markedMermaid()
     );
   };
+  onMount(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let mermaidInstance: any;
+    let diagramId = 0;
+    let obs: MutationObserver | null = null;
+
+    const renderDiagrams = () => {
+      const el = document.querySelector<HTMLElement>('.markdown-content');
+      if (!el) return;
+
+      const diagrams = el.querySelectorAll<HTMLElement>('.mermaid:not([data-processed])');
+      if (!diagrams.length) return;
+
+      diagrams.forEach((diagram) => {
+        const text = diagram.textContent ?? '';
+        const id = `mermaid-${diagramId++}`;
+
+        mermaidInstance
+          .render(id, text)
+          .then(({ svg }: { svg: string }) => {
+            diagram.innerHTML = svg;
+            diagram.setAttribute('data-processed', 'true');
+          })
+          .catch((e: Error) => {
+            console.error('Mermaid:', e);
+            diagram.textContent = `Mermaid error: ${e.message}`;
+          });
+      });
+    };
+
+    import('mermaid')
+      .then(({ default: mermaid }) => {
+        mermaidInstance = mermaid;
+        return mermaidInstance.initialize({ startOnLoad: false, maxTextSize: 1_000_000 });
+      })
+      .then(() => {
+        renderDiagrams();
+
+        const el = document.querySelector<HTMLElement>('.markdown-content');
+        if (!el) return;
+        obs = new MutationObserver(renderDiagrams);
+        obs.observe(el, { childList: true, subtree: true });
+      });
+
+    return () => obs?.disconnect();
+  });
 
   const tags: TagColorKey[] = $derived(
     project.tags.map((tag) => {
@@ -157,7 +209,7 @@
 
           <!-- Stars, forks, downloads -->
           <div
-            class="pt-4 flex gap-4 w-full justify-center sm:justify-normal dark:text-white font-space-grotesk"
+            class="pt-4 flex flex-wrap gap-x-4 gap-y-1 w-full justify-center sm:justify-normal dark:text-white font-space-grotesk"
           >
             <div class="flex gap-2 items-center">
               <Fa icon={faStar} />
@@ -173,6 +225,16 @@
               <Fa icon={faDownload} />
               {project.downloadsCount}
               {(project.downloadsCount ?? 0) <= 1 ? 'Download' : 'Downloads'}
+            </div>
+            <div class="flex gap-2 items-center">
+              <Fa icon={faBug} />
+              {project.issuesCount ?? 0}
+              {(project.issuesCount ?? 0) <= 1 ? 'Issue' : 'Issues'}
+            </div>
+            <div class="flex gap-2 items-center">
+              <Fa icon={faCodePullRequest} />
+              {project.pullRequestsCount ?? 0}
+              {(project.pullRequestsCount ?? 0) <= 1 ? 'PR' : 'PRs'}
             </div>
           </div>
 
@@ -389,6 +451,15 @@
   :global(.markdown-content p),
   :global(.markdown-content li) {
     color: inherit;
+  }
+
+  :global(.markdown-content .mermaid) {
+    padding: 1rem;
+    border-radius: var(--radius-md, 0.375rem);
+    margin: 1rem 0;
+  }
+  :global(.dark .markdown-content .mermaid) {
+    background: #f8fafc;
   }
 
   :global(.markdown-content .katex-display) {

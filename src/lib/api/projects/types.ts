@@ -11,6 +11,8 @@ interface Project {
   starsCount?: number;
   forksCount?: number;
   downloadsCount?: number;
+  issuesCount?: number;
+  pullRequestsCount?: number;
 }
 
 interface ProjectDetail extends Project {

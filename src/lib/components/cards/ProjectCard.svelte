@@ -8,7 +8,14 @@
   } from '$lib/components/colors';
   import { scale } from 'svelte/transition';
 
-  import { faCodeFork, faDownload, faStar, faWarning } from '@fortawesome/free-solid-svg-icons';
+  import {
+    faBug,
+    faCodeFork,
+    faCodePullRequest,
+    faDownload,
+    faStar,
+    faWarning
+  } from '@fortawesome/free-solid-svg-icons';
   import Fa from 'svelte-fa';
 
   interface Props {
@@ -111,22 +118,36 @@
           <div class="flex gap-2 items-center">
             <Fa icon={faStar} />
             {project.starsCount}
-            <span class="hidden sm:inline-block">
+            <span class="hidden sm:inline-block lg:hidden xl:inline-block">
               {(project.starsCount ?? 0) <= 1 ? 'Star' : 'Stars'}
             </span>
           </div>
           <div class="flex gap-2 items-center">
             <Fa icon={faCodeFork} />
             {project.forksCount}
-            <span class="hidden sm:inline-block">
+            <span class="hidden sm:inline-block lg:hidden xl:inline-block">
               {(project.forksCount ?? 0) <= 1 ? 'Fork' : 'Forks'}
             </span>
           </div>
           <div class="flex gap-2 items-center">
             <Fa icon={faDownload} />
             {project.downloadsCount}
-            <span class="hidden sm:inline-block">
+            <span class="hidden sm:inline-block lg:hidden xl:inline-block">
               {(project.downloadsCount ?? 0) <= 1 ? 'Download' : 'Downloads'}
+            </span>
+          </div>
+          <div class="hidden md:flex gap-2 items-center">
+            <Fa icon={faBug} />
+            {project.issuesCount ?? 0}
+            <span class="hidden sm:inline-block lg:hidden xl:inline-block">
+              {(project.issuesCount ?? 0) <= 1 ? 'Issue' : 'Issues'}
+            </span>
+          </div>
+          <div class="hidden md:flex gap-2 items-center">
+            <Fa icon={faCodePullRequest} />
+            {project.pullRequestsCount ?? 0}
+            <span class="hidden sm:inline-block lg:hidden xl:inline-block">
+              {(project.pullRequestsCount ?? 0) <= 1 ? 'PR' : 'PRs'}
             </span>
           </div>
         </div>

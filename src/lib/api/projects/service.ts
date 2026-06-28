@@ -23,13 +23,19 @@ class ProjectService {
       const json = text ? JSON.parse(text) : {};
 
       if (response.status === 200) {
+        const [downloadsCount, pullRequestsCount] = await Promise.all([
+          this.getDownloadsCount(project.url),
+          this.getPullRequestsCount(project.url)
+        ]);
         const newProject: Project = {
           ...project,
           description: project.description || json.description,
           tags: [...new Set([...project.tags, json.language?.toLowerCase()])],
           starsCount: json.stargazers_count,
           forksCount: json.forks,
-          downloadsCount: await this.getDownloadsCount(project.url)
+          downloadsCount,
+          issuesCount: json.open_issues_count,
+          pullRequestsCount
         };
 
         projectsStore.update((projects) => {
@@ -167,6 +173,10 @@ class ProjectService {
       const json = text ? JSON.parse(text) : {};
 
       if (response.status === 200) {
+        const [downloadsCount, pullRequestsCount] = await Promise.all([
+          this.getDownloadsCount(project.url),
+          this.getPullRequestsCount(project.url)
+        ]);
         const newProject: ProjectDetail = {
           ...project,
           description: json.description,
@@ -176,7 +186,9 @@ class ProjectService {
           livePreviewUrl: json.homepage || '',
           starsCount: json.stargazers_count,
           forksCount: json.forks,
-          downloadsCount: await this.getDownloadsCount(project.url)
+          downloadsCount,
+          issuesCount: json.open_issues_count,
+          pullRequestsCount
         };
 
         projectDetailStore.update(() => newProject);
@@ -218,6 +230,8 @@ class ProjectService {
         starsCount: project.starsCount || 0,
         forksCount: project.forksCount || 0,
         downloadsCount: project.downloadsCount || 0,
+        issuesCount: project.issuesCount || 0,
+        pullRequestsCount: project.pullRequestsCount || 0,
         imageText: 'Server error / API rate limit exceeded'
       };
       projectDetailStore.update(() => fallback);
@@ -252,6 +266,8 @@ class ProjectService {
             starsCount: project.starsCount || 0,
             forksCount: project.forksCount || 0,
             downloadsCount: project.downloadsCount || 0,
+            issuesCount: project.issuesCount || 0,
+            pullRequestsCount: project.pullRequestsCount || 0,
             imageText: 'No internet connection'
           }) as ProjectDetail
       );
@@ -295,6 +311,30 @@ class ProjectService {
         if (cached) return cached;
       }
       return null;
+    }
+  }
+
+  async getPullRequestsCount(url: string) {
+    try {
+      const response = await fetch(`${url}/pulls?state=all&per_page=1`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      if (!response.ok) return 0;
+
+      const linkHeader = response.headers.get('Link');
+      if (linkHeader) {
+        const match = linkHeader.match(/page=(\d+)>;\s*rel="last"/);
+        if (match) return parseInt(match[1], 10);
+      }
+
+      const text = await response.text();
+      const pulls = JSON.parse(text);
+      return Array.isArray(pulls) ? pulls.length : 0;
+    } catch {
+      return 0;
     }
   }
 

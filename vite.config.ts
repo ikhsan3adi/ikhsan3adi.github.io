@@ -56,6 +56,10 @@ export default defineConfig({
               return 'typewriter';
             }
 
+            if (id.includes('mermaid')) {
+              return 'mermaid';
+            }
+
             return 'vendor';
           }
         }
