@@ -47,12 +47,14 @@ export const renderer = (baseUrl: string, markedModule: { Renderer: new () => Ma
     if (body) body = `<tbody>${body}</tbody>`;
 
     return (
-      '<table class="border-collapse border border-slate-300 dark:border-slate-600 my-4">\n' +
+      '<div class="overflow-x-auto">\n' +
+      '<table class="border-collapse border border-slate-300 dark:border-slate-600 my-4 w-full">\n' +
       '<thead>\n' +
       header +
       '</thead>\n' +
       body +
-      '</table>\n'
+      '</table>\n' +
+      '</div>\n'
     );
   };
 

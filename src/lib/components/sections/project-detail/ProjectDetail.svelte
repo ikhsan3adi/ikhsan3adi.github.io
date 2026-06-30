@@ -461,9 +461,7 @@
   }
 
   :global(.markdown-content table) {
-    display: block;
-    overflow-x: auto;
-    border-collapse: collapse;
+    width: 100%;
   }
 
   :global(.markdown-content th),
