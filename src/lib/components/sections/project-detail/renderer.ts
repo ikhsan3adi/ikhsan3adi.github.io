@@ -1,10 +1,11 @@
 import type { Renderer as MarkedRenderer } from 'marked';
+import { createSlug, stripHtmlTagsDOM } from '$lib/utils';
 
 export const renderer = (baseUrl: string, markedModule: { Renderer: new () => MarkedRenderer }) => {
   const renderer: MarkedRenderer = new markedModule.Renderer();
 
   renderer.heading = (text, level) => {
-    return `<h${level} class="my-4 font-bold font-space-grotesk text-slate-900 dark:text-white">${text}</h${level}>`;
+    return `<h${level} class="my-4 font-bold font-space-grotesk text-slate-900 dark:text-white" id="${createSlug(stripHtmlTagsDOM(text))}">${text}</h${level}>`;
   };
 
   renderer.paragraph = (text) => {
@@ -40,7 +41,7 @@ export const renderer = (baseUrl: string, markedModule: { Renderer: new () => Ma
 
   renderer.image = (href, title, text) => {
     const alt = (title ?? text ?? '').replace(/"/g, '&quot;');
-    return `<img class="my-4 max-w-full h-auto" src="${href}" alt="${alt}" />`;
+    return `<img class="my-4 max-w-full h-auto" src="${href}" alt="${alt}" title="${alt}" />`;
   };
 
   renderer.table = (header, body) => {

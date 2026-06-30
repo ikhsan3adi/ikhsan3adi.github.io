@@ -13,6 +13,7 @@
     fullWidth?: boolean;
     centerText?: boolean;
     small?: boolean;
+    onClick?: () => void;
     icon?: import('svelte').Snippet;
     children?: import('svelte').Snippet;
     [key: string]: unknown;
@@ -30,6 +31,7 @@
     fullWidth = false,
     centerText = true,
     small = false,
+    onClick,
     icon,
     children
   }: Props = $props();
@@ -150,7 +152,7 @@
     </div>
   </a>
 {:else}
-  <button class={rootClass} {type} {disabled}>
+  <button class={rootClass} {type} {disabled} onclick={onClick}>
     <div class={innerClass}>
       {#if icon}
         <div

@@ -10,11 +10,15 @@
   import '@fontsource/space-grotesk/latin-700.css';
   import '../app.css';
 
+  import { scrollState } from '$lib/scroll.svelte';
+
   interface Props {
     children?: import('svelte').Snippet;
   }
 
   let { children }: Props = $props();
 </script>
+
+<svelte:window bind:scrollY={scrollState.y} />
 
 {@render children?.()}

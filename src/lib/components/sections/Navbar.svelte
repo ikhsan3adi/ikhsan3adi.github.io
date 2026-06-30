@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-
   import { navLinks } from '$lib/components/navigation';
   import { hamburgerMenuExpanded } from '$lib/config';
+
+  import { scrollState } from '$lib/scroll.svelte';
 
   import Hamburger from '$lib/components/buttons/Hamburger.svelte';
   import ThemeButton from '$lib/components/widgets/ThemeButton.svelte';
@@ -17,25 +17,20 @@
 
   let navbar = $state<HTMLElement | undefined>();
 
-  let scrollY = $state(0);
-  let prevScrollpos = 0;
+  let prevScrollpos = Infinity;
   let prevScrollpos2 = 0;
 
   let isBgTransparent = $state(true);
   let backgroundClasses = $state('bg-primary/0 border-slate-900/0');
 
-  onMount(() => {
-    changeColors();
+  $effect(() => {
     autoHideMenu();
-    window.onscroll = async () => {
-      autoHideMenu();
-      autoHideNavbar();
-      changeColors();
-    };
+    autoHideNavbar();
+    changeColors();
   });
 
   function autoHideNavbar() {
-    let currentScrollPos = scrollY;
+    let currentScrollPos = scrollState.y;
     if (!navbar) return;
 
     if (prevScrollpos > currentScrollPos) {
@@ -47,16 +42,16 @@
   }
 
   function changeColors() {
-    if (scrollY < 300) {
+    if (scrollState.y < 300) {
       isBgTransparent = true;
       backgroundClasses = 'bg-primary/0 border-slate-900/0 dark:border-slate-700/0';
-    } else if (showNavLinks ? scrollY < 400 : scrollY < 333) {
+    } else if (showNavLinks ? scrollState.y < 400 : scrollState.y < 333) {
       isBgTransparent = true;
       backgroundClasses = 'bg-primary/20 border-slate-900/0 dark:border-slate-700/0';
-    } else if (showNavLinks ? scrollY < 600 : scrollY < 367) {
+    } else if (showNavLinks ? scrollState.y < 600 : scrollState.y < 367) {
       isBgTransparent = true;
       backgroundClasses = 'bg-primary/50 border-slate-900/0 dark:border-slate-700/0';
-    } else if (showNavLinks ? scrollY < 800 : scrollY < 400) {
+    } else if (showNavLinks ? scrollState.y < 800 : scrollState.y < 400) {
       isBgTransparent = true;
       backgroundClasses = 'bg-primary/60 border-slate-900/0 dark:border-slate-700/0';
     } else {
@@ -66,15 +61,13 @@
   }
 
   function autoHideMenu() {
-    let currentScrollPos = scrollY;
+    let currentScrollPos = scrollState.y;
     if (currentScrollPos > prevScrollpos2 + 250 || currentScrollPos < prevScrollpos2 - 250) {
       hamburgerMenuExpanded.set(false);
       prevScrollpos2 = currentScrollPos;
     }
   }
 </script>
-
-<svelte:window bind:scrollY />
 
 <header
   bind:this={navbar}

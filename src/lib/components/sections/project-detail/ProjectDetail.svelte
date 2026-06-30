@@ -1,26 +1,29 @@
 <script lang="ts">
-  import type { ProjectDetail } from '$lib/api/projects';
-  import { type TagColorKey, type TagColors, tagColors } from '$lib/components/colors';
   import { onMount } from 'svelte';
-
-  import { renderer } from './renderer';
 
   import 'katex/dist/katex.min.css';
 
   import {
+    faArrowUp,
     faBug,
     faCode,
     faCodeFork,
     faCodePullRequest,
     faDownload,
     faExternalLink,
+    faHome,
     faStar,
     faWarning
   } from '@fortawesome/free-solid-svg-icons';
   import Fa from 'svelte-fa';
 
+  import type { ProjectDetail } from '$lib/api/projects';
+  import { type TagColorKey, type TagColors, tagColors } from '$lib/components/colors';
+
+  import { scrollState } from '$lib/scroll.svelte';
+  import { renderer } from './renderer';
+
   import Button from '$lib/components/buttons/Button.svelte';
-  import Wrappper from '$lib/components/widgets/Wrappper.svelte';
 
   interface Props {
     project: ProjectDetail;
@@ -55,6 +58,8 @@
       { default: shell },
       { default: json },
       { default: plaintext },
+      { default: python },
+      { default: php },
       { default: markedKatex },
       { default: markedMermaid }
     ] = await Promise.all([
@@ -73,6 +78,8 @@
       import('highlight.js/lib/languages/shell'),
       import('highlight.js/lib/languages/json'),
       import('highlight.js/lib/languages/plaintext'),
+      import('highlight.js/lib/languages/python'),
+      import('highlight.js/lib/languages/php'),
       import('marked-katex-extension'),
       import('./marked-mermaid')
     ]);
@@ -89,6 +96,8 @@
     hljs.registerLanguage('sh', bash);
     hljs.registerLanguage('json', json);
     hljs.registerLanguage('plaintext', plaintext);
+    hljs.registerLanguage('python', python);
+    hljs.registerLanguage('php', php);
     hljs.registerLanguage('txt', plaintext);
 
     // Get all the emojis available to use on GitHub.
@@ -186,6 +195,8 @@
     return () => obs.disconnect();
   });
 
+  let showBackToTop = $derived(scrollState.y >= 400);
+
   const tags: TagColorKey[] = $derived(
     project.tags.map((tag) => {
       return Object.prototype.hasOwnProperty.call(tagColors, tag)
@@ -195,9 +206,11 @@
   );
 </script>
 
-<section class="mt-16">
-  <Wrappper>
-    <div class="mt-16 w-full">
+<section class="bg-halftone bg-halftone-45">
+  <div
+    class="mx-auto w-full max-w-screen-2xl px-8 sm:px-8 md:px-12 lg:px-16 xl:px-20 flex flex-col"
+  >
+    <div class="mt-24 p-2 sm:p-8 w-full bg-white dark:bg-slate-800">
       <h1 class="dark:text-white mb-6 md:mb-8 lg:mb-12 xl:mb-16">{project.name}</h1>
       <!-- Hero section -->
       <div
@@ -328,27 +341,56 @@
       <hr class="mb-16 md:mb-24 border border-slate-700 dark:border-slate-300" />
 
       <!-- README.md content -->
-      <div class="mb-24">
-        {#await markdownPromise then markdown}
-          <div class="text-slate-600 dark:text-slate-300 markdown-content">
-            {#await markdownizePromise() then markdownize}
-              {#await markdownize(preprocessMarkdown(markdown), { gfm: true }) then html}
-                {@html html}
-              {/await}
+
+      {#await markdownPromise then markdown}
+        <div class="text-slate-600 dark:text-slate-300 markdown-content">
+          {#await markdownizePromise() then markdownize}
+            {#await markdownize(preprocessMarkdown(markdown), { gfm: true }) then html}
+              {@html html}
             {/await}
-          </div>
-        {:catch error}
-          <div
-            class="dark:text-white font-cascadia-mono font-extrabold text-text text-4xl md:text-5xl lg:text-6xl"
-          >
-            <Fa icon={faWarning} />Failed to load README
-          </div>
-          <p class="text-red-500 dark:text-red-400">{error}</p>
-        {/await}
-      </div>
+          {/await}
+        </div>
+      {:catch error}
+        <div
+          class="dark:text-white font-cascadia-mono font-extrabold text-text text-4xl md:text-5xl lg:text-6xl"
+        >
+          <Fa icon={faWarning} />Failed to load README
+        </div>
+        <p class="text-red-500 dark:text-red-400">{error}</p>
+      {/await}
     </div>
-  </Wrappper>
+
+    <div class="flex justify-center py-16 w-full">
+      <Button
+        href="/#portfolio"
+        aria-label="Back to home"
+        title="Back to home"
+        variant="primary"
+        noDarkVariant={false}
+        small
+      >
+        {#snippet icon()}
+          <Fa icon={faHome} />
+        {/snippet}
+        Home
+      </Button>
+    </div>
+  </div>
 </section>
+
+<Button
+  onClick={() => (scrollState.y = 0)}
+  aria-label="Back to top"
+  className="back-to-top fixed bottom-6 right-6 z-50 {!showBackToTop ? 'hidden!' : ''}"
+  variant="secondary"
+  noDarkVariant={false}
+  small
+>
+  {#snippet icon()}
+    <Fa icon={faArrowUp} />
+  {/snippet}
+  Top
+</Button>
 
 <div class="markdown-content hidden"><a href="/">_</a></div>
 
@@ -458,6 +500,7 @@
   :global(.markdown-content img) {
     max-width: 100%;
     height: auto;
+    margin: 1rem;
   }
 
   :global(.markdown-content table) {
