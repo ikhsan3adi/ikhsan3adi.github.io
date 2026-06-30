@@ -18,21 +18,8 @@ export const renderer = (baseUrl: string, markedModule: { Renderer: new () => Ma
 
   renderer.list = (body, ordered) => {
     const type = ordered ? 'ol' : 'ul';
-    const startAttr = ordered ? ' start="0"' : '';
     const styleClass = ordered ? 'list-decimal pl-5' : 'list-disc pl-5';
-    return (
-      '<div class="my-4"><' +
-      type +
-      ' class="' +
-      styleClass +
-      '"' +
-      startAttr +
-      '>\n' +
-      body +
-      '</' +
-      type +
-      '></div>\n'
-    );
+    return `<div class="my-4"><${type} class="${styleClass}">${body}</${type}></div>`;
   };
 
   renderer.listitem = (text) => {
@@ -103,33 +90,40 @@ export const renderer = (baseUrl: string, markedModule: { Renderer: new () => Ma
   };
 
   renderer.html = (html) => {
-    if (html.includes('<img')) {
-      const regex = /src="([^"]+?)"/g;
-      const hrefs = html.match(regex) ?? [];
+    const doc = new DOMParser().parseFromString(html, 'text/html');
 
-      for (const href of hrefs) {
-        const hrefVal = href.match(/src="([^"]+?)"/)?.[1];
+    const imgs = doc.querySelectorAll('img');
+    for (const img of imgs) {
+      // resolve relative src
+      const src = img.getAttribute('src');
+      if (src && !src.startsWith('http')) {
+        img.setAttribute('src', new URL(src, baseUrl).toString());
+      }
 
-        if (hrefVal && !hrefVal.startsWith('http')) {
-          const newHref = new URL(hrefVal, baseUrl).toString();
-          html = html.replace(href, `src="${newHref}"`);
-        }
+      // ensure proper sizing classes
+      const existing = img.getAttribute('class') || '';
+      const needed = ['max-w-full'];
+      const merged = needed.filter((c) => !existing.includes(c));
+      if (merged.length > 0) {
+        img.setAttribute('class', [existing, ...merged].filter(Boolean).join(' '));
       }
     }
-    if (html.includes('href=')) {
-      const regex = /href="([^"]+?)"/g;
-      const hrefs = html.match(regex) ?? [];
 
-      for (const href of hrefs) {
-        const hrefVal = href.match(/href="([^"]+?)"/)?.[1];
-
-        if (hrefVal && !hrefVal.startsWith('http')) {
-          const newHref = new URL(hrefVal, baseUrl).toString();
-          html = html.replace(href, `href="${newHref}"`);
-        }
+    const anchors = doc.querySelectorAll('a[href]');
+    for (const a of anchors) {
+      const href = a.getAttribute('href');
+      if (
+        href &&
+        !href.startsWith('http') &&
+        !href.startsWith('mailto:') &&
+        !href.startsWith('tel:') &&
+        !href.startsWith('#')
+      ) {
+        a.setAttribute('href', new URL(href, baseUrl).toString());
       }
     }
-    return html;
+
+    return doc.body.innerHTML;
   };
 
   renderer.blockquote = (quote) => {

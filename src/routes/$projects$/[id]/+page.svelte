@@ -1,9 +1,11 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+  import type { PageData } from './$types';
+  import { page } from '$app/state';
+
   import 'highlight.js/styles/github-dark-dimmed.css';
 
   import { projectDetail } from '$lib/api/projects';
-  import { onMount } from 'svelte';
-  import type { PageData } from './$types';
 
   import ProjectDetail from '$lib/components/sections/project-detail/ProjectDetail.svelte';
   import ProjectDetailError from '$lib/components/sections/project-detail/ProjectDetailError.svelte';
@@ -14,6 +16,8 @@
   }
 
   let { data }: Props = $props();
+
+  let currentPath = $derived(page.url.pathname);
 
   onMount(() => {
     data.projectService.fetchProjectDetail({ project: data.project, fetch: data.fetch });
@@ -29,7 +33,11 @@
 </svelte:head>
 
 <main>
-  {#if !$projectDetail}
+  {#if currentPath === '/$projects$/loading'}
+    <ProjectDetailLoading />
+  {:else if currentPath === '/$projects$/error'}
+    <ProjectDetailError project={$projectDetail} />
+  {:else if !$projectDetail}
     <ProjectDetailLoading />
   {:else if $projectDetail.name !== 'error' && $projectDetail.name !== 'limit'}
     <ProjectDetail project={$projectDetail} markdownPromise={data.markdownPromise} />

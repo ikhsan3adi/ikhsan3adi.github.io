@@ -8,7 +8,24 @@ export const load = (async ({ url, fetch }) => {
   const id = url.pathname.split('/').slice(-1)[0];
   const project: Project | undefined = initialProjects.find((project) => project.id === id);
 
-  if (project === undefined) throw error(404, 'Project not found');
+  if (project === undefined) {
+    if (
+      import.meta.env.DEV &&
+      (url.pathname === '/$projects$/error' || url.pathname === '/$projects$/loading')
+    ) {
+      return {
+        project: initialProjects[0],
+        projectService: projectService,
+        fetch: fetch,
+        markdownPromise: projectService.getProjectReadme({
+          project: initialProjects[0],
+          fetch: fetch
+        })
+      };
+    }
+
+    throw error(404, 'Project not found');
+  }
 
   const markdownPromise = project.readmeUrl
     ? projectService.getProjectReadme({ project: project, fetch: fetch })

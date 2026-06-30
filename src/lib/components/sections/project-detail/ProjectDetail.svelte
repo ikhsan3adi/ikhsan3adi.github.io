@@ -208,10 +208,12 @@
 
 <section class="bg-halftone bg-halftone-45">
   <div
-    class="mx-auto w-full max-w-screen-2xl px-8 sm:px-8 md:px-12 lg:px-16 xl:px-20 flex flex-col"
+    class="mx-auto w-full max-w-screen-2xl px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 flex flex-col"
   >
-    <div class="mt-24 p-2 sm:p-8 w-full bg-white dark:bg-slate-800">
-      <h1 class="dark:text-white mb-6 md:mb-8 lg:mb-12 xl:mb-16">{project.name}</h1>
+    <div
+      class="mt-20 p-6 sm:p-8 w-full bg-white dark:bg-slate-800 border-4 border-slate-900 dark:border-white overflow-clip"
+    >
+      <h1 class="dark:text-white mt-8 mb-6 md:mb-8 lg:mb-12 xl:mb-16">{project.name}</h1>
       <!-- Hero section -->
       <div
         class="w-full grid grid-cols-1 grid-flow-row grid-rows-2 xl:flex xl:flex-row-reverse xl:justify-between gap-4 md:gap-8 xl:gap-12 mb-24 xl:mb-32"
@@ -250,7 +252,7 @@
 
           <!-- Stars, forks, downloads -->
           <div
-            class="pt-4 flex flex-wrap gap-x-4 gap-y-1 w-full justify-center sm:justify-normal dark:text-white font-space-grotesk"
+            class="pt-4 flex flex-wrap gap-x-4 gap-y-1 w-full justify-center sm:justify-normal dark:text-white"
           >
             <div class="flex gap-2 items-center">
               <Fa icon={faStar} />
@@ -500,7 +502,7 @@
   :global(.markdown-content img) {
     max-width: 100%;
     height: auto;
-    margin: 1rem;
+    margin: 1rem 0;
   }
 
   :global(.markdown-content table) {
