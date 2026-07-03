@@ -105,8 +105,8 @@
     const emojis = res?.data;
 
     return marked.use(
-      { renderer: renderer(project.baseUrl, marked) },
-      markedBaseUrl(project.baseUrl),
+      { renderer: renderer(project.readmeBaseUrl, marked) },
+      markedBaseUrl(project.readmeBaseUrl),
       markedHighlight({
         langPrefix: 'hljs language-',
         highlight(code, lang) {
@@ -232,7 +232,7 @@
             <div
               class="dark:text-white text-wrap text-center font-cascadia-mono font-extrabold text-text text-2xl md:text-3xl lg:text-4xl"
             >
-              {project.imageText ?? 'Image not available'}
+              Image not available
             </div>
           </div>
 
@@ -242,7 +242,7 @@
                  border-4 border-slate-900 dark:border-white
                  cursor-crosshair duration-200 active:brightness-75"
             style="background-image: url('{project.imageUrl}');"
-            title={project.imageText ?? project.name}
+            title={project.name}
           ></div>
         </div>
 

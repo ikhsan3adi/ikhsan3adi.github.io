@@ -14,7 +14,7 @@
   import Fa from 'svelte-fa';
 
   interface Props {
-    project: ProjectDetail;
+    project: ProjectDetail | null;
   }
 
   let { project }: Props = $props();
@@ -25,7 +25,7 @@
       name: 'Error',
       url: '',
       description: 'An unexpected error occurred',
-      baseUrl: '',
+      readmeBaseUrl: '',
       imageUrl: '',
       tags: [],
       repositoryUrl: '',

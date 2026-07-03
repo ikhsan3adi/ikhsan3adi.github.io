@@ -3,9 +3,8 @@ interface Project {
   name: string;
   url: string;
   description?: string;
-  baseUrl: string;
+  readmeBaseUrl: string;
   imageUrl: string;
-  imageText?: string;
   readmeUrl?: string;
   tags: string[];
   starsCount?: number;

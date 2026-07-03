@@ -2,10 +2,6 @@ export function clamp(value: number, min: number, max: number): number {
   return Math.min(Math.max(value, min), max);
 }
 
-export function areSetsEqual(setA: Set<unknown>, setB: Set<unknown>): boolean {
-  return setA.size === setB.size && setA.isSubsetOf(setB) && setB.isSubsetOf(setA);
-}
-
 export function createSlug(headingText: string): string {
   return headingText
     .toLowerCase()

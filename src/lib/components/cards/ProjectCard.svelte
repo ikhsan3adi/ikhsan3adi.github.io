@@ -101,7 +101,7 @@
 </script>
 
 <!-- Shadow card -->
-<div in:scale|global out:scale class="w-full bg-slate-900 {cardColors[cardColor].dark.bg} flex">
+<div in:scale class="w-full bg-slate-900 {cardColors[cardColor].dark.bg} flex">
   <a href="/$projects$/{project.id}" class="w-full flex">
     <!-- Card -->
     <div
@@ -128,7 +128,7 @@
           <div
             class="dark:text-white text-center font-cascadia-mono font-extrabold text-text text-2xl md:text-3xl lg:text-4xl"
           >
-            {project.imageText ?? 'Image not available'}
+            Image not available
           </div>
         </div>
 
