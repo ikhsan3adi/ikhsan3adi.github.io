@@ -53,6 +53,7 @@
     x: 'dark:bg-indigo-100',
     codeforces: 'dark:bg-amber-400',
     gitlab: 'dark:bg-orange-400',
+    threads: 'dark:bg-neutral-100',
     'custom-3': 'dark:bg-custom-3'
   };
 
@@ -73,6 +74,7 @@
     x: 'dark:border-indigo-100',
     codeforces: 'dark:border-amber-400',
     gitlab: 'dark:border-orange-400',
+    threads: 'dark:border-neutral-100',
     'custom-3': 'dark:border-custom-3'
   };
 
@@ -93,6 +95,7 @@
     x: 'bg-indigo-100',
     codeforces: 'bg-amber-400',
     gitlab: 'bg-orange-400',
+    threads: 'bg-neutral-100',
     'custom-3': 'bg-custom-3'
   };
 
@@ -113,6 +116,7 @@
     x: 'dark:text-indigo-100',
     codeforces: 'dark:text-amber-400',
     gitlab: 'dark:text-orange-400',
+    threads: 'dark:text-neutral-100',
     'custom-3': 'dark:text-custom-3'
   };
 
