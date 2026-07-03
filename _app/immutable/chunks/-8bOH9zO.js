@@ -1,0 +1,1 @@
+import{wt as e}from"./CrJQrVBi.js";var t=e({y:0});export{t};
