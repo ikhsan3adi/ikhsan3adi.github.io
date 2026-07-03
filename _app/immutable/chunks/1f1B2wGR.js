@@ -1,0 +1,1 @@
+import{wt as e}from"./DIuvFKZC.js";var t=e({y:0});export{t};
