@@ -6,6 +6,7 @@ class ProjectStore {
   loading = $state(false);
   detailLoading = $state(false);
   error = $state<string | null>(null);
+  errorMessage = $state<string | null>(null);
   detailError = $state<string | null>(null);
   projectDetailId = $state<string | null>(null);
 }

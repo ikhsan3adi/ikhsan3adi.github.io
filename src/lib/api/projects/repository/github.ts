@@ -1,11 +1,10 @@
-import type { Project, ProjectDetail } from '../types';
-import type { ProjectRepository } from './types';
-
-interface RepoBase {
-  json: Record<string, unknown>;
-  downloadsCount: number;
-  pullRequestsCount: number;
-}
+import type {
+  Project,
+  ProjectDetail,
+  ProjectRepository,
+  Release,
+  RepoBase
+} from '$lib/api/projects';
 
 class GitHubRepository implements ProjectRepository {
   async fetchProject(project: Project, fetch: typeof globalThis.fetch): Promise<Project> {
@@ -31,7 +30,7 @@ class GitHubRepository implements ProjectRepository {
       description: (json.description as string | undefined) || project.description || undefined,
       tags: this.mergeTags(project.tags, json.language),
       repositoryUrl:
-        (json.svn_url as string) || project.url.replace('api.github.com/repos', 'github.com'),
+        (json.html_url as string) || project.url.replace('api.github.com/repos', 'github.com'),
       hasLivePreview: !!json.homepage,
       livePreviewUrl: (json.homepage as string) || undefined,
       starsCount: json.stargazers_count as number | undefined,
@@ -86,15 +85,18 @@ class GitHubRepository implements ProjectRepository {
 
         if (response.ok) return response;
 
-        if (response.status === 429 || response.status === 403) {
-          if (attempt < maxRetries - 1) {
+        if (attempt < maxRetries - 1) {
+          if (response.status === 429 || response.status === 403) {
             const delay = baseDelay * Math.pow(2, attempt);
             await new Promise((r) => setTimeout(r, delay));
             continue;
           }
         }
 
-        return response;
+        const body = await response.text().catch(() => '');
+        throw new Error(
+          `${response.status} ${response.statusText}${body ? `: ${body.slice(0, 120)}` : ''}`
+        );
       } catch (err) {
         lastError = err;
         if (attempt < maxRetries - 1) {
@@ -139,20 +141,50 @@ class GitHubRepository implements ProjectRepository {
 
   private async fetchDownloadsCount(url: string, fetch: typeof globalThis.fetch): Promise<number> {
     try {
-      const response = await fetch(`${url}/releases`, { method: 'GET' });
-      if (!response.ok) return 0;
-      const text = await response.text();
-      const releases = JSON.parse(text);
-      let count = 0;
-      for (let i = 0; i < (releases || []).length; ++i) {
-        for (let j = 0; j < (releases[i].assets || []).length; ++j) {
-          count += releases[i].assets[j].download_count || 0;
+      const perPage = 100;
+      const first = await fetch(`${url}/releases?per_page=${perPage}`, { method: 'GET' });
+      if (!first.ok) return 0;
+
+      const text = await first.text();
+      const firstPage = JSON.parse(text) as Release[];
+
+      if (!firstPage.length) return 0;
+
+      let count = this.sumDownloads(firstPage);
+
+      const linkHeader = first.headers.get('Link');
+      if (linkHeader) {
+        const match = linkHeader.match(/page=(\d+)>;\s*rel="last"/);
+        if (match) {
+          const lastPage = parseInt(match[1], 10);
+          if (lastPage > 1) {
+            const pages = Array.from({ length: lastPage - 1 }, (_, i) => i + 2);
+            const results = await Promise.all(
+              pages.map((page) =>
+                fetch(`${url}/releases?per_page=${perPage}&page=${page}`, { method: 'GET' })
+                  .then((r) => (r.ok ? r.text() : '[]'))
+                  .then((t) => this.sumDownloads(JSON.parse(t) as Release[]))
+              )
+            );
+            count += results.reduce((a, b) => a + b, 0);
+          }
         }
       }
+
       return count;
     } catch {
       return 0;
     }
+  }
+
+  private sumDownloads(releases: Release[]): number {
+    let count = 0;
+    for (let i = 0; i < releases.length; ++i) {
+      for (let j = 0; j < (releases[i].assets || []).length; ++j) {
+        count += releases[i].assets[j].download_count || 0;
+      }
+    }
+    return count;
   }
 }
 

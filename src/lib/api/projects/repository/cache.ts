@@ -1,11 +1,5 @@
 import { browser } from '$app/environment';
-import type { CacheStore } from './types';
-
-interface CacheEntry {
-  data: unknown;
-  version: string;
-  expiresAt?: number;
-}
+import type { CacheStore, CacheEntry } from './types';
 
 class LocalStorageCache implements CacheStore {
   private memoryCache = new Map<string, CacheEntry>();

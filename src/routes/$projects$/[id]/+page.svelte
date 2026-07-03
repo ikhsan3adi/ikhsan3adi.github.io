@@ -36,11 +36,19 @@
   {#if currentPath === '/$projects$/loading'}
     <ProjectDetailLoading />
   {:else if currentPath === '/$projects$/error'}
-    <ProjectDetailError project={projectStore.projectDetail} />
-  {:else if projectStore.detailLoading || !projectStore.projectDetail}
+    <ProjectDetailError
+      project={projectStore.projectDetail}
+      errorMessage={projectStore.detailError ?? undefined}
+    />
+  {:else if projectStore.detailLoading}
     <ProjectDetailLoading />
   {:else if projectStore.detailError}
-    <ProjectDetailError project={projectStore.projectDetail} />
+    <ProjectDetailError
+      project={projectStore.projectDetail}
+      errorMessage={projectStore.detailError ?? undefined}
+    />
+  {:else if !projectStore.projectDetail}
+    <ProjectDetailLoading />
   {:else}
     <ProjectDetail project={projectStore.projectDetail} markdownPromise={data.markdownPromise} />
   {/if}

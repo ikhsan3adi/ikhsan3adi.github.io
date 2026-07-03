@@ -128,7 +128,7 @@
           <div
             class="dark:text-white text-center font-cascadia-mono font-extrabold text-text text-2xl md:text-3xl lg:text-4xl"
           >
-            Image not available
+            {project.statusMessage ?? 'Image not available'}
           </div>
         </div>
 

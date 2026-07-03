@@ -3,12 +3,22 @@ import type { ProjectRepository } from './repository';
 import { projectStore } from './store.svelte';
 import type { Project } from './types';
 
+function toStatusMessage(reason: string): string {
+  if (/rate\s*limit/i.test(reason)) return 'Rate limited';
+  if (/Failed to fetch|NetworkError|network/i.test(reason)) return 'No connection';
+  if (/not found|404/i.test(reason)) return 'Not found';
+  if (/forbidden|403/i.test(reason)) return 'Access denied';
+  if (/timeout|timed?\s*out/i.test(reason)) return 'Timed out';
+  return 'Could not load';
+}
+
 class ProjectService {
   constructor(private repo: ProjectRepository) {}
 
   async init(fetch: typeof globalThis.fetch): Promise<void> {
     projectStore.loading = true;
     projectStore.error = null;
+    projectStore.errorMessage = null;
     projectStore.projects = [...initialProjects];
 
     const results = await Promise.allSettled(
@@ -17,17 +27,29 @@ class ProjectService {
 
     const updated = [...projectStore.projects];
     let failedCount = 0;
+    let firstError = '';
     for (let i = 0; i < results.length; i++) {
       const r = results[i];
       if (r.status === 'fulfilled') {
         updated[i] = r.value;
       } else {
         failedCount++;
+        const reason = String(r.reason);
+        if (!firstError) firstError = reason;
+        updated[i] = {
+          ...updated[i],
+          statusMessage: toStatusMessage(reason),
+          description: updated[i].description || updated[i].name
+        };
       }
     }
 
+    if (failedCount > 0) {
+      projectStore.errorMessage = `${failedCount} of ${results.length} failed: ${firstError}`;
+    }
+
     if (failedCount === results.length) {
-      projectStore.error = 'Failed to fetch project data';
+      projectStore.error = toStatusMessage(firstError);
     }
 
     projectStore.projects = updated;
@@ -42,8 +64,8 @@ class ProjectService {
 
     try {
       projectStore.projectDetail = await this.repo.fetchDetail(project, fetch);
-    } catch {
-      projectStore.detailError = 'Failed to load project details';
+    } catch (err) {
+      projectStore.detailError = toStatusMessage(String(err));
     } finally {
       projectStore.detailLoading = false;
     }

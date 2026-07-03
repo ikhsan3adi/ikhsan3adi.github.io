@@ -98,13 +98,7 @@
       <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
         {#if projectStore.error && !projectStore.loading}
           <div class="w-full flex flex-wrap justify-center">
-            <ProjectCardError
-              project={{
-                ...(projectStore.projects[0] ?? initialProjects[0]),
-                name: 'error',
-                description: projectStore.error
-              }}
-            />
+            <ProjectCardError errorMessage={projectStore.error} />
           </div>
         {:else if !isIntersecting}
           <div class="w-full flex flex-wrap justify-center">

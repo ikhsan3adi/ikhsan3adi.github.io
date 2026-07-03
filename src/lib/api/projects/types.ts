@@ -12,6 +12,7 @@ interface Project {
   downloadsCount?: number;
   issuesCount?: number;
   pullRequestsCount?: number;
+  statusMessage?: string;
 }
 
 interface ProjectDetail extends Project {
