@@ -14,6 +14,7 @@ name: 'CodeQL Advanced'
 on:
   schedule:
     - cron: '22 5 * * 5'
+  workflow_dispatch:
 
 jobs:
   analyze:
@@ -42,7 +43,7 @@ jobs:
           - language: actions
             build-mode: none
           - language: javascript-typescript
-            build-mode: manual
+            build-mode: none
         # CodeQL supports the following values keywords for 'language': 'actions', 'c-cpp', 'csharp', 'go', 'java-kotlin', 'javascript-typescript', 'python', 'ruby', 'rust', 'swift'
         # Use `c-cpp` to analyze code written in C, C++ or both
         # Use 'java-kotlin' to analyze code written in Java, Kotlin or both
@@ -54,6 +55,26 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Cache Bun dependencies
+        id: cache-bun-dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-${{ matrix.bun }}-bun-${{ hashFiles('**/bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.bun }}-bun-
+
+      - name: Install Dependencies
+        run: bun ci
+
+      - name: Build
+        run: bun run build
 
       # Add any setup steps before running the `github/codeql-action/init` action.
       # This includes steps like installing compilers or runtimes (`actions/setup-node`
@@ -89,7 +110,6 @@ jobs:
             'your code, for example:'
           echo '  make bootstrap'
           echo '  make release'
-          bun run build
           exit 1
 
       - name: Perform CodeQL Analysis
