@@ -63,7 +63,7 @@ class ProjectService {
     projectStore.projectDetail = null;
 
     try {
-      projectStore.projectDetail = await this.repo.fetchDetail(project, fetch);
+      projectStore.projectDetail = await this.repo.fetchProject(project, fetch);
     } catch (err) {
       projectStore.detailError = toStatusMessage(String(err));
     } finally {

@@ -1,4 +1,4 @@
-import type { CacheStore, Project, ProjectDetail, ProjectRepository } from '$lib/api/projects';
+import type { CacheStore, Project, ProjectRepository } from '$lib/api/projects';
 
 const TTL_STATS = 60 * 60 * 1000;
 const TTL_README = 30 * 60 * 1000;
@@ -20,22 +20,6 @@ class CachedRepository implements ProjectRepository {
       return result;
     } catch (err) {
       const stale = this.cache.peek<Project>(cacheKey);
-      if (stale) return stale;
-      throw err;
-    }
-  }
-
-  async fetchDetail(project: Project, fetch: typeof globalThis.fetch): Promise<ProjectDetail> {
-    const cacheKey = `detail:${project.id}`;
-    const cached = this.cache.get<ProjectDetail>(cacheKey);
-    if (cached) return cached;
-
-    try {
-      const result = await this.inner.fetchDetail(project, fetch);
-      this.cache.set(cacheKey, result, TTL_STATS);
-      return result;
-    } catch (err) {
-      const stale = this.cache.peek<ProjectDetail>(cacheKey);
       if (stale) return stale;
       throw err;
     }

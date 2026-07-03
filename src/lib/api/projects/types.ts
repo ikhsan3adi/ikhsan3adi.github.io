@@ -13,12 +13,9 @@ interface Project {
   issuesCount?: number;
   pullRequestsCount?: number;
   statusMessage?: string;
-}
-
-interface ProjectDetail extends Project {
-  repositoryUrl: string;
-  hasLivePreview: boolean;
+  repositoryUrl?: string;
+  hasLivePreview?: boolean;
   livePreviewUrl?: string;
 }
 
-export type { Project, ProjectDetail };
+export type { Project };

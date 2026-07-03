@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ProjectDetail } from '$lib/api/projects';
+  import type { Project } from '$lib/api/projects';
 
   import {
     faArrowLeft,
@@ -16,13 +16,13 @@
   import { tagColors } from '$lib/components/colors';
 
   interface Props {
-    project: ProjectDetail | null;
+    project: Project | null;
     errorMessage?: string;
   }
 
   let { project, errorMessage = 'Could not load project data' }: Props = $props();
 
-  let errorProject = $derived<ProjectDetail>(
+  let errorProject = $derived<Project>(
     project ?? {
       id: 'error',
       name: 'Error',
@@ -30,9 +30,7 @@
       description: errorMessage,
       readmeBaseUrl: '',
       imageUrl: '',
-      tags: [],
-      repositoryUrl: '',
-      hasLivePreview: false
+      tags: []
     }
   );
 </script>

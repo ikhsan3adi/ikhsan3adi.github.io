@@ -1,8 +1,8 @@
-import type { Project, ProjectDetail } from './types';
+import type { Project } from './types';
 
 class ProjectStore {
   projects = $state<Project[]>([]);
-  projectDetail = $state<ProjectDetail | null>(null);
+  projectDetail = $state<Project | null>(null);
   loading = $state(false);
   detailLoading = $state(false);
   error = $state<string | null>(null);

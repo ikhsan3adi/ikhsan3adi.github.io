@@ -1,10 +1,4 @@
-import type {
-  Project,
-  ProjectDetail,
-  ProjectRepository,
-  Release,
-  RepoBase
-} from '$lib/api/projects';
+import type { Project, ProjectRepository, Release, RepoBase } from '$lib/api/projects';
 
 class GitHubRepository implements ProjectRepository {
   async fetchProject(project: Project, fetch: typeof globalThis.fetch): Promise<Project> {
@@ -18,26 +12,11 @@ class GitHubRepository implements ProjectRepository {
       forksCount: json.forks as number | undefined,
       downloadsCount,
       issuesCount: json.open_issues_count as number | undefined,
-      pullRequestsCount
-    };
-  }
-
-  async fetchDetail(project: Project, fetch: typeof globalThis.fetch): Promise<ProjectDetail> {
-    const { json, downloadsCount, pullRequestsCount } = await this.fetchRepoBase(project, fetch);
-
-    return {
-      ...project,
-      description: (json.description as string | undefined) || project.description || undefined,
-      tags: this.mergeTags(project.tags, json.language),
+      pullRequestsCount,
       repositoryUrl:
         (json.html_url as string) || project.url.replace('api.github.com/repos', 'github.com'),
       hasLivePreview: !!json.homepage,
-      livePreviewUrl: (json.homepage as string) || undefined,
-      starsCount: json.stargazers_count as number | undefined,
-      forksCount: json.forks as number | undefined,
-      downloadsCount,
-      issuesCount: json.open_issues_count as number | undefined,
-      pullRequestsCount
+      livePreviewUrl: (json.homepage as string) || undefined
     };
   }
 

@@ -17,7 +17,7 @@
   } from '@fortawesome/free-solid-svg-icons';
   import Fa from 'svelte-fa';
 
-  import type { ProjectDetail } from '$lib/api/projects';
+  import type { Project } from '$lib/api/projects';
   import { type TagColorKey, type TagColors, tagColors } from '$lib/components/colors';
 
   import { scrollState } from '$lib/scroll.svelte';
@@ -26,7 +26,7 @@
   import Button from '$lib/components/buttons/Button.svelte';
 
   interface Props {
-    project: ProjectDetail;
+    project: Project;
     markdownPromise: Promise<string | null>;
   }
 
