@@ -1,4 +1,4 @@
-interface Project {
+export interface Project {
   id: string;
   name: string;
   url: string;
@@ -17,5 +17,3 @@ interface Project {
   hasLivePreview?: boolean;
   livePreviewUrl?: string;
 }
-
-export type { Project };

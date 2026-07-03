@@ -1,7 +1,7 @@
 const githubApiLink = 'https://api.github.com/repos/ikhsan3adi';
 
 /** @type {import('./types').Project[]} */
-const initialProjects = [
+export const initialProjects = [
   {
     id: 'ruwet-meter',
     name: 'RuwetMeter',
@@ -138,5 +138,3 @@ const initialProjects = [
     tags: ['codeigniter', 'mysql']
   }
 ];
-
-export { initialProjects };

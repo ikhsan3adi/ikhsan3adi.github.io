@@ -1,11 +1,11 @@
 import type { Project } from '$lib/api/projects';
 
-interface ProjectRepository {
+export interface ProjectRepository {
   fetchProject(project: Project, fetch: typeof globalThis.fetch): Promise<Project>;
   fetchReadme(project: Project, fetch: typeof globalThis.fetch): Promise<string | null>;
 }
 
-interface CacheStore {
+export interface CacheStore {
   get<T>(key: string): T | null;
   peek<T>(key: string): T | null;
   set<T>(key: string, value: T, ttlMs?: number): void;
@@ -13,24 +13,22 @@ interface CacheStore {
   clear(): void;
 }
 
-interface CacheEntry {
+export interface CacheEntry {
   data: unknown;
   version: string;
   expiresAt?: number;
 }
 
-interface ReleaseAsset {
+export interface ReleaseAsset {
   download_count: number;
 }
 
-interface Release {
+export interface Release {
   assets: ReleaseAsset[];
 }
 
-interface RepoBase {
+export interface RepoBase {
   json: Record<string, unknown>;
   downloadsCount: number;
   pullRequestsCount: number;
 }
-
-export type { CacheEntry, CacheStore, ProjectRepository, Release, ReleaseAsset, RepoBase };

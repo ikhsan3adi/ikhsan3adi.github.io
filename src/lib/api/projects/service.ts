@@ -3,16 +3,7 @@ import type { ProjectRepository } from './repository';
 import { projectStore } from './store.svelte';
 import type { Project } from './types';
 
-function toStatusMessage(reason: string): string {
-  if (/rate\s*limit/i.test(reason)) return 'Rate limited';
-  if (/Failed to fetch|NetworkError|network/i.test(reason)) return 'No connection';
-  if (/not found|404/i.test(reason)) return 'Not found';
-  if (/forbidden|403/i.test(reason)) return 'Access denied';
-  if (/timeout|timed?\s*out/i.test(reason)) return 'Timed out';
-  return 'Could not load';
-}
-
-class ProjectService {
+export class ProjectService {
   constructor(private repo: ProjectRepository) {}
 
   async init(fetch: typeof globalThis.fetch): Promise<void> {
@@ -38,7 +29,7 @@ class ProjectService {
         if (!firstError) firstError = reason;
         updated[i] = {
           ...updated[i],
-          statusMessage: toStatusMessage(reason),
+          statusMessage: this.toStatusMessage(reason),
           description: updated[i].description || updated[i].name
         };
       }
@@ -49,7 +40,7 @@ class ProjectService {
     }
 
     if (failedCount === results.length) {
-      projectStore.error = toStatusMessage(firstError);
+      projectStore.error = this.toStatusMessage(firstError);
     }
 
     projectStore.projects = updated;
@@ -65,7 +56,7 @@ class ProjectService {
     try {
       projectStore.projectDetail = await this.repo.fetchProject(project, fetch);
     } catch (err) {
-      projectStore.detailError = toStatusMessage(String(err));
+      projectStore.detailError = this.toStatusMessage(String(err));
     } finally {
       projectStore.detailLoading = false;
     }
@@ -74,6 +65,13 @@ class ProjectService {
   async getReadme(project: Project, fetch: typeof globalThis.fetch): Promise<string | null> {
     return this.repo.fetchReadme(project, fetch);
   }
-}
 
-export { ProjectService };
+  private toStatusMessage(reason: string): string {
+    if (/rate\s*limit/i.test(reason)) return 'Rate limited';
+    if (/Failed to fetch|NetworkError|network/i.test(reason)) return 'No connection';
+    if (/not found|404/i.test(reason)) return 'Not found';
+    if (/forbidden|403/i.test(reason)) return 'Access denied';
+    if (/timeout|timed?\s*out/i.test(reason)) return 'Timed out';
+    return 'Could not load';
+  }
+}

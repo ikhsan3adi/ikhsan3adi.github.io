@@ -1,6 +1,6 @@
 const LBULLET = '✦';
 
-const topMarqueeTexts = [
+export const topMarqueeTexts = [
   'Welcome to my website!',
   'A Linux user',
   'Always facing the terminal',
@@ -10,7 +10,7 @@ const topMarqueeTexts = [
   'Power user'
 ].map((e) => `${LBULLET} ${e}`);
 
-const bottomMarqueeTexts = [
+export const bottomMarqueeTexts = [
   'Projects',
   'Apps',
   'Websites',
@@ -19,5 +19,3 @@ const bottomMarqueeTexts = [
   'Open-source contributions',
   'Not showing sus projects here'
 ].map((e) => `${LBULLET} ${e}`);
-
-export { bottomMarqueeTexts, topMarqueeTexts };

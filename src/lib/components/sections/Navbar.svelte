@@ -81,7 +81,7 @@
       <!-- Nav links -->
       {#if showNavLinks}
         <div
-          class="hidden w-full pr-12 xl:pr-16 pl-16 xl:pl-24 lg:flex justify-evenly flex-wrap items-center text-text
+          class="hidden w-full pr-12 xl:pr-16 pl-16 xl:pl-24 lg:flex justify-evenly flex-wrap items-center text-text transition-colors duration-800 ease-in-out
 					{isBgTransparent ? 'dark:text-white' : 'dark:text-text'}"
         >
           {#each navLinks as link}

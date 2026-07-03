@@ -3,7 +3,7 @@ import type { CacheStore, Project, ProjectRepository } from '$lib/api/projects';
 const TTL_STATS = 60 * 60 * 1000;
 const TTL_README = 30 * 60 * 1000;
 
-class CachedRepository implements ProjectRepository {
+export class CachedRepository implements ProjectRepository {
   constructor(
     private inner: ProjectRepository,
     private cache: CacheStore
@@ -43,5 +43,3 @@ class CachedRepository implements ProjectRepository {
     }
   }
 }
-
-export { CachedRepository };

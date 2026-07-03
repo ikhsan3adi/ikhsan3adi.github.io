@@ -1,7 +1,7 @@
 import { browser } from '$app/environment';
 import type { CacheStore, CacheEntry } from './types';
 
-class LocalStorageCache implements CacheStore {
+export class LocalStorageCache implements CacheStore {
   private memoryCache = new Map<string, CacheEntry>();
 
   constructor(
@@ -107,5 +107,3 @@ class LocalStorageCache implements CacheStore {
     }
   }
 }
-
-export { LocalStorageCache };

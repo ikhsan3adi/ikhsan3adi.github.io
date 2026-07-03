@@ -1,6 +1,6 @@
 import type { Project, ProjectRepository, Release, RepoBase } from '$lib/api/projects';
 
-class GitHubRepository implements ProjectRepository {
+export class GitHubRepository implements ProjectRepository {
   async fetchProject(project: Project, fetch: typeof globalThis.fetch): Promise<Project> {
     const { json, downloadsCount, pullRequestsCount } = await this.fetchRepoBase(project, fetch);
 
@@ -166,5 +166,3 @@ class GitHubRepository implements ProjectRepository {
     return count;
   }
 }
-
-export { GitHubRepository };
