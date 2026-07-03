@@ -3,9 +3,8 @@ interface Project {
   name: string;
   url: string;
   description?: string;
-  baseUrl: string;
+  readmeBaseUrl: string;
   imageUrl: string;
-  imageText?: string;
   readmeUrl?: string;
   tags: string[];
   starsCount?: number;
@@ -13,12 +12,10 @@ interface Project {
   downloadsCount?: number;
   issuesCount?: number;
   pullRequestsCount?: number;
-}
-
-interface ProjectDetail extends Project {
-  repositoryUrl: string;
-  hasLivePreview: boolean;
+  statusMessage?: string;
+  repositoryUrl?: string;
+  hasLivePreview?: boolean;
   livePreviewUrl?: string;
 }
 
-export type { Project, ProjectDetail };
+export type { Project };

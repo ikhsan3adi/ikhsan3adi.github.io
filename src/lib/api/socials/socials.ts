@@ -43,6 +43,13 @@ export const socials: Social[] = [
     icon: 'simple-icons:instagram'
   },
   {
+    social: 'Threads',
+    name: `@${USERNAME}`,
+    link: 'https://www.threads.net/@ikhsan3adi',
+    colorVariant: 'threads',
+    icon: 'simple-icons:threads'
+  },
+  {
     social: 'X',
     name: `@${USERNAME}`,
     link: 'https://x.com/ikhsan3adi',

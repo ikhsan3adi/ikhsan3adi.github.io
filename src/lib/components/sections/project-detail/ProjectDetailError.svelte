@@ -1,7 +1,6 @@
 <script lang="ts">
-  import type { ProjectDetail } from '$lib/api/projects';
+  import type { Project } from '$lib/api/projects';
 
-  import Button from '$lib/components/buttons/Button.svelte';
   import {
     faArrowLeft,
     faBug,
@@ -13,23 +12,25 @@
   } from '@fortawesome/free-solid-svg-icons';
   import Fa from 'svelte-fa';
 
+  import Button from '$lib/components/buttons/Button.svelte';
+  import { tagColors } from '$lib/components/colors';
+
   interface Props {
-    project: ProjectDetail;
+    project: Project | null;
+    errorMessage?: string;
   }
 
-  let { project }: Props = $props();
+  let { project, errorMessage = 'Could not load project data' }: Props = $props();
 
-  let errorProject = $derived<ProjectDetail>(
+  let errorProject = $derived<Project>(
     project ?? {
       id: 'error',
       name: 'Error',
       url: '',
-      description: 'An unexpected error occurred',
-      baseUrl: '',
+      description: errorMessage,
+      readmeBaseUrl: '',
       imageUrl: '',
-      tags: [],
-      repositoryUrl: '',
-      hasLivePreview: false
+      tags: []
     }
   );
 </script>
@@ -50,23 +51,23 @@
         <div
           class="w-full bg-red-600 dark:bg-red-400 min-h-62.5 md:min-h-80 flex p-2 border-4 border-slate-900 dark:border-slate-700"
         >
-          <div class="m-auto inline-flex flex-wrap gap-2 justify-center items-center">
+          <div class="m-auto inline-flex flex-wrap gap-2 justify-center items-center animate-pulse">
             <div
-              class="text-center text-white dark:text-text font-cascadia-mono font-extrabold text-4xl md:text-5xl lg:text-6xl animate-pulse"
+              class="text-center text-white dark:text-text font-cascadia-mono font-extrabold text-4xl md:text-5xl lg:text-6xl"
             >
               <Fa icon={faWarning} />
             </div>
             <div
               class="text-wrap font-cascadia-mono font-extrabold text-center text-white dark:text-text text-2xl md:text-3xl lg:text-4xl"
             >
-              {errorProject.description}
+              Failed to load
             </div>
           </div>
         </div>
 
         <!-- description -->
         <div class="w-full">
-          <p class="dark:text-slate-300 text-center sm:text-left">{errorProject.description}</p>
+          <p class="dark:text-slate-300 text-center sm:text-left">{errorMessage}</p>
 
           <!-- Stars, forks, downloads -->
           <div
@@ -104,7 +105,8 @@
             class="flex flex-wrap w-full justify-center sm:justify-start items-center gap-2 py-4 overflow-hidden"
           >
             <p
-              class="dark:bg-slate-800 border-slate-900 dark:text-slate-300 dark:border-slate-300 max-sm:text-sm px-2 sm:px-4 py-1 h-max border-2"
+              class="{tagColors.nestjs.bg} {tagColors.nestjs.border} {tagColors.nestjs.text}
+								dark:bg-slate-800 max-sm:text-sm px-2 sm:px-4 py-1 h-max border-2 border-slate-900"
             >
               #error
             </p>

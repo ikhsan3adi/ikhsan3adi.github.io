@@ -5,7 +5,7 @@
 
   import 'highlight.js/styles/github-dark-dimmed.css';
 
-  import { projectDetail } from '$lib/api/projects';
+  import { projectStore } from '$lib/api/projects';
 
   import ProjectDetail from '$lib/components/sections/project-detail/ProjectDetail.svelte';
   import ProjectDetailError from '$lib/components/sections/project-detail/ProjectDetailError.svelte';
@@ -20,7 +20,7 @@
   let currentPath = $derived(page.url.pathname);
 
   onMount(() => {
-    data.projectService.fetchProjectDetail({ project: data.project, fetch: data.fetch });
+    data.projectService.openDetail(data.project, data.fetch);
   });
 </script>
 
@@ -36,12 +36,20 @@
   {#if currentPath === '/$projects$/loading'}
     <ProjectDetailLoading />
   {:else if currentPath === '/$projects$/error'}
-    <ProjectDetailError project={$projectDetail} />
-  {:else if !$projectDetail}
+    <ProjectDetailError
+      project={projectStore.projectDetail}
+      errorMessage={projectStore.detailError ?? undefined}
+    />
+  {:else if projectStore.detailLoading}
     <ProjectDetailLoading />
-  {:else if $projectDetail.name !== 'error' && $projectDetail.name !== 'limit'}
-    <ProjectDetail project={$projectDetail} markdownPromise={data.markdownPromise} />
+  {:else if projectStore.detailError}
+    <ProjectDetailError
+      project={projectStore.projectDetail}
+      errorMessage={projectStore.detailError ?? undefined}
+    />
+  {:else if !projectStore.projectDetail}
+    <ProjectDetailLoading />
   {:else}
-    <ProjectDetailError project={$projectDetail} />
+    <ProjectDetail project={projectStore.projectDetail} markdownPromise={data.markdownPromise} />
   {/if}
 </main>

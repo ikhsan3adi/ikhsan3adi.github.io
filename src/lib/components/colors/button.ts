@@ -16,6 +16,7 @@ interface ButtonColorVariants {
   x: string;
   codeforces: string;
   gitlab: string;
+  threads: string;
 }
 
 export type { ButtonColorVariants };

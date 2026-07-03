@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
-  import { initialProjects, projects, type ProjectService } from '$lib/api/projects';
+  import { initialProjects, ProjectService, projectStore } from '$lib/api/projects';
   import { randomizeElements, type CardColors } from '$lib/components/colors';
 
   import ProjectCard from '$lib/components/cards/ProjectCard.svelte';
@@ -31,16 +31,15 @@
 
   const cardColors = randomizeElements(cardColorVariants, initialProjects.length);
 
-  let fetchComplete = $state(false);
+  let fetchResolve: () => void;
+  const fetchDone = new Promise<void>((r) => {
+    fetchResolve = r;
+  });
 
   onMount(async () => {
     console.log('Fetching projects');
-
-    await Promise.all(
-      initialProjects.map((project) => projectService.fetchProject({ project, fetch }))
-    );
-
-    fetchComplete = true;
+    await projectService.init(fetch);
+    fetchResolve();
   });
 
   let isIntersecting = $state(false);
@@ -53,9 +52,7 @@
         if (!entry.isIntersecting) return;
 
         setTimeout(async () => {
-          while (!fetchComplete) {
-            await new Promise((r) => setTimeout(r, 500));
-          }
+          await fetchDone;
 
           isIntersecting = true;
           for (let i = 0; i < initialProjects.length; i++) {
@@ -99,17 +96,17 @@
 
       <!-- Projects -->
       <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-        {#if !isIntersecting}
+        {#if projectStore.error && !projectStore.loading}
+          <div class="w-full flex flex-wrap justify-center">
+            <ProjectCardError errorMessage={projectStore.error} />
+          </div>
+        {:else if !isIntersecting}
           <div class="w-full flex flex-wrap justify-center">
             <ProjectCardLoading />
           </div>
-        {:else if $projects.length == 1 && ($projects[0].name === 'error' || $projects[0].name === 'limit')}
-          <div class="w-full flex flex-wrap justify-center">
-            <ProjectCardError project={$projects[0]} />
-          </div>
         {:else}
           <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5 xl:gap-6 items-stretch">
-            {#each $projects.slice(0, visibleCount) as project, i}
+            {#each projectStore.projects.slice(0, visibleCount) as project, i}
               <ProjectCard {project} cardColor={cardColors[i]} />
             {/each}
           </div>
