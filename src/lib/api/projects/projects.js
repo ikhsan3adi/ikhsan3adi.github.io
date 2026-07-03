@@ -7,11 +7,24 @@ const initialProjects = [
     name: 'RuwetMeter',
     url: `${githubApiLink}/RuwetMeter`,
     description:
-      'AI Agent buat mantau keruwetan Indonesia. Scrape berita, analisis pakai LLM, dengan chatbot RAG interaktif. ',
+      'AI Agent buat mantau keruwetan Indonesia. Scrape berita, analisis pakai LLM, dengan chatbot RAG interaktif.',
     baseUrl: 'https://github.com/ikhsan3adi/RuwetMeter/raw/master/',
     imageUrl: 'https://github.com/ikhsan3adi/RuwetMeter/raw/master/img/RuwetMeter.png',
     readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/RuwetMeter/master/README.md',
     tags: ['ai-agent', 'chatbot', 'rag', 'postgresql', 'pgvector', 'rss']
+  },
+  {
+    id: 'ngasih-tau-ada-bis-di-sarijadi-atau-nggak',
+    name: 'Ngasih Tau Ada Bis di Sarijadi Atau Nggak',
+    url: `${githubApiLink}/ngasih-tau-ada-bis-di-sarijadi-atau-nggak`,
+    description:
+      'Small side project to monitor bus positions in Sarijadi area and notify when buses enter/exit geofence zones. Maps bus movements, sends Telegram notifications with live location updates.',
+    baseUrl: 'https://github.com/ikhsan3adi/ngasih-tau-ada-bis-di-sarijadi-atau-nggak/raw/master/',
+    imageUrl:
+      'https://repository-images.githubusercontent.com/1260532468/31892f37-4a2e-47ea-8c30-4ee5007f0dce',
+    readmeUrl:
+      'https://raw.githubusercontent.com/ikhsan3adi/ngasih-tau-ada-bis-di-sarijadi-atau-nggak/master/README.md',
+    tags: ['typescript', 'bun', 'telegram', 'geofence', 'bus-tracking', 'react', 'vite']
   },
   {
     id: 'kegiatin',
@@ -102,6 +115,15 @@ const initialProjects = [
     readmeUrl:
       'https://raw.githubusercontent.com/ikhsan3adi/sistem-perpustakaan-qr-code/main/README.md',
     tags: ['codeigniter', 'mysql', 'bootstrap']
+  },
+  {
+    id: 'flutter-auction-app',
+    name: 'Flutter Auction App',
+    url: `${githubApiLink}/flutter-auction-app`,
+    baseUrl: 'https://github.com/ikhsan3adi/flutter-auction-app/raw/master/',
+    imageUrl: 'https://github.com/ikhsan3adi/Flutter-Auction-App/raw/master/images/banner.png',
+    readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/flutter-auction-app/master/README.md',
+    tags: ['flutter', 'codeigniter', 'mysql']
   },
   {
     id: 'absensi-sekolah-qr-code',

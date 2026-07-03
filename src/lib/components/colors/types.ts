@@ -24,6 +24,9 @@ interface TagColors {
   pgvector: TagColor;
   'ai-agent': TagColor;
   chatbot: TagColor;
+  bun: TagColor;
+  react: TagColor;
+  telegram: TagColor;
 }
 
 interface TagColorKey {

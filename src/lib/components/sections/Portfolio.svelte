@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+
   import { initialProjects, projects, type ProjectService } from '$lib/api/projects';
   import { randomizeElements, type CardColors } from '$lib/components/colors';
 
@@ -29,24 +31,40 @@
 
   const cardColors = randomizeElements(cardColorVariants, initialProjects.length);
 
-  let isIntersecting = false;
+  let fetchComplete = $state(false);
 
-  // Fetch project when this section is appeared
+  onMount(async () => {
+    console.log('Fetching projects');
+
+    await Promise.all(
+      initialProjects.map((project) => projectService.fetchProject({ project, fetch }))
+    );
+
+    fetchComplete = true;
+  });
+
+  let isIntersecting = $state(false);
+  let visibleCount = $state(0);
+  const DELAY = 1676;
+
   function checkIntersecting(node: Element) {
     const observer: IntersectionObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
 
         setTimeout(async () => {
-          console.log('Fetching projects');
-
-          await Promise.all(
-            initialProjects.map((project) => projectService.fetchProject({ project, fetch }))
-          );
+          while (!fetchComplete) {
+            await new Promise((r) => setTimeout(r, 500));
+          }
 
           isIntersecting = true;
+          for (let i = 0; i < initialProjects.length; i++) {
+            visibleCount = i + 1;
+            await new Promise((r) => setTimeout(r, 367));
+          }
+
           observer.disconnect();
-        }, 500);
+        }, DELAY);
       });
     });
 
@@ -81,7 +99,7 @@
 
       <!-- Projects -->
       <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-        {#if $projects.length == 0}
+        {#if !isIntersecting}
           <div class="w-full flex flex-wrap justify-center">
             <ProjectCardLoading />
           </div>
@@ -91,7 +109,7 @@
           </div>
         {:else}
           <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5 xl:gap-6 items-stretch">
-            {#each $projects as project, i}
+            {#each $projects.slice(0, visibleCount) as project, i}
               <ProjectCard {project} cardColor={cardColors[i]} />
             {/each}
           </div>

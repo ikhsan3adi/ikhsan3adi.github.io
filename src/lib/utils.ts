@@ -1,8 +1,12 @@
-export function clamp(value: number, min: number, max: number) {
+export function clamp(value: number, min: number, max: number): number {
   return Math.min(Math.max(value, min), max);
 }
 
-export function createSlug(headingText: string) {
+export function areSetsEqual(setA: Set<unknown>, setB: Set<unknown>): boolean {
+  return setA.size === setB.size && setA.isSubsetOf(setB) && setB.isSubsetOf(setA);
+}
+
+export function createSlug(headingText: string): string {
   return headingText
     .toLowerCase()
     .trim()
@@ -12,7 +16,7 @@ export function createSlug(headingText: string) {
     .replace(/^-+|-+$/g, '');
 }
 
-export function stripHtmlTagsDOM(htmlString: string) {
+export function stripHtmlTagsDOM(htmlString: string): string {
   const parser = new DOMParser();
   const doc = parser.parseFromString(htmlString, 'text/html');
   return doc.body.textContent || '';

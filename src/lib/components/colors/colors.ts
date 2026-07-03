@@ -96,6 +96,21 @@ export const tagColors: TagColors = {
     bg: 'bg-yellow-400 dark:bg-slate-800',
     border: 'dark:border-yellow-400',
     text: 'dark:text-yellow-400'
+  },
+  bun: {
+    bg: 'bg-amber-100 dark:bg-slate-800',
+    border: 'dark:border-amber-100',
+    text: 'dark:text-amber-100'
+  },
+  react: {
+    bg: 'bg-cyan-400 dark:bg-slate-800',
+    border: 'dark:border-cyan-400',
+    text: 'dark:text-cyan-400'
+  },
+  telegram: {
+    bg: 'bg-blue-400 dark:bg-slate-800',
+    border: 'dark:border-blue-400',
+    text: 'dark:text-blue-400'
   }
 };
 

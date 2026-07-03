@@ -1,6 +1,8 @@
 import { browser } from '$app/environment';
-import { projectDetailStore, projectsStore } from './store';
+import { areSetsEqual } from '$lib/utils';
+import { initialProjects } from './projects';
 import { ProjectService } from './service';
+import { projectDetailStore, projectsStore } from './store';
 import type { Project, ProjectDetail } from './types';
 
 /**
@@ -9,9 +11,75 @@ import type { Project, ProjectDetail } from './types';
  * during development.
  */
 class LocalStorageProjectService implements ProjectService {
-  constructor() {
+  constructor(_fetch?: (input: URL | RequestInfo, init?: RequestInit) => Promise<Response>) {
     console.log(`Using ${this.constructor.name}`);
+    try {
+      if (browser) {
+        const remoteProjectService = new ProjectService();
+
+        const storedProjects = JSON.parse(localStorage.getItem('projects') ?? '[]') as Project[];
+
+        const storedIdsSet = new Set(storedProjects.map((p) => p.id));
+        const initialIdsSet = new Set(initialProjects.map((p) => p.id));
+
+        if (!areSetsEqual(storedIdsSet, initialIdsSet)) {
+          Promise.all(
+            initialProjects.map((p) =>
+              remoteProjectService.fetchProject({
+                project: p,
+                fetch: _fetch ?? fetch
+              })
+            )
+          ).then(() => {
+            console.log('Synced stored localStorage projects.');
+            this.storedProjects = JSON.parse(localStorage.getItem('projects') ?? '[]') as Project[];
+          });
+        } else {
+          this.storedProjects = JSON.parse(localStorage.getItem('projects') ?? '[]') as Project[];
+        }
+
+        for (const project of initialProjects) {
+          const key = `project-detail:${project.id}`;
+          const readmeKey = `project-readme:${project.id}`;
+          if (!localStorage.getItem(key)) {
+            remoteProjectService
+              .fetchProjectDetail({ project, fetch: _fetch ?? fetch })
+              .then(() => {
+                console.log(`Synced stored localStorage ${key}`);
+                this.storedProjectDetails.set(
+                  key,
+                  JSON.parse(localStorage.getItem(key) ?? '') as ProjectDetail
+                );
+              });
+          } else {
+            this.storedProjectDetails.set(
+              key,
+              JSON.parse(localStorage.getItem(key) ?? '') as ProjectDetail
+            );
+          }
+          if (!localStorage.getItem(readmeKey)) {
+            remoteProjectService
+              .getProjectReadme({ project, fetch: _fetch ?? fetch })
+              .then((readme) => {
+                console.log(`Synced stored localStorage ${readmeKey}`);
+                if (readme) this.storedProjectReadmes.set(readmeKey, readme);
+              });
+          } else {
+            this.storedProjectReadmes.set(
+              readmeKey,
+              JSON.parse(localStorage.getItem(readmeKey) ?? '')
+            );
+          }
+        }
+      }
+    } catch {
+      // silent
+    }
   }
+
+  private storedProjects: Project[] = [];
+  private storedProjectDetails: Map<string, ProjectDetail> = new Map();
+  private storedProjectReadmes: Map<string, string> = new Map();
 
   async fetchProject({
     project
@@ -19,24 +87,29 @@ class LocalStorageProjectService implements ProjectService {
     project: Project;
     fetch: (input: URL | RequestInfo, init?: RequestInit) => Promise<Response>;
   }) {
-    if (browser) {
-      const stored = localStorage.getItem('projects');
-      if (stored) {
-        try {
-          const projects = JSON.parse(stored) as Project[];
-          const newProject = projects.find((e) => e.id == project.id)!;
-          if (projects.length > 0) {
-            projectsStore.update((p) => [...p, newProject]);
-            return undefined;
-          }
-        } catch {
-          // ignore parse errors
-        }
+    try {
+      const newProject = this.storedProjects.find((e) => e.id == project.id)!;
+      if (newProject) {
+        projectsStore.update((p) => [...p, newProject]);
+        return undefined;
       }
+    } catch {
+      // ignore parse errors
     }
 
     // fallback: register the project as-is so the UI is not empty
-    projectsStore.update((projects) => [...projects, project]);
+    projectsStore.update((projects) => [
+      ...projects,
+      {
+        description: 'My Lonely Project',
+        starsCount: 67,
+        forksCount: 67,
+        downloadsCount: 67,
+        issuesCount: 67,
+        pullRequestsCount: 67,
+        ...project
+      }
+    ]);
     return undefined;
   }
 
@@ -47,15 +120,14 @@ class LocalStorageProjectService implements ProjectService {
     fetch: (input: URL | RequestInfo, init?: RequestInit) => Promise<Response>;
   }) {
     if (browser) {
-      const stored = localStorage.getItem(`project-detail:${project.id}`);
-      if (stored) {
-        try {
-          const detail = JSON.parse(stored) as ProjectDetail;
+      try {
+        const detail = this.storedProjectDetails.get(`project-detail:${project.id}`);
+        if (detail) {
           projectDetailStore.update(() => detail);
           return detail;
-        } catch {
-          // ignore parse errors
         }
+      } catch {
+        // ignore parse errors
       }
     }
 
@@ -64,9 +136,12 @@ class LocalStorageProjectService implements ProjectService {
       ...project,
       repositoryUrl: project.url.replace('api.github.com/repos', 'github.com'),
       hasLivePreview: false,
-      starsCount: project.starsCount || 0,
-      forksCount: project.forksCount || 0,
-      downloadsCount: project.downloadsCount || 0
+      description: project.description || 'My Lonely Project',
+      starsCount: project.starsCount || 67,
+      forksCount: project.forksCount || 67,
+      downloadsCount: project.downloadsCount || 67,
+      issuesCount: project.issuesCount || 67,
+      pullRequestsCount: project.pullRequestsCount || 67
     };
     projectDetailStore.update(() => fallback);
     return fallback;
@@ -79,7 +154,7 @@ class LocalStorageProjectService implements ProjectService {
     _fetch?: (input: URL | RequestInfo, init?: RequestInit) => Promise<Response>;
   }) {
     if (browser) {
-      return localStorage.getItem(`project-readme:${project.id}`) ?? null;
+      return this.storedProjectReadmes.get(`project-readme:${project.id}`) ?? null;
     }
     return null;
   }

@@ -180,7 +180,7 @@ class ProjectService {
         const newProject: ProjectDetail = {
           ...project,
           description: json.description,
-          tags: [...(project.tags || []), (json.language || '').toLowerCase()],
+          tags: [...new Set([...project.tags, json.language?.toLowerCase()])],
           repositoryUrl: json['svn_url'] || '',
           hasLivePreview: !!json.homepage,
           livePreviewUrl: json.homepage || '',
