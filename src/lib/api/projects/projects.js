@@ -11,7 +11,7 @@ export const initialProjects = [
     readmeBaseUrl: 'https://github.com/ikhsan3adi/RuwetMeter/raw/master/',
     imageUrl: 'https://github.com/ikhsan3adi/RuwetMeter/raw/master/img/RuwetMeter.png',
     readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/RuwetMeter/master/README.md',
-    tags: ['ai-agent', 'chatbot', 'rag', 'postgresql', 'pgvector', 'rss']
+    tags: ['ai-agent', 'chatbot', 'rag', 'svelte', 'hono', 'postgresql', 'pgvector', 'rss']
   },
   {
     id: 'ngasih-tau-ada-bis-di-sarijadi-atau-nggak',
