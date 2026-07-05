@@ -1,4 +1,5 @@
-import type { Project, ProjectRepository, Release, RepoBase } from '$lib/api/projects';
+import type { Project } from '$lib/api/projects/types';
+import type { ProjectRepository, Release, RepoBase } from './types';
 
 export class GitHubRepository implements ProjectRepository {
   async fetchProject(project: Project, fetch: typeof globalThis.fetch): Promise<Project> {

@@ -1,4 +1,5 @@
-import type { CacheStore, Project, ProjectRepository } from '$lib/api/projects';
+import type { Project } from '$lib/api/projects/types';
+import type { CacheStore, ProjectRepository } from './types';
 
 const TTL_STATS = 60 * 60 * 1000;
 const TTL_README = 30 * 60 * 1000;

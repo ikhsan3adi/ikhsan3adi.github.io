@@ -1,4 +1,4 @@
-import type { Project } from '$lib/api/projects';
+import type { Project } from '$lib/api/projects/types';
 
 export interface ProjectRepository {
   fetchProject(project: Project, fetch: typeof globalThis.fetch): Promise<Project>;
