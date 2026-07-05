@@ -7,10 +7,9 @@ export class ProjectService {
   constructor(private repo: ProjectRepository) {}
 
   async init(fetch: typeof globalThis.fetch): Promise<void> {
+    projectStore.projects = [...initialProjects];
     projectStore.loading = true;
     projectStore.error = null;
-    projectStore.errorMessage = null;
-    projectStore.projects = [...initialProjects];
 
     const results = await Promise.allSettled(
       initialProjects.map((p) => this.repo.fetchProject(p, fetch))
@@ -36,7 +35,7 @@ export class ProjectService {
     }
 
     if (failedCount > 0) {
-      projectStore.errorMessage = `${failedCount} of ${results.length} failed: ${firstError}`;
+      console.error(`${failedCount} of ${results.length} failed: ${firstError}`);
     }
 
     if (failedCount === results.length) {
@@ -48,7 +47,6 @@ export class ProjectService {
   }
 
   async openDetail(project: Project, fetch: typeof globalThis.fetch): Promise<void> {
-    projectStore.projectDetailId = project.id;
     projectStore.detailLoading = true;
     projectStore.detailError = null;
     projectStore.projectDetail = null;

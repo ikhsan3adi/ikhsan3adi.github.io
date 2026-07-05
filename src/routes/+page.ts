@@ -7,11 +7,11 @@ import {
 import type { PageLoad } from './$types';
 
 export const load = (async ({ fetch }) => {
-  const cache = new LocalStorageCache(import.meta.env.DEV ? 'project:dev:' : 'project:', '1');
+  const cacheStore = new LocalStorageCache(import.meta.env.DEV ? 'project:dev:' : 'project:', '1');
 
-  const repo = new CachedRepository(new GitHubRepository(), cache);
+  const repo = new CachedRepository(new GitHubRepository(), cacheStore);
 
   const projectService = new ProjectService(repo);
 
-  return { fetch, projectService };
+  return { fetch, projectService, cacheStore };
 }) satisfies PageLoad;

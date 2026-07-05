@@ -32,7 +32,7 @@
 <main>
   <Hero />
   <About />
-  <Portfolio fetch={data.fetch} projectService={data.projectService} />
+  <Portfolio fetch={data.fetch} projectService={data.projectService} cacheStore={data.cacheStore} />
   <Achievements />
   <Tools />
   <Social />

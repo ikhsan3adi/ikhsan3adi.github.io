@@ -1,7 +1,12 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
-  import { initialProjects, ProjectService, projectStore } from '$lib/api/projects';
+  import {
+    initialProjects,
+    ProjectService,
+    projectStore,
+    type CacheStore
+  } from '$lib/api/projects';
   import { randomizeElements, type CardColors } from '$lib/components/colors';
 
   import ProjectCard from '$lib/components/cards/ProjectCard.svelte';
@@ -16,9 +21,10 @@
   interface Props {
     fetch: (input: URL | RequestInfo, init?: RequestInit) => Promise<Response>;
     projectService: ProjectService;
+    cacheStore: CacheStore;
   }
 
-  let { fetch, projectService }: Props = $props();
+  let { fetch, projectService, cacheStore }: Props = $props();
 
   const cardColorVariants: (keyof CardColors)[] = [
     'default',
@@ -36,12 +42,26 @@
     fetchResolve = r;
   });
 
-  onMount(async () => {
+  const getLastStaggered = () => cacheStore.get<number>('last-staggered-occured');
+
+  const setLastStaggered = () =>
+    cacheStore.set('last-staggered-occured', Date.now(), STAGGERED_TTL);
+
+  onMount(() => {
     console.log('Fetching projects');
-    await projectService.init(fetch);
-    fetchResolve();
+
+    projectService.init(fetch).then(() => fetchResolve());
+
+    // skip project cards staggered reveal
+    if (getLastStaggered() !== null) {
+      visibleCount = projectStore.projects.length;
+      isIntersecting = true;
+    } else {
+      setLastStaggered();
+    }
   });
 
+  const STAGGERED_TTL = 1000 * 60 * 5;
   let isIntersecting = $state(false);
   let visibleCount = $state(0);
   const DELAY = 1676;
@@ -53,6 +73,7 @@
 
         setTimeout(async () => {
           await fetchDone;
+          if (isIntersecting) return;
 
           isIntersecting = true;
           for (let i = 0; i < initialProjects.length; i++) {
