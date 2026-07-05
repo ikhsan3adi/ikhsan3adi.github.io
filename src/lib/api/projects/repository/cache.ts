@@ -41,7 +41,6 @@ export class LocalStorageCache implements CacheStore {
     if (!entry) return null;
 
     if (entry.version !== this.version || this.isExpired(entry)) {
-      this.remove(key);
       return null;
     }
 
