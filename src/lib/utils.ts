@@ -17,3 +17,12 @@ export function stripHtmlTagsDOM(htmlString: string): string {
   const doc = parser.parseFromString(htmlString, 'text/html');
   return doc.body.textContent || '';
 }
+
+export function toStatusMessage(reason: string): string {
+  if (/rate\s*limit/i.test(reason)) return 'Rate limited';
+  if (/Failed to fetch|NetworkError|network/i.test(reason)) return 'No connection';
+  if (/not found|404/i.test(reason)) return 'Not found';
+  if (/forbidden|403/i.test(reason)) return 'Access denied';
+  if (/timeout|timed?\s*out/i.test(reason)) return 'Timed out';
+  return 'Could not load';
+}

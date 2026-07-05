@@ -8,6 +8,7 @@
     type CacheStore
   } from '$lib/api/projects';
   import { randomizeElements, type CardColors } from '$lib/components/colors';
+  import { useStaggered } from '$lib/actions/useStaggered';
 
   import ProjectCard from '$lib/components/cards/ProjectCard.svelte';
   import ProjectCardError from '$lib/components/cards/ProjectCardError.svelte';
@@ -37,62 +38,38 @@
 
   const cardColors = randomizeElements(cardColorVariants, initialProjects.length);
 
-  let fetchResolve: () => void;
-  const fetchDone = new Promise<void>((r) => {
-    fetchResolve = r;
-  });
-
-  const getLastStaggered = () => cacheStore.get<number>('last-staggered-occured');
-
-  const setLastStaggered = () =>
-    cacheStore.set('last-staggered-occured', Date.now(), STAGGERED_TTL);
-
-  onMount(() => {
-    console.log('Fetching projects');
-
-    projectService.init(fetch).then(() => fetchResolve());
-
-    // skip project cards staggered reveal
-    if (getLastStaggered() !== null) {
-      visibleCount = projectStore.projects.length;
-      isIntersecting = true;
-    } else {
-      setLastStaggered();
-    }
-  });
-
   const STAGGERED_TTL = 1000 * 60 * 5;
+  const STAGGERED_DELAY = 1676;
+  const STAGGER_INTERVAL = 367;
+
   let isIntersecting = $state(false);
   let visibleCount = $state(0);
-  const DELAY = 1676;
+  let skipStaggered = $state(false);
 
-  function checkIntersecting(node: Element) {
-    const observer: IntersectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
+  onMount(() => {
+    skipStaggered = cacheStore.get<number>('last-staggered-occurred') !== null;
 
-        setTimeout(async () => {
-          await fetchDone;
-          if (isIntersecting) return;
-
-          isIntersecting = true;
-          for (let i = 0; i < initialProjects.length; i++) {
-            visibleCount = i + 1;
-            await new Promise((r) => setTimeout(r, 367));
-          }
-
-          observer.disconnect();
-        }, DELAY);
-      });
-    });
-
-    if (!isIntersecting) {
-      observer.observe(node);
+    if (!skipStaggered) {
+      cacheStore.set('last-staggered-occurred', Date.now(), STAGGERED_TTL);
     }
-  }
+
+    projectService.init(fetch);
+  });
 </script>
 
-<section class="relative pt-12 md:pt-14 lg:pt-16 bg-halftone" use:checkIntersecting>
+<section
+  class="relative pt-12 md:pt-14 lg:pt-16 bg-halftone"
+  use:useStaggered={{
+    itemCount: initialProjects.length,
+    onProgress: (n) => {
+      visibleCount = n;
+      isIntersecting = true;
+    },
+    skip: skipStaggered,
+    delay: STAGGERED_DELAY,
+    staggerDelay: STAGGER_INTERVAL
+  }}
+>
   <div
     class="absolute left-0 right-0 top-0 bg-custom-3 h-12 md:h-14 lg:h-16 border-slate-900 dark:border-slate-700 border-y-4 flex items-center"
   >
