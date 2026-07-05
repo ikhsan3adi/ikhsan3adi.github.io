@@ -18,7 +18,7 @@
 
   // Filter socials for footer: GitHub, LinkedIn, and Codeberg (exclude Facebook & casual ones)
   const footerSocials = socials.filter((s) =>
-    ['Github', 'LinkedIn', 'Codeberg'].includes(s.social)
+    ['Github', 'LinkedIn', 'Instagram', 'Threads'].includes(s.social)
   );
 </script>
 
