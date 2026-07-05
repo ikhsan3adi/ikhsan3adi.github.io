@@ -2,9 +2,6 @@
   import { expoOut, linear } from 'svelte/easing';
   import { Tween } from 'svelte/motion';
 
-  import { clamp } from '$lib/utils';
-
-  import type { Project } from '$lib/api/projects';
   import {
     tagColors,
     type CardColors,
@@ -22,6 +19,10 @@
     faWarning
   } from '@fortawesome/free-solid-svg-icons';
   import Fa from 'svelte-fa';
+
+  import { clamp, createSlug } from '$lib/utils';
+
+  import type { Project } from '$lib/api/projects';
 
   interface Props {
     project: Project;
@@ -65,8 +66,10 @@
     })
   );
 
+  const mainLabelId = $derived(createSlug(`porto_${project.name}`));
+
   const MIN_DURATION = 1000;
-  const MAX_DURATION = 5000;
+  const MAX_DURATION = 7676;
 
   const getDuration = (target: number) => clamp(target * 50, MIN_DURATION, MAX_DURATION);
 
@@ -102,7 +105,12 @@
 
 <!-- Shadow card -->
 <div in:scale class="w-full bg-slate-900 {cardColors[cardColor].dark.bg} flex">
-  <a href="/$projects$/{project.id}" class="w-full flex">
+  <a
+    href="/$projects$/{project.id}"
+    class="w-full flex"
+    aria-labelledby={mainLabelId}
+    title={project.name}
+  >
     <!-- Card -->
     <div
       class="relative group cursor-pointer duration-200 flex flex-col
@@ -119,7 +127,10 @@
 				border-b-4 border-slate-900
 			bg-slate-300 dark:bg-slate-600 flex relative overflow-clip"
       >
-        <div class="inline-flex flex-wrap m-auto justify-center gap-2 items-center w-max">
+        <div
+          class="inline-flex flex-wrap m-auto justify-center gap-2 items-center w-max"
+          aria-hidden="true"
+        >
           <div
             class="dark:text-white text-center text-4xl md:text-5xl lg:text-6xl font-extrabold text-text"
           >
@@ -195,7 +206,7 @@
 
       <!-- Project description -->
       <div class="pt-2 pb-8 px-4 flex-1">
-        <h3 class="mb-2 dark:text-white">{project.name}</h3>
+        <h3 id={mainLabelId} class="mb-2 dark:text-white">{project.name}</h3>
         <p class="dark:text-slate-300 line-clamp-6">{project.description}</p>
       </div>
 
