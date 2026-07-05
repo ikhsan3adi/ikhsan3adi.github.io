@@ -12,8 +12,8 @@
   import { achievements } from '$lib/api/achievements';
   import { cardColors, randomizeElements } from '$lib/components/colors';
 
-  const competitions = achievements.filter((a) => a.type === 'competition').toReversed();
-  const courses = achievements.filter((a) => a.type === 'course').toReversed();
+  const competitions = achievements.filter((a) => a.type === 'competition');
+  const courses = achievements.filter((a) => a.type === 'course');
 
   const colorsCompetitions = randomizeElements(cardColors, competitions.length);
   const colorsCourses = randomizeElements(cardColors, courses.length);

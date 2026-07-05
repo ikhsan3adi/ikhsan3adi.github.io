@@ -12,33 +12,45 @@ export const toolCategories: ToolCategory[] = [
   {
     category: 'Front-end web',
     tools: [
+      { name: 'HTML', icon: 'simple-icons:html5' },
+      { name: 'CSS', icon: 'simple-icons:css' },
+      { name: 'JavaScript', icon: 'simple-icons:javascript' },
+      { name: 'TypeScript', icon: 'simple-icons:typescript' },
+
       { name: 'Svelte', icon: 'simple-icons:svelte' },
       { name: 'Vue', icon: 'simple-icons:vuedotjs' },
-      { name: 'shadcn/ui', icon: 'simple-icons:shadcnui' },
+
       { name: 'Tailwind CSS', icon: 'simple-icons:tailwindcss' },
       { name: 'Bootstrap', icon: 'simple-icons:bootstrap' },
-      { name: 'JavaScript', icon: 'simple-icons:javascript' },
-      { name: 'TypeScript', icon: 'simple-icons:typescript' }
+
+      { name: 'shadcn/ui', icon: 'simple-icons:shadcnui' },
+      { name: 'daisyUI', icon: 'simple-icons:daisyui' }
     ]
   },
   {
     category: 'Back-end',
     tools: [
-      { name: 'Python', icon: 'simple-icons:python' },
-      { name: 'PHP', icon: 'simple-icons:php' },
+      // js
       { name: 'TypeScript', icon: 'simple-icons:typescript' },
+      { name: 'NestJS', icon: 'simple-icons:nestjs' },
+      { name: 'Hono', icon: 'simple-icons:hono' },
+      { name: 'Elysia.js', icon: 'simple-icons:bun' },
       { name: 'Bun', icon: 'simple-icons:bun' },
       { name: 'Node.js', icon: 'simple-icons:nodedotjs' },
-      { name: 'CodeIgniter', icon: 'simple-icons:codeigniter' },
+      // php
+      { name: 'PHP', icon: 'simple-icons:php' },
       { name: 'Laravel', icon: 'simple-icons:laravel' },
-      { name: 'NestJS', icon: 'simple-icons:nestjs' },
+      { name: 'CodeIgniter', icon: 'simple-icons:codeigniter' },
+      // py
+      { name: 'Python', icon: 'simple-icons:python' },
       { name: 'FastAPI', icon: 'simple-icons:fastapi' },
+      // db
       { name: 'PostgreSQL', icon: 'simple-icons:postgresql' },
       { name: 'MySQL', icon: 'simple-icons:mysql' },
       { name: 'MariaDB', icon: 'simple-icons:mariadb' },
+      { name: 'SQLite', icon: 'simple-icons:sqlite' },
       { name: 'MongoDB', icon: 'simple-icons:mongodb' },
-      { name: 'Redis', icon: 'simple-icons:redis' },
-      { name: 'OpenCV', icon: 'simple-icons:opencv' }
+      { name: 'Redis', icon: 'simple-icons:redis' }
     ]
   },
   {
@@ -46,7 +58,8 @@ export const toolCategories: ToolCategory[] = [
     tools: [
       { name: 'Dart', icon: 'simple-icons:dart' },
       { name: 'Flutter', icon: 'simple-icons:flutter' },
-      { name: 'Android Studio', icon: 'simple-icons:androidstudio' }
+      { name: 'Android Studio', icon: 'simple-icons:androidstudio' },
+      { name: 'Kotlin', icon: 'simple-icons:kotlin' }
     ]
   },
   {
@@ -56,6 +69,9 @@ export const toolCategories: ToolCategory[] = [
       { name: 'GitHub', icon: 'simple-icons:github' },
       { name: 'GitHub Actions', icon: 'simple-icons:githubactions' },
       { name: 'GitLab', icon: 'simple-icons:gitlab' },
+      { name: 'Codeberg', icon: 'simple-icons:codeberg' },
+      { name: 'Cloudflare Workers', icon: 'simple-icons:cloudflareworkers' },
+      { name: 'Cloudflare Wrangler', icon: 'simple-icons:cloudflare' },
       { name: 'Docker', icon: 'simple-icons:docker' },
       { name: 'Shell', icon: 'simple-icons:gnubash' },
       { name: 'Nginx', icon: 'simple-icons:nginx' }
@@ -80,8 +96,7 @@ export const toolCategories: ToolCategory[] = [
       { name: 'Zed', icon: 'simple-icons:zedindustries' },
       { name: 'Antigravity', icon: 'simple-icons:googlegemini' },
       { name: 'OpenCode', icon: 'lucide:code-2' },
-      { name: 'Windsurf', icon: 'simple-icons:windsurf' },
-      { name: 'Cursor', icon: 'simple-icons:cursor' }
+      { name: 'OpenRouter', icon: 'simple-icons:openrouter' }
     ]
   },
   {
@@ -95,8 +110,8 @@ export const toolCategories: ToolCategory[] = [
     category: 'Design & Editing',
     tools: [
       { name: 'Kdenlive', icon: 'simple-icons:kdenlive' },
-      { name: 'Adobe Photoshop', icon: 'simple-icons:adobephotoshop' },
-      { name: 'Adobe Illustrator', icon: 'simple-icons:adobeillustrator' },
+      { name: 'Photoshop', icon: 'simple-icons:adobephotoshop' },
+      { name: 'Illustrator', icon: 'simple-icons:adobeillustrator' },
       { name: 'Figma', icon: 'simple-icons:figma' },
       { name: 'Photopea', icon: 'simple-icons:photopea' }
     ]
