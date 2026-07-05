@@ -1,0 +1,1 @@
+import{kt as e}from"./DJI0eEjk.js";var t=e({y:0});export{t};
