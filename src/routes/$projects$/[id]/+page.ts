@@ -35,9 +35,5 @@ export const load = (async ({ url, fetch }) => {
     throw error(404, 'Project not found');
   }
 
-  const markdownPromise = project.readmeUrl
-    ? projectService.getReadme(project, fetch)
-    : Promise.resolve('<h2>No README file</h2>');
-
-  return { project, projectService, fetch, markdownPromise };
+  return { project, projectService, fetch };
 }) satisfies PageLoad;

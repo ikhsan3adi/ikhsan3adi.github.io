@@ -50,6 +50,10 @@
   {:else if !projectStore.projectDetail}
     <ProjectDetailLoading />
   {:else}
-    <ProjectDetail project={projectStore.projectDetail} markdownPromise={data.markdownPromise} />
+    <ProjectDetail
+      project={projectStore.projectDetail}
+      projectService={data.projectService}
+      fetch={data.fetch}
+    />
   {/if}
 </main>

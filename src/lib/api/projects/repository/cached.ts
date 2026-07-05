@@ -21,6 +21,13 @@ export class CachedRepository implements ProjectRepository {
     } catch (err) {
       const stale = this.cache.peek<Project>(cacheKey);
       if (stale) return stale;
+
+      if (import.meta.env.DEV) {
+        const dummy = this.getDummyProject(project);
+        this.cache.set(cacheKey, dummy, TTL_STATS / 60);
+        return dummy;
+      }
+
       throw err;
     }
   }
@@ -35,11 +42,24 @@ export class CachedRepository implements ProjectRepository {
       if (result) {
         this.cache.set(cacheKey, result, TTL_README);
       }
+
       return result;
-    } catch {
+    } catch (err) {
       const stale = this.cache.peek<string>(cacheKey);
       if (stale) return stale;
-      return null;
+      throw err;
     }
+  }
+
+  private getDummyProject(project: Project): Project {
+    return {
+      ...project,
+      description: project.description || project.name,
+      starsCount: project.starsCount || 767,
+      forksCount: project.forksCount || 67,
+      downloadsCount: project.downloadsCount || 67,
+      issuesCount: project.issuesCount || 67,
+      pullRequestsCount: project.pullRequestsCount || 67
+    };
   }
 }

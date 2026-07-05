@@ -17,20 +17,22 @@
   } from '@fortawesome/free-solid-svg-icons';
   import Fa from 'svelte-fa';
 
-  import type { Project } from '$lib/api/projects';
+  import type { Project, ProjectService } from '$lib/api/projects';
   import { type TagColorKey, type TagColors, tagColors } from '$lib/components/colors';
 
   import { scrollState } from '$lib/scroll.svelte';
   import { renderer } from './renderer';
 
   import Button from '$lib/components/buttons/Button.svelte';
+  import ReadmeStatusIndicator from './ReadmeStatusIndicator.svelte';
 
   interface Props {
     project: Project;
-    markdownPromise: Promise<string | null>;
+    projectService: ProjectService;
+    fetch: typeof globalThis.fetch;
   }
 
-  let { project, markdownPromise }: Props = $props();
+  let { project, projectService, fetch }: Props = $props();
 
   /** Preprocess raw markdown to fix GitHub-vs-KaTeX escaping mismatches.
    *  GitHub READMEs use double backslash before LaTeX special characters
@@ -121,7 +123,25 @@
     );
   };
 
+  let markdownString: string = $state('');
+
+  let markdownStatus: 'loading' | 'loaded' | 'error' = $state('loading');
+
   onMount(() => {
+    (project.readmeUrl
+      ? projectService.getReadme(project, fetch)
+      : Promise.resolve('<h2>No README file</h2>')
+    )
+      .then((markdown) => {
+        markdownStatus = 'loaded';
+        markdownString = markdown ?? '_Blank README_';
+      })
+      .catch((err) => {
+        markdownStatus = 'error';
+        console.error(err);
+        markdownString = err.toString();
+      });
+
     /* eslint-disable @typescript-eslint/no-explicit-any */
     let mermaidInstance: any;
     let diagramId = 0;
@@ -331,35 +351,53 @@
       <hr class="mt-16 border border-slate-700 dark:border-slate-300" />
       <a href={project.readmeUrl} class="hover:underline">
         <span class="dark:text-white block my-2 md:text-lg lg:text-xl font-medium">
-          {#await markdownPromise}
+          {#if markdownStatus === 'loading'}
             Loading...
-          {:then}
+          {:else if markdownStatus === 'loaded'}
             README.md
-          {:catch}
+          {:else if markdownStatus === 'error'}
             Error!
-          {/await}
+          {/if}
         </span>
       </a>
-      <hr class="mb-16 md:mb-24 border border-slate-700 dark:border-slate-300" />
+      <hr class="mb-16 border border-slate-700 dark:border-slate-300" />
+
+      <!-- <ReadmeStatusIndicator
+        status="fetching"
+        message="Fetching README.md content from {project.readmeUrl}"
+      />
+      <ReadmeStatusIndicator status="loading" message="Loading renderer, libraries and tools" />
+      <ReadmeStatusIndicator status="rendering" message="Rendering the content for you" />
+      <ReadmeStatusIndicator status="noreadme" message="No README.md for this project :(" />
+      <ReadmeStatusIndicator status="error" message="An error occured" /> -->
 
       <!-- README.md content -->
-
-      {#await markdownPromise then markdown}
-        <div class="text-slate-600 dark:text-slate-300 markdown-content">
-          {#await markdownizePromise() then markdownize}
-            {#await markdownize(preprocessMarkdown(markdown), { gfm: true }) then html}
+      {#if !project.readmeUrl}
+        <ReadmeStatusIndicator status="noreadme" message="No README.md for this project :(" />
+      {:else if markdownStatus === 'loading'}
+        <ReadmeStatusIndicator
+          status="fetching"
+          message="Fetching README.md content from {project.readmeUrl}"
+        />
+      {:else if markdownStatus === 'loaded'}
+        {#await markdownizePromise()}
+          <ReadmeStatusIndicator status="loading" message="Loading renderer, libraries and tools" />
+        {:then markdownize}
+          {#await markdownize(preprocessMarkdown(markdownString), { gfm: true })}
+            <ReadmeStatusIndicator status="rendering" message="Rendering the content for you" />
+          {:then html}
+            <div class="text-slate-600 dark:text-slate-300 markdown-content">
               {@html html}
-            {/await}
+            </div>
+          {:catch err}
+            <ReadmeStatusIndicator status="error" message={err.toString()} />
           {/await}
-        </div>
-      {:catch error}
-        <div
-          class="dark:text-white font-cascadia-mono font-extrabold text-text text-4xl md:text-5xl lg:text-6xl"
-        >
-          <Fa icon={faWarning} />Failed to load README
-        </div>
-        <p class="text-red-500 dark:text-red-400">{error}</p>
-      {/await}
+        {:catch err}
+          <ReadmeStatusIndicator status="error" message={err.toString()} />
+        {/await}
+      {:else if markdownStatus === 'error'}
+        <ReadmeStatusIndicator status="error" message={markdownString} />
+      {/if}
     </div>
 
     <div class="flex justify-center py-16 w-full">

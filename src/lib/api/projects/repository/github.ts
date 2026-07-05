@@ -23,13 +23,9 @@ export class GitHubRepository implements ProjectRepository {
   async fetchReadme(project: Project, fetch: typeof globalThis.fetch): Promise<string | null> {
     if (!project.readmeUrl) return null;
 
-    try {
-      const response = await fetch(project.readmeUrl, { method: 'GET' });
-      if (!response.ok) return null;
-      return await response.text();
-    } catch {
-      return null;
-    }
+    const response = await fetch(project.readmeUrl, { method: 'GET' });
+    if (!response.ok) return null;
+    return await response.text();
   }
 
   private async fetchRepoBase(project: Project, fetch: typeof globalThis.fetch): Promise<RepoBase> {

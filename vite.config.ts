@@ -65,5 +65,5 @@ export default defineConfig({
   ssr: {
     noExternal: ['@iconify/svelte']
   },
-  server: { hmr: false }
+  server: { hmr: true }
 });

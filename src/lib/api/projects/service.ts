@@ -63,7 +63,7 @@ export class ProjectService {
   }
 
   async getReadme(project: Project, fetch: typeof globalThis.fetch): Promise<string | null> {
-    return this.repo.fetchReadme(project, fetch);
+    return await this.repo.fetchReadme(project, fetch);
   }
 
   private toStatusMessage(reason: string): string {
