@@ -21,7 +21,7 @@
   import { type TagColorKey, type TagColors, tagColors } from '$lib/components/colors';
 
   import { scrollState } from '$lib/scroll.svelte';
-  import { renderer } from './renderer';
+  import { getConfiguredMarked } from './marked-init';
 
   import Button from '$lib/components/buttons/Button.svelte';
   import ReadmeStatusIndicator from './ReadmeStatusIndicator.svelte';
@@ -43,89 +43,14 @@
     return raw.replace(/\\\\([_$%&#{}~^])/g, '\\$1');
   };
 
-  const markdownizePromise = async () => {
-    const [
-      { Octokit },
-      { marked },
-      { default: markedAlert },
-      { baseUrl: markedBaseUrl },
-      { markedEmoji },
-      { markedHighlight },
-      { default: hljs },
-      { default: javascript },
-      { default: typescript },
-      { default: xml },
-      { default: css },
-      { default: bash },
-      { default: shell },
-      { default: json },
-      { default: plaintext },
-      { default: python },
-      { default: php },
-      { default: markedKatex },
-      { default: markedMermaid }
-    ] = await Promise.all([
-      import('@octokit/rest'),
-      import('marked'),
-      import('marked-alert'),
-      import('marked-base-url'),
-      import('marked-emoji'),
-      import('marked-highlight'),
-      import('highlight.js/lib/core'),
-      import('highlight.js/lib/languages/javascript'),
-      import('highlight.js/lib/languages/typescript'),
-      import('highlight.js/lib/languages/xml'),
-      import('highlight.js/lib/languages/css'),
-      import('highlight.js/lib/languages/bash'),
-      import('highlight.js/lib/languages/shell'),
-      import('highlight.js/lib/languages/json'),
-      import('highlight.js/lib/languages/plaintext'),
-      import('highlight.js/lib/languages/python'),
-      import('highlight.js/lib/languages/php'),
-      import('marked-katex-extension'),
-      import('./marked-mermaid')
-    ]);
-
-    hljs.registerLanguage('javascript', javascript);
-    hljs.registerLanguage('js', javascript);
-    hljs.registerLanguage('typescript', typescript);
-    hljs.registerLanguage('ts', typescript);
-    hljs.registerLanguage('xml', xml);
-    hljs.registerLanguage('html', xml);
-    hljs.registerLanguage('css', css);
-    hljs.registerLanguage('bash', bash);
-    hljs.registerLanguage('shell', shell);
-    hljs.registerLanguage('sh', bash);
-    hljs.registerLanguage('json', json);
-    hljs.registerLanguage('plaintext', plaintext);
-    hljs.registerLanguage('python', python);
-    hljs.registerLanguage('php', php);
-    hljs.registerLanguage('txt', plaintext);
-
-    // Get all the emojis available to use on GitHub.
-    const res = await new Octokit().rest.emojis.get().catch(() => null);
-    const emojis = res?.data;
-
-    return marked.use(
-      { renderer: renderer(project.readmeBaseUrl, marked) },
-      markedBaseUrl(project.readmeBaseUrl),
-      markedHighlight({
-        langPrefix: 'hljs language-',
-        highlight(code, lang) {
-          const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-          return hljs.highlight(code, { language }).value;
-        }
-      }),
-      markedAlert(),
-      markedEmoji({ emojis: emojis ?? {} }),
-      markedKatex(),
-      markedMermaid()
-    );
-  };
+  const markdownizePromise = () => getConfiguredMarked(project.readmeBaseUrl);
 
   let markdownString: string = $state('');
 
   let markdownStatus: 'loading' | 'loaded' | 'error' = $state('loading');
+
+  let loading = $state(false);
+  let rendering = $state(false);
 
   onMount(() => {
     (project.readmeUrl
@@ -145,8 +70,6 @@
     /* eslint-disable @typescript-eslint/no-explicit-any */
     let mermaidInstance: any;
     let diagramId = 0;
-    let loading = false;
-    let rendering = false;
 
     const loadMermaid = (): Promise<any> =>
       new Promise((resolve, reject) => {
@@ -202,16 +125,13 @@
         );
       });
 
-      Promise.all(batch).then(() => {
-        rendering = false;
-      });
+      Promise.all(batch).then(() => (rendering = false));
     };
 
     const obs = new MutationObserver(renderDiagrams);
     obs.observe(document.body, { childList: true, subtree: true });
     renderDiagrams();
 
-    /* eslint-enable @typescript-eslint/no-explicit-any */
     return () => obs.disconnect();
   });
 
@@ -362,15 +282,6 @@
       </a>
       <hr class="mb-16 border border-slate-700 dark:border-slate-300" />
 
-      <!-- <ReadmeStatusIndicator
-        status="fetching"
-        message="Fetching README.md content from {project.readmeUrl}"
-      />
-      <ReadmeStatusIndicator status="loading" message="Loading renderer, libraries and tools" />
-      <ReadmeStatusIndicator status="rendering" message="Rendering the content for you" />
-      <ReadmeStatusIndicator status="noreadme" message="No README.md for this project :(" />
-      <ReadmeStatusIndicator status="error" message="An error occured" /> -->
-
       <!-- README.md content -->
       {#if !project.readmeUrl}
         <ReadmeStatusIndicator status="noreadme" message="No README.md for this project :(" />
@@ -386,7 +297,13 @@
           {#await markdownize(preprocessMarkdown(markdownString), { gfm: true })}
             <ReadmeStatusIndicator status="rendering" message="Rendering the content for you" />
           {:then html}
-            <div class="text-slate-600 dark:text-slate-300 markdown-content">
+            {#if rendering || loading}
+              <ReadmeStatusIndicator status="rendering" message="Rendering the content for you" />
+            {/if}
+            <div
+              class="{rendering || loading ? 'hidden' : ''}
+                text-slate-600 dark:text-slate-300 markdown-content"
+            >
               {@html html}
             </div>
           {:catch err}
