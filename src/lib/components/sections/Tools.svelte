@@ -37,7 +37,7 @@
                 {category.category}
               </h3>
               <div
-                class="grid gap-4 grid-cols-4 sm:grid-cols-5 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5"
+                class="grid gap-4 grid-cols-4 min-[33rem]:grid-cols-5 sm:grid-cols-5 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5"
               >
                 {#each category.tools as tool}
                   <div class="flex flex-col items-center gap-2">

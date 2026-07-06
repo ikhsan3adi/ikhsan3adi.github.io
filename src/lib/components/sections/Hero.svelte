@@ -21,10 +21,10 @@
     style="background-image: url({bg});"
   ></div>
 
-  <div class="md:mt-16 w-full flex">
+  <div class="mt-14 md:mt-16 w-full flex">
     <Wrappper>
-      <div class="w-full md:flex md:gap-4 md:justify-between my-auto">
-        <div class="mb-52 mt-16 md:m-0 py-2 md:py-8 lg:py-9 sm:max-md:text-center duration-500">
+      <div class="w-full flex max-md:flex-col gap-4 justify-evenly md:justify-between md:my-auto">
+        <div class="m-0 py-2 md:py-8 lg:py-9 max-md:text-center duration-500">
           <!-- Hero text -->
           <p
             id="home"
@@ -52,7 +52,7 @@
           </div>
 
           <!-- Call to action buttons -->
-          <div class="flex flex-wrap gap-3 sm:max-md:justify-center">
+          <div class="flex flex-wrap gap-3 max-md:justify-center">
             <Button href="#portfolio" noDarkVariant={false}>
               {#snippet icon()}
                 <Fa icon={faFolderOpen} />
