@@ -76,7 +76,9 @@
   <Wrappper>
     <div class="my-auto h-14 md:h-16 flex justify-between w-full">
       <!-- Logo -->
-      <SimpleLogoText {isBgTransparent} />
+      <div class="my-auto">
+        <SimpleLogoText {isBgTransparent} />
+      </div>
 
       <!-- Nav links -->
       {#if showNavLinks}

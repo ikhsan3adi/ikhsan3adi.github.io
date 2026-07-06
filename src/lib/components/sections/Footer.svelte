@@ -31,9 +31,9 @@
   <Wrappper>
     <div class="w-full py-4">
       <div
-        class="py-6 flex {noNavLinks
+        class="py-2 sm:py-6 flex max-sm:flex-col {noNavLinks
           ? 'justify-center'
-          : 'justify-between'} gap-4 md:gap-12 lg:gap-36 xl:gap-52 items-center text-white"
+          : 'justify-between'} gap-8 md:gap-12 lg:gap-36 xl:gap-52 items-center text-white"
       >
         <!-- Emblem -->
         <div class="flex">
