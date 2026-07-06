@@ -355,8 +355,8 @@
   :global(.markdown-alert) {
     border-left-width: 4px;
     border-left-style: solid;
-    padding: 1rem 1rem 1rem 1rem;
-    margin: 1rem 1rem 1rem -0.5rem;
+    padding: 1rem;
+    margin: 1rem 0;
     background-color: var(--color-slate-100);
     border-color: var(--color-slate-400);
   }
