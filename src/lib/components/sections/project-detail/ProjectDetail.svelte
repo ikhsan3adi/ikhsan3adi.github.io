@@ -147,13 +147,15 @@
 </script>
 
 <section class="bg-halftone bg-halftone-45">
+  <!-- Former Wrapper -->
   <div
-    class="mx-auto w-full max-w-screen-2xl px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 flex flex-col"
+    class="mx-auto w-full max-w-screen-2xl px-2 sm:px-8 md:px-12 lg:px-16 xl:px-20 flex flex-col"
   >
+    <!-- Main Card -->
     <div
-      class="mt-20 p-6 sm:p-8 w-full bg-white dark:bg-slate-800 border-4 border-slate-900 dark:border-white overflow-clip"
+      class="mt-20 p-2 pt-6 pb-8 sm:p-8 w-full bg-white dark:bg-slate-800 border-4 border-slate-900 dark:border-white overflow-clip"
     >
-      <h1 class="dark:text-white mt-8 mb-6 md:mb-8 lg:mb-12 xl:mb-16">{project.name}</h1>
+      <h1 class="dark:text-white mb-6 md:mb-8 lg:mb-12 xl:mb-16">{project.name}</h1>
       <!-- Hero section -->
       <div
         class="w-full grid grid-cols-1 grid-flow-row grid-rows-2 xl:flex xl:flex-row-reverse xl:justify-between gap-4 md:gap-8 xl:gap-12 mb-24 xl:mb-32"
@@ -161,27 +163,25 @@
         <!-- Image preview -->
         <div class="w-full flex items-center relative min-h-62.5 md:min-h-80">
           <!-- Fallback text (behind image, visible when image is rate limited/unavailable) -->
-          <div
-            class="inline-flex flex-wrap m-auto justify-center gap-2 items-center w-max py-8 pointer-events-none"
-          >
+          <div             class="flex flex-col items-center gap-4 m-auto w-max py-8 pointer-events-none">
             <div
               class="dark:text-white text-center text-4xl md:text-5xl lg:text-6xl font-extrabold text-text"
             >
               <Fa icon={faWarning} />
             </div>
             <div
-              class="dark:text-white text-wrap text-center font-cascadia-mono font-extrabold text-text text-2xl md:text-3xl lg:text-4xl"
+              class="dark:text-white text-wrap text-center font-cascadia-mono font-extrabold text-text text-3xl md:text-4xl lg:text-5xl"
             >
               Image not available
             </div>
           </div>
 
           <!-- Image overlay (covers fallback when image loads successfully) -->
+          <!-- style="background-image: url('{project.imageUrl}');" -->
           <div
             class="absolute z-10 top-0 left-0 w-full h-full bg-no-repeat bg-cover bg-center
                  border-4 border-slate-900 dark:border-white
                  cursor-crosshair duration-200 active:brightness-75"
-            style="background-image: url('{project.imageUrl}');"
             title={project.name}
           ></div>
         </div>
