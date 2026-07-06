@@ -15,6 +15,7 @@
 
   import type { Project } from '$lib/api/projects';
   import ProjectStats from './ProjectStats.svelte';
+  import { onMount } from 'svelte';
 
   interface Props {
     project: Project;
@@ -32,6 +33,33 @@
   );
 
   const mainLabelId = $derived(createSlug(`porto_${project.name}`));
+
+  let imgVisible = $state(false);
+  let fallbackAspectRatio = $state(1.77777777778);
+
+  onMount(() => {
+    try {
+      const cached = localStorage.getItem(`card-img-ar:${project.id}`);
+      if (cached) {
+        fallbackAspectRatio = parseFloat(cached);
+      }
+    } catch {
+      /* noop */
+    }
+  });
+
+  function onImgLoad(e: Event) {
+    const img = e.target as HTMLImageElement;
+    const { naturalWidth, naturalHeight } = img;
+    if (naturalHeight > 80 && naturalWidth > 0) {
+      try {
+        localStorage.setItem(`card-img-ar:${project.id}`, String(naturalWidth / naturalHeight));
+      } catch {
+        /* noop */
+      }
+    }
+    imgVisible = true;
+  }
 </script>
 
 <!-- Shadow card -->
@@ -53,11 +81,20 @@
     >
       <!-- Background image wrapper -->
       <div
-        class="aspect-4/3 sm:aspect-video lg:aspect-4/3 xl:aspect-video w-full shrink-0
-          bg-slate-300 dark:bg-slate-600 flex relative overflow-clip"
+        class="w-full shrink-0 bg-slate-300 dark:bg-slate-600 grid grid-cols-1 grid-rows-1 relative overflow-clip"
+        style={fallbackAspectRatio > 0 && !imgVisible ? `aspect-ratio:${fallbackAspectRatio}` : ''}
       >
+        <!-- Hidden sizing image -->
+        <img
+          src={project.imageUrl}
+          alt=""
+          class="col-start-1 row-start-1 w-full opacity-0 pointer-events-none"
+          class:hidden={!imgVisible}
+          onload={onImgLoad}
+        />
+
         <div
-          class="inline-flex flex-wrap m-auto justify-center gap-2 items-center w-max"
+          class="col-start-1 row-start-1 place-self-center inline-flex flex-wrap justify-center gap-2 items-center w-max"
           aria-hidden="true"
         >
           <div
@@ -74,14 +111,12 @@
 
         <!-- Background image -->
         <div
-          class="top-0 bottom-0 left-0 right-0 flex bg-no-repeat bg-cover bg-center absolute"
+          class="absolute inset-0 bg-no-repeat bg-cover bg-center"
           style="background-image: url('{project.imageUrl}');"
         ></div>
 
         <!-- Hover show view detail -->
-        <div
-          class="bg-slate-900/0 group-hover:bg-slate-900/70 absolute top-0 right-0 bottom-0 left-0 flex duration-200"
-        >
+        <div class="bg-slate-900/0 group-hover:bg-slate-900/70 absolute inset-0 flex duration-200">
           <span
             class="text-white m-auto opacity-0 group-hover:opacity-100 md:text-lg lg:text-xl font-medium"
           >
