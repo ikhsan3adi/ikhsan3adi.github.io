@@ -26,8 +26,21 @@
 }
 
 @layer base {
+  section,
+  div,
+  p,
+  span,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply duration-200;
+  }
+
   body {
-    @apply font-space-grotesk;
+    @apply font-space-grotesk dark:bg-slate-800 duration-300;
   }
 
   h1 {

@@ -38,7 +38,7 @@
         <!-- Emblem -->
         <div class="flex">
           <div
-            class="h-24 w-24 sm:w-28 sm:h-28 md:w-36 md:h-36 my-auto cursor-crosshair active:animate-ping"
+            class="h-24 w-24 sm:w-28 sm:h-28 md:w-36 md:h-36 my-auto cursor-crosshair active:animate-ping duration-0"
           >
             <EmblemSquare />
           </div>
