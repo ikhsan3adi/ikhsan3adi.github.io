@@ -67,7 +67,7 @@
           <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
             {#if i == 0}
               <p
-                class="active:text-indigo-900 text-justify mb-1
+                class="active:text-indigo-900 text-justify mb-2
                   first-letter:leading-[0.8]
                   first-letter:font-cascadia-mono first-letter:capitalize
                   first-letter:text-[3.67rem] first-letter:float-left first-letter:mr-1"
@@ -75,7 +75,7 @@
                 {aboutText}
               </p>
             {:else}
-              <p class="active:text-indigo-900 text-justify mb-1">
+              <p class="active:text-indigo-900 text-justify mb-2 first-letter:font-bold">
                 {aboutText}
               </p>
             {/if}
@@ -83,7 +83,7 @@
         {/each}
 
         <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-          <p class="my-6 italic">
+          <p class="first-letter:font-bold my-6 italic">
             To learn more about my experience and skills, feel free to visit my LinkedIn profile:
           </p>
           <div class="flex">

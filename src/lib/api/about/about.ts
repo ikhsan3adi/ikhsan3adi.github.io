@@ -42,8 +42,8 @@ export const photoCards: PhotoCard[] = [
 
 export const aboutTexts = [
   `Informatics Engineering student focused on back-end development, full-stack systems, and practical software architecture, with a daily workflow built around a customized Linux setup.`,
-  `Built projects across web, mobile, and application systems — including event management platforms, ticketing apps, attendance systems, and data aggregation services.`,
-  `Active in the open-source community as a maintainer and contributor, with hands-on experience in pull requests, code reviews, documentation, and release coordination for repositories with solid community traction.`,
+  `Built projects across web, mobile, and application systems including event management platforms, ticketing apps, attendance systems, data aggregation services to AI-driven chatbots and real-time tracking tools.`,
+  `Active in the open-source community as a maintainer and contributor, with hands-on experience in pull requests, code reviews, documentation, and release coordination.`,
   `Comfortable working with REST APIs, databases, deployment workflows, data structures, algorithmic thinking, and software design patterns.`,
   `Outside project work, competitive programming remains a regular outlet for sharpening problem-solving under time constraints.`
 ];
