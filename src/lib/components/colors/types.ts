@@ -48,4 +48,4 @@ interface CardColorsVariant {
   green: CardColor;
 }
 
-export type { CardColorsVariant as CardColors, TagColorKey, TagColors };
+export type { CardColorsVariant as CardColors, CardColor, TagColorKey, TagColors };

@@ -1,5 +1,5 @@
 import { clamp } from '$lib/utils';
-import type { TagColors } from './types';
+import type { TagColors, CardColors } from './types';
 
 export const tagColors: TagColors = {
   default: {
@@ -114,6 +114,7 @@ export const tagColors: TagColors = {
   }
 };
 
+/** non-clickable card. example: achievement & tools */
 export const cardColors = [
   'bg-red-200 dark:bg-red-400',
   'bg-green-300 dark:bg-green-400',
@@ -132,6 +133,34 @@ export const cardColors = [
   'bg-lime-300 dark:bg-lime-400',
   'bg-slate-300 dark:bg-slate-400'
 ];
+
+/** clickable card. example: ProjectCard */
+export const cardButtonColors: CardColors = {
+  default: {
+    light: 'bg-custom-1',
+    dark: { border: 'dark:border-blue-400', bg: 'dark:bg-blue-400' }
+  },
+  blue: {
+    light: 'bg-sky-300',
+    dark: { border: 'dark:border-sky-400', bg: 'dark:bg-sky-400' }
+  },
+  yellow: {
+    light: 'bg-yellow-300',
+    dark: { border: 'dark:border-yellow-400', bg: 'dark:bg-yellow-400' }
+  },
+  red: {
+    light: 'bg-red-200',
+    dark: { border: 'dark:border-red-400', bg: 'dark:bg-red-400' }
+  },
+  purple: {
+    light: 'bg-purple-300',
+    dark: { border: 'dark:border-purple-400', bg: 'dark:bg-purple-400' }
+  },
+  green: {
+    light: 'bg-green-300',
+    dark: { border: 'dark:border-green-400', bg: 'dark:bg-green-400' }
+  }
+};
 
 export const randomizeElements = <T>(array: Array<T>, newLength: number) => {
   const newArray = [];
