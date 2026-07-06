@@ -50,7 +50,9 @@ export const toolCategories: ToolCategory[] = [
       { name: 'MariaDB', icon: 'simple-icons:mariadb' },
       { name: 'SQLite', icon: 'simple-icons:sqlite' },
       { name: 'MongoDB', icon: 'simple-icons:mongodb' },
-      { name: 'Redis', icon: 'simple-icons:redis' }
+      { name: 'Redis', icon: 'simple-icons:redis' },
+      // other
+      { name: 'Swagger', icon: 'simple-icons:swagger' }
     ]
   },
   {

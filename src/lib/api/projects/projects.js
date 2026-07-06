@@ -47,7 +47,7 @@ export const initialProjects = [
       'Polban DataCore is the main aggregator and backend of the Polban Dataverse ecosystem. It bridges raw data sources with data visualization. Its main responsibilities include extracting raw data such as students, lecturers, and academic data from DataHub, loading the data into an internal database for processing, transforming and aggregating the raw data into meaningful statistics and materialized views, and serving the processed data through a fast, cached REST API.',
     readmeBaseUrl: 'https://github.com/muhamadSyahid/polban-datacore/raw/main/',
     imageUrl:
-      'https://opengraph.githubassets.com/a31024273919970c63ff8fc7fd39ca4cf5a08f60e3be6b985705bd2694abaa36/ikhsan3adi/polban-datacore',
+      'https://opengraph.githubassets.com/0590d0149fd3bc46940190830ca2f13798a84a9bd124901af357843662aeef30/muhamadSyahid/polban-datacore',
     readmeUrl: 'https://raw.githubusercontent.com/muhamadSyahid/polban-datacore/main/README.md',
     tags: ['nestjs', 'drizzle', 'postgresql', 'redis']
   },
