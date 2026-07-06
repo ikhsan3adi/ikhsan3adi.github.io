@@ -1,0 +1,1 @@
+import{J as e,Ot as t,Wt as n,at as r,kt as i,rt as a}from"../chunks/KV-ShtRB.js";import{n as o,t as s}from"../chunks/C8IRPSE-.js";var c=r(`<!> <!> <!>`,1);function l(r,l){var u=c(),d=t(u);s(d,{showNavLinks:!1});var f=i(d,2);e(f,()=>l.children??n),o(i(f,2),{noNavLinks:!0}),a(r,u)}export{l as component};
