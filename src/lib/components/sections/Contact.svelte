@@ -53,7 +53,7 @@
           <Saos
             animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'}
             once
-            outerClass="w-full md:w-[48.5%] lg:w-[31.5%]"
+            outerClass="w-full min-[20rem]:w-[47%] md:w-[48%] lg:w-[31.5%]"
           >
             <Button
               href={contact.link}
@@ -65,11 +65,11 @@
               className="w-full"
             >
               {#snippet icon()}
-                <div class="w-8 h-8">
+                <div class="w-6 h-6 sm:w-10 sm:h-10">
                   <Icon icon={contact.icon} class="w-full h-full" />
                 </div>
               {/snippet}
-              <span>{contact.contact}</span>
+              <span class="text-nowrap">{contact.contact}</span>
             </Button>
           </Saos>
         {/each}

@@ -42,7 +42,7 @@
           <Saos
             animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'}
             once
-            outerClass="w-full md:w-[48.5%] lg:w-[31.5%]"
+            outerClass="w-full min-[20rem]:w-[47%] md:w-[48%] lg:w-[31.5%]"
           >
             <Button
               href={social.link}
@@ -55,7 +55,7 @@
               className="w-full"
             >
               {#snippet icon()}
-                <div class="w-10 h-10">
+                <div class="w-6 h-6 sm:w-10 sm:h-10">
                   <Icon icon={social.icon} class="w-full h-full" />
                 </div>
               {/snippet}
