@@ -163,7 +163,7 @@
         <!-- Image preview -->
         <div class="w-full flex items-center relative min-h-62.5 md:min-h-80">
           <!-- Fallback text (behind image, visible when image is rate limited/unavailable) -->
-          <div             class="flex flex-col items-center gap-4 m-auto w-max py-8 pointer-events-none">
+          <div class="flex flex-col items-center gap-4 m-auto w-max py-8 pointer-events-none">
             <div
               class="dark:text-white text-center text-4xl md:text-5xl lg:text-6xl font-extrabold text-text"
             >
@@ -177,11 +177,11 @@
           </div>
 
           <!-- Image overlay (covers fallback when image loads successfully) -->
-          <!-- style="background-image: url('{project.imageUrl}');" -->
           <div
             class="absolute z-10 top-0 left-0 w-full h-full bg-no-repeat bg-cover bg-center
                  border-4 border-slate-900 dark:border-white
                  cursor-crosshair duration-200 active:brightness-75"
+            style="background-image: url('{project.imageUrl}');"
             title={project.name}
           ></div>
         </div>

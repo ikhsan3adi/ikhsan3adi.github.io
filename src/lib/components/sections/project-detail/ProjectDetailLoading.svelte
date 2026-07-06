@@ -18,7 +18,7 @@
         <div
           class="w-full bg-primary animate-pulse min-h-62.5 md:min-h-80 flex items-center border-4 border-slate-900 dark:border-slate-700"
         >
-          <div             class="flex flex-col items-center gap-4 m-auto animate-bounce">
+          <div class="flex flex-col items-center gap-4 m-auto animate-bounce">
             <span class="animate-spin text-white dark:text-text text-4xl md:text-5xl lg:text-6xl"
               ><Fa icon={faRefresh} /></span
             >
