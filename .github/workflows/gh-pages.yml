@@ -1,17 +1,28 @@
 name: Github Pages
 
 on:
-  push:
+  workflow_run:
+    workflows: ['Continuous Integration']
+    types:
+      - completed
     branches:
       - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    if: github.event.workflow_run.conclusion == 'success'
     concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
+      group: pages-${{ github.ref }}
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -25,9 +36,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.bun/install/cache
-          key: ${{ runner.os }}-${{ matrix.bun }}-bun-${{ hashFiles('**/bun.lockb') }}
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock', '**/bun.lockb', '**/package.json') }}
           restore-keys: |
-            ${{ runner.os }}-${{ matrix.bun }}-bun-
+            ${{ runner.os }}-bun-
 
       - name: Install Dependencies
         run: bun ci
@@ -35,9 +46,11 @@ jobs:
       - name: Build
         run: bun run build
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
-        if: github.ref == 'refs/heads/main'
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          path: ./build
+
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4

@@ -24,9 +24,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.bun/install/cache
-          key: ${{ runner.os }}-${{ matrix.bun }}-bun-${{ hashFiles('**/bun.lockb') }}
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock', '**/bun.lockb', '**/package.json') }}
           restore-keys: |
-            ${{ runner.os }}-${{ matrix.bun }}-bun-
+            ${{ runner.os }}-bun-
 
       - name: Install Dependencies
         run: bun ci
@@ -36,3 +36,6 @@ jobs:
 
       - name: Prettier & ESLint check
         run: bun run lint
+
+      - name: Run tests
+        run: bun run test
