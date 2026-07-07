@@ -34,21 +34,21 @@
 
 <main>
   {#if currentPath === '/$projects$/loading'}
-    <ProjectDetailLoading />
+    <ProjectDetailLoading project={projectStore.projectDetail} />
   {:else if currentPath === '/$projects$/error'}
     <ProjectDetailError
       project={projectStore.projectDetail}
       errorMessage={projectStore.detailError ?? undefined}
     />
   {:else if projectStore.detailLoading}
-    <ProjectDetailLoading />
+    <ProjectDetailLoading project={projectStore.projectDetail} />
   {:else if projectStore.detailError}
     <ProjectDetailError
       project={projectStore.projectDetail}
       errorMessage={projectStore.detailError ?? undefined}
     />
   {:else if !projectStore.projectDetail}
-    <ProjectDetailLoading />
+    <ProjectDetailLoading project={projectStore.projectDetail} />
   {:else}
     <ProjectDetail
       project={projectStore.projectDetail}

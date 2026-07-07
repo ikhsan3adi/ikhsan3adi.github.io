@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Project } from '$lib/api/projects';
+  import { onMount } from 'svelte';
 
   import {
     faArrowLeft,
@@ -12,6 +12,8 @@
   } from '@fortawesome/free-solid-svg-icons';
   import Fa from 'svelte-fa';
 
+  import type { Project } from '$lib/api/projects';
+
   import Button from '$lib/components/buttons/Button.svelte';
   import { tagColors } from '$lib/components/colors';
 
@@ -21,6 +23,22 @@
   }
 
   let { project, errorMessage = 'Could not load project data' }: Props = $props();
+
+  let fallbackAspectRatio = $state(2);
+
+  onMount(() => {
+    try {
+      const id = project?.id;
+      if (id) {
+        const cached = localStorage.getItem(`card-img-ar:${project.id}`);
+        if (cached) {
+          fallbackAspectRatio = parseFloat(cached);
+        }
+      }
+    } catch {
+      /* noop */
+    }
+  });
 
   let errorProject = $derived<Project>(
     project ?? {
@@ -45,13 +63,16 @@
       <h1 class="dark:text-white mb-6 md:mb-8 lg:mb-12 xl:mb-16">Error!</h1>
       <!-- Hero section -->
       <div
-        class="w-full justify-between flex flex-col xl:flex-row-reverse gap-4 md:gap-8 xl:gap-12 mb-24 xl:mb-32"
+        class="w-full flex flex-col xl:flex-row-reverse xl:justify-between gap-4 md:gap-8 mb-24 xl:mb-32"
       >
         <!-- Image -->
         <div
-          class="w-full bg-red-600 dark:bg-red-400 min-h-62.5 md:min-h-80 flex p-2 border-4 border-slate-900 dark:border-slate-700"
+          class="w-full xl:w-1/2 h-fit shrink-0 bg-red-600 dark:bg-red-400 border-4 border-slate-900 dark:border-slate-700 grid grid-cols-1 grid-rows-1 relative overflow-clip"
+          style={fallbackAspectRatio > 0 ? `aspect-ratio:${fallbackAspectRatio}` : ''}
         >
-          <div class="flex flex-col items-center gap-4 m-auto animate-pulse">
+          <div
+            class="col-start-1 row-start-1 place-self-center flex flex-col items-center gap-4 m-auto w-max py-8 animate-pulse"
+          >
             <div
               class="text-center text-white dark:text-text font-extrabold text-4xl md:text-5xl lg:text-6xl"
             >
@@ -66,7 +87,7 @@
         </div>
 
         <!-- description -->
-        <div class="w-full">
+        <div class="w-full xl:w-1/2">
           <p class="dark:text-slate-300 text-center sm:text-left">{errorMessage}</p>
 
           <!-- Stars, forks, downloads -->

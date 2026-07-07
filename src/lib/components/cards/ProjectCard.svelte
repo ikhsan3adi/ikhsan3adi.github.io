@@ -8,7 +8,7 @@
   } from '$lib/components/colors';
   import { scale } from 'svelte/transition';
 
-  import { faWarning } from '@fortawesome/free-solid-svg-icons';
+  import { faImage, faRefresh } from '@fortawesome/free-solid-svg-icons';
   import Fa from 'svelte-fa';
 
   import { createSlug } from '$lib/utils';
@@ -34,8 +34,8 @@
 
   const mainLabelId = $derived(createSlug(`porto_${project.name}`));
 
-  let imgVisible = $state(false);
-  let fallbackAspectRatio = $state(1.77777777778);
+  let imgState = $state<'loading' | 'loaded' | 'error'>('loading');
+  let fallbackAspectRatio = $state(2);
 
   onMount(() => {
     try {
@@ -58,7 +58,7 @@
         /* noop */
       }
     }
-    imgVisible = true;
+    imgState = 'loaded';
   }
 </script>
 
@@ -82,38 +82,47 @@
       <!-- Background image wrapper -->
       <div
         class="w-full shrink-0 bg-slate-300 dark:bg-slate-600 grid grid-cols-1 grid-rows-1 relative overflow-clip"
-        style={fallbackAspectRatio > 0 && !imgVisible ? `aspect-ratio:${fallbackAspectRatio}` : ''}
+        style={fallbackAspectRatio > 0 && imgState !== 'loaded'
+          ? `aspect-ratio:${fallbackAspectRatio}`
+          : ''}
       >
-        <!-- Hidden sizing image -->
+        <!-- Background image -->
         <img
           src={project.imageUrl}
-          alt=""
-          class="col-start-1 row-start-1 w-full opacity-0 pointer-events-none"
-          class:hidden={!imgVisible}
+          alt={project.name}
+          class="col-start-1 row-start-1 w-full text-transparent object-cover object-center"
+          class:hidden={imgState === 'error'}
           onload={onImgLoad}
+          onerror={() => (imgState = 'error')}
         />
 
-        <div
-          class="col-start-1 row-start-1 place-self-center inline-flex flex-wrap justify-center gap-2 items-center w-max"
-          aria-hidden="true"
-        >
+        {#if imgState !== 'loaded'}
           <div
-            class="dark:text-white text-center text-4xl md:text-5xl lg:text-6xl font-extrabold text-text"
+            class="col-start-1 row-start-1 place-self-center inline-flex flex-wrap justify-center gap-2 items-center w-max pointer-events-none"
+            aria-hidden="true"
           >
-            <Fa icon={faWarning} />
+            <div
+              class="dark:text-white text-center text-4xl md:text-5xl lg:text-6xl font-extrabold text-text"
+            >
+              {#if imgState === 'error'}
+                <Fa icon={faImage} />
+              {:else if imgState === 'loading'}
+                <Fa icon={faRefresh} class="animate-spin" />
+              {/if}
+            </div>
+            <div
+              class="dark:text-white text-center font-cascadia-mono font-extrabold text-text text-2xl md:text-3xl lg:text-4xl"
+            >
+              {#if project.statusMessage}
+                {project.statusMessage}
+              {:else if imgState === 'error'}
+                Image not available
+              {:else if imgState === 'loading'}
+                Loading...
+              {/if}
+            </div>
           </div>
-          <div
-            class="dark:text-white text-center font-cascadia-mono font-extrabold text-text text-2xl md:text-3xl lg:text-4xl"
-          >
-            {project.statusMessage ?? 'Image not available'}
-          </div>
-        </div>
-
-        <!-- Background image -->
-        <div
-          class="absolute inset-0 bg-no-repeat bg-cover bg-center"
-          style="background-image: url('{project.imageUrl}');"
-        ></div>
+        {/if}
 
         <!-- Hover show view detail -->
         <div class="bg-slate-900/0 group-hover:bg-slate-900/70 absolute inset-0 flex duration-200">

@@ -13,7 +13,8 @@
     faExternalLink,
     faHome,
     faStar,
-    faWarning
+    faRefresh,
+    faImage
   } from '@fortawesome/free-solid-svg-icons';
   import Fa from 'svelte-fa';
 
@@ -33,6 +34,33 @@
   }
 
   let { project, projectService, fetch }: Props = $props();
+
+  let imgState = $state<'loading' | 'loaded' | 'error'>('loading');
+  let fallbackAspectRatio = $state(2);
+
+  onMount(() => {
+    try {
+      const cached = localStorage.getItem(`card-img-ar:${project.id}`);
+      if (cached) {
+        fallbackAspectRatio = parseFloat(cached);
+      }
+    } catch {
+      /* noop */
+    }
+  });
+
+  function onImgLoad(e: Event) {
+    const img = e.target as HTMLImageElement;
+    const { naturalWidth, naturalHeight } = img;
+    if (naturalHeight > 80 && naturalWidth > 0) {
+      try {
+        localStorage.setItem(`card-img-ar:${project.id}`, String(naturalWidth / naturalHeight));
+      } catch {
+        /* noop */
+      }
+    }
+    imgState = 'loaded';
+  }
 
   /** Preprocess raw markdown to fix GitHub-vs-KaTeX escaping mismatches.
    *  GitHub READMEs use double backslash before LaTeX special characters
@@ -158,36 +186,56 @@
       <h1 class="dark:text-white mb-6 md:mb-8 lg:mb-12 xl:mb-16">{project.name}</h1>
       <!-- Hero section -->
       <div
-        class="w-full grid grid-cols-1 grid-flow-row grid-rows-2 xl:flex xl:flex-row-reverse xl:justify-between gap-4 md:gap-8 xl:gap-12 mb-24 xl:mb-32"
+        class="w-full flex flex-col xl:flex-row-reverse xl:justify-between gap-4 md:gap-8 mb-24 xl:mb-32"
       >
         <!-- Image preview -->
-        <div class="w-full flex items-center relative min-h-62.5 md:min-h-80">
-          <!-- Fallback text (behind image, visible when image is rate limited/unavailable) -->
-          <div class="flex flex-col items-center gap-4 m-auto w-max py-8 pointer-events-none">
-            <div
-              class="dark:text-white text-center text-4xl md:text-5xl lg:text-6xl font-extrabold text-text"
-            >
-              <Fa icon={faWarning} />
-            </div>
-            <div
-              class="dark:text-white text-wrap text-center font-cascadia-mono font-extrabold text-text text-3xl md:text-4xl lg:text-5xl"
-            >
-              Image not available
-            </div>
-          </div>
-
-          <!-- Image overlay (covers fallback when image loads successfully) -->
-          <div
-            class="absolute z-10 top-0 left-0 w-full h-full bg-no-repeat bg-cover bg-center
-                 border-4 border-slate-900 dark:border-white
-                 cursor-crosshair duration-200 active:brightness-75"
-            style="background-image: url('{project.imageUrl}');"
+        <div
+          class="w-full xl:w-1/2 h-fit shrink-0 border-4 border-slate-900 dark:border-white grid grid-cols-1 grid-rows-1 relative overflow-clip"
+          style={fallbackAspectRatio > 0 && imgState !== 'loaded'
+            ? `aspect-ratio:${fallbackAspectRatio}`
+            : ''}
+        >
+          <img
+            src={project.imageUrl}
+            alt={project.name}
             title={project.name}
-          ></div>
+            class="col-start-1 row-start-1 h-full w-full text-transparent object-cover object-center
+              cursor-crosshair duration-200 transition-all active:brightness-75 m-0 p-0"
+            class:hidden={imgState === 'error'}
+            onload={onImgLoad}
+            onerror={() => (imgState = 'error')}
+          />
+
+          {#if imgState !== 'loaded'}
+            <div
+              class="col-start-1 row-start-1 place-self-center flex flex-col items-center gap-4 m-auto w-max py-8 pointer-events-none"
+            >
+              <div
+                class="dark:text-white text-center text-4xl md:text-5xl lg:text-6xl font-extrabold text-text"
+              >
+                {#if imgState === 'error'}
+                  <Fa icon={faImage} />
+                {:else if imgState === 'loading'}
+                  <Fa icon={faRefresh} class="animate-spin" />
+                {/if}
+              </div>
+              <div
+                class="dark:text-white text-wrap text-center font-cascadia-mono font-extrabold text-text text-3xl md:text-4xl lg:text-5xl"
+              >
+                {#if project.statusMessage}
+                  {project.statusMessage}
+                {:else if imgState === 'error'}
+                  Image not available
+                {:else if imgState === 'loading'}
+                  Loading...
+                {/if}
+              </div>
+            </div>
+          {/if}
         </div>
 
         <!-- Project description -->
-        <div class="w-full">
+        <div class="w-full xl:w-1/2">
           <p class="dark:text-slate-300 text-center sm:text-left">{project.description}</p>
 
           <!-- Stars, forks, downloads -->
