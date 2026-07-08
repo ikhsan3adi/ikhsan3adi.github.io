@@ -14,18 +14,18 @@ export interface Contact {
 
 export const contacts: Contact[] = [
   {
-    contact: 'WhatsApp Me!',
-    name: FULL_NAME,
-    link: whatsappLink,
-    colorVariant: 'whatsapp',
-    icon: 'simple-icons:whatsapp'
-  },
-  {
     contact: 'Chat on Telegram',
     name: FULL_NAME,
     link: 'https://t.me/ikhsan3adi',
     colorVariant: 'telegram',
     icon: 'simple-icons:telegram'
+  },
+  {
+    contact: 'WhatsApp Me!',
+    name: FULL_NAME,
+    link: whatsappLink,
+    colorVariant: 'whatsapp',
+    icon: 'simple-icons:whatsapp'
   },
   {
     contact: 'Discord!',

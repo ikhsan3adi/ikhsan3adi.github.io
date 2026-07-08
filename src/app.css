@@ -4,6 +4,7 @@
   --font-cascadia-mono: 'Cascadia Mono', mono;
   --font-space-grotesk: 'Space Grotesk', sans-serif;
   --font-mechsuit: 'Mechsuit', sans-serif;
+  --font-angeles: 'Angeles', cursive;
 
   --color-text: #280609;
   --color-background: #e7fdfd;
@@ -80,7 +81,17 @@
 
   @font-face {
     font-family: 'Mechsuit';
-    src: local('Mechsuit'), url('/fonts/Mechsuit.woff2');
+    src:
+      local('Mechsuit'),
+      url('/fonts/Mechsuit.woff2') format('woff2');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Angeles';
+    src:
+      local('Angeles'),
+      url('/fonts/ANGELES.woff2') format('woff2');
     font-display: swap;
   }
 }

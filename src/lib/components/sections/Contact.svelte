@@ -48,12 +48,13 @@
         </h2>
       </Saos>
 
-      <div class="flex flex-wrap justify-center gap-4 lg:gap-5 xl:gap-6">
-        {#each contacts as contact}
+      <div class="flex flex-wrap justify-center gap-3 sm:gap-4 lg:gap-5 xl:gap-6">
+        {#each contacts as contact, i}
           <Saos
             animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'}
             once
-            outerClass="w-full min-[20rem]:w-[47%] md:w-[48%] lg:w-[31.5%]"
+            outerClass="w-full min-[20rem]:w-[47.5%] md:w-[48%] lg:w-[31.5%]
+              {i <= 1 ? 'max-sm:min-[20rem]:w-[97.67%]' : ''}"
           >
             <Button
               href={contact.link}
@@ -69,7 +70,9 @@
                   <Icon icon={contact.icon} class="w-full h-full" />
                 </div>
               {/snippet}
-              <span class="text-nowrap">{contact.contact}</span>
+              <span class="flex justify-start items-center">
+                {contact.contact}
+              </span>
             </Button>
           </Saos>
         {/each}

@@ -8,6 +8,29 @@
   import { socials } from '$lib/api/socials';
 
   // import cobweb from '$lib/components/graphics/cobweb-05.svg';
+
+  //! OVER ENGINEERED ????
+
+  const count = socials.length;
+  const isOdd = 1 & socials.length;
+  const middle = socials.length >> 1;
+  const last = socials.length - 1;
+
+  const shouldStretches = new Map<number, boolean>();
+
+  if (count > 5) {
+    shouldStretches.set(0, true);
+    shouldStretches.set(last, true);
+    if (isOdd) {
+      shouldStretches.set(middle, true);
+      if (1 & ((count - 3) / 2)) {
+        shouldStretches.set(middle - 1, true);
+        shouldStretches.set(middle + 1, true);
+      }
+    }
+  } else if (isOdd) {
+    shouldStretches.set(0, true);
+  }
 </script>
 
 <section
@@ -37,12 +60,13 @@
       </Saos>
 
       <!-- Social buttons -->
-      <div class="flex flex-wrap justify-center gap-4 lg:gap-5 xl:gap-6">
-        {#each socials as social}
+      <div class="flex flex-wrap justify-center gap-3 sm:gap-4 lg:gap-5 xl:gap-6">
+        {#each socials as social, i}
           <Saos
             animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'}
             once
-            outerClass="w-full min-[20rem]:w-[47%] md:w-[48%] lg:w-[31.5%]"
+            outerClass="w-full min-[20rem]:w-[47.5%] md:w-[48%] lg:w-[31.5%]
+              {shouldStretches.get(i) ? 'max-sm:min-[20rem]:w-[97.67%]' : ''}"
           >
             <Button
               href={social.link}
@@ -59,9 +83,9 @@
                   <Icon icon={social.icon} class="w-full h-full" />
                 </div>
               {/snippet}
-              <div class="flex justify-start items-center">
+              <span class="flex justify-start items-center">
                 {social.social}
-              </div>
+              </span>
             </Button>
           </Saos>
         {/each}

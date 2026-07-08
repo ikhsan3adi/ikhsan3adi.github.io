@@ -66,11 +66,11 @@
         {#each aboutTexts as aboutText, i}
           <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
             {#if i == 0}
+              <!-- Ini Namanya Drop Cap ya dek ya -->
               <p
                 class="active:text-indigo-900 text-justify mb-2
-                  first-letter:leading-[0.8]
-                  first-letter:font-cascadia-mono first-letter:capitalize
-                  first-letter:text-[3.67rem] first-letter:float-left first-letter:mr-1"
+                  first-letter:font-angeles first-letter:capitalize
+                  first-letter:text-[3rem] first-letter:float-left first-letter:mr-5"
               >
                 {aboutText}
               </p>
