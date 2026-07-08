@@ -2,6 +2,7 @@
   import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
   import Fa from 'svelte-fa';
 
+  import { browserVendor } from '$lib/environment';
   import { aboutTexts, photoCards, topMarqueeTexts } from '$lib/api/about';
   import { linkedInLink } from '$lib/api/socials';
 
@@ -69,8 +70,9 @@
               <!-- Ini Namanya Drop Cap ya dek ya -->
               <p
                 class="active:text-indigo-900 text-justify mb-2
-                  first-letter:font-angeles first-letter:capitalize
-                  first-letter:text-[3rem] first-letter:float-left first-letter:mr-5"
+                  first-letter:font-angeles first-letter:capitalize first-letter:leading-[0.8]
+                  first-letter:text-5xl first-letter:float-left first-letter:mr-5
+                  {browserVendor == 'chromium' ? 'first-letter:mt-1.5' : ''}"
               >
                 {aboutText}
               </p>
