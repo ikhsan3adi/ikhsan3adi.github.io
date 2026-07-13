@@ -423,6 +423,61 @@
     color: var(--color-slate-300);
   }
 
+  :global(.dark .markdown-alert-note) {
+    border-color: var(--color-blue-600);
+    background-color: var(--color-blue-950);
+  }
+  :global(.dark .markdown-alert-note > .markdown-alert-title) {
+    color: var(--color-blue-400);
+  }
+  :global(.dark .markdown-alert-note > .markdown-alert-title > svg) {
+    fill: var(--color-blue-400);
+  }
+
+  :global(.dark .markdown-alert-tip) {
+    border-color: var(--color-green-600);
+    background-color: var(--color-green-950);
+  }
+  :global(.dark .markdown-alert-tip > .markdown-alert-title) {
+    color: var(--color-green-400);
+  }
+  :global(.dark .markdown-alert-tip > .markdown-alert-title > svg) {
+    fill: var(--color-green-400);
+  }
+
+  :global(.dark .markdown-alert-important) {
+    border-color: var(--color-purple-600);
+    background-color: var(--color-purple-950);
+  }
+  :global(.dark .markdown-alert-important > .markdown-alert-title) {
+    color: var(--color-purple-400);
+  }
+  :global(.dark .markdown-alert-important > .markdown-alert-title > svg) {
+    fill: var(--color-purple-400);
+  }
+
+  :global(.dark .markdown-alert-warning) {
+    border-color: var(--color-yellow-600);
+    background-color: var(--color-yellow-950);
+  }
+  :global(.dark .markdown-alert-warning > .markdown-alert-title) {
+    color: var(--color-yellow-400);
+  }
+  :global(.dark .markdown-alert-warning > .markdown-alert-title > svg) {
+    fill: var(--color-yellow-400);
+  }
+
+  :global(.dark .markdown-alert-caution) {
+    border-color: var(--color-red-600);
+    background-color: var(--color-red-950);
+  }
+  :global(.dark .markdown-alert-caution > .markdown-alert-title) {
+    color: var(--color-red-400);
+  }
+  :global(.dark .markdown-alert-caution > .markdown-alert-title > svg) {
+    fill: var(--color-red-400);
+  }
+
   :global(.markdown-alert-title > svg) {
     fill: var(--color-slate-600);
   }
@@ -520,6 +575,15 @@
   :global(.dark .markdown-content th),
   :global(.dark .markdown-content td) {
     border-color: var(--color-slate-600);
+  }
+
+  :global(.markdown-content ul),
+  :global(.markdown-content ol) {
+    margin: 1rem 0;
+  }
+  :global(.markdown-content li > ul),
+  :global(.markdown-content li > ol) {
+    margin-top: 0.5rem;
   }
 
   :global(.markdown-content p),

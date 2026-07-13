@@ -18,8 +18,8 @@ export const renderer = (baseUrl: string, markedModule: { Renderer: new () => Ma
 
   renderer.list = (body, ordered) => {
     const type = ordered ? 'ol' : 'ul';
-    const styleClass = ordered ? 'list-decimal pl-5' : 'list-disc pl-5';
-    return `<div class="my-4"><${type} class="${styleClass}">${body}</${type}></div>`;
+    const styleClass = ordered ? 'list-decimal' : 'list-disc';
+    return `<${type} class="${styleClass} pl-5">${body}</${type}>`;
   };
 
   renderer.listitem = (text) => {

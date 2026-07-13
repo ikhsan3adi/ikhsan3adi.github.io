@@ -58,7 +58,7 @@
           once
         >
           <h3
-            class="relative z-10 text-center dark:text-white duration-500 text-2xl font-bold uppercase tracking-wide"
+            class="relative z-10 text-center dark:text-white duration-500 uppercase tracking-wide"
           >
             <Icon icon="lucide:trophy" class="inline-block w-6 h-6 md:w-7 md:h-7 mr-2" />
             <span class="dark:underline">Competitions</span>
@@ -67,7 +67,7 @@
             class="z-0 text-center
                 text-stroke-[1px] dark:text-stroke-amber-400 text-stroke-slate-900
                 text-orange-400 dark:text-transparent
-                duration-500 text-2xl font-bold uppercase tracking-wide
+                duration-500 uppercase tracking-wide
                 absolute bottom-[-.5px] right-[-.5px] pointer-events-none select-none"
           >
             <Icon
@@ -78,7 +78,7 @@
           </h3>
         </Saos>
 
-        <div class="flex flex-wrap justify-center gap-4 lg:gap-5 xl:gap-6">
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-4 lg:gap-5 xl:gap-6">
           {#each competitions as achievement, i}
             <div
               class="w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(50%-0.833rem)] xl:w-[calc(33.333%-1rem)]"
@@ -156,7 +156,7 @@
         >
           <div class="inline-block">
             <h3
-              class="relative z-10 text-center dark:text-white duration-500 text-2xl font-bold uppercase tracking-wide"
+              class="relative z-10 text-center dark:text-white duration-500 uppercase tracking-wide"
             >
               <Icon icon="lucide:book-open-text" class="inline-block w-6 h-6 md:w-7 md:h-7 mr-2" />
               <span class="dark:underline">Courses</span>
@@ -165,7 +165,7 @@
               class="z-0 text-center
                 text-stroke-[1px] dark:text-stroke-sky-400 text-stroke-slate-900
                 text-sky-400 dark:text-transparent
-                duration-500 text-2xl font-bold uppercase tracking-wide
+                duration-500 uppercase tracking-wide
                 absolute bottom-[-.5px] right-[-.5px] pointer-events-none select-none"
             >
               <Icon
@@ -177,7 +177,7 @@
           </div>
         </Saos>
 
-        <div class="flex flex-wrap justify-center gap-4 lg:gap-5 xl:gap-6">
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-4 lg:gap-5 xl:gap-6">
           {#each courses as achievement, i}
             <div
               class="w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(50%-0.833rem)] xl:w-[calc(33.333%-1rem)]"

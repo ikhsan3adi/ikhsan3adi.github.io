@@ -59,11 +59,11 @@
       <hr class="my-4 border-slate-500" />
 
       <!-- Socials -->
-      <div class="flex justify-center gap-6 my-10 opacity-90 h-10">
+      <div class="flex justify-center gap-4 sm:gap-6 my-8 sm:my-10 opacity-90">
         {#each footerSocials as social}
           <a href={social.link} target="_blank" class="group" title={social.social}>
             <div
-              class="w-8 h-8 text-slate-400 group-hover:text-slate-100 group-active:text-primary"
+              class="w-6 h-6 sm:w-8 sm:h-8 text-slate-400 group-hover:text-slate-100 group-active:text-primary"
             >
               <Icon icon={social.icon} class="w-full h-full text-current" />
             </div>
