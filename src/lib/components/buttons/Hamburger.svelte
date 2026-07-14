@@ -7,9 +7,10 @@
   interface Props {
     isBgTransparent?: boolean;
     showNavLinks?: boolean;
+    className?: string;
   }
 
-  let { isBgTransparent = true, showNavLinks = true }: Props = $props();
+  let { isBgTransparent = true, showNavLinks = true, className }: Props = $props();
 
   let open = $state(false);
 
@@ -27,7 +28,7 @@
 
 <div
   class="{isBgTransparent ? 'dark:text-white' : 'dark:text-text'}
-  text-text my-auto flex flex-col lg:hidden"
+  text-text my-auto flex flex-col lg:hidden {className}"
 >
   <!-- Hamburger button -->
   <button class="m-auto block" onclick={() => toggle(!open)} title="Toggle menu">
@@ -65,13 +66,15 @@
         {#each navLinks as link}
           <a
             class="py-2 pl-5 pr-12 hover:bg-accent hover:underline active:text-indigo-500 dark:text-white duration-200"
-            href="#{link.link}">{link.text}</a
+            href="#{link.link}"
           >
+            {link.text}
+          </a>
         {/each}
       {/if}
       <!-- Dark mode toggle -->
       <div
-        class="mx-auto py-1 {showNavLinks
+        class="py-1 {showNavLinks
           ? 'border-t-4 border-slate-900 dark:border-white'
           : ''} flex items-center gap-4 pr-4"
       >

@@ -8,7 +8,7 @@
   id="Layer_1"
   data-name="Layer 1"
   xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 650 650"
+  viewBox="0 0 720 720"
   ><title>{USERNAME}</title><polygon
     points="237 127.75 237 146.16 172.66 146.16 172.66 198.88 135.84 162.06 135.84 146.16 115.85 146.16 70.85 109.34 218.59 109.34 237 127.75"
   /><polyline

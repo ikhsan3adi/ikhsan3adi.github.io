@@ -2,6 +2,16 @@ export function clamp(value: number, min: number, max: number): number {
   return Math.min(Math.max(value, min), max);
 }
 
+// random between min and max
+export function randomBetween(min: number, max: number): number {
+  return Math.random() * (max - min) + min;
+}
+
+// generate array of random element between min and max
+export function randomArray(min: number, max: number, length: number): number[] {
+  return Array.from({ length }, () => randomBetween(min, max));
+}
+
 export function createSlug(headingText: string): string {
   return headingText
     .toLowerCase()

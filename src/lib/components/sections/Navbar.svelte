@@ -20,6 +20,7 @@
   let prevScrollpos = Infinity;
   let prevScrollpos2 = 0;
 
+  let isBgFullyTransparent = $state(true);
   let isBgTransparent = $state(true);
   let backgroundClasses = $state('bg-primary/0 border-slate-900/0');
 
@@ -43,18 +44,23 @@
 
   function changeColors() {
     if (scrollState.y < 300) {
+      isBgFullyTransparent = true;
       isBgTransparent = true;
       backgroundClasses = 'bg-primary/0 border-slate-900/0 dark:border-slate-700/0';
     } else if (showNavLinks ? scrollState.y < 400 : scrollState.y < 333) {
+      isBgFullyTransparent = false;
       isBgTransparent = true;
       backgroundClasses = 'bg-primary/20 border-slate-900/0 dark:border-slate-700/0';
     } else if (showNavLinks ? scrollState.y < 600 : scrollState.y < 367) {
+      isBgFullyTransparent = false;
       isBgTransparent = true;
       backgroundClasses = 'bg-primary/50 border-slate-900/0 dark:border-slate-700/0';
     } else if (showNavLinks ? scrollState.y < 800 : scrollState.y < 400) {
+      isBgFullyTransparent = false;
       isBgTransparent = true;
       backgroundClasses = 'bg-primary/60 border-slate-900/0 dark:border-slate-700/0';
     } else {
+      isBgFullyTransparent = false;
       isBgTransparent = false;
       backgroundClasses = 'bg-primary/100 border-slate-900/100 dark:border-slate-700/100';
     }
@@ -76,7 +82,10 @@
   <Wrappper>
     <div class="my-auto h-14 md:h-16 flex justify-between w-full">
       <!-- Logo -->
-      <div class="my-auto">
+      <div
+        class="my-auto duration-500
+        {isBgFullyTransparent ? 'bg-white/70 dark:bg-slate-800/70' : ''}"
+      >
         <SimpleLogoText {isBgTransparent} />
       </div>
 
@@ -88,7 +97,8 @@
         >
           {#each navLinks as link}
             <a
-              class="hover:underline active:text-indigo-500 dark:active:text-custom-3 active:text-shadow-sm"
+              class="hover:underline active:text-indigo-500 dark:active:text-custom-3 active:text-shadow-sm duration-500
+                {isBgFullyTransparent ? 'bg-white/70 dark:bg-slate-800/70' : ''}"
               href="#{link.link}"
             >
               {link.text}
@@ -98,10 +108,17 @@
       {/if}
 
       <!-- Hamburger menu -->
-      <Hamburger {isBgTransparent} {showNavLinks} />
+      <Hamburger
+        {isBgTransparent}
+        {showNavLinks}
+        className="duration-500 {isBgFullyTransparent ? 'bg-white/70 dark:bg-slate-800/70' : ''}"
+      />
 
       <!-- Dark mode toggle -->
-      <div class="hidden lg:block my-auto">
+      <div
+        class="hidden lg:block my-auto duration-500
+          {isBgFullyTransparent ? 'bg-white/70 dark:bg-slate-800/70' : ''}"
+      >
         <ThemeButton {isBgTransparent} />
       </div>
     </div>
