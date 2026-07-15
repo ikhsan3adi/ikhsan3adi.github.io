@@ -33,7 +33,7 @@
           <!-- Hero text -->
           <p
             id="home"
-            class="w-fit dark:text-white bg-white/70 dark:bg-slate-800/70 md:text-lg lg:text-xl font-medium cursor-not-allowed duration-500"
+            class="w-fit z-2 dark:text-white bg-white/70 dark:bg-slate-800/70 md:text-lg lg:text-xl font-medium cursor-not-allowed duration-500"
           >
             Hello, my name is
           </p>
@@ -50,9 +50,9 @@
 
           <!-- Typing effect -->
           <div
-            class="mb-4 w-fit dark:text-white bg-white/70 dark:bg-slate-800/70 duration-500 italic md:text-lg lg:text-xl font-medium cursor-not-allowed"
+            class="mb-4 w-fit z-2 dark:text-white bg-white/70 dark:bg-slate-800/70 duration-500 italic md:text-lg lg:text-xl font-medium cursor-not-allowed"
           >
-            <Typewriter mode={'loop'} interval={randomArray(35, 50, 20) as unknown as number}>
+            <Typewriter mode={'loop'} interval={randomArray(15, 67, 20) as unknown as number}>
               A
               <span class="text-emerald-600 dark:text-primary">Student</span>
               <span class="text-fuchsia-800 dark:text-custom-3">Programmer</span>
@@ -79,23 +79,24 @@
         <div
           class="max-md:mx-auto w-max md:my-auto relative active:animate-ping transform-gpu duration-0"
         >
-          <div
-            class="cursor-crosshair w-60 h-60 mx-auto md:w-68 md:h-68 lg:w-82 lg:h-82 dark:text-white duration-50 z-1"
-          >
-            <Emblem />
-          </div>
-
-          <div class="flex items-center justify-center absolute inset-0 -z-2">
+          <div class="absolute flex items-center justify-center w-full h-full">
             <div
-              class="w-54 h-50 md:w-60 md:h-54 lg:w-68 lg:h-62 bg-white/70 dark:bg-slate-800/70 duration-500"
+              class="w-54 h-48 mt-3 md:w-60 md:h-54 lg:w-68 lg:h-62
+                bg-white/60 dark:bg-slate-800/60 rounded-full duration-500"
             ></div>
           </div>
 
           <!-- Back outline / shadow -->
           <div
-            class="cursor-crosshair w-60 h-60 mx-auto md:w-68 md:h-68 lg:w-82 lg:h-82 text-custom-3
-              dark:text-transparent stroke-4 stroke-slate-900 dark:stroke-custom-3 duration-500
-              absolute top-3 -right-2 -z-1"
+            class="cursor-crosshair w-60 h-60 md:w-68 md:h-68 lg:w-82 lg:h-82
+              text-custom-3 dark:text-transparent stroke-4 stroke-slate-900 dark:stroke-custom-3 duration-500
+              absolute top-3 -right-2"
+          >
+            <Emblem />
+          </div>
+
+          <div
+            class="relative cursor-crosshair w-60 h-60 mx-auto md:w-68 md:h-68 lg:w-82 lg:h-82 dark:text-white duration-50"
           >
             <Emblem />
           </div>
