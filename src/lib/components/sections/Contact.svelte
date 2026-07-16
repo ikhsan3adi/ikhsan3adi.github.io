@@ -36,14 +36,11 @@
   };
 </script>
 
-<section class="flex relative duration-500 bg-halftone bg-halftone-45">
+<section class="flex relative bg-halftone bg-halftone-45">
   <Wrappper>
     <div class="w-full">
       <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-        <h2
-          class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white duration-500"
-          id="contact"
-        >
+        <h2 class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white" id="contact">
           Contact
         </h2>
       </Saos>
@@ -83,9 +80,7 @@
           <div class="lg:flex lg:justify-between">
             <div class="hidden lg:block my-auto pr-8 xl:pr-12">
               <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-                <h3
-                  class="dark:text-white duration-500 font-cascadia-mono text-3xl md:text-4xl lg:text-5xl"
-                >
+                <h3 class="dark:text-white font-cascadia-mono text-3xl md:text-4xl lg:text-5xl">
                   Message me!
                 </h3>
               </Saos>

@@ -84,10 +84,7 @@
   <Wrappper>
     <div class="w-full pb-36">
       <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-        <h2
-          class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white duration-500"
-          id="portfolio"
-        >
+        <h2 class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white" id="portfolio">
           Projects
         </h2>
       </Saos>

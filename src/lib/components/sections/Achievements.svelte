@@ -20,7 +20,7 @@
 </script>
 
 <section
-  class="w-full relative isolate overflow-hidden bg-purple-100 dark:bg-fuchsia-700/35 border-t-4 border-slate-900 dark:border-white duration-500"
+  class="w-full relative isolate overflow-hidden bg-purple-100 dark:bg-fuchsia-700/35 border-t-4 border-slate-900 dark:border-white"
 >
   <!-- Background image scrolling -->
   <div
@@ -36,11 +36,9 @@
         outerClass="w-full flex justify-center my-10 md:my-12 lg:my-16"
         once
       >
-        <h2 class="relative z-10 text-center dark:text-white duration-500" id="achievements">
-          Achievements
-        </h2>
+        <h2 class="relative z-10 text-center dark:text-white" id="achievements">Achievements</h2>
         <h2
-          class="absolute z-0 text-center duration-500
+          class="absolute z-0 text-center
             text-stroke-1 text-stroke-slate-900 dark:text-stroke-accent
             dark:bg-none bg-clip-text text-transparent bg-linear-to-r from-accent to-custom-3
             bottom-[-2.5px] right-[-2.5px] pointer-events-none select-none"
@@ -57,9 +55,7 @@
           outerClass="w-full flex justify-center mb-6 md:mb-8 mt-12 md:mt-16"
           once
         >
-          <h3
-            class="relative z-10 text-center dark:text-white duration-500 uppercase tracking-wide"
-          >
+          <h3 class="relative z-10 text-center dark:text-white uppercase tracking-wide">
             <Icon icon="lucide:trophy" class="inline-block w-6 h-6 md:w-7 md:h-7 mr-2" />
             <span class="dark:underline">Competitions</span>
           </h3>
@@ -67,7 +63,7 @@
             class="z-0 text-center
                 text-stroke-[1px] dark:text-stroke-amber-400 text-stroke-slate-900
                 text-orange-400 dark:text-transparent
-                duration-500 uppercase tracking-wide
+                 uppercase tracking-wide
                 absolute bottom-[-.5px] right-[-.5px] pointer-events-none select-none"
           >
             <Icon
@@ -155,9 +151,7 @@
           once
         >
           <div class="inline-block">
-            <h3
-              class="relative z-10 text-center dark:text-white duration-500 uppercase tracking-wide"
-            >
+            <h3 class="relative z-10 text-center dark:text-white uppercase tracking-wide">
               <Icon icon="lucide:book-open-text" class="inline-block w-6 h-6 md:w-7 md:h-7 mr-2" />
               <span class="dark:underline">Courses</span>
             </h3>
@@ -165,7 +159,7 @@
               class="z-0 text-center
                 text-stroke-[1px] dark:text-stroke-sky-400 text-stroke-slate-900
                 text-sky-400 dark:text-transparent
-                duration-500 uppercase tracking-wide
+                 uppercase tracking-wide
                 absolute bottom-[-.5px] right-[-.5px] pointer-events-none select-none"
             >
               <Icon

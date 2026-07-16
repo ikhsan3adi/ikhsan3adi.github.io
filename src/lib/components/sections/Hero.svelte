@@ -14,7 +14,7 @@
 </script>
 
 <section
-  class="min-h-200 md:min-h-150 h-screen max-h-337.5 overflow-hidden flex relative duration-500 bg-white dark:bg-slate-800 bg-halftone bg-halftone-45"
+  class="min-h-200 md:min-h-150 h-screen max-h-337.5 overflow-hidden flex relative bg-white dark:bg-slate-800 bg-halftone bg-halftone-45"
 >
   <!-- Background image scrolling -->
   <!-- <div
@@ -27,22 +27,20 @@
       <div
         class="w-full flex max-md:flex-col gap-4 justify-evenly md:justify-between md:my-auto items-center"
       >
-        <div
-          class="m-0 py-2 md:py-8 lg:py-9 max-md:text-center duration-500 flex flex-col max-md:items-center"
-        >
+        <div class="m-0 py-2 md:py-8 lg:py-9 max-md:text-center flex flex-col max-md:items-center">
           <!-- Hero text -->
           <p
             id="home"
-            class="w-fit z-2 dark:text-white bg-white/70 dark:bg-slate-800/70 md:text-lg lg:text-xl font-medium cursor-not-allowed duration-500"
+            class="w-fit z-2 dark:text-white bg-white/70 dark:bg-slate-800/70 md:text-lg lg:text-xl font-medium cursor-not-allowed"
           >
             Hello, my name is
           </p>
-          <h1 class="mb-2 w-fit dark:text-white duration-500 cursor-not-allowed">
-            <span class="bg-white/70 dark:bg-slate-800/70 duration-500">
+          <h1 class="mb-2 w-fit dark:text-white cursor-not-allowed">
+            <span class="bg-white/70 dark:bg-slate-800/70">
               {FIRST_NAME}
             </span>
             <span
-              class="font-cascadia-mono text-accent dark:text-primary bg-white/70 dark:bg-slate-800/70 duration-500"
+              class="font-cascadia-mono text-accent dark:text-primary bg-white/70 dark:bg-slate-800/70"
             >
               {LAST_NAME}
             </span>
@@ -50,7 +48,7 @@
 
           <!-- Typing effect -->
           <div
-            class="mb-4 w-fit z-2 dark:text-white bg-white/70 dark:bg-slate-800/70 duration-500 italic md:text-lg lg:text-xl font-medium cursor-not-allowed"
+            class="mb-4 w-fit z-2 dark:text-white bg-white/70 dark:bg-slate-800/70 italic md:text-lg lg:text-xl font-medium cursor-not-allowed"
           >
             <Typewriter mode={'loop'} interval={randomArray(15, 67, 20) as unknown as number}>
               A
@@ -82,14 +80,14 @@
           <div class="absolute flex items-center justify-center w-full h-full">
             <div
               class="w-54 h-48 mt-3 md:w-60 md:h-54 lg:w-68 lg:h-62
-                bg-white/60 dark:bg-slate-800/60 rounded-full duration-500"
+                bg-white/60 dark:bg-slate-800/60 rounded-full"
             ></div>
           </div>
 
           <!-- Back outline / shadow -->
           <div
             class="cursor-crosshair w-60 h-60 md:w-68 md:h-68 lg:w-82 lg:h-82
-              text-custom-3 dark:text-transparent stroke-4 stroke-slate-900 dark:stroke-custom-3 duration-500
+              text-custom-3 dark:text-transparent stroke-4 stroke-slate-900 dark:stroke-custom-3
               absolute top-3 -right-2"
           >
             <Emblem />

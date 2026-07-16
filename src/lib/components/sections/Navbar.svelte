@@ -83,7 +83,7 @@
     <div class="my-auto h-14 md:h-16 flex justify-between w-full">
       <!-- Logo -->
       <div
-        class="my-auto duration-500
+        class="my-auto
         {isBgFullyTransparent ? 'bg-white/70 dark:bg-slate-800/70' : ''}"
       >
         <SimpleLogoText {isBgTransparent} />
@@ -97,7 +97,7 @@
         >
           {#each navLinks as link}
             <a
-              class="hover:underline active:text-indigo-500 dark:active:text-custom-3 active:text-shadow-sm duration-500
+              class="hover:underline active:text-indigo-500 dark:active:text-custom-3 active:text-shadow-sm
                 {isBgFullyTransparent ? 'bg-white/70 dark:bg-slate-800/70' : ''}"
               href="#{link.link}"
             >
@@ -111,12 +111,12 @@
       <Hamburger
         {isBgTransparent}
         {showNavLinks}
-        className="duration-500 {isBgFullyTransparent ? 'bg-white/70 dark:bg-slate-800/70' : ''}"
+        className=" {isBgFullyTransparent ? 'bg-white/70 dark:bg-slate-800/70' : ''}"
       />
 
       <!-- Dark mode toggle -->
       <div
-        class="hidden lg:block my-auto duration-500
+        class="hidden lg:block my-auto
           {isBgFullyTransparent ? 'bg-white/70 dark:bg-slate-800/70' : ''}"
       >
         <ThemeButton {isBgTransparent} />
