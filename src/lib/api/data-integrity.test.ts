@@ -105,6 +105,12 @@ describe('achievements', () => {
     expect(achievements).not.toHaveLength(0);
   });
 
+  it('credentials link is unique', () => {
+    const links = achievements.map((a) => a.link);
+    const uniqueLinks = new Set(links);
+    expect(uniqueLinks.size).toBe(achievements.length);
+  });
+
   describe.each(achievements)('$title', (achievement) => {
     it('has required fields', () => {
       expect(achievement.title).toBeTruthy();

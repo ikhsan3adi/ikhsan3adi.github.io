@@ -11,6 +11,7 @@
 
   import { achievements } from '$lib/api/achievements';
   import { cardColors, randomizeElements } from '$lib/components/colors';
+  import { areYouIndonesian } from '$lib/environment';
 
   const competitions = achievements.filter((a) => a.type === 'competition');
   const courses = achievements.filter((a) => a.type === 'course');
@@ -102,7 +103,7 @@
                     <!-- <span class="inline-block mr-1 translate-y-0.5">
                     <Icon icon="lucide:trophy" class="w-[1rem] h-[1rem] md:w-5 md:h-5" />
                   </span> -->
-                    {#if navigator.language === 'id-ID'}
+                    {#if areYouIndonesian()}
                       {achievement.localTitle ?? achievement.title}
                     {:else}
                       {achievement.title}
@@ -206,7 +207,7 @@
                       class="w-[1rem] h-[1rem] md:w-5 md:h-5"
                     />
                   </span> -->
-                    {#if navigator.language === 'id-ID'}
+                    {#if areYouIndonesian()}
                       {achievement.localTitle ?? achievement.title}
                     {:else}
                       {achievement.title}

@@ -13,4 +13,9 @@ function getBrowserVendor(): 'chromium' | 'safari' | 'firefox' | 'other' {
 
 export const browserVendor = getBrowserVendor();
 
+export function areYouIndonesian(): boolean {
+  return globalThis.navigator.language === 'id';
+}
+
 console.info('Browser vendor:', browserVendor);
+console.info('Browser lang:', globalThis.navigator.language);
