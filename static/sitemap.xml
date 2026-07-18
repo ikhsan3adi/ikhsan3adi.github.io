@@ -6,14 +6,24 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ikhsan3adi.is-a.dev/kegiatin</loc>
+    <loc>https://ikhsan3adi.is-a.dev/cv/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://ikhsan3adi.is-a.dev/ngasih-tau-ada-bis-di-sarijadi-atau-nggak/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ikhsan3adi.is-a.dev/kegiatin/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://ikhsan3adi.is-a.dev/polban-datacore-api-docs/</loc>
     <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ikhsan3adi.is-a.dev/c5-jump-and-survive/</loc>

@@ -1,5 +1,6 @@
 export interface Achievement {
   title: string;
+  localTitle?: string;
   issuer: string;
   date: string;
   description: string;
@@ -9,6 +10,28 @@ export interface Achievement {
 }
 
 export const achievements: Achievement[] = [
+  {
+    title: 'Learning Computer Networks for Beginners',
+    localTitle: 'Belajar Jaringan Komputer untuk Pemula',
+    issuer: 'Dicoding Indonesia',
+    date: 'Jul 2026',
+    description:
+      'Covers computer network concepts and practices, including OSI and TCP/IP models, IP addressing and subnetting, DNS, network security, and hands-on tools such as Wireshark, dig, and iptables.',
+    icon: 'lucide:network',
+    type: 'course',
+    link: 'https://www.dicoding.com/certificates/RVZK0NVREZD5'
+  },
+  {
+    title: 'Learning DevOps Fundamentals',
+    localTitle: 'Belajar Dasar-Dasar DevOps',
+    issuer: 'Dicoding Indonesia',
+    date: 'Jul 2026',
+    description:
+      'Covers DevOps culture and practices to improve application development processes, including The Three Ways principles, CALMS Framework, DevOps Pipeline and tooling, and real-world implementation case studies.',
+    icon: 'lucide:container',
+    type: 'course',
+    link: 'https://www.dicoding.com/certificates/MRZMW99GLPYQ'
+  },
   {
     title: 'Semifinalist of Coding & Algorithms Tournament 2026',
     issuer: 'CAT2026',
@@ -30,7 +53,8 @@ export const achievements: Achievement[] = [
     link: 'https://verify.compfest.id/verify/cf-2025-e084a946-1b2e-47a4-ab63-5258651a9774'
   },
   {
-    title: 'Belajar Membuat Aplikasi Flutter untuk Pemula',
+    title: 'Learning to Build Flutter Applications for Beginners',
+    localTitle: 'Belajar Membuat Aplikasi Flutter untuk Pemula',
     issuer: 'Dicoding Indonesia',
     date: 'Sep 2024',
     description:
@@ -40,7 +64,8 @@ export const achievements: Achievement[] = [
     link: 'https://www.dicoding.com/certificates/N9ZOY3560PG5'
   },
   {
-    title: 'Menjadi Back-End Developer Expert',
+    title: 'Becoming a Back-End Developer Expert',
+    localTitle: 'Menjadi Back-End Developer Expert',
     issuer: 'Dicoding Indonesia',
     date: 'Nov 2023',
     description:
@@ -50,7 +75,8 @@ export const achievements: Achievement[] = [
     link: 'https://www.dicoding.com/certificates/L4PQ8V734ZO1'
   },
   {
-    title: 'Belajar Dasar Visualisasi Data',
+    title: 'Learning Data Visualization Fundamentals',
+    localTitle: 'Belajar Dasar Visualisasi Data',
     issuer: 'Dicoding Indonesia',
     date: 'Aug 2023',
     description:
@@ -60,7 +86,8 @@ export const achievements: Achievement[] = [
     link: 'https://www.dicoding.com/certificates/4EXGQD2DQZRL'
   },
   {
-    title: 'Memulai Dasar Pemrograman untuk Menjadi Pengembang Software',
+    title: 'Getting Started with Programming Fundamentals for Software Development',
+    localTitle: 'Memulai Dasar Pemrograman untuk Menjadi Pengembang Software',
     issuer: 'Dicoding Indonesia',
     date: 'Aug 2023',
     description:
@@ -70,7 +97,8 @@ export const achievements: Achievement[] = [
     link: 'https://www.dicoding.com/certificates/EYX4JRQ2RZDL'
   },
   {
-    title: 'Belajar Fundamental Aplikasi Back-End',
+    title: 'Learning Back-End Application Fundamentals',
+    localTitle: 'Belajar Fundamental Aplikasi Back-End',
     issuer: 'Dicoding Indonesia',
     date: 'Jun 2023',
     description:

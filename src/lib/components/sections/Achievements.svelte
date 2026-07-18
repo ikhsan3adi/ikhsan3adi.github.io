@@ -98,11 +98,15 @@
                     </div>
                   </div>
 
-                  <h4 class="mb-2">
+                  <h4 class="mb-2" title={achievement.localTitle ?? achievement.title}>
                     <!-- <span class="inline-block mr-1 translate-y-0.5">
                     <Icon icon="lucide:trophy" class="w-[1rem] h-[1rem] md:w-5 md:h-5" />
                   </span> -->
-                    {achievement.title}
+                    {#if navigator.language === 'id-ID'}
+                      {achievement.localTitle ?? achievement.title}
+                    {:else}
+                      {achievement.title}
+                    {/if}
                   </h4>
 
                   <p class="text-slate-800 mb-3">
@@ -195,14 +199,18 @@
                     </div>
                   </div>
 
-                  <h4 class="mb-2">
+                  <h4 class="mb-2" title={achievement.localTitle ?? achievement.title}>
                     <!-- <span class="inline-block mr-1 translate-y-0.5">
                     <Icon
                       icon="lucide:book-open-text"
                       class="w-[1rem] h-[1rem] md:w-5 md:h-5"
                     />
                   </span> -->
-                    {achievement.title}
+                    {#if navigator.language === 'id-ID'}
+                      {achievement.localTitle ?? achievement.title}
+                    {:else}
+                      {achievement.title}
+                    {/if}
                   </h4>
 
                   <p class="text-slate-800 mb-3">

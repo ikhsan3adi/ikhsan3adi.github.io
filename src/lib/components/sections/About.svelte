@@ -131,7 +131,7 @@
               animDelayMs={1000 + (photoCards.length - 1 - i) * 676}
               zIndex={getZIndex(i)}
               onmouseenter={() => (hoveredCard = i)}
-              halftone
+              halftone={card.halftone}
             />
           {/each}
         </div>
