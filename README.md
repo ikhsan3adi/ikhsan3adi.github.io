@@ -39,7 +39,7 @@
 
 <br />
 
-![Hero Edited](./images/hero-edited.jpg)
+![Hero Edited](./images/hero-edited.png)
 
 <hr />
 
