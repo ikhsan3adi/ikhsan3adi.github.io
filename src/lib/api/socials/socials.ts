@@ -57,25 +57,32 @@ export const socials: Social[] = [
     icon: 'simple-icons:x'
   },
   {
-    social: 'Hackerrank',
-    name: FULL_NAME,
-    link: 'https://www.hackerrank.com/profile/ikhsan3adi',
-    colorVariant: 'hackerrank',
-    icon: 'simple-icons:hackerrank'
+    social: 'LeetCode',
+    name: USERNAME,
+    link: 'https://leetcode.com/u/ikhsan3adi/',
+    colorVariant: 'codeforces',
+    icon: 'simple-icons:leetcode'
   },
   {
     social: 'Codewars',
-    name: FULL_NAME,
+    name: USERNAME,
     link: 'https://www.codewars.com/users/ikhsan3adi',
     colorVariant: 'email',
     icon: 'simple-icons:codewars'
   },
   {
     social: 'Codeforces',
-    name: FULL_NAME,
+    name: USERNAME,
     link: 'https://codeforces.com/profile/ikhsan3adi',
     colorVariant: 'codeforces',
     icon: 'simple-icons:codeforces'
+  },
+  {
+    social: 'Hackerrank',
+    name: USERNAME,
+    link: 'https://www.hackerrank.com/profile/ikhsan3adi',
+    colorVariant: 'hackerrank',
+    icon: 'simple-icons:hackerrank'
   },
   {
     social: 'Gitlab',
