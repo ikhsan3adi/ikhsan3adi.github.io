@@ -57,7 +57,7 @@
     >
       <!-- About Card -->
       <div
-        class="w-full border-4 border-slate-900 dark:border-slate-700 px-2 py-6 sm:p-8 bg-slate-100 dark:bg-fuchsia-400 z-38"
+        class="w-full border-4 border-slate-900 dark:border-slate-700 px-2 py-6 sm:p-8 bg-slate-100 dark:bg-fuchsia-300 z-38"
       >
         <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
           <h2 class="mb-4 md:mb-6 lg:mb-8" id="about">

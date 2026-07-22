@@ -133,19 +133,19 @@
 
   @media (min-width: 768px) {
     .scroll-bg-animation {
-      animation: scroll-horizontal 55s linear infinite;
+      animation: scroll-horizontal 30s linear infinite;
     }
   }
 
   @keyframes scroll-horizontal {
     from {
-      transform: translate3d(-10%, 0, 0);
+      transform: translate3d(-5%, 0, 0);
     }
     50% {
-      transform: translate3d(10%, 0, 0);
+      transform: translate3d(5%, 0, 0);
     }
     to {
-      transform: translate3d(-10%, 0, 0);
+      transform: translate3d(-5%, 0, 0);
     }
   }
 </style>

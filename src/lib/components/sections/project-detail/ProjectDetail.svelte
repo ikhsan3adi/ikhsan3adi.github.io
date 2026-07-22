@@ -591,6 +591,15 @@
     color: inherit;
   }
 
+  :global(.markdown-content .marked-emoji-img) {
+    margin: 0;
+    height: 1.2em;
+    width: auto;
+    vertical-align: -0.25em;
+    display: inline;
+    user-select: none;
+  }
+
   :global(.markdown-content .mermaid) {
     padding: 1rem;
     border-radius: var(--radius-md, 0.375rem);
