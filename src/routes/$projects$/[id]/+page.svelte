@@ -30,6 +30,9 @@
   <meta name="description" content={data.project.description || ''} />
   <meta property="og:description" content={data.project.description || ''} />
   <meta name="twitter:description" content={data.project.description || ''} />
+
+  <meta property="og:image:alt" content={data.project.name} />
+  <meta property="og:image" content={data.project.imageUrl} />
 </svelte:head>
 
 <main>
