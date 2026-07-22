@@ -56,6 +56,7 @@ function createMockFetch(overrides?: {
 
 describe('ProjectService integration', () => {
   let service: ProjectService;
+  let projectCount: number;
 
   beforeEach(() => {
     vi.stubEnv('DEV', false);
@@ -66,6 +67,8 @@ describe('ProjectService integration', () => {
     projectStore.projectDetail = null;
     projectStore.detailLoading = false;
     projectStore.detailError = null;
+
+    projectCount = initialProjects.length;
   });
 
   afterEach(() => {
@@ -79,7 +82,7 @@ describe('ProjectService integration', () => {
   }
 
   describe('init', () => {
-    it('populates all 12 projects with enriched data on success', async () => {
+    it('populates all projects with enriched data on success', async () => {
       service = createService();
       const fetch = createMockFetch();
 
@@ -87,7 +90,7 @@ describe('ProjectService integration', () => {
 
       expect(projectStore.loading).toBe(false);
       expect(projectStore.error).toBeNull();
-      expect(projectStore.projects).toHaveLength(12);
+      expect(projectStore.projects).toHaveLength(projectCount);
       expect(projectStore.projects[0].starsCount).toBe(100);
       expect(projectStore.projects[0].forksCount).toBe(25);
       expect(projectStore.projects[0].issuesCount).toBe(5);

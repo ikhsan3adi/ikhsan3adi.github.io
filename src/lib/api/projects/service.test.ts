@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { ProjectService } from './service';
 import type { ProjectRepository } from './repository';
 import type { Project } from './types';
+import { initialProjects } from './projects';
 
 const mockProjectStore = vi.hoisted(() => ({
   projects: [] as Project[],
@@ -39,6 +40,7 @@ function createMockRepo(): ProjectRepository {
 describe('ProjectService', () => {
   let repo: ProjectRepository;
   let service: ProjectService;
+  const projectCount: number = initialProjects.length;
 
   beforeEach(() => {
     repo = createMockRepo();
@@ -88,7 +90,7 @@ describe('ProjectService', () => {
 
       await Promise.all([service.init(fetch), service.init(fetch)]);
 
-      expect(repo.fetchProject).toHaveBeenCalledTimes(12);
+      expect(repo.fetchProject).toHaveBeenCalledTimes(projectCount);
     });
   });
 
