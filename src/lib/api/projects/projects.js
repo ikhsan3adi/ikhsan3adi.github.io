@@ -96,6 +96,18 @@ export const initialProjects = [
     tags: ['laravel', 'livewire', 'jetstream']
   },
   {
+    id: 'markdown-translator',
+    name: 'Markdown Translator Action',
+    url: `${githubApiLink}/markdown-translator`,
+    description:
+      'GitHub Action to translate any Markdown/README files to any language. Supports multiple files and subdirectories with configurable target languages via Google Cloud Translate.',
+    readmeBaseUrl: 'https://github.com/ikhsan3adi/markdown-translator/raw/master/',
+    imageUrl:
+      'https://opengraph.githubassets.com/e0ce213cd3b34531b66e865f3f136b3fc98e4e3020159c6f019381e767f050a6/ikhsan3adi/markdown-translator',
+    readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/markdown-translator/master/README.md',
+    tags: ['typescript', 'github-actions', 'markdown', 'translation', 'localization']
+  },
+  {
     id: 'backtix',
     name: 'BackTix: Event & Ticketing App',
     url: `${githubApiLink}/backtix`,
@@ -105,6 +117,18 @@ export const initialProjects = [
     imageUrl: 'https://github.com/ikhsan3adi/backtix/raw/main/assets/social_preview.png',
     readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/backtix/main/README.md',
     tags: ['flutter', 'nestjs', 'svelte', 'prisma', 'postgresql', 'midtrans']
+  },
+  {
+    id: 'quick-social',
+    name: 'Quick Social App',
+    url: `${githubApiLink}/quick_social`,
+    description:
+      'Flutter simple social media app UI prototype. Features feed page, story view, profile pages, comment bottom sheet, and notification page with responsive multiplatform design.',
+    readmeBaseUrl: 'https://github.com/ikhsan3adi/quick_social/raw/main/',
+    imageUrl:
+      'https://github.com/ikhsan3adi/quick_social/raw/main/.screenshots/quick_social_banner.png',
+    readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/quick_social/main/README.md',
+    tags: ['flutter', 'dart', 'android', 'ios', 'ui']
   },
   {
     id: 'sistem-perpustakaan-qr-code',
