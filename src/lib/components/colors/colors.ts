@@ -22,6 +22,11 @@ export const tagColors: TagColors = {
     border: 'dark:border-teal-500',
     text: 'dark:text-teal-500'
   },
+  android: {
+    bg: 'bg-green-400 dark:bg-slate-800',
+    border: 'dark:border-green-400',
+    text: 'dark:text-green-400'
+  },
   html: {
     bg: 'bg-rose-400 dark:bg-slate-800',
     border: 'dark:border-rose-400',
@@ -159,6 +164,46 @@ export const cardButtonColors: CardColors = {
   green: {
     light: 'bg-green-300',
     dark: { border: 'dark:border-green-400', bg: 'dark:bg-green-400' }
+  },
+  orange: {
+    light: 'bg-orange-300',
+    dark: { border: 'dark:border-orange-400', bg: 'dark:bg-orange-400' }
+  },
+  cyan: {
+    light: 'bg-cyan-300',
+    dark: { border: 'dark:border-cyan-400', bg: 'dark:bg-cyan-400' }
+  },
+  amber: {
+    light: 'bg-amber-300',
+    dark: { border: 'dark:border-amber-400', bg: 'dark:bg-amber-400' }
+  },
+  indigo: {
+    light: 'bg-indigo-300',
+    dark: { border: 'dark:border-indigo-400', bg: 'dark:bg-indigo-400' }
+  },
+  rose: {
+    light: 'bg-rose-300',
+    dark: { border: 'dark:border-rose-400', bg: 'dark:bg-rose-400' }
+  },
+  emerald: {
+    light: 'bg-emerald-300',
+    dark: { border: 'dark:border-emerald-400', bg: 'dark:bg-emerald-400' }
+  },
+  fuchsia: {
+    light: 'bg-fuchsia-300',
+    dark: { border: 'dark:border-fuchsia-400', bg: 'dark:bg-fuchsia-400' }
+  },
+  lime: {
+    light: 'bg-lime-300',
+    dark: { border: 'dark:border-lime-400', bg: 'dark:bg-lime-400' }
+  },
+  pink: {
+    light: 'bg-pink-300',
+    dark: { border: 'dark:border-pink-400', bg: 'dark:bg-pink-400' }
+  },
+  teal: {
+    light: 'bg-teal-300',
+    dark: { border: 'dark:border-teal-400', bg: 'dark:bg-teal-400' }
   }
 };
 

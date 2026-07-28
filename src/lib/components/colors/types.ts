@@ -8,6 +8,7 @@ interface TagColors {
   default: TagColor;
   flutter: TagColor;
   dart: TagColor;
+  android: TagColor;
   html: TagColor;
   php: TagColor;
   codeigniter: TagColor;
@@ -46,6 +47,16 @@ interface CardColorsVariant {
   red: CardColor;
   purple: CardColor;
   green: CardColor;
+  orange: CardColor;
+  cyan: CardColor;
+  amber: CardColor;
+  indigo: CardColor;
+  rose: CardColor;
+  emerald: CardColor;
+  fuchsia: CardColor;
+  lime: CardColor;
+  pink: CardColor;
+  teal: CardColor;
 }
 
 export type { CardColorsVariant as CardColors, CardColor, TagColorKey, TagColors };

@@ -24,11 +24,22 @@
 
   let { project, cardColor = 'default' }: Props = $props();
 
+  const unusedTags = new Set<string>(Object.keys(tagColors));
+
   const tags: TagColorKey[] = $derived(
     project.tags.map((tag) => {
-      return Object.prototype.hasOwnProperty.call(tagColors, tag)
-        ? { key: tag as keyof TagColors, name: tag }
-        : { key: 'default', name: tag };
+      if (Object.prototype.hasOwnProperty.call(tagColors, tag)) {
+        unusedTags.delete(tag);
+        return { key: tag as keyof TagColors, name: tag };
+      }
+
+      const unused = Array.from(unusedTags);
+      let key: keyof TagColors = 'default';
+      if (unused.length !== 0) {
+        key = unused[Math.floor(Math.random() * unused.length)] as keyof TagColors;
+        unusedTags.delete(key);
+      }
+      return { key, name: tag };
     })
   );
 

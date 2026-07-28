@@ -33,7 +33,17 @@
     'yellow',
     'red',
     'purple',
-    'green'
+    'green',
+    'orange',
+    'cyan',
+    'amber',
+    'indigo',
+    'rose',
+    'emerald',
+    'fuchsia',
+    'lime',
+    'pink',
+    'teal'
   ];
 
   const cardColors = randomizeElements(cardColorVariants, initialProjects.length);
