@@ -3,6 +3,18 @@ const githubApiLink = 'https://api.github.com/repos/ikhsan3adi';
 /** @type {import('./types').Project[]} */
 export const initialProjects = [
   {
+    id: 'sycorax-cressida',
+    name: 'Sycorax Cressida',
+    url: `${githubApiLink}/sycorax_cressida`,
+    description:
+      'Cross-platform IPTV player app built with Flutter. Local SQLite database via Drift for caching channels, feeds, streams, countries, languages, and categories. Features Material 3 Expressive design with shape morphing animations, media_kit for HLS streaming, Riverpod state management, favorite channels, and a staggered grid UI. Targets Android, Web, Linux, iOS, macOS, and Windows.',
+    readmeBaseUrl: 'https://github.com/ikhsan3adi/sycorax_cressida/raw/master/',
+    imageUrl:
+      'https://repository-images.githubusercontent.com/1313251065/5ea41ee2-5592-4639-b186-3f6ddaa908aa',
+    readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/sycorax_cressida/master/README.md',
+    tags: ['flutter', 'iptv', 'sqlite', 'android', 'streaming', 'cross-platform', 'hls']
+  },
+  {
     id: 'ruwet-meter',
     name: 'RuwetMeter',
     url: `${githubApiLink}/RuwetMeter`,
