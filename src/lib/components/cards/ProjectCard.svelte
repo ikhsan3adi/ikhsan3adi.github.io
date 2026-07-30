@@ -1,21 +1,21 @@
 <script lang="ts">
-  import {
-    cardButtonColors,
-    tagColors,
-    type CardColors,
-    type TagColorKey,
-    type TagColors
-  } from '$lib/components/colors';
+  import { onMount } from 'svelte';
   import { scale } from 'svelte/transition';
 
   import { faImage, faRefresh } from '@fortawesome/free-solid-svg-icons';
   import Fa from 'svelte-fa';
 
+  import type { Project } from '$lib/api/projects';
   import { createSlug } from '$lib/utils';
 
-  import type { Project } from '$lib/api/projects';
+  import {
+    cardButtonColors,
+    generateTagColorKeys,
+    type CardColors,
+    type TagColorKey
+  } from '$lib/components/colors';
   import ProjectStats from './ProjectStats.svelte';
-  import { onMount } from 'svelte';
+  import TagChip from '$lib/components/TagChip.svelte';
 
   interface Props {
     project: Project;
@@ -24,24 +24,7 @@
 
   let { project, cardColor = 'default' }: Props = $props();
 
-  const unusedTags = new Set<string>(Object.keys(tagColors));
-
-  const tags: TagColorKey[] = $derived(
-    project.tags.map((tag) => {
-      if (Object.prototype.hasOwnProperty.call(tagColors, tag)) {
-        unusedTags.delete(tag);
-        return { key: tag as keyof TagColors, name: tag };
-      }
-
-      const unused = Array.from(unusedTags);
-      let key: keyof TagColors = 'default';
-      if (unused.length !== 0) {
-        key = unused[Math.floor(Math.random() * unused.length)] as keyof TagColors;
-        unusedTags.delete(key);
-      }
-      return { key, name: tag };
-    })
-  );
+  const tags: TagColorKey[] = $derived(generateTagColorKeys(project.tags));
 
   const mainLabelId = $derived(createSlug(`porto_${project.name}`));
 
@@ -170,14 +153,7 @@
 					border-t-4 border-slate-900 w-full flex flex-wrap justify-start items-center gap-2 p-2"
       >
         {#each tags as tag}
-          <p
-            class="{tagColors[tag.key].bg} 
-            {tagColors[tag.key].border}
-            {tagColors[tag.key].text}
-					max-sm:text-sm px-2 sm:px-4 py-1 h-max border-2 border-slate-900"
-          >
-            #{tag.name}
-          </p>
+          <TagChip {tag} />
         {/each}
       </div>
     </div>

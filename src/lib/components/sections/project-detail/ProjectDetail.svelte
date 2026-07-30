@@ -19,13 +19,14 @@
   import Fa from 'svelte-fa';
 
   import type { Project, ProjectService } from '$lib/api/projects';
-  import { type TagColorKey, type TagColors, tagColors } from '$lib/components/colors';
+  import { generateTagColorKeys, type TagColorKey } from '$lib/components/colors';
 
   import { scrollState } from '$lib/scroll.svelte';
   import { getConfiguredMarked } from './marked-init';
 
   import Button from '$lib/components/buttons/Button.svelte';
   import ReadmeStatusIndicator from './ReadmeStatusIndicator.svelte';
+  import TagChip from '$lib/components/TagChip.svelte';
 
   interface Props {
     project: Project;
@@ -165,24 +166,7 @@
 
   let showBackToTop = $derived(scrollState.y >= 400);
 
-  const unusedTags = new Set<string>(Object.keys(tagColors));
-
-  const tags: TagColorKey[] = $derived(
-    project.tags.map((tag) => {
-      if (Object.prototype.hasOwnProperty.call(tagColors, tag)) {
-        unusedTags.delete(tag);
-        return { key: tag as keyof TagColors, name: tag };
-      }
-
-      const unused = Array.from(unusedTags);
-      let key: keyof TagColors = 'default';
-      if (unused.length !== 0) {
-        key = unused[Math.floor(Math.random() * unused.length)] as keyof TagColors;
-        unusedTags.delete(key);
-      }
-      return { key, name: tag };
-    })
-  );
+  const tags: TagColorKey[] = $derived(generateTagColorKeys(project.tags));
 </script>
 
 <section class="bg-halftone bg-halftone-45">
@@ -285,12 +269,7 @@
             class="flex flex-wrap w-full justify-center sm:justify-start items-center gap-2 py-4 overflow-hidden"
           >
             {#each tags as tag}
-              <p
-                class="{tagColors[tag.key].bg} {tagColors[tag.key].border} {tagColors[tag.key].text}
-								dark:bg-slate-800 max-sm:text-sm px-2 sm:px-4 py-1 h-max border-2 border-slate-900"
-              >
-                #{tag.name}
-              </p>
+              <TagChip {tag} />
             {/each}
           </div>
 

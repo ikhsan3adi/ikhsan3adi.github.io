@@ -2,6 +2,7 @@ interface TagColor {
   bg: string;
   border: string;
   text: string;
+  gradient?: string;
 }
 
 interface TagColors {
@@ -22,7 +23,6 @@ interface TagColors {
   bootstrap: TagColor;
   postgresql: TagColor;
   hono: TagColor;
-  pgvector: TagColor;
   'ai-agent': TagColor;
   chatbot: TagColor;
   bun: TagColor;

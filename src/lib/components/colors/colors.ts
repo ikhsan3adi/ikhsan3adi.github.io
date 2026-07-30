@@ -87,20 +87,17 @@ export const tagColors: TagColors = {
     border: 'dark:border-green-400',
     text: 'dark:text-green-400'
   },
-  pgvector: {
-    bg: 'bg-purple-400 dark:bg-slate-800',
-    border: 'dark:border-purple-400',
-    text: 'dark:text-purple-400'
-  },
   'ai-agent': {
     bg: 'bg-indigo-400 dark:bg-slate-800',
     border: 'dark:border-indigo-400',
-    text: 'dark:text-indigo-400'
+    text: 'dark:text-indigo-400',
+    gradient: 'from-indigo-400 to-fuchsia-400'
   },
   chatbot: {
-    bg: 'bg-yellow-400 dark:bg-slate-800',
-    border: 'dark:border-yellow-400',
-    text: 'dark:text-yellow-400'
+    bg: 'bg-red-400 dark:bg-slate-800',
+    border: 'dark:border-red-400',
+    text: 'dark:text-red-400',
+    gradient: 'from-red-400 to-lime-400'
   },
   bun: {
     bg: 'bg-amber-100 dark:bg-slate-800',
