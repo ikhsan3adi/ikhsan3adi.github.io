@@ -3,6 +3,18 @@ const githubApiLink = 'https://api.github.com/repos/ikhsan3adi';
 /** @type {import('./types').Project[]} */
 export const initialProjects = [
   {
+    id: 'gemini-web2api',
+    name: 'Gemini Web2API',
+    url: `${githubApiLink}/gemini-web2api`,
+    description:
+      "High-performance Go proxy that converts Google Gemini's web interface into an OpenAI-compatible API. Zero cost, no API key needed, single static binary. Features TLS impersonation to bypass Cloudflare/WAF, adjustable thinking depth (@think=N), and support for both Codex CLI and Gemini CLI. Ships as a Docker image and cross-platform static binaries.",
+    readmeBaseUrl: 'https://github.com/ikhsan3adi/gemini-web2api/raw/main/',
+    imageUrl:
+      'https://opengraph.githubassets.com/f13e7e39740960cc9cd5ef50e4aa68ce884b77ba1b0a381afbce8790635aa648/ikhsan3adi/gemini-web2api',
+    readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/gemini-web2api/main/README.md',
+    tags: ['golang', 'gemini', 'docker', 'proxy']
+  },
+  {
     id: 'sycorax-cressida',
     name: 'Sycorax Cressida',
     url: `${githubApiLink}/sycorax_cressida`,

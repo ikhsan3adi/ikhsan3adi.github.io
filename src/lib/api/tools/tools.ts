@@ -52,6 +52,7 @@ export const toolCategories: ToolCategory[] = [
       { name: 'MongoDB', icon: 'simple-icons:mongodb' },
       { name: 'Redis', icon: 'simple-icons:redis' },
       // other
+      { name: 'Go', icon: 'simple-icons:go' },
       { name: 'Swagger', icon: 'simple-icons:swagger' }
     ]
   },
@@ -60,8 +61,8 @@ export const toolCategories: ToolCategory[] = [
     tools: [
       { name: 'Dart', icon: 'simple-icons:dart' },
       { name: 'Flutter', icon: 'simple-icons:flutter' },
-      { name: 'Android Studio', icon: 'simple-icons:androidstudio' },
-      { name: 'Kotlin', icon: 'simple-icons:kotlin' }
+      { name: 'Android', icon: 'simple-icons:android' },
+      { name: 'Android Studio', icon: 'simple-icons:androidstudio' }
     ]
   },
   {
@@ -91,21 +92,12 @@ export const toolCategories: ToolCategory[] = [
     ]
   },
   {
-    category: 'Others',
+    category: 'AI Tools',
     tools: [
-      { name: 'Arch Linux', icon: 'simple-icons:archlinux' },
-      { name: 'Bruno', icon: 'simple-icons:bruno' },
-      { name: 'Zed', icon: 'simple-icons:zedindustries' },
       { name: 'Antigravity', icon: 'simple-icons:googlegemini' },
-      { name: 'OpenCode', icon: 'lucide:code-2' },
-      { name: 'OpenRouter', icon: 'simple-icons:openrouter' }
-    ]
-  },
-  {
-    category: 'CP',
-    tools: [
-      { name: 'C++', icon: 'simple-icons:cplusplus' },
-      { name: 'Python', icon: 'simple-icons:python' }
+      { name: 'Opencode', icon: 'simple-icons:opencode' },
+      { name: 'MCP', icon: 'simple-icons:modelcontextprotocol' },
+      { name: 'n8n', icon: 'simple-icons:n8n' }
     ]
   },
   {
@@ -116,6 +108,14 @@ export const toolCategories: ToolCategory[] = [
       { name: 'Illustrator', icon: 'simple-icons:adobeillustrator' },
       { name: 'Figma', icon: 'simple-icons:figma' },
       { name: 'Photopea', icon: 'simple-icons:photopea' }
+    ]
+  },
+  {
+    category: 'Others',
+    tools: [
+      { name: 'Arch Linux', icon: 'simple-icons:archlinux' },
+      { name: 'Bruno', icon: 'simple-icons:bruno' },
+      { name: 'Zed', icon: 'simple-icons:zedindustries' }
     ]
   }
 ];
