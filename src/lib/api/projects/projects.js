@@ -21,7 +21,7 @@ export const initialProjects = [
       "High-performance Go proxy that converts Google Gemini's web interface into an OpenAI-compatible API. Zero cost, no API key needed, single static binary. Features TLS impersonation to bypass Cloudflare/WAF, adjustable thinking depth (@think=N), and support for both Codex CLI and Gemini CLI. Ships as a Docker image and cross-platform static binaries.",
     readmeBaseUrl: 'https://github.com/ikhsan3adi/gemini-web2api/raw/main/',
     imageUrl:
-      'https://opengraph.githubassets.com/f13e7e39740960cc9cd5ef50e4aa68ce884b77ba1b0a381afbce8790635aa648/ikhsan3adi/gemini-web2api',
+      'https://repository-images.githubusercontent.com/1318987224/e6f7275b-f8ab-4934-957d-566ea25a2c7c',
     readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/gemini-web2api/main/README.md',
     tags: ['golang', 'gemini', 'docker', 'proxy']
   },
