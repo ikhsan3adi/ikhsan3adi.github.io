@@ -41,7 +41,7 @@ function createMockRepo(): ProjectRepository {
 describe('ProjectService', () => {
   let repo: ProjectRepository;
   let service: ProjectService;
-  const projectCount: number = initialProjects.length;
+  const fetchableCount: number = initialProjects.filter((p) => !p.noGithub).length;
 
   beforeEach(() => {
     repo = createMockRepo();
@@ -91,7 +91,7 @@ describe('ProjectService', () => {
 
       await Promise.all([service.init(fetch), service.init(fetch)]);
 
-      expect(repo.fetchProject).toHaveBeenCalledTimes(projectCount);
+      expect(repo.fetchProject).toHaveBeenCalledTimes(fetchableCount);
     });
   });
 
@@ -113,6 +113,17 @@ describe('ProjectService', () => {
 
       expect(mockProjectStore.detailError).toBeTruthy();
       expect(mockProjectStore.projectDetail).toBeNull();
+      expect(mockProjectStore.detailLoading).toBe(false);
+    });
+
+    it('sets project detail for non-github project without repository fetch', async () => {
+      const nonGithub = createProject({ id: 'non-gh', noGithub: true });
+
+      await service.openDetail(nonGithub, fetch);
+
+      expect(repo.fetchProject).not.toHaveBeenCalled();
+      expect(mockProjectStore.projectDetail).toEqual(nonGithub);
+      expect(mockProjectStore.detailError).toBeNull();
       expect(mockProjectStore.detailLoading).toBe(false);
     });
   });

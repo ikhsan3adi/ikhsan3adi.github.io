@@ -48,7 +48,7 @@ function createMockFetch(overrides?: {
   return ((url: string) => {
     if (url.includes('/releases')) return Promise.resolve(handlers.releasesResponse());
     if (url.includes('/pulls')) return Promise.resolve(handlers.pullsResponse());
-    if (initialProjects.some((p) => url === p.url))
+    if (initialProjects.some((p) => p.url && url === p.url))
       return Promise.resolve(handlers.projectResponse());
     return Promise.reject(new Error(`unexpected url: ${url}`));
   }) as unknown as typeof globalThis.fetch;
@@ -91,10 +91,16 @@ describe('ProjectService integration', () => {
       expect(projectStore.loading).toBe(false);
       expect(projectStore.error).toBeNull();
       expect(projectStore.projects).toHaveLength(projectCount);
-      expect(projectStore.projects[0].starsCount).toBe(100);
-      expect(projectStore.projects[0].forksCount).toBe(25);
-      expect(projectStore.projects[0].issuesCount).toBe(5);
-      expect(projectStore.projects[0].repositoryUrl).toBe('https://github.com/user/test');
+
+      const githubProject = projectStore.projects.find((p) => !p.noGithub)!;
+      expect(githubProject.starsCount).toBe(100);
+      expect(githubProject.forksCount).toBe(25);
+      expect(githubProject.issuesCount).toBe(5);
+      expect(githubProject.repositoryUrl).toBe('https://github.com/user/test');
+
+      const nonGithubProject = projectStore.projects.find((p) => p.noGithub)!;
+      expect(nonGithubProject).toBeDefined();
+      expect(nonGithubProject.starsCount).toBeUndefined();
     });
 
     it('serves cached data on subsequent init (no second GitHub fetch)', async () => {
@@ -103,10 +109,10 @@ describe('ProjectService integration', () => {
 
       await service.init(fetch);
 
-      const projectCounts = vi.fn();
+      const githubFetchCount = vi.fn();
       const cachedFetch = ((url: string) => {
-        projectCounts();
-        if (initialProjects.some((p) => url === p.url))
+        githubFetchCount();
+        if (initialProjects.some((p) => p.url && url === p.url))
           return Promise.resolve(okResponse(repoJson));
         return Promise.reject(new Error(`unexpected url: ${url}`));
       }) as unknown as typeof globalThis.fetch;
@@ -115,17 +121,20 @@ describe('ProjectService integration', () => {
       await service2.init(cachedFetch);
 
       expect(projectStore.loading).toBe(false);
-      expect(projectStore.projects[0].starsCount).toBe(100);
+      const cachedGithub = projectStore.projects.find((p) => !p.noGithub)!;
+      expect(cachedGithub.starsCount).toBe(100);
+      expect(githubFetchCount).not.toHaveBeenCalled();
     });
 
     it('handles partial failures without setting global error', async () => {
       service = createService();
-      const failUrls = new Set([initialProjects[0].url, initialProjects[1].url]);
+      const githubProjects = initialProjects.filter((p) => !p.noGithub);
+      const failUrls = new Set([githubProjects[0].url, githubProjects[1].url]);
       const partialFetch = ((url: string) => {
         if (url.includes('/releases')) return Promise.resolve(okResponse([]));
         if (url.includes('/pulls')) return Promise.resolve(okResponse([]));
         if (failUrls.has(url)) return Promise.resolve(errorResponse(500, 'Server Error'));
-        if (initialProjects.some((p) => url === p.url))
+        if (initialProjects.some((p) => p.url && url === p.url))
           return Promise.resolve(okResponse(repoJson));
         return Promise.reject(new Error(`unexpected url: ${url}`));
       }) as unknown as typeof globalThis.fetch;
@@ -134,8 +143,12 @@ describe('ProjectService integration', () => {
 
       expect(projectStore.error).toBeNull();
       expect(projectStore.loading).toBe(false);
-      expect(projectStore.projects[0].statusMessage).toBeTruthy();
-      expect(projectStore.projects[3].starsCount).toBe(100);
+
+      const failedProject = projectStore.projects.find((p) => p.id === githubProjects[0].id)!;
+      expect(failedProject.statusMessage).toBeTruthy();
+
+      const okProject = projectStore.projects.find((p) => p.id === githubProjects[2].id)!;
+      expect(okProject.starsCount).toBe(100);
     });
 
     it('sets error when all projects fail', async () => {
@@ -157,8 +170,9 @@ describe('ProjectService integration', () => {
     it('enriches a single project with GitHub stats', async () => {
       service = createService();
       const fetch = createMockFetch();
+      const githubProject = initialProjects.find((p) => !p.noGithub)!;
 
-      await service.openDetail(initialProjects[0], fetch);
+      await service.openDetail(githubProject, fetch);
 
       expect(projectStore.detailLoading).toBe(false);
       expect(projectStore.detailError).toBeNull();
@@ -167,12 +181,26 @@ describe('ProjectService integration', () => {
       expect(projectStore.projectDetail!.repositoryUrl).toBe('https://github.com/user/test');
     });
 
+    it('opens detail for a non-GitHub project without remote fetch', async () => {
+      service = createService();
+      const failFetch = vi.fn() as unknown as typeof globalThis.fetch;
+      const nonGithubProject = initialProjects.find((p) => p.noGithub)!;
+
+      await service.openDetail(nonGithubProject, failFetch);
+
+      expect(failFetch).not.toHaveBeenCalled();
+      expect(projectStore.detailLoading).toBe(false);
+      expect(projectStore.detailError).toBeNull();
+      expect(projectStore.projectDetail).toEqual(nonGithubProject);
+    });
+
     it('sets detail error on API failure', async () => {
       service = createService();
       const failFetch = (() =>
         Promise.resolve(errorResponse(500, 'Server Error'))) as unknown as typeof globalThis.fetch;
+      const githubProject = initialProjects.find((p) => !p.noGithub)!;
 
-      await service.openDetail(initialProjects[0], failFetch);
+      await service.openDetail(githubProject, failFetch);
 
       expect(projectStore.detailError).toBeTruthy();
       expect(projectStore.projectDetail).toBeNull();

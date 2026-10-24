@@ -5,7 +5,10 @@ import type { Project } from './types';
 import { toStatusMessage } from '$lib/utils';
 
 export class ProjectService {
-  constructor(private repo: ProjectRepository) {}
+  constructor(
+    private repo: ProjectRepository,
+    private projects: Project[] = initialProjects
+  ) {}
 
   private initializing = false;
 
@@ -14,12 +17,14 @@ export class ProjectService {
     this.initializing = true;
 
     try {
-      projectStore.projects = [...initialProjects];
+      projectStore.projects = [...this.projects];
       projectStore.loading = true;
       projectStore.error = null;
 
       const results = await Promise.allSettled(
-        initialProjects.map((p) => this.repo.fetchProject(p, fetch))
+        this.projects.map((p) =>
+          p.noGithub ? Promise.resolve(p) : this.repo.fetchProject(p, fetch)
+        )
       );
 
       const updated = [...projectStore.projects];
@@ -41,11 +46,14 @@ export class ProjectService {
         }
       }
 
+      const fetchableProjects = this.projects.filter((p) => !p.noGithub);
+      const fetchableCount = fetchableProjects.length;
+
       if (failedCount > 0) {
-        console.error(`${failedCount} of ${results.length} failed: ${firstError}`);
+        console.error(`${failedCount} of ${fetchableCount} failed: ${firstError}`);
       }
 
-      if (failedCount === results.length) {
+      if (fetchableCount > 0 && failedCount === fetchableCount) {
         projectStore.error = toStatusMessage(firstError);
       }
 
@@ -62,7 +70,9 @@ export class ProjectService {
     projectStore.projectDetail = null;
 
     try {
-      projectStore.projectDetail = await this.repo.fetchProject(project, fetch);
+      projectStore.projectDetail = project.noGithub
+        ? project
+        : await this.repo.fetchProject(project, fetch);
     } catch (err) {
       projectStore.detailError = toStatusMessage(String(err));
     } finally {

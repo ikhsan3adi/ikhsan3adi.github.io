@@ -81,16 +81,18 @@
           : ''}
       >
         <!-- Background image -->
-        <img
-          src={project.imageUrl}
-          alt={project.name}
-          class="col-start-1 row-start-1 w-full text-transparent object-cover object-center"
-          class:hidden={imgState === 'error'}
-          onload={onImgLoad}
-          onerror={() => (imgState = 'error')}
-        />
+        {#if project.imageUrl}
+          <img
+            src={project.imageUrl}
+            alt={project.name}
+            class="col-start-1 row-start-1 w-full text-transparent object-cover object-center"
+            class:hidden={imgState === 'error'}
+            onload={onImgLoad}
+            onerror={() => (imgState = 'error')}
+          />
+        {/if}
 
-        {#if imgState !== 'loaded'}
+        {#if !project.imageUrl || imgState !== 'loaded'}
           <div
             class="col-start-1 row-start-1 place-self-center inline-flex flex-wrap justify-center gap-2 items-center w-max pointer-events-none"
             aria-hidden="true"
@@ -98,7 +100,7 @@
             <div
               class="dark:text-white text-center text-4xl md:text-5xl lg:text-6xl font-extrabold text-text"
             >
-              {#if imgState === 'error'}
+              {#if !project.imageUrl || imgState === 'error'}
                 <Fa icon={faImage} />
               {:else if imgState === 'loading'}
                 <Fa icon={faRefresh} class="animate-spin" />
@@ -109,7 +111,7 @@
             >
               {#if project.statusMessage}
                 {project.statusMessage}
-              {:else if imgState === 'error'}
+              {:else if !project.imageUrl || imgState === 'error'}
                 Image not available
               {:else if imgState === 'loading'}
                 Loading...

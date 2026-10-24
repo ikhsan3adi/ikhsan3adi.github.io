@@ -11,6 +11,8 @@ export class CachedRepository implements ProjectRepository {
   ) {}
 
   async fetchProject(project: Project, fetch: typeof globalThis.fetch): Promise<Project> {
+    if (project.noGithub) return project;
+
     const cacheKey = project.id;
     const cached = this.cache.get<Project>(cacheKey);
     if (cached) return cached;

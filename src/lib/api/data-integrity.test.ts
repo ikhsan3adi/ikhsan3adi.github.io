@@ -37,6 +37,16 @@ describe('initialProjects', () => {
       it('has valid URL for url', () => {
         expect(project.url).toMatch(urlRegex);
       });
+    } else {
+      it('has empty url when noGithub is true', () => {
+        expect(project.url).toBe('');
+      });
+    }
+
+    if (project.hasLivePreview) {
+      it('has valid URL for livePreviewUrl when hasLivePreview is true', () => {
+        expect(project.livePreviewUrl).toMatch(urlRegex);
+      });
     }
 
     if (project.readmeBaseUrl !== undefined) {

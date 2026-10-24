@@ -190,25 +190,27 @@
             ? `aspect-ratio:${fallbackAspectRatio}`
             : ''}
         >
-          <img
-            src={project.imageUrl}
-            alt={project.name}
-            title={project.name}
-            class="col-start-1 row-start-1 h-full w-full text-transparent object-cover object-center
-              cursor-crosshair duration-200 transition-all active:brightness-75 m-0 p-0"
-            class:hidden={imgState === 'error'}
-            onload={onImgLoad}
-            onerror={() => (imgState = 'error')}
-          />
+          {#if project.imageUrl}
+            <img
+              src={project.imageUrl}
+              alt={project.name}
+              title={project.name}
+              class="col-start-1 row-start-1 h-full w-full text-transparent object-cover object-center
+                cursor-crosshair duration-200 transition-all active:brightness-75 m-0 p-0"
+              class:hidden={imgState === 'error'}
+              onload={onImgLoad}
+              onerror={() => (imgState = 'error')}
+            />
+          {/if}
 
-          {#if imgState !== 'loaded'}
+          {#if !project.imageUrl || imgState !== 'loaded'}
             <div
               class="col-start-1 row-start-1 place-self-center flex flex-col items-center gap-4 m-auto w-max py-8 pointer-events-none"
             >
               <div
                 class="dark:text-white text-center text-4xl md:text-5xl lg:text-6xl font-extrabold text-text"
               >
-                {#if imgState === 'error'}
+                {#if !project.imageUrl || imgState === 'error'}
                   <Fa icon={faImage} />
                 {:else if imgState === 'loading'}
                   <Fa icon={faRefresh} class="animate-spin" />
@@ -219,7 +221,7 @@
               >
                 {#if project.statusMessage}
                   {project.statusMessage}
-                {:else if imgState === 'error'}
+                {:else if !project.imageUrl || imgState === 'error'}
                   Image not available
                 {:else if imgState === 'loading'}
                   Loading...
@@ -234,35 +236,37 @@
           <p class="dark:text-slate-300 text-center sm:text-left">{project.description}</p>
 
           <!-- Stars, forks, downloads -->
-          <div
-            class="pt-4 flex flex-wrap gap-x-4 gap-y-1 w-full justify-center sm:justify-normal dark:text-white"
-          >
-            <div class="flex gap-2 items-center">
-              <Fa icon={faStar} />
-              {project.starsCount ?? '?'}
-              {(project.starsCount ?? 0) <= 1 ? 'Star' : 'Stars'}
+          {#if !project.noGithub}
+            <div
+              class="pt-4 flex flex-wrap gap-x-4 gap-y-1 w-full justify-center sm:justify-normal dark:text-white"
+            >
+              <div class="flex gap-2 items-center">
+                <Fa icon={faStar} />
+                {project.starsCount ?? '?'}
+                {(project.starsCount ?? 0) <= 1 ? 'Star' : 'Stars'}
+              </div>
+              <div class="flex gap-2 items-center">
+                <Fa icon={faCodeFork} />
+                {project.forksCount ?? '?'}
+                {(project.forksCount ?? 0) <= 1 ? 'Fork' : 'Forks'}
+              </div>
+              <div class="flex gap-2 items-center">
+                <Fa icon={faDownload} />
+                {project.downloadsCount ?? '?'}
+                {(project.downloadsCount ?? 0) <= 1 ? 'Download' : 'Downloads'}
+              </div>
+              <div class="flex gap-2 items-center">
+                <Fa icon={faBug} />
+                {project.issuesCount ?? '?'}
+                {(project.issuesCount ?? 0) <= 1 ? 'Issue' : 'Issues'}
+              </div>
+              <div class="flex gap-2 items-center">
+                <Fa icon={faCodePullRequest} />
+                {project.pullRequestsCount ?? '?'}
+                {(project.pullRequestsCount ?? 0) <= 1 ? 'PR' : 'PRs'}
+              </div>
             </div>
-            <div class="flex gap-2 items-center">
-              <Fa icon={faCodeFork} />
-              {project.forksCount ?? '?'}
-              {(project.forksCount ?? 0) <= 1 ? 'Fork' : 'Forks'}
-            </div>
-            <div class="flex gap-2 items-center">
-              <Fa icon={faDownload} />
-              {project.downloadsCount ?? '?'}
-              {(project.downloadsCount ?? 0) <= 1 ? 'Download' : 'Downloads'}
-            </div>
-            <div class="flex gap-2 items-center">
-              <Fa icon={faBug} />
-              {project.issuesCount ?? '?'}
-              {(project.issuesCount ?? 0) <= 1 ? 'Issue' : 'Issues'}
-            </div>
-            <div class="flex gap-2 items-center">
-              <Fa icon={faCodePullRequest} />
-              {project.pullRequestsCount ?? '?'}
-              {(project.pullRequestsCount ?? 0) <= 1 ? 'PR' : 'PRs'}
-            </div>
-          </div>
+          {/if}
 
           <!-- Tags -->
           <div
