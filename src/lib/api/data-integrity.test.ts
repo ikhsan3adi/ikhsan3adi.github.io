@@ -1,11 +1,11 @@
-import { describe, it, expect } from 'vitest';
-import { initialProjects } from '$lib/api/projects/projects';
-import { contacts, whatsappLink, emailLink } from '$lib/api/contact/contacts';
+import { aboutTexts, photoCards } from '$lib/api/about/about';
+import { bottomMarqueeTexts, topMarqueeTexts } from '$lib/api/about/marqueeTexts';
 import { achievements } from '$lib/api/achievements/achievements';
-import { socials, githubLink, codebergLink, linkedInLink } from '$lib/api/socials/socials';
+import { contacts, emailLink, whatsappLink } from '$lib/api/contact/contacts';
+import { initialProjects } from '$lib/api/projects/projects';
+import { codebergLink, githubLink, linkedInLink, socials } from '$lib/api/socials/socials';
 import { toolCategories } from '$lib/api/tools/tools';
-import { photoCards, aboutTexts } from '$lib/api/about/about';
-import { topMarqueeTexts, bottomMarqueeTexts } from '$lib/api/about/marqueeTexts';
+import { describe, expect, it } from 'vitest';
 
 const urlRegex = /^https?:\/\/.+/;
 const urlOrMailtoRegex = /^(?:https?:\/\/|mailto:).+/;
@@ -30,23 +30,26 @@ describe('initialProjects', () => {
     it('has required fields', () => {
       expect(project.id).toBeTruthy();
       expect(project.name).toBeTruthy();
-      expect(project.url).toBeTruthy();
-      expect(project.readmeBaseUrl).toBeTruthy();
-      expect(project.imageUrl).toBeTruthy();
       expect(project.tags).toBeInstanceOf(Array);
     });
 
-    it('has valid URL for url', () => {
-      expect(project.url).toMatch(urlRegex);
-    });
+    if (!project.noGithub) {
+      it('has valid URL for url', () => {
+        expect(project.url).toMatch(urlRegex);
+      });
+    }
 
-    it('has valid URL for readmeBaseUrl', () => {
-      expect(project.readmeBaseUrl).toMatch(urlRegex);
-    });
+    if (project.readmeBaseUrl !== undefined) {
+      it('has valid URL for readmeBaseUrl', () => {
+        expect(project.readmeBaseUrl).toMatch(urlRegex);
+      });
+    }
 
-    it('has valid URL for imageUrl', () => {
-      expect(project.imageUrl).toMatch(urlRegex);
-    });
+    if (project.imageUrl !== undefined) {
+      it('has valid URL for imageUrl', () => {
+        expect(project.imageUrl).toMatch(urlRegex);
+      });
+    }
 
     it('has at least one tag', () => {
       expect(project.tags.length).toBeGreaterThan(0);

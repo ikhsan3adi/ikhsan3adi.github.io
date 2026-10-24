@@ -239,27 +239,27 @@
           >
             <div class="flex gap-2 items-center">
               <Fa icon={faStar} />
-              {project.starsCount}
+              {project.starsCount ?? '?'}
               {(project.starsCount ?? 0) <= 1 ? 'Star' : 'Stars'}
             </div>
             <div class="flex gap-2 items-center">
               <Fa icon={faCodeFork} />
-              {project.forksCount}
+              {project.forksCount ?? '?'}
               {(project.forksCount ?? 0) <= 1 ? 'Fork' : 'Forks'}
             </div>
             <div class="flex gap-2 items-center">
               <Fa icon={faDownload} />
-              {project.downloadsCount}
+              {project.downloadsCount ?? '?'}
               {(project.downloadsCount ?? 0) <= 1 ? 'Download' : 'Downloads'}
             </div>
             <div class="flex gap-2 items-center">
               <Fa icon={faBug} />
-              {project.issuesCount ?? 0}
+              {project.issuesCount ?? '?'}
               {(project.issuesCount ?? 0) <= 1 ? 'Issue' : 'Issues'}
             </div>
             <div class="flex gap-2 items-center">
               <Fa icon={faCodePullRequest} />
-              {project.pullRequestsCount ?? 0}
+              {project.pullRequestsCount ?? '?'}
               {(project.pullRequestsCount ?? 0) <= 1 ? 'PR' : 'PRs'}
             </div>
           </div>
@@ -277,16 +277,18 @@
           <div
             class="my-4 md:my-6 lg:my-8 flex w-full justify-center sm:justify-start gap-4 md:gap-6 lg:gap-8"
           >
-            <Button
-              href={project.repositoryUrl}
-              target="_blank"
-              rel="noreferrer"
-              noDarkVariant={false}
-            >
-              {#snippet icon()}
-                <Fa icon={faCode} />
-              {/snippet}Source code
-            </Button>
+            {#if project.repositoryUrl}
+              <Button
+                href={project.repositoryUrl}
+                target="_blank"
+                rel="noreferrer"
+                noDarkVariant={false}
+              >
+                {#snippet icon()}
+                  <Fa icon={faCode} />
+                {/snippet}Source code
+              </Button>
+            {/if}
 
             {#if project.hasLivePreview && project.livePreviewUrl}
               <Button

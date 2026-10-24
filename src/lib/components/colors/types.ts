@@ -19,6 +19,7 @@ interface TagColors {
   typescript: TagColor;
   nestjs: TagColor;
   svelte: TagColor;
+  nextjs: TagColor;
   mysql: TagColor;
   bootstrap: TagColor;
   postgresql: TagColor;
@@ -28,6 +29,7 @@ interface TagColors {
   bun: TagColor;
   react: TagColor;
   telegram: TagColor;
+  whatsapp: TagColor;
 }
 
 interface TagColorKey {

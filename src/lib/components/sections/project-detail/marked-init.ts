@@ -90,7 +90,10 @@ function ensureInit() {
   return initPromise;
 }
 
-export async function getConfiguredMarked(readmeBaseUrl: string) {
+export async function getConfiguredMarked(readmeBaseUrl?: string) {
   const { marked, markedBaseUrl } = await ensureInit();
-  return marked.use({ renderer: renderer(readmeBaseUrl, marked) }, markedBaseUrl(readmeBaseUrl));
+  return marked.use(
+    { renderer: renderer(readmeBaseUrl ?? '/', marked) },
+    markedBaseUrl(readmeBaseUrl ?? '/')
+  );
 }

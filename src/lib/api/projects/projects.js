@@ -3,6 +3,17 @@ const githubApiLink = 'https://api.github.com/repos/ikhsan3adi';
 /** @type {import('./types').Project[]} */
 export const initialProjects = [
   {
+    id: 'ai-sales-aegisworks',
+    name: 'AI Sales Agent B2B & CRM Enterprise System',
+    description:
+      'B2B sales CRM built at Aegisworks during a 17-week internship. Go backend with Next.js frontend. Built WhatsApp inbox with multi-account support, real-time sync via SSE, Kanban with drag-and-drop, and AI draft reply powered by OpenAI & Claude API. Worked across 4 sprints as a full-stack developer intern.',
+    noGithub: true,
+    url: '',
+    hasLivePreview: true,
+    livePreviewUrl: 'https://aisalesdev.aegis.co.id',
+    tags: ['golang', 'nextjs', 'postgresql', 'whatsapp', 'ai-agent']
+  },
+  {
     id: 'gemini-web2api',
     name: 'Gemini Web2API',
     url: `${githubApiLink}/gemini-web2api`,

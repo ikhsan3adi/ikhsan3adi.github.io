@@ -14,8 +14,8 @@
     type CardColors,
     type TagColorKey
   } from '$lib/components/colors';
-  import ProjectStats from './ProjectStats.svelte';
   import TagChip from '$lib/components/TagChip.svelte';
+  import ProjectStats from './ProjectStats.svelte';
 
   interface Props {
     project: Project;
@@ -129,13 +129,17 @@
 
         <!-- Stats -->
         <div class="max-md:hidden absolute bottom-0 left-0 max-sm:right-0">
-          <ProjectStats cardColor={cardButtonColors[cardColor]} {project} />
+          {#if !project.noGithub}
+            <ProjectStats cardColor={cardButtonColors[cardColor]} {project} />
+          {/if}
         </div>
       </div>
 
       <!-- Stats -->
       <div class="md:hidden w-full">
-        <ProjectStats cardColor={cardButtonColors[cardColor]} {project} />
+        {#if !project.noGithub}
+          <ProjectStats cardColor={cardButtonColors[cardColor]} {project} />
+        {/if}
       </div>
 
       <!-- Project description -->

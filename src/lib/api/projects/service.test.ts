@@ -22,6 +22,7 @@ function createProject(overrides?: Partial<Project>): Project {
     id: 'test',
     name: 'Test',
     url: 'https://api.github.com/repos/user/test',
+    readmeUrl: 'https://github.com/ikhsan3adi/test',
     readmeBaseUrl: 'https://raw.githubusercontent.com/user/test',
     imageUrl: '/images/test.png',
     tags: ['svelte'],

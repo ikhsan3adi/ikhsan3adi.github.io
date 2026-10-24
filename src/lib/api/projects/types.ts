@@ -2,9 +2,10 @@ export interface Project {
   id: string;
   name: string;
   url: string;
+  noGithub?: boolean;
   description?: string;
-  readmeBaseUrl: string;
-  imageUrl: string;
+  readmeBaseUrl?: string;
+  imageUrl?: string;
   readmeUrl?: string;
   tags: string[];
   starsCount?: number;

@@ -67,6 +67,11 @@ export const tagColors: TagColors = {
     border: 'dark:border-orange-400',
     text: 'dark:text-orange-400'
   },
+  nextjs: {
+    bg: 'bg-slate-800',
+    border: 'dark:border-white',
+    text: 'text-white'
+  },
   mysql: {
     bg: 'bg-blue-400 dark:bg-slate-800',
     border: 'dark:border-blue-400',
@@ -113,6 +118,11 @@ export const tagColors: TagColors = {
     bg: 'bg-blue-400 dark:bg-slate-800',
     border: 'dark:border-blue-400',
     text: 'dark:text-blue-400'
+  },
+  whatsapp: {
+    bg: 'bg-green-400 dark:bg-slate-800',
+    border: 'dark:border-green-400',
+    text: 'dark:text-green-400'
   }
 };
 

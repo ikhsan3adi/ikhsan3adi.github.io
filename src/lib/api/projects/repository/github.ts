@@ -3,6 +3,8 @@ import type { ProjectRepository, Release, RepoBase } from './types';
 
 export class GitHubRepository implements ProjectRepository {
   async fetchProject(project: Project, fetch: typeof globalThis.fetch): Promise<Project> {
+    if (project.noGithub) return project;
+
     const { json, downloadsCount, pullRequestsCount } = await this.fetchRepoBase(project, fetch);
 
     return {
