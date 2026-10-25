@@ -70,7 +70,8 @@ export const tagColors: TagColors = {
   nextjs: {
     bg: 'bg-slate-800',
     border: 'dark:border-white',
-    text: 'text-white'
+    text: 'text-white',
+    gradient: ''
   },
   mysql: {
     bg: 'bg-blue-400 dark:bg-slate-800',

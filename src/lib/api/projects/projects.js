@@ -11,19 +11,19 @@ export const initialProjects = [
     url: '',
     hasLivePreview: true,
     livePreviewUrl: 'https://aisalesdev.aegis.co.id',
-    tags: ['golang', 'nextjs', 'postgresql', 'whatsapp', 'ai-agent']
+    tags: ['go', 'nextjs', 'postgresql', 'whatsapp', 'ai-agent']
   },
   {
     id: 'gemini-web2api',
     name: 'Gemini Web2API',
     url: `${githubApiLink}/gemini-web2api`,
     description:
-      "High-performance Go proxy that converts Google Gemini's web interface into an OpenAI-compatible API. Zero cost, no API key needed, single static binary. Features TLS impersonation to bypass Cloudflare/WAF, adjustable thinking depth (@think=N), and support for both Codex CLI and Gemini CLI. Ships as a Docker image and cross-platform static binaries.",
+      "High-performance Go proxy that converts Google Gemini's web interface into an OpenAI-compatible API. Zero cost, no API key needed, single static binary. Features TLS impersonation to bypass Cloudflare/WAF, adjustable thinking depth (@think=N), and support for both Codex CLI and Gemini CLI.",
     readmeBaseUrl: 'https://github.com/ikhsan3adi/gemini-web2api/raw/main/',
     imageUrl:
       'https://repository-images.githubusercontent.com/1318987224/e6f7275b-f8ab-4934-957d-566ea25a2c7c',
     readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/gemini-web2api/main/README.md',
-    tags: ['golang', 'gemini', 'docker', 'proxy']
+    tags: ['gemini', 'openai', 'proxy', 'ai-agent', 'chatbot']
   },
   {
     id: 'sycorax-cressida',
@@ -153,18 +153,18 @@ export const initialProjects = [
     readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/backtix/main/README.md',
     tags: ['flutter', 'nestjs', 'svelte', 'prisma', 'postgresql', 'midtrans']
   },
-  {
-    id: 'quick-social',
-    name: 'Quick Social App',
-    url: `${githubApiLink}/quick_social`,
-    description:
-      'Flutter simple social media app UI prototype. Features feed page, story view, profile pages, comment bottom sheet, and notification page with responsive multiplatform design.',
-    readmeBaseUrl: 'https://github.com/ikhsan3adi/quick_social/raw/main/',
-    imageUrl:
-      'https://github.com/ikhsan3adi/quick_social/raw/main/.screenshots/quick_social_banner.png',
-    readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/quick_social/main/README.md',
-    tags: ['flutter', 'dart', 'android', 'ios', 'ui']
-  },
+  // {
+  //   id: 'quick-social',
+  //   name: 'Quick Social App',
+  //   url: `${githubApiLink}/quick_social`,
+  //   description:
+  //     'Flutter simple social media app UI prototype. Features feed page, story view, profile pages, comment bottom sheet, and notification page with responsive multiplatform design.',
+  //   readmeBaseUrl: 'https://github.com/ikhsan3adi/quick_social/raw/main/',
+  //   imageUrl:
+  //     'https://github.com/ikhsan3adi/quick_social/raw/main/.screenshots/quick_social_banner.png',
+  //   readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/quick_social/main/README.md',
+  //   tags: ['flutter', 'dart', 'android', 'ios', 'ui']
+  // },
   {
     id: 'sistem-perpustakaan-qr-code',
     name: 'BukuHub: Sistem Perpustakaan',
