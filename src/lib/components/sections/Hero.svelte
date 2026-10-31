@@ -2,7 +2,6 @@
   import { faFolderOpen, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
   import Fa from 'svelte-fa';
   import Typewriter from 'svelte-typewriter';
-
   // import bg from '$lib/components/graphics/hero-bg.svg';
 
   import Button from '$lib/components/buttons/Button.svelte';
@@ -15,6 +14,7 @@
 
 <section
   class="min-h-200 md:min-h-150 h-screen max-h-337.5 overflow-hidden flex relative bg-white dark:bg-slate-800 bg-halftone bg-halftone-45"
+  id="home"
 >
   <!-- Background image scrolling -->
   <!-- <div
@@ -30,7 +30,6 @@
         <div class="m-0 py-2 md:py-8 lg:py-9 max-md:text-center flex flex-col max-md:items-center">
           <!-- Hero text -->
           <p
-            id="home"
             class="w-fit z-2 dark:text-white bg-white/70 dark:bg-slate-800/70 md:text-lg lg:text-xl font-medium cursor-not-allowed"
           >
             Hello, my name is

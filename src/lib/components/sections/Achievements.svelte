@@ -37,13 +37,17 @@
         outerClass="w-full flex justify-center my-10 md:my-12 lg:my-16"
         once
       >
-        <h2 class="relative z-10 text-center dark:text-white" id="achievements">Achievements</h2>
+        <h2
+          class="relative z-10 text-center dark:text-white scroll-mt-24 md:scroll-mt-32"
+          id="achievements"
+        >
+          Achievements
+        </h2>
         <h2
           class="absolute z-0 text-center
             text-stroke-1 text-stroke-slate-900 dark:text-stroke-accent
             dark:bg-none bg-clip-text text-transparent bg-linear-to-r from-accent to-custom-3
             bottom-[-2.5px] right-[-2.5px] pointer-events-none select-none"
-          id="achievements"
         >
           Achievements
         </h2>

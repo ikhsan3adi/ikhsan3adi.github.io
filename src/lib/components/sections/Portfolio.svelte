@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
+  import { useStaggered } from '$lib/actions/useStaggered';
   import {
     initialProjects,
     ProjectService,
@@ -8,7 +9,6 @@
     type CacheStore
   } from '$lib/api/projects';
   import { randomizeElements, type CardColors } from '$lib/components/colors';
-  import { useStaggered } from '$lib/actions/useStaggered';
 
   import ProjectCard from '$lib/components/cards/ProjectCard.svelte';
   import ProjectCardError from '$lib/components/cards/ProjectCardError.svelte';
@@ -94,7 +94,10 @@
   <Wrappper>
     <div class="w-full pb-36">
       <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-        <h2 class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white" id="portfolio">
+        <h2
+          class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white scroll-mt-24 md:scroll-mt-32"
+          id="portfolio"
+        >
           Projects
         </h2>
       </Saos>

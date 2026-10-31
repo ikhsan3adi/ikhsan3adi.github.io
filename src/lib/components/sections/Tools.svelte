@@ -16,7 +16,10 @@
   <Wrappper>
     <div class="w-full pb-16 z-10">
       <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-        <h2 class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white" id="tools">
+        <h2
+          class="text-center mx-auto my-10 md:my-12 lg:my-16 dark:text-white scroll-mt-24 md:scroll-mt-32"
+          id="tools"
+        >
           Development tools
         </h2>
       </Saos>
