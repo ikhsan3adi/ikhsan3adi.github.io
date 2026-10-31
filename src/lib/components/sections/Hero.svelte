@@ -40,7 +40,7 @@
               {FIRST_NAME}
             </span>
             <span
-              class="font-cascadia-mono text-accent dark:text-primary bg-white/70 dark:bg-slate-800/70"
+              class="font-heading text-accent dark:text-primary bg-white/70 dark:bg-slate-800/70"
             >
               {LAST_NAME}
             </span>

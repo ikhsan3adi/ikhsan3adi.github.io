@@ -1,8 +1,9 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-cascadia-mono: 'Cascadia Mono', mono;
-  --font-space-grotesk: 'Space Grotesk', sans-serif;
+  --font-heading: 'TBJ Monodrip Inktrap', 'Cascadia Mono', monospace;
+  --font-body: 'Clash Grotesk', 'Space Grotesk', sans-serif;
+  --font-code: 'Cascadia Mono', monospace;
   --font-mechsuit: 'Mechsuit', sans-serif;
   --font-angeles: 'Angeles', cursive;
 
@@ -41,22 +42,22 @@
   }
 
   body {
-    @apply font-space-grotesk dark:bg-slate-800 duration-300;
+    @apply font-body dark:bg-slate-800 duration-300;
   }
 
   h1 {
-    @apply font-cascadia-mono font-extrabold text-text;
+    @apply font-heading font-extrabold text-text;
     @apply text-5xl md:text-6xl lg:text-7xl xl:text-[5rem];
   }
 
   h2 {
-    @apply font-cascadia-mono font-extrabold text-text;
+    @apply font-heading font-extrabold text-text;
     @apply text-4xl md:text-5xl lg:text-6xl;
   }
 
   h3,
   h4 {
-    @apply font-space-grotesk text-text;
+    @apply font-body text-text;
   }
 
   h3 {
@@ -68,15 +69,15 @@
   }
 
   p {
-    @apply font-space-grotesk font-medium text-text;
+    @apply font-body font-medium text-text;
   }
 
   a {
-    @apply font-space-grotesk font-medium;
+    @apply font-body font-medium;
   }
 
   code > * {
-    @apply font-cascadia-mono;
+    @apply font-heading;
   }
 
   @font-face {
@@ -93,6 +94,81 @@
       local('Angeles'),
       url('/fonts/ANGELES.woff2') format('woff2');
     font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Clash Grotesk';
+    src: url('/fonts/ClashGrotesk/ClashGrotesk-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Clash Grotesk';
+    src: url('/fonts/ClashGrotesk/ClashGrotesk-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Clash Grotesk';
+    src: url('/fonts/ClashGrotesk/ClashGrotesk-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Clash Grotesk';
+    src: url('/fonts/ClashGrotesk/ClashGrotesk-Semibold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Clash Grotesk';
+    src: url('/fonts/ClashGrotesk/ClashGrotesk-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'TBJ Monodrip Inktrap';
+    src: url('/fonts/TBJMonodripInktrap/TBJMonodripInktrapDemo-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+    size-adjust: 90%;
+  }
+
+  @font-face {
+    font-family: 'TBJ Monodrip Inktrap';
+    src: url('/fonts/TBJMonodripInktrap/TBJMonodripInktrapDemo-Reg.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+    size-adjust: 90%;
+  }
+
+  @font-face {
+    font-family: 'TBJ Monodrip Inktrap';
+    src: url('/fonts/TBJMonodripInktrap/TBJMonodripInktrapDemo-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+    size-adjust: 90%;
+  }
+
+  @font-face {
+    font-family: 'TBJ Monodrip Inktrap';
+    src: url('/fonts/TBJMonodripInktrap/TBJMonodripInktrapDemo-SemBd.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+    size-adjust: 90%;
+  }
+
+  @font-face {
+    font-family: 'TBJ Monodrip Inktrap';
+    src: url('/fonts/TBJMonodripInktrap/TBJMonodripInktrapDemo-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+    size-adjust: 90%;
   }
 }
 

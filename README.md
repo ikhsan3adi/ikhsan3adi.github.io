@@ -51,7 +51,7 @@ Key principles:
 
 - **High contrast**: bold black-on-white backgrounds with stark typographic hierarchy for maximum readability.
 - **Minimal ornamentation**: every element earns its place; no decorative fluff.
-- **Typographic focus**: `Cascadia Mono` for headings (h1–h2) for a bold, monospaced statement; `Space Grotesk` for body text and subheadings; `Mechsuit` for the logo. Clean, geometric, and assertive.
+  - **Typographic focus**: `TBJ Monodrip Inktrap` for headings (h1–h2) with `Cascadia Mono` as fallback; `Clash Grotesk` for body text and subheadings with `Space Grotesk` as fallback; `Mechsuit` for the logo. Clean, geometric, and assertive.
 - **Deliberate spacing**: generous whitespace guides the eye and lets content breathe.
 - **Consistent rhythm**: a fixed set of spacing and sizing tokens keeps the layout grounded.
 - **Scroll-triggered reveals**: elements animate into view as you scroll, adding motion without clutter.
@@ -65,7 +65,7 @@ The result is a portfolio that feels honest, direct, and memorable, much like th
 - **Framework**: [SvelteKit](https://kit.svelte.dev/) (static adapter, prerendered SPA)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com)
 - **Icons**: [Iconify](https://iconify.design/) via `@iconify/svelte`, [FontAwesome](https://fontawesome.com/) via `svelte-fa`
-- **Fonts**: `@fontsource/cascadia-mono` (headings), `@fontsource/space-grotesk` (body), `Mechsuit` (custom, navbar logo)
+- **Fonts**: `TBJ Monodrip Inktrap` + `Cascadia Mono` (headings), `Clash Grotesk` + `Space Grotesk` (body), `Mechsuit` (custom, navbar logo)
 - **Languages**: TypeScript, JavaScript
 
 ## Development

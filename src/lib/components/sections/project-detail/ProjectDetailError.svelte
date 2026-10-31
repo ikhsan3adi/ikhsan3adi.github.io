@@ -79,7 +79,7 @@
               <Fa icon={faWarning} />
             </div>
             <div
-              class="text-wrap font-cascadia-mono font-extrabold text-center text-white dark:text-text text-3xl md:text-4xl lg:text-5xl"
+              class="text-wrap font-heading font-extrabold text-center text-white dark:text-text text-3xl md:text-4xl lg:text-5xl"
             >
               Failed to load
             </div>

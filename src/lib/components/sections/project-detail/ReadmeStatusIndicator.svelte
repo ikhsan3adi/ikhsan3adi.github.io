@@ -24,7 +24,7 @@
         flex flex-col justify-center gap-4 animate-pulse"
       >
         <Fa icon={faFileDownload} class="animate-bounce" />
-        <span class="text-xl md:text-2xl lg:text-3xl font-cascadia-mono">Fetching...</span>
+        <span class="text-xl md:text-2xl lg:text-3xl font-heading">Fetching...</span>
       </div>
     {:else if status === 'loading'}
       <div
@@ -32,7 +32,7 @@
       flex flex-col justify-center gap-4 animate-pulse"
       >
         <Fa icon={faTools} class="animate-bounce" />
-        <span class="text-xl md:text-2xl lg:text-3xl font-cascadia-mono">Loading...</span>
+        <span class="text-xl md:text-2xl lg:text-3xl font-heading">Loading...</span>
       </div>
     {:else if status === 'rendering'}
       <div
@@ -40,7 +40,7 @@
       flex flex-col justify-center gap-4 animate-pulse"
       >
         <Fa icon={faGear} class="animate-spin" />
-        <span class="text-xl md:text-2xl lg:text-3xl font-cascadia-mono">Rendering...</span>
+        <span class="text-xl md:text-2xl lg:text-3xl font-heading">Rendering...</span>
       </div>
     {:else if status === 'noreadme'}
       <div
@@ -48,7 +48,7 @@
       flex flex-col justify-center gap-4"
       >
         <Fa icon={faBookDead} />
-        <span class="text-xl md:text-2xl lg:text-3xl font-cascadia-mono">No README</span>
+        <span class="text-xl md:text-2xl lg:text-3xl font-heading">No README</span>
       </div>
     {:else if status === 'error'}
       <div
@@ -56,7 +56,7 @@
       flex flex-col justify-center gap-4 animate-pulse"
       >
         <Fa icon={faExclamationTriangle} />
-        <span class="text-xl md:text-2xl lg:text-3xl font-cascadia-mono">Error</span>
+        <span class="text-xl md:text-2xl lg:text-3xl font-heading">Error</span>
       </div>
     {/if}
 

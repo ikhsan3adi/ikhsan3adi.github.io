@@ -53,7 +53,7 @@
               <Fa icon={faRefresh} />
             </span>
             <span
-              class="font-cascadia-mono text-wrap font-extrabold text-white dark:text-text text-3xl md:text-4xl lg:text-5xl"
+              class="font-heading text-wrap font-extrabold text-white dark:text-text text-3xl md:text-4xl lg:text-5xl"
             >
               Loading...
             </span>

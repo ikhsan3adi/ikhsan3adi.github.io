@@ -80,7 +80,7 @@
           <div class="lg:flex lg:justify-between">
             <div class="hidden lg:block my-auto pr-8 xl:pr-12">
               <Saos animation={'scale-up-center 1s cubic-bezier(0.4, 0, 0.2, 1) both'} once>
-                <h3 class="dark:text-white font-cascadia-mono text-3xl md:text-4xl lg:text-5xl">
+                <h3 class="dark:text-white font-heading text-3xl md:text-4xl lg:text-5xl">
                   Message me!
                 </h3>
               </Saos>

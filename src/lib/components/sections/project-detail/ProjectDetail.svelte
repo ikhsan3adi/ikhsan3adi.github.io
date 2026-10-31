@@ -217,7 +217,7 @@
                 {/if}
               </div>
               <div
-                class="dark:text-white text-wrap text-center font-cascadia-mono font-extrabold text-text text-3xl md:text-4xl lg:text-5xl"
+                class="dark:text-white text-wrap text-center font-heading font-extrabold text-text text-3xl md:text-4xl lg:text-5xl"
               >
                 {#if project.statusMessage}
                   {project.statusMessage}
@@ -543,14 +543,14 @@
   }
 
   :global(.markdown-content pre code) {
-    font-family: var(--font-cascadia-mono);
+    font-family: var(--font-code);
     font-size: var(--text-sm);
     line-height: var(--leading-relaxed);
   }
 
   :global(.markdown-content :not(pre) > code),
   :global(.markdown-content p > code) {
-    font-family: var(--font-cascadia-mono);
+    font-family: var(--font-code);
   }
 
   :global(.markdown-content img) {

@@ -5,7 +5,7 @@ export const renderer = (baseUrl: string, markedModule: { Renderer: new () => Ma
   const renderer: MarkedRenderer = new markedModule.Renderer();
 
   renderer.heading = (text, level) => {
-    return `<h${level} class="my-4 font-bold font-space-grotesk text-slate-900 dark:text-white" id="${createSlug(stripHtmlTagsDOM(text))}">${text}</h${level}>`;
+    return `<h${level} class="my-4 font-bold font-body text-slate-900 dark:text-white" id="${createSlug(stripHtmlTagsDOM(text))}">${text}</h${level}>`;
   };
 
   renderer.paragraph = (text) => {
@@ -86,7 +86,7 @@ export const renderer = (baseUrl: string, markedModule: { Renderer: new () => Ma
   };
 
   renderer.codespan = (code) => {
-    return `<code class="bg-slate-200 dark:bg-slate-600 px-1.5 py-0.5 rounded font-cascadia-mono text-rose-700 dark:text-rose-300">${code}</code>`;
+    return `<code class="bg-slate-200 dark:bg-slate-600 px-1.5 py-0.5 rounded font-code text-rose-700 dark:text-rose-300">${code}</code>`;
   };
 
   renderer.html = (html) => {
