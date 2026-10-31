@@ -27,6 +27,8 @@ function ensureInit() {
       { default: plaintext },
       { default: python },
       { default: php },
+      { default: go },
+      { default: sql },
       { default: markedKatex },
       { default: markedMermaid }
     ] = await Promise.all([
@@ -47,6 +49,8 @@ function ensureInit() {
       import('highlight.js/lib/languages/plaintext'),
       import('highlight.js/lib/languages/python'),
       import('highlight.js/lib/languages/php'),
+      import('highlight.js/lib/languages/go'),
+      import('highlight.js/lib/languages/sql'),
       import('marked-katex-extension'),
       import('./marked-mermaid')
     ]);
@@ -65,6 +69,8 @@ function ensureInit() {
     hljs.registerLanguage('plaintext', plaintext);
     hljs.registerLanguage('python', python);
     hljs.registerLanguage('php', php);
+    hljs.registerLanguage('go', go);
+    hljs.registerLanguage('sql', sql);
     hljs.registerLanguage('txt', plaintext);
 
     const res = await new Octokit().rest.emojis.get().catch(() => null);

@@ -13,70 +13,47 @@ export const toolCategories: ToolCategory[] = [
     category: 'Front-end web',
     tools: [
       { name: 'HTML', icon: 'simple-icons:html5' },
-      { name: 'CSS', icon: 'simple-icons:css' },
-      { name: 'JavaScript', icon: 'simple-icons:javascript' },
       { name: 'TypeScript', icon: 'simple-icons:typescript' },
-
       { name: 'Svelte', icon: 'simple-icons:svelte' },
-      { name: 'Vue', icon: 'simple-icons:vuedotjs' },
-
-      { name: 'Tailwind CSS', icon: 'simple-icons:tailwindcss' },
-      { name: 'Bootstrap', icon: 'simple-icons:bootstrap' },
-
-      { name: 'shadcn/ui', icon: 'simple-icons:shadcnui' },
-      { name: 'daisyUI', icon: 'simple-icons:daisyui' }
+      { name: 'Next.js', icon: 'simple-icons:nextdotjs' },
+      { name: 'Tailwind CSS', icon: 'simple-icons:tailwindcss' }
     ]
   },
   {
     category: 'Back-end',
     tools: [
       // js
-      { name: 'TypeScript', icon: 'simple-icons:typescript' },
-      { name: 'NestJS', icon: 'simple-icons:nestjs' },
-      { name: 'Hono', icon: 'simple-icons:hono' },
-      { name: 'Elysia.js', icon: 'simple-icons:bun' },
       { name: 'Bun', icon: 'simple-icons:bun' },
       { name: 'Node.js', icon: 'simple-icons:nodedotjs' },
       // php
       { name: 'PHP', icon: 'simple-icons:php' },
-      { name: 'Laravel', icon: 'simple-icons:laravel' },
-      { name: 'CodeIgniter', icon: 'simple-icons:codeigniter' },
       // py
       { name: 'Python', icon: 'simple-icons:python' },
-      { name: 'FastAPI', icon: 'simple-icons:fastapi' },
       // db
       { name: 'PostgreSQL', icon: 'simple-icons:postgresql' },
       { name: 'MySQL', icon: 'simple-icons:mysql' },
-      { name: 'MariaDB', icon: 'simple-icons:mariadb' },
-      { name: 'SQLite', icon: 'simple-icons:sqlite' },
       { name: 'MongoDB', icon: 'simple-icons:mongodb' },
       { name: 'Redis', icon: 'simple-icons:redis' },
       // other
       { name: 'Go', icon: 'simple-icons:go' },
-      { name: 'Swagger', icon: 'simple-icons:swagger' }
+      { name: 'Rust', icon: 'simple-icons:rust' }
     ]
   },
   {
     category: 'Mobile apps',
     tools: [
-      { name: 'Dart', icon: 'simple-icons:dart' },
       { name: 'Flutter', icon: 'simple-icons:flutter' },
-      { name: 'Android', icon: 'simple-icons:android' },
-      { name: 'Android Studio', icon: 'simple-icons:androidstudio' }
+      { name: 'Android', icon: 'simple-icons:android' }
     ]
   },
   {
     category: 'DevOps',
     tools: [
       { name: 'Git', icon: 'simple-icons:git' },
-      { name: 'GitHub', icon: 'simple-icons:github' },
       { name: 'GitHub Actions', icon: 'simple-icons:githubactions' },
       { name: 'GitLab', icon: 'simple-icons:gitlab' },
-      { name: 'Codeberg', icon: 'simple-icons:codeberg' },
-      { name: 'Cloudflare Workers', icon: 'simple-icons:cloudflareworkers' },
-      { name: 'Cloudflare Wrangler', icon: 'simple-icons:cloudflare' },
+      { name: 'Cloudflare', icon: 'simple-icons:cloudflare' },
       { name: 'Docker', icon: 'simple-icons:docker' },
-      { name: 'Shell', icon: 'simple-icons:gnubash' },
       { name: 'Nginx', icon: 'simple-icons:nginx' }
     ]
   },
@@ -88,20 +65,22 @@ export const toolCategories: ToolCategory[] = [
       { name: 'draw.io', icon: 'simple-icons:diagramsdotnet' },
       { name: 'LaTeX', icon: 'simple-icons:latex' },
       { name: 'Mermaid', icon: 'simple-icons:mermaid' },
-      { name: 'PlantUML', icon: 'simple-icons:uml' }
+      { name: 'PlantUML', icon: 'simple-icons:uml' },
+      { name: 'Swagger', icon: 'simple-icons:swagger' }
     ]
   },
   {
     category: 'AI Tools',
     tools: [
-      { name: 'Antigravity', icon: 'simple-icons:googlegemini' },
       { name: 'Opencode', icon: 'simple-icons:opencode' },
+      { name: 'Antigravity', icon: 'simple-icons:googlegemini' },
+      { name: '9Router', icon: 'lucide:graph-star' },
       { name: 'MCP', icon: 'simple-icons:modelcontextprotocol' },
       { name: 'n8n', icon: 'simple-icons:n8n' }
     ]
   },
   {
-    category: 'Design & Editing',
+    category: 'Content Creation',
     tools: [
       { name: 'Kdenlive', icon: 'simple-icons:kdenlive' },
       { name: 'Photoshop', icon: 'simple-icons:adobephotoshop' },
@@ -115,7 +94,12 @@ export const toolCategories: ToolCategory[] = [
     tools: [
       { name: 'Arch Linux', icon: 'simple-icons:archlinux' },
       { name: 'Bruno', icon: 'simple-icons:bruno' },
-      { name: 'Zed', icon: 'simple-icons:zedindustries' }
+      { name: 'Thorium', icon: 'simple-icons:googlechrome' },
+      { name: 'Zen Browser', icon: 'simple-icons:zenbrowser' },
+      { name: 'VSCodium', icon: 'simple-icons:vscodium' },
+      { name: 'Zed', icon: 'simple-icons:zedindustries' },
+      { name: 'Fish', icon: 'simple-icons:fishshell' },
+      { name: 'Herdr', icon: 'simple-icons:fishshell' }
     ]
   }
 ];
