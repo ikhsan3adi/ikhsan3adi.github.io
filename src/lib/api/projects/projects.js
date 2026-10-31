@@ -11,6 +11,10 @@ export const initialProjects = [
     url: '',
     hasLivePreview: true,
     livePreviewUrl: 'https://aisalesdev.aegis.co.id',
+    readmeBaseUrl: 'https://raw.githubusercontent.com/ikhsan3adi/calculator/master/ai-sales/',
+    imageUrl:
+      'https://raw.githubusercontent.com/ikhsan3adi/calculator/master/ai-sales/images/hero.png',
+    readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/calculator/master/ai-sales/README.md',
     tags: ['go', 'nextjs', 'postgresql', 'whatsapp', 'ai-agent']
   },
   {
