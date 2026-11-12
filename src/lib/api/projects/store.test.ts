@@ -32,6 +32,7 @@ describe('projectStore', () => {
       id: 'test',
       name: 'Test',
       url: '',
+      date: '2024-01-01',
       readmeBaseUrl: '',
       imageUrl: '',
       tags: []

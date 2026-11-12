@@ -1,12 +1,15 @@
 import { browser } from '$app/environment';
 import type { CacheStore, CacheEntry } from './types';
 
+/** Bump this to invalidate all cached project data in localStorage. */
+export const PROJECT_CACHE_VERSION = '2';
+
 export class LocalStorageCache implements CacheStore {
   private memoryCache = new Map<string, CacheEntry>();
 
   constructor(
     private prefix = 'project:',
-    private version = '1'
+    private version = PROJECT_CACHE_VERSION
   ) {}
 
   private buildKey(key: string): string {

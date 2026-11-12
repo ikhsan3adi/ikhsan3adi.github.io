@@ -33,6 +33,11 @@ describe('initialProjects', () => {
       expect(project.tags).toBeInstanceOf(Array);
     });
 
+    it('has valid ISO date', () => {
+      expect(project.date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(Number.isNaN(Date.parse(project.date))).toBe(false);
+    });
+
     if (!project.noGithub) {
       it('has valid URL for url', () => {
         expect(project.url).toMatch(urlRegex);

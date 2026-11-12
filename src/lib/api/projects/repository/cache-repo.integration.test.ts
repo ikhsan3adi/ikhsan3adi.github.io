@@ -36,6 +36,7 @@ function createProject(overrides?: Partial<Project>): Project {
     id: 'int-test-project',
     name: 'Integration Test Project',
     url: 'https://api.github.com/repos/user/project',
+    date: '2024-01-01',
     readmeBaseUrl: 'https://raw.githubusercontent.com/user/project',
     imageUrl: '/images/project.png',
     tags: ['javascript'],
