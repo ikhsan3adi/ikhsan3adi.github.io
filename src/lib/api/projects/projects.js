@@ -5,6 +5,7 @@ export const initialProjects = [
   {
     id: 'ai-sales-aegisworks',
     name: 'AI Sales Agent B2B & CRM Enterprise System',
+    date: '2026-10-23',
     description:
       'B2B sales CRM built at Aegisworks during a 17-week internship. Go backend with Next.js frontend. Built WhatsApp inbox with multi-account support, real-time sync via SSE, Kanban with drag-and-drop, and AI draft reply powered by OpenAI & Claude API. Worked across 4 sprints as a full-stack developer intern.',
     noGithub: true,
@@ -20,6 +21,7 @@ export const initialProjects = [
   {
     id: 'gemini-web2api',
     name: 'Gemini Web2API',
+    date: '2026-08-01',
     url: `${githubApiLink}/gemini-web2api`,
     description:
       "High-performance Go proxy that converts Google Gemini's web interface into an OpenAI-compatible API. Zero cost, no API key needed, single static binary. Features TLS impersonation to bypass Cloudflare/WAF, adjustable thinking depth (@think=N), and support for both Codex CLI and Gemini CLI.",
@@ -32,6 +34,7 @@ export const initialProjects = [
   {
     id: 'sycorax-cressida',
     name: 'Sycorax Cressida',
+    date: '2026-07-26',
     url: `${githubApiLink}/sycorax_cressida`,
     description:
       'Cross-platform IPTV player app built with Flutter. Local SQLite database via Drift for caching channels, feeds, streams, countries, languages, and categories. Features Material 3 Expressive design with shape morphing animations, media_kit for HLS streaming, Riverpod state management, favorite channels, and a staggered grid UI. Targets Android, Web, Linux, iOS, macOS, and Windows.',
@@ -44,6 +47,7 @@ export const initialProjects = [
   {
     id: 'ruwet-meter',
     name: 'RuwetMeter',
+    date: '2026-06-27',
     url: `${githubApiLink}/RuwetMeter`,
     description:
       'AI Agent buat mantau keruwetan Indonesia. Scrape berita, analisis pakai LLM, dengan chatbot RAG interaktif.',
@@ -55,6 +59,7 @@ export const initialProjects = [
   {
     id: 'ngasih-tau-ada-bis-di-sarijadi-atau-nggak',
     name: 'Ngasih Tau Ada Bis di Sarijadi Atau Nggak',
+    date: '2026-06-05',
     url: `${githubApiLink}/ngasih-tau-ada-bis-di-sarijadi-atau-nggak`,
     description:
       'Small side project to monitor bus positions in Sarijadi area and notify when buses enter/exit geofence zones. Maps bus movements, sends Telegram notifications with live location updates.',
@@ -69,6 +74,7 @@ export const initialProjects = [
   {
     id: 'kegiatin',
     name: 'Kegiatin: Event Management App',
+    date: '2026-04-21',
     url: `${githubApiLink}/kegiatin`,
     description:
       'Kegiatin is an Offline-First mobile app designed for managing the activities of the Persis Youth Organization in Bandung Regency. The app supports the creation of events (single or series events), RSVPs via unique QR codes, offline attendance tracking using a local database with automatic synchronization to the server when the device is online, as well as digital archiving of event materials and documentation.',
@@ -81,6 +87,7 @@ export const initialProjects = [
   {
     id: 'polban-datacore',
     name: 'Polban DataCore',
+    date: '2025-10-24',
     url: `https://api.github.com/repos/muhamadSyahid/polban-datacore`,
     description:
       'Polban DataCore is the main aggregator and backend of the Polban Dataverse ecosystem. It bridges raw data sources with data visualization. Its main responsibilities include extracting raw data such as students, lecturers, and academic data from DataHub, loading the data into an internal database for processing, transforming and aggregating the raw data into meaningful statistics and materialized views, and serving the processed data through a fast, cached REST API.',
@@ -93,6 +100,7 @@ export const initialProjects = [
   {
     id: 'godot-outline-quest',
     name: 'Pattern Block Activity Game: Outline Quest',
+    date: '2025-10-16',
     url: `${githubApiLink}/godot-outline-quest`,
     description:
       'Outline Quest is a Pattern Block Activity game developed using the Godot Engine and C#. Players arrange geometric blocks to complete the outlines of animals such as ants, butterflies, and spiders. The game implements concepts of 2D geometric transformations (translation, rotation) and drag-and-drop interactions.',
@@ -105,6 +113,7 @@ export const initialProjects = [
   {
     id: 'jump-and-survive',
     name: '2D Platformer Game: Jump & Survive',
+    date: '2025-02-10',
     url: `${githubApiLink}/c5-jump-and-survive`,
     description:
       'Jump & Survive is a simple 2D platformer game created using the C programming language and the SDL3 library. In this game, players control the main character, who must jump and avoid obstacles to reach the final goal.',
@@ -117,6 +126,7 @@ export const initialProjects = [
   {
     id: 'c-snake-game',
     name: 'Snake Game Using C',
+    date: '2024-11-25',
     url: `${githubApiLink}/c-snake-game`,
     readmeBaseUrl: 'https://github.com/ikhsan3adi/c-snake-game/raw/master/',
     imageUrl: 'https://github.com/ikhsan3adi/c-snake-game/raw/master/images/preview.gif',
@@ -126,6 +136,7 @@ export const initialProjects = [
   {
     id: 'absensi-karyawan-gps-barcode',
     name: 'Absensi Karyawan GPS Barcode',
+    date: '2024-06-15',
     url: `${githubApiLink}/absensi-karyawan-gps-barcode`,
     readmeBaseUrl: 'https://github.com/ikhsan3adi/absensi-karyawan-gps-barcode/raw/master/',
     imageUrl:
@@ -137,6 +148,7 @@ export const initialProjects = [
   {
     id: 'markdown-translator',
     name: 'Markdown Translator Action',
+    date: '2024-03-22',
     url: `${githubApiLink}/markdown-translator`,
     description:
       'GitHub Action to translate any Markdown/README files to any language. Supports multiple files and subdirectories with configurable target languages via Google Cloud Translate.',
@@ -149,6 +161,7 @@ export const initialProjects = [
   {
     id: 'backtix',
     name: 'BackTix: Event & Ticketing App',
+    date: '2024-02-06',
     url: `${githubApiLink}/backtix`,
     description:
       'Open source event and ticketing app with NestJS backend, SvelteKit admin panel, and Flutter mobile app. Features Midtrans payments, Google Sign-In, Prisma with PostgreSQL, and Open Street Map integration.',
@@ -157,21 +170,23 @@ export const initialProjects = [
     readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/backtix/main/README.md',
     tags: ['flutter', 'nestjs', 'svelte', 'prisma', 'postgresql', 'midtrans']
   },
-  // {
-  //   id: 'quick-social',
-  //   name: 'Quick Social App',
-  //   url: `${githubApiLink}/quick_social`,
-  //   description:
-  //     'Flutter simple social media app UI prototype. Features feed page, story view, profile pages, comment bottom sheet, and notification page with responsive multiplatform design.',
-  //   readmeBaseUrl: 'https://github.com/ikhsan3adi/quick_social/raw/main/',
-  //   imageUrl:
-  //     'https://github.com/ikhsan3adi/quick_social/raw/main/.screenshots/quick_social_banner.png',
-  //   readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/quick_social/main/README.md',
-  //   tags: ['flutter', 'dart', 'android', 'ios', 'ui']
-  // },
+  {
+    id: 'quick-social',
+    name: 'Quick Social App',
+    date: '2023-11-27',
+    url: `${githubApiLink}/quick_social`,
+    description:
+      'Flutter simple social media app UI prototype. Features feed page, story view, profile pages, comment bottom sheet, and notification page with responsive multiplatform design.',
+    readmeBaseUrl: 'https://github.com/ikhsan3adi/quick_social/raw/main/',
+    imageUrl:
+      'https://github.com/ikhsan3adi/quick_social/raw/main/.screenshots/quick_social_banner.png',
+    readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/quick_social/main/README.md',
+    tags: ['flutter', 'dart', 'android', 'ios', 'ui']
+  },
   {
     id: 'sistem-perpustakaan-qr-code',
     name: 'BukuHub: Sistem Perpustakaan',
+    date: '2023-09-07',
     url: `${githubApiLink}/sistem-perpustakaan-qr-code`,
     readmeBaseUrl: 'https://github.com/ikhsan3adi/sistem-perpustakaan-qr-code/raw/main/',
     imageUrl:
@@ -183,6 +198,7 @@ export const initialProjects = [
   {
     id: 'flutter-auction-app',
     name: 'Flutter Auction App',
+    date: '2023-04-22',
     url: `${githubApiLink}/flutter-auction-app`,
     readmeBaseUrl: 'https://github.com/ikhsan3adi/flutter-auction-app/raw/master/',
     imageUrl: 'https://github.com/ikhsan3adi/Flutter-Auction-App/raw/master/images/banner.png',
@@ -192,6 +208,7 @@ export const initialProjects = [
   {
     id: 'absensi-sekolah-qr-code',
     name: 'Sistem Absensi QR Code',
+    date: '2023-02-24',
     url: `${githubApiLink}/absensi-sekolah-qr-code`,
     readmeBaseUrl: 'https://github.com/ikhsan3adi/absensi-sekolah-qr-code/raw/master/',
     imageUrl:

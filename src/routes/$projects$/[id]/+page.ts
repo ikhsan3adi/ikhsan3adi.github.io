@@ -3,6 +3,7 @@ import {
   GitHubRepository,
   CachedRepository,
   LocalStorageCache,
+  PROJECT_CACHE_VERSION,
   initialProjects,
   type Project
 } from '$lib/api/projects';
@@ -10,7 +11,10 @@ import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 
 export const load = (async ({ url, fetch }) => {
-  const cache = new LocalStorageCache(import.meta.env.DEV ? 'project:dev:' : 'project:', '1');
+  const cache = new LocalStorageCache(
+    import.meta.env.DEV ? 'project:dev:' : 'project:',
+    PROJECT_CACHE_VERSION
+  );
 
   const repo = new CachedRepository(new GitHubRepository(), cache);
 

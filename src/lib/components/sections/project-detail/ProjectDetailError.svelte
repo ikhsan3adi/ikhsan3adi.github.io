@@ -45,6 +45,7 @@
       id: 'error',
       name: 'Error',
       url: '',
+      date: '',
       description: errorMessage,
       readmeBaseUrl: '',
       imageUrl: '',

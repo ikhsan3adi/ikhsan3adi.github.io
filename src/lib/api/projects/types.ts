@@ -2,6 +2,7 @@ export interface Project {
   id: string;
   name: string;
   url: string;
+  date: string;
   noGithub?: boolean;
   description?: string;
   readmeBaseUrl?: string;
