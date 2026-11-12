@@ -170,18 +170,19 @@ export const initialProjects = [
     readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/backtix/main/README.md',
     tags: ['flutter', 'nestjs', 'svelte', 'prisma', 'postgresql', 'midtrans']
   },
-  // {
-  //   id: 'quick-social',
-  //   name: 'Quick Social App',
-  //   url: `${githubApiLink}/quick_social`,
-  //   description:
-  //     'Flutter simple social media app UI prototype. Features feed page, story view, profile pages, comment bottom sheet, and notification page with responsive multiplatform design.',
-  //   readmeBaseUrl: 'https://github.com/ikhsan3adi/quick_social/raw/main/',
-  //   imageUrl:
-  //     'https://github.com/ikhsan3adi/quick_social/raw/main/.screenshots/quick_social_banner.png',
-  //   readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/quick_social/main/README.md',
-  //   tags: ['flutter', 'dart', 'android', 'ios', 'ui']
-  // },
+  {
+    id: 'quick-social',
+    name: 'Quick Social App',
+    date: '2023-11-27',
+    url: `${githubApiLink}/quick_social`,
+    description:
+      'Flutter simple social media app UI prototype. Features feed page, story view, profile pages, comment bottom sheet, and notification page with responsive multiplatform design.',
+    readmeBaseUrl: 'https://github.com/ikhsan3adi/quick_social/raw/main/',
+    imageUrl:
+      'https://github.com/ikhsan3adi/quick_social/raw/main/.screenshots/quick_social_banner.png',
+    readmeUrl: 'https://raw.githubusercontent.com/ikhsan3adi/quick_social/main/README.md',
+    tags: ['flutter', 'dart', 'android', 'ios', 'ui']
+  },
   {
     id: 'sistem-perpustakaan-qr-code',
     name: 'BukuHub: Sistem Perpustakaan',
