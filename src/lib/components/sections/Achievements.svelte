@@ -136,7 +136,7 @@
                         noDarkVariant={true}
                         fullWidth={false}
                         variant="codeforces"
-                        small
+                        size="sm"
                       >
                         {#snippet icon()}
                           <Fa icon={faExternalLink} />
@@ -240,7 +240,7 @@
                         noDarkVariant={true}
                         fullWidth={false}
                         variant="codeforces"
-                        small
+                        size="sm"
                       >
                         {#snippet icon()}
                           <Fa icon={faExternalLink} />

@@ -12,9 +12,9 @@
     faDownload,
     faExternalLink,
     faHome,
-    faStar,
+    faImage,
     faRefresh,
-    faImage
+    faStar
   } from '@fortawesome/free-solid-svg-icons';
   import Fa from 'svelte-fa';
 
@@ -25,8 +25,8 @@
   import { getConfiguredMarked } from './marked-init';
 
   import Button from '$lib/components/buttons/Button.svelte';
-  import ReadmeStatusIndicator from './ReadmeStatusIndicator.svelte';
   import TagChip from '$lib/components/TagChip.svelte';
+  import ReadmeStatusIndicator from './ReadmeStatusIndicator.svelte';
 
   interface Props {
     project: Project;
@@ -368,7 +368,7 @@
         title="Back to home"
         variant="primary"
         noDarkVariant={false}
-        small
+        size="sm"
       >
         {#snippet icon()}
           <Fa icon={faHome} />
@@ -385,7 +385,7 @@
   className="back-to-top fixed bottom-6 right-6 z-50 {!showBackToTop ? 'hidden!' : ''}"
   variant="secondary"
   noDarkVariant={false}
-  small
+  size="sm"
 >
   {#snippet icon()}
     <Fa icon={faArrowUp} />

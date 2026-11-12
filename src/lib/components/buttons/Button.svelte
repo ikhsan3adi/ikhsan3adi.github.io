@@ -12,7 +12,7 @@
     noDarkVariant?: boolean;
     fullWidth?: boolean;
     centerText?: boolean;
-    small?: boolean;
+    size?: 'md' | 'sm' | 'xs';
     onClick?: () => void;
     icon?: import('svelte').Snippet;
     children?: import('svelte').Snippet;
@@ -30,7 +30,7 @@
     noDarkVariant = true,
     fullWidth = false,
     centerText = true,
-    small = false,
+    size = 'md',
     onClick,
     icon,
     children
@@ -121,15 +121,18 @@
   };
 
   const rootClass = $derived(
-    `${noDarkVariant ? '' : backBackgroundColors[variant]} ${
-      fullWidth ? 'w-full' : ''
-    } bg-slate-900 duration-200 inline-block ${className}`.trim()
+    `${noDarkVariant ? '' : backBackgroundColors[variant]}
+    ${fullWidth ? 'w-full' : ''}
+    bg-slate-900 duration-200 inline-block ${className}`.trim()
   );
 
   const innerClass = $derived(
-    `${backgroundColors[variant]} ${noDarkVariant ? '' : 'dark:bg-slate-900'} ${
-      noDarkVariant ? '' : borderColors[variant]
-    } ${centerText ? ' justify-center' : ''} ${disabled ? '' : 'active:translate-x-0 active:translate-y-0'} flex items-center border-slate-900 border-2 duration-200 px-4 py-2 -translate-x-1.5 -translate-y-1.5 hover:-translate-x-2 hover:-translate-y-2 w-full`
+    `${backgroundColors[variant]} ${noDarkVariant ? '' : 'dark:bg-slate-900'}
+    ${noDarkVariant ? '' : borderColors[variant]}
+    ${centerText ? ' justify-center' : ''} 
+    ${disabled ? '' : 'active:translate-x-0 active:translate-y-0'}
+    ${size === 'xs' ? 'px-2 sm:px-3 py-1 -translate-x-1 -translate-y-1 hover:-translate-x-1.5 hover:-translate-y-1.5' : 'px-4 py-2 -translate-x-1.5 -translate-y-1.5 hover:-translate-x-2 hover:-translate-y-2'}
+    flex items-center border-slate-900 border-2 duration-200 w-full`
   );
 </script>
 
@@ -138,16 +141,15 @@
     <div class={innerClass}>
       {#if icon}
         <div
-          class="{noDarkVariant ? '' : textColors[variant]} {small
-            ? 'mr-2'
-            : 'mr-4'} flex items-center justify-center"
+          class="{noDarkVariant ? '' : textColors[variant]}
+          {size === 'md' ? 'mr-4' : 'mr-2'} flex items-center justify-center"
         >
           {@render icon?.()}
         </div>
       {/if}
 
       <span
-        class="{small ? 'text-sm' : 'md:text-lg lg:text-xl font-medium'} {noDarkVariant
+        class="{size === 'md' ? 'md:text-lg lg:text-xl font-medium' : 'text-sm'} {noDarkVariant
           ? ''
           : textColors[variant]} duration-200"
       >
@@ -160,16 +162,15 @@
     <div class={innerClass}>
       {#if icon}
         <div
-          class="{noDarkVariant ? '' : textColors[variant]} {small
-            ? 'mr-2'
-            : 'mr-4'} flex items-center justify-center"
+          class="{noDarkVariant ? '' : textColors[variant]}
+          {size === 'md' ? 'mr-4' : 'mr-2'} flex items-center justify-center"
         >
           {@render icon?.()}
         </div>
       {/if}
 
       <span
-        class="{small ? 'text-sm' : 'md:text-lg lg:text-xl font-medium'} {noDarkVariant
+        class="{size === 'md' ? 'md:text-lg lg:text-xl font-medium' : 'text-sm'} {noDarkVariant
           ? ''
           : textColors[variant]} duration-200"
       >
